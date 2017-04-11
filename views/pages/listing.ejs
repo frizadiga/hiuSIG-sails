@@ -1,0 +1,86 @@
+<%var row=1;%>
+
+<%- partial('../partials/navbar-search.ejs')%>
+
+<!--Listing Property-->
+<div class="w3-container" style="padding-top:68px">
+
+
+
+  <%for(var i=0;i<dataProperties.length;i++){%>
+  <%if(i%2===0||i===0){%>
+  <!--LISTING ROW-->
+  <div class="w3-row-padding w3-padding-0">
+  <%}%>
+  
+     <!--LISTING CARD-->
+    <div class="w3-col m6 w3-margin-bottom">
+      <div class="w3-container w3-padding-0 w3-card-2 w3-white">
+        <div class="w3-col m6">
+          <img class="listing-img" src="<%=dataProperties[i].pictures[0].path%>" alt="">
+        </div>
+        <div class="w3-container w3-col m6 w3-text-grey w3-white">
+          <%var title=dataProperties[i].title;%>
+          <p title="<%=title%>">
+            <b>
+              <%=(i+1)+' - '%>
+              <%=(title.length>30)?title.substring(0,30)+'...':title%>
+            </b>
+          </p>
+          <p>
+            <i class="fa fa-home"></i>&nbsp;
+            <span> 
+              <%=dataProperties[i].type.capitalize()%>
+              <b><%=dataProperties[i].status.capitalize()%></b>
+            </span>
+          </p>
+          <%var address=dataProperties[i].address;%>
+          <p title="<%=address%>"><i class="fa fa-map-marker"></i>&nbsp;
+            <span>
+              <%=(address.length>35)?address.substring(0,35)+'...':address%>
+            </span></p>
+          <p><i class="fa fa-money"></i>&nbsp;
+            <span>
+              Rp. <%=dataProperties[i].price%>
+            </span>
+          </p>
+          <div class="w3-row-padding w3-padding-0 w3-margin-bottom">
+            <i class="fa fa-bed"></i>&nbsp;
+            <span>
+              <%=dataProperties[i].bed%>
+            </span>
+            <i class="fa fa-bath"></i>&nbsp;
+            <span>
+              <%=dataProperties[i].bath%>
+            </span>
+          </div>
+          <div class="w3-bar w3-border w3-margin-bottom" style="/*margin-bottom:8px!important;">
+            <a href="javasript:void(0)">
+            <button class="w3-bar-item w3-button " style="width:33.3%"><i class="fa fa-star"></i> Favorit</button>
+            </a>
+            <a href="javasript:void(0)">
+            <button class="w3-bar-item w3-button " style="width:33.3%"><i class="fa fa-user"></i> Agen</button>
+            </a>
+            <a href="/listing/detail/<%=dataProperties[i].id%>">
+            <button class="w3-bar-item w3-button " style="width:33.3%"><i class="fa fa-info"></i> Details</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+    </div><!-- END LISTING CARD -->
+  
+  
+  <%if(i%2!==0||i===1||i===dataProperties.length-1){%>
+  </div>
+  <!--END LISTING ROW-->
+  <%}%> 
+  <%}%>
+  </div>
+<!--End-->
+<%- partial('../partials/footer.ejs')%>
+<%- partial('../partials/modal-login.ejs')%>
+
+<script>
+  document.getElementById('navbar-form-search').action='/listing';
+</script>

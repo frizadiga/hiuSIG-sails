@@ -1,0 +1,262 @@
+<%   String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}%>
+<!--INSERT LISTING-->
+<form action="<%=dataEdit?'/api/listing/edit/'+dataEdit.no:'/api/listing/insert/'%>" method="POST" enctype="multipart/form-data">
+<div id="insert-listing" class="w3-padding">
+ <!-- <h2>Insert Listing</h2> -->
+ <!-- <p class="w3-padding-left w3-opacity"><b>Insert listing element</b></p> -->
+  <div class="w3-card-2">
+  <div class="w3-row-padding w3-padding-0">
+    <p class=" w3-text-blue w3-bottombar w3-border-light-grey" style="border-width:2px!important;padding:16px 0px 0px 0px;margin:0px 8px 0px 8px">Informasi Dasar
+    </p>
+    <div class="w3-col m8">
+    
+      <p>
+        <div class="w3-row">
+          <!-- <div class="w3-col m2">
+            <label class="w3-text-blue">ID Listing</label>
+            <input type="text" name="id" class="w3-input w3-border" placeholder="p1" style="border-right:0px!important" required>
+          </div> -->
+          <div class="w3-col m12">
+          <label class=" w3-text-blue">Judul Listing</label>
+            <input type="text" class="w3-input w3-border" placeholder="Ex: Rumah di Sunset Road dekat Tol laut" name="title" value="<%=dataEdit?dataEdit.title:''%>" required>
+          </div>
+        </div>
+      </p>
+      
+      <p>
+      <div class="w3-row">
+        <div class="w3-col m3">
+          <label class=" w3-text-blue">Jenis Listing</label>
+            <select class="w3-select w3-text-grey w3-border" name="status">
+             <option value="<%=dataEdit?dataEdit.status:''%>"><%=dataEdit?dataEdit.status.capitalize():'--Pilih--'%></option>
+            <option value="dijual">Dijual</option>
+            <option value="disewa">Disewa</option>
+            </select>
+        </div>
+        <div class="w3-col m5">
+          <label class=" w3-text-blue">Tipe</label>
+          <select class="w3-select w3-text-grey w3-border" name="type" style="border-left: 0px!important">
+            <option value="<%=dataEdit?dataEdit.type:''%>"><%=dataEdit?dataEdit.type.capitalize():'--Pilih--'%></option>
+            <option value="rumah">Rumah</option>
+            <option value="ruko">Ruko</option>
+            <option value="tanah">Tanah</option>
+            <option value="gudang">Gudang</option>
+            <option value="ruang usaha">Ruang Usaha</option>
+            <option value="villa">Villa</option>
+            <option value="apartemen">Apartemen</option>
+            <option value="kondominium">Kondominium</option>
+            <option value="pabrik">Pabrik</option>
+            <option value="perkantoran">Perkantoran</option>
+          </select>
+        </div>
+        <div class="w3-col m4">
+          <label class=" w3-text-blue">Harga(Rp.)</label>
+          <input type="number" min="500000" step="500000" class="w3-input w3-border" name="price" placeholder="Ex: 1000000000" style="border-left:0px!important" value="<%=dataEdit?dataEdit.price:''%>">
+        </div>
+        </div>
+      </p>
+      
+      <p>
+      <p class=" w3-text-blue w3-bottombar w3-border-light-grey" style="border-width:2px!important">Spesifikasi
+      </p>
+        <div class="w3-row">
+         <div class="w3-half">
+           <label class=" w3-text-blue">Luas Tanah(m<sup>2</sup>)</label>
+           <input name="lotSize" type="number" min="0" class="w3-input w3-border" placeholder="Ex: 150" style="border-right: 0px!important" value="<%=dataEdit?dataEdit.lotSize:''%>">
+         </div>
+         <div class="w3-half">
+           <label class=" w3-text-blue">Luas Bangunan(m<sup>2</sup>)</label>
+           <input name="buildingSize" type="number" min="0" class="w3-input w3-border" placeholder="Ex: 100" value="<%=dataEdit?dataEdit.buildingSize:''%>">
+         </div>
+        </div>
+      </p>
+      <div class="w3-row">
+        <div class="w3-third">
+          <label class=" w3-text-blue">Jumlah Lantai</label>
+          <input name="floor" type="number" min="0" class="w3-input w3-border" placeholder="Ex: 2" style="border-right:0px!important" value="<%=dataEdit?dataEdit.floor:''%>">
+        </div>
+        <div class="w3-third">
+          <label class=" w3-text-blue">Jumlah Kamar Tidur</label>
+          <input name="bed" type="number" min="0" class="w3-input w3-border" placeholder="Ex:3" style="border-right:0px!important" value="<%=dataEdit?dataEdit.bed:''%>">
+        </div>
+        <div class="w3-third">
+          <label class=" w3-text-blue">Jumlah Kamar Mandi</label>
+          <input name="bath" type="number" min="0" class="w3-input w3-border" placeholder="Ex: 2" value="<%=dataEdit?dataEdit.bath:''%>"> 
+        </div>
+      </div>
+      
+  </div>
+  <div class="w3-col m4">
+    <p>
+      <label class=" w3-text-blue">Deskripsi</label>
+        <textarea id="txt-desc" name="description" class="w3-input w3-border" rows="13" placeholder="Penjelasan Tambahan:
+- Garasi
+- Kolam Renang
+- Rooftop
+        " style="resize:vertical;"><%=dataEdit?dataEdit.description:''%></textarea>
+    </p>
+      
+  </div>
+</div>
+<!--FORM LOKASI-->
+    <div class="w3-row-padding">   
+      <p class=" w3-text-blue w3-bottombar w3-border-light-grey" style="border-width:2px!important">Lokasi
+      </p>
+      <div class="w3-accordion">
+        <button class="w3-btn-block w3-green" onclick="accordion('map-form');//initMap()" type="button">Cari di Map <i class="fa fa-map"></i></button>
+      </div>
+      <div id="map-form" class="w3-accordion-content w3-show">
+<!--INPUT MAP-->
+        <input id="input-map" class="w3-large w3-input w3-border" placeholder="Masukan Daerah Properti Anda.." type="text" onkeypress="return event.keyCode != 13;"">
+        <div id="map-insert-listing" style="width:100%;height:450px"></div>
+      </div>
+      <!-- <p> -->
+        <div class="w3-row">
+          <div class="w3-col m2">
+            <label class="w3-text-blue">Latitude</label>
+            <input class="w3-input w3-border" type="text" name="lat" id="lat" readonly value="<%=dataEdit?dataEdit.lat:''%>">
+          </div>
+          <div class="w3-col m2">
+            <label class="w3-text-blue">Longitude</label>
+            <input class="w3-input w3-border" type="text" name="lng" id="lng" readonly value="<%=dataEdit?dataEdit.lng:''%>">
+          </div>
+          <div class="w3-col m4">
+            <label class=" w3-text-blue">Provinsi</label>
+            <input class="w3-input w3-border" placeholder="Ex: Bali" type="text" name="province" style="border-right:0px!important" required value="<%=dataEdit?dataEdit.province:''%>">            
+          </div>
+          <div class="w3-col m4">
+            <label class=" w3-text-blue">Kota</label>
+            <input class="w3-input w3-border" placeholder="Ex: Kuta" type="text" name="city" required value="<%=dataEdit?dataEdit.city:''%>">
+          </div>
+        </div>
+      <!-- </p> -->
+      <!-- <p> -->
+        <label class=" w3-text-blue">Alamat Lengkap</label>
+        <textarea id="txt-address" class="w3-input w3-border" placeholder="Ex: Jalan Ratu Lebah No 3, Kerobokan, Kuta Utara" name="address" style="resize:vertical;" required><%=dataEdit?dataEdit.address:''%></textarea>
+      <!-- </p> -->
+    <p>
+      <!-- <img src="/img/placeholder_image_upload.png" class="w3-image" style="width:100%""> -->
+      <span class="xw3-tag w3-padding w3-blue">Gambar&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
+       <input class="" type="file" name="pictures" <%=dataEdit?'':'required'%>>       
+    </p>
+        <div class="w3-row w3-section">
+          <button class="w3-btn w3-blue w3-right w3-hover-green"><%=dataEdit?'Edit':'Tambah'%></button>
+          <button class="w3-btn w3-light-grey w3-text-blue w3-right" type="reset">Atur Ulang</button>
+        </div>
+
+    </div>
+
+  </div>
+</div>
+</form>
+
+<script>
+lat = document.getElementById('lat');
+lng = document.getElementById('lng');
+//accordion('map-form')
+//initMAP
+ function initMap() {
+  var map = new google.maps.Map(document.getElementById('map-insert-listing'), {
+    center: {lat:-8.6537517,lng:115.1741465},
+    zoom: 17,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeControl: true,
+    mapTypeControlOptions:{
+      position: google.maps.ControlPosition.BOTTOM_CENTER
+    }
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('input-map');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      // var icon = {
+      //   url: place.icon,
+      //   size: new google.maps.Size(71, 71),
+      //   origin: new google.maps.Point(0, 0),
+      //   anchor: new google.maps.Point(17, 34),
+      //   scaledSize: new google.maps.Size(50, 50)
+      // };
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        // icon: icon,
+        title: place.name,
+        position: place.geometry.location,
+        draggable:true
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+
+    lng.value = markers[markers.length-1].getPosition().lng();
+    lat.value = markers[markers.length-1].getPosition().lat();
+
+  });
+  // [END region_getplaces]
+
+  // var dragMarker = new google.maps.Marker({
+  //   position:{lat:-8.6537517,lng:115.1741465},
+  //   map:mapInsertListing,
+  //   draggable:true,
+  //   title:"Seret ke lokasi properti anda!"
+  // });
+  //dragMarker.setVisible(true);
+
+
+  google.maps.event.addListener(map,'mouseup',
+    function(e){
+      // alert(e.latLng.lat()+','+e.latLng.lng());
+      lng.value = markers[markers.length-1].getPosition().lng();
+      lat.value = markers[markers.length-1].getPosition().lat();
+    });
+}// END initMAP
+//==============================================================================
+function accordion(id){
+  var elm = document.getElementById(id);
+  if(elm.className.indexOf('w3-show')== -1){
+    elm.className += " w3-show";
+  }else{
+    elm.className = elm.className.replace(' w3-show','');
+  }
+  google.maps.event.trigger(map, 'resize');
+
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAmS8vuCaGKypdZbXPWWrUo09cIjuTkgk&libraries=places&callback=initMap" async defer></script>

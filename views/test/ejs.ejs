@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/w3.css">
+<div class="w3-center w3-content">
+<%
+arr=['tomomi','rina','mami','haruna'];
+for(i=0;i<arr.length;i++){%>
+<p>
+<%=arr[i]%>	
+</p>
+<%}%>
+</div>
+
+<div class="w3-centers w3-content" style="width:399px;">
+<%
+// A list representing the currently-logged in user's inbox.
+var messages = [
+{id:1,subject:'hi'},
+{id:2,subject:'do you wanna hang out?'}
+]
+%><ul class="w3-ul w3-border"><%
+  // Display each message, with a button to delete it.
+  _.each(messages, function (message) {
+  %><li data-id="<%= message.id %>">
+    <a href="/messages/<%= message.id %>"><%= message.subject %></a>
+    <button class="fa fa-trash w3-right" is="delete-btn"> delete</button>
+  </li><% });
+ %></ul>
+</div>
+
+<script>
+	alert('<%=arr[0]%>');
+</script>
+ 

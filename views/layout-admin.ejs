@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=typeof title == 'undefined' ? 'Rumah2Q' : title%></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/w3-3.css">
+    <link rel="stylesheet" href="/css/w3-4.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+    <!--EJS Script-->
+  <%//let user = {name: "Frizadiga",role:"Superadmin"}%>
+<!--Side Bar-->
+<nav class="w3-sidebar w3-bar-block w3-blue-grey w3-card-2" style="display:block;width:20%" id="sideBarLeft">
+  <div class="w3-bar w3-padding-0 w3-margin-bottom">
+   
+      <button onclick="w3_close()" class="w3-button w3-hover-red w3-padding-8 w3-padding-left w3-padding-right w3-right">&times;</button>
+   
+  </div>
+<div id="admin-user-bg" class="w3-container w3-padding-8">
+  <!-- <img src="/img/building-horde.png" class="w3-opacity w3-hover-opacity-off" style="width:100%" alt="User Background"> -->
+  <div class="w3-center">
+    <img class="w3-hover-grayscale w3-circle w3-card-4 w3-show-block w3-margin-bottom" src="/img/profile.jpg" style="width:30%;margin:auto" alt="User Avatar">
+    <p class="w3-small w3-text-white w3-margin-0">
+    <b><i class="fa fa-user"></i><br>
+       <%=req.session.user.name%>|<%=req.session.user.role%></b>
+    </p>
+  </div>
+</div>
+<!--Tab Links-->
+<a href="/admin/dashboard" class="w3-bar-item w3-button w3-white w3-hover-opacity w3-text-blue-grey"><b><i class="fa fa-home"></i> Dashboard</b></a>
+
+<a href="/admin/listing/insert" class="w3-bar-item w3-button w3-hover-white">Insert Listing</a>
+<a href="/admin/listing/manage" class="w3-bar-item w3-button w3-hover-white">Manage Listing</a>
+<a href="/admin/listing/maps" class="w3-bar-item w3-button w3-hover-white">Maps Listing</a>
+<hr class="w3-margin-0 w3-opacity w3-hr">
+<%if(req.session.user.role==='administrator'){%>
+<a href="/admin/user/insert" class="w3-bar-item w3-button w3-hover-white">Insert User</a>
+<a href="/admin/user/manage" class="w3-bar-item w3-button w3-hover-white">Manage User</a>
+<%}%>
+<hr class="w3-margin-0 w3-opacity w3-hr">
+<a href="/admin/report" class="w3-bar-item w3-button w3-hover-white">Report</a>
+<hr class="w3-margin-0 w3-opacity w3-hr">
+<a href="/admin/settings" class="w3-bar-item w3-button w3-hover-none"><button class="w3-btn w3-blue-grey w3-hover-white w3-right"><i class="fa fa-cog"></i></button></a>
+
+<!--FOOTER-->
+<div class="w3-container w3-center w3-bottom w3-padding-8 w3-white" style="width:20%!important;">
+  <p class="w3-text-blue-grey">
+  &copy; 2016 <b>rumah<span class="w3-text-green">2Q</b></span>
+  </p>
+</div>
+</nav>
+
+
+<!--Main-->
+<div id="main" style="margin-left:20%;margin-bottom: 8px">
+<!--Header Navbar-->
+  <header class="w3-bar w3-padding-0 w3-blue-grey">
+    
+    <span id="openNav" class="w3-button w3-left" style="display:none" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    
+    <a class="w3-bar-item w3-btn w3-white" href="/"><span class="w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></span> | <span id="title-bar"></span></a></li>
+      
+    <a class="w3-button w3-hover-white w3-hover-text-blue-grey w3-right" onclick="document.getElementById('modal-login').style.display='block'"  href="/logout"><i class="fa fa-sign-out"></i> logout</a>
+    
+  </header>
+
+    <%- body %>
+
+
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <!--SCRIPTS END-->
+    <script>
+      //navbar
+      function w3_open(){
+        document.getElementById('main').style.marginLeft='20%';
+        document.getElementById('sideBarLeft').style.width='20%'
+        document.getElementById('sideBarLeft').style.display='block';
+        document.getElementById('openNav').style.display='none';
+      }
+      function w3_close(){
+        document.getElementById('main').style.marginLeft='0%';
+        document.getElementById('sideBarLeft').style.display='none';
+        document.getElementById('openNav').style.display='inline-block';
+      }
+    </script>
+  </body>
+</html>

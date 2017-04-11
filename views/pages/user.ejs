@@ -1,0 +1,50 @@
+<div class="w3-display-container" style="height:700px">
+<div class="w3-display-middle">
+
+<form action="javascript:reqAjax('/api/userpost',resAjax)">
+<input class="w3-input w3-center w3-border" type="text" id="name" placeholder="Name" value="Tomomi Ogawa">
+<input class="w3-input w3-center w3-border" type="text" id="role" placeholder="role" value="user">
+<button class="w3-btn-block w3-blue-grey" type="submit">Submit</button>
+</form>
+
+<h5 class="w3-center" id="data">Response:</h5>
+<table class="w3-table-all">
+<tr>
+    <th>username</th>
+    <th>role</th>
+    <th>ip</th>
+</tr>
+<tr>
+    <td id="res-username"></td>
+    <td id="res-role"></td>
+    <td id="res-ip"></td>
+</tr>
+</table>
+</div>
+</div>
+<script>
+    let username = document.getElementById('name');
+    let role = document.getElementById('role');
+
+    function reqAjax(url,cb){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                cb(xhr);
+            }
+        };
+        xhr.open('POST',url,true);
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        xhr.send('name='+username.value+'&role='+role.value);
+    }
+
+    function resAjax(xhr){
+        document.getElementById('data').innerHTML = xhr.responseText;
+        let res = JSON.parse(xhr.responseText);
+        console.log(xhr.responseText);
+        document.getElementById('res-username').innerHTML = res.name;
+        document.getElementById('res-role').innerHTML = res.role;
+        document.getElementById('res-ip').innerHTML = res.ip;         
+    }
+
+</script>

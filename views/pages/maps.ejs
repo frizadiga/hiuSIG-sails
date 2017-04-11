@@ -1,0 +1,82 @@
+<!--Side Nav-->
+<nav id="side-nav" class="w3-sidenav w3-top w3-card-4 xw3-white" style="display:block;width:25%;right:0;z-index:100"> 
+   <%
+   String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}  %>
+  <ul class="w3-ul w3-text-blue-grey">
+  <%for(i=0;i<dataProperties.length;i++){%>
+  <a class="w3-padding-0" href="/listing/detail/<%=dataProperties[i].id%>">
+    <li class="w3-padding-16 w3-hover-blue-grey">
+      <img class="w3-left w3-margin-right" style="width:80px;height:45px" src="<%=dataProperties[i].pictures[0].path%>">
+      <span class="" style="font-weight: bold">
+        <%=dataProperties[i].status.capitalize()%>
+        <%=dataProperties[i].type.capitalize()%>  
+      </span><br>
+      <span>
+        <%address=dataProperties[i].address%>
+        <%=address.length>30?address.substr(0,30)+'...':address%>
+      </span>
+    </li>
+    </a>
+    <%}%>
+  </ul>
+</nav>
+<!-- <h1 class="w3-padding-16"></h1> -->
+<%- partial('../partials/navbar-search.ejs')%>
+<!-- MAIN CONTENT -->
+<div id="main" style="margin:0px 25% 0px 0px;padding-top:54px;height:100%;width:75%">
+  <div id="map" style="width:100%;height:100%;"></div>
+</div>
+<%- partial('../partials/modal-login.ejs')%>
+
+<script>
+document.getElementById('navbar-form-search').action='/findinmaps';
+
+document.getElementById('main-navbar').style.width='75%';
+document.getElementById('searchDropNav').style.width ='75%';
+
+var markerCoords;
+loadCoords();
+
+
+
+function initMap(){
+
+map = new google.maps.Map(document.getElementById('map'),{
+center:{lat:0.798538,lng:120.581768},
+zoom:5
+});
+var markers = markerCoords.map(function(location, i){
+  return new google.maps.Marker({
+    position: location,
+    label: ''
+  });
+});
+var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+}
+
+//load coord data
+
+function loadCoords(){
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function(){
+    if(this.readyState==4&&this.status==200){
+      markerCoords = JSON.parse(this.responseText);
+      //alert(markerCoords.valueOf());
+    }
+  };
+  xhr.open('GET','/api/getcoords');
+  xhr.send();
+}
+
+////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////
+</script>
+
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js?rndstr=<%= Math.random() %>">
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAmS8vuCaGKypdZbXPWWrUo09cIjuTkgk&callback=initMap"></script>
+

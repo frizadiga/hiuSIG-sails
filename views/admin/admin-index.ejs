@@ -1,0 +1,335 @@
+<!--EJS Script-->
+<%let user = {
+  name: "Frizadiga",role:"Superadmin"
+  }%>
+<!--Side Nav-->
+<nav class="w3-sidenav w3-white w3-card-2" style="display:block;width:20%" id="sideNavLeft">
+  <div class="w3-container w3-padding-0 w3-blue-grey">
+    <ul class="w3-navbar">
+      <li class="w3-padding-16 w3-margin-left"><b>Menu</b></li>
+      <li class="w3-right">
+      <span onclick="w3_close()" class="w3-xxlarge w3-hover-red w3-padding-8 w3-padding-left w3-padding-right">&times;</span>
+      </li>
+    </ul>
+  </div>
+<div class="w3-display-container">
+  <img src="/img/building.jpg" class="w3-opacity w3-hover-opacity-off" style="width:100%" alt="User Background">
+  <div class="w3-display-middle w3-center">
+    <img class="w3-hover-grayscale w3-circle w3-card-4 w3-show-block w3-margin-bottom" src="img/profile.jpg" style="width:70%;margin:auto" alt="User Avatar">
+    <p class="w3-tag w3-small w3-blue-grey w3-text-white w3-margin-0">
+    <!-- <i class="fa fa-user">&nbsp;</i><br> -->
+    <%=user.name%>|<%=user.role%>
+    </p>
+  </div>
+</div>
+<!--Tab Links-->
+<a href="javascript:void(0)" class="w3-padding-24 w3-blue-grey w3-hover-opacity" onclick="defaultTab()"><b>Dashboard</b></a>
+<a href="javascript:void(0)" class="tablink w3-padding-16" onclick="openMainTabs(event, 'insert-listing');initMap()">Insert Listing</a>
+<a href="javascript:void(0)" class="tablink w3-padding-16" onclick="openMainTabs(event, 'manage-listing')">Manage Listing</a>
+<a href="javascript:void(0)" class="tablink w3-padding-16" onclick="openMainTabs(event, 'map-listing');initMap()">Maps Listing</a>
+<a href="javascript:void(0)" class="w3-padding-16 w3-light-grey w3-hover-blue">Settings</a>
+<div class="w3-container w3-padding-16 w3-bottom w3-blue-grey" style="width:20%!important;">Footer Content</div>
+</nav>
+
+
+<!--Main-->
+<div id="main" style="margin-left:20%">
+<!--Header Navbar-->
+<header class="w3-container w3-padding-0 w3-blue">
+<ul class="w3-navbar">
+<li>
+ <span id="openNav" class="w3-opennav w3-xxlarge w3-left w3-margin-left w3-margin-right" style="display:none" onclick="w3_open()">
+ <i class="fa fa-bars"></i>
+ <!-- &#9776; -->
+ </span>
+</li>
+<li><a class="w3-white w3-padding-16 w3-show-inline-block" href="/"><span class="w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></span> | <span id="title-bar"></span></a></li>
+<!-- <li><a class="w3-padding-16" href="/listing">Property Listing</a></li>
+<li><a class="w3-padding-16" href="/findmaps">Find Maps</a></li>
+<li><a class="w3-padding-16" href="javascript:void(0)">About</a></li>
+ --><li class="w3-right" onclick="document.getElementById('modal-login').style.display='block'">
+<a class="w3-padding-16" href="/"><i class="fa fa-sign-out"></i> logout</a>
+</li>
+</ul>
+</header>
+
+<!--Main Tabs-->
+
+<!--DASHBOARD-->
+<div id="dashboard" class="w3-container">
+  <!-- <h2>Dashboard</h2> -->
+  <p class="w3-padding-left w3-opacity"><b>Info Summary</b></p>
+  
+  <div class="w3-row-padding w3-padding-0">
+    
+    <div class="w3-third">
+      <div class="w3-card-2">
+        <img src="/img/house.png" style="width:100%;margin-left:0px">
+        <div class="w3-container w3-center">
+          <p>Properti Baru</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="w3-third">
+      <div class="w3-card-2">
+        <img src="/img/house.png" style="width:100%;margin-right:0px">
+        <div class="w3-container w3-center">
+          <p>Properti Baru</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="w3-third">
+      <div class="w3-card-2">
+        <img src="/img/house.png" style="width:100%">
+        <div class="w3-container w3-center">
+          <p>Properti Baru</p>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+  <div class="w3-row-padding">
+    <div class="w3-card-2">
+      <h3 class="w3-container w3-blue w3-large">Berita Terbaru</h3>
+      <ul class="w3-ul">
+        <li>Rumah Dijual</li>
+        <li>Apartemen Disewa</li>
+        <li>Tanah Dijual</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+<!--INSERT LISTING-->
+<div id="insert-listing" class="main-tabs w3-container">
+ <!-- <h2>Insert Listing</h2> -->
+ <p class="w3-padding-left w3-opacity"><b>Insert listing element</b></p>
+  <div class="w3-row w3-card-2 w3-margin-bottom">
+    <div class="w3-half">   
+      <div id="map-insert-listing" style="width:100%;height:700px"></div>
+    </div>
+    <div class="w3-half w3-container">
+    <form>
+      <p>
+        <label class="w3-label w3-text-blue">Judul Listing</label>
+        <input type="text" class="w3-input w3-border" placeholder="Ex: Rumah di Sunset Road dekat Tol laut" name="judul-listing">
+      </p>
+      
+      <p>
+      <div class="w3-row">
+        <div class="w3-col m3">
+          <label class="w3-label w3-text-blue">Jenis Listing</label>
+            <select class="w3-select w3-text-grey w3-border" name="option">
+            <option value="dijual">Dijual</option>
+            <option value="dijual">Disewa</option>
+            </select>
+        </div>
+        <div class="w3-col m5">
+          <label class="w3-label w3-text-blue">Tipe</label>
+          <select class="w3-select w3-text-grey w3-border" name="option" style="border-left: 0px!important">
+            <option value="rumah">Rumah</option>
+            <option value="ruko">Ruko</option>
+            <option value="tanah">Tanah</option>
+            <option value="gudang">Gudang</option>
+            <option value="ruang usaha">Ruang Usaha</option>
+            <option value="villa">Villa</option>
+            <option value="apartemen">Apartemen</option>
+            <option value="kondominium">Kondominium</option>
+            <option value="pabrik">Pabrik</option>
+            <option value="perkantoran">Perkantoran</option>
+          </select>
+        </div>
+        <div class="w3-col m4">
+          <label class="w3-label w3-text-blue">Harga</label>
+          <input type="text" class="w3-input w3-border" name="harga" placeholder="Ex: 1000000000" style="border-left:0px!important">
+        </div>
+        </div>
+      </p>
+      <p>
+        <div class="w3-row">
+          <div class="w3-half">
+            <label class="w3-label w3-text-blue">Provinsi</label>
+            <input class="w3-input w3-border" placeholder="Ex: Bali" type="text" name="" style="border-right:0px!important">            
+          </div>
+          <div class="w3-half">
+            <label class="w3-label w3-text-blue">Kota</label>
+            <input class="w3-input w3-border" placeholder="Ex: Kuta" type="text" name="">
+          </div>
+        </div>
+      </p>
+      <p>
+        <label class="w3-label w3-text-blue">Alamat</label>
+        <textarea class="w3-input w3-border" placeholder="Ex: Jalan Ratu Lebah No 3, Kerobokan, Kuta Utara" style="resize:vertical;"></textarea>
+      </p>
+
+      <p>
+      <p class="w3-label w3-text-blue w3-bottombar w3-border-light-grey" style="border-width:2px!important">Spesifikasi
+      </p>
+        <div class="w3-row">
+         <div class="w3-half">
+           <label class="w3-label w3-text-blue">Luas Tanah(m2)</label>
+           <input type="number" min="1" class="w3-input w3-border" placeholder="Ex: 150" name="luas-tnh-listing" style="border-right: 0px!important">
+         </div>
+         <div class="w3-half">
+           <label class="w3-label w3-text-blue">Luas Bangunan(m2)</label>
+           <input type="number" min="1" class="w3-input w3-border" placeholder="Ex: 100" name="luas-bgn-listing">
+         </div>
+        </div>
+      </p>
+      <div class="w3-row">
+        <div class="w3-third">
+          <label class="w3-label w3-text-blue">Jumlah Lantai</label>
+          <input type="number" min="0" class="w3-input w3-border" placeholder="Ex: 2" name="lantai" style="border-right:0px!important">
+        </div>
+        <div class="w3-third">
+          <label class="w3-label w3-text-blue">Jumlah Kamar Tidur</label>
+          <input type="number" min="0" class="w3-input w3-border" placeholder="Ex:3" name="kmr-tidur" style="border-right:0px!important">
+        </div>
+        <div class="w3-third">
+          <label class="w3-label w3-text-blue">Jumlah Kamar Mandi</label>
+          <input type="number" min="0" class="w3-input w3-border" placeholder="Ex: 2" name="kmr-mandi"> 
+        </div>
+      </div>
+     
+       <p>
+         <label class="w3-label w3-text-blue">Deskripsi</label>
+         <textarea class="w3-input w3-border" rows="5" placeholder="Penjelasan Tambahan" style="resize:vertical;"></textarea>
+       </p>
+   
+        <div class="w3-row w3-margin-bottom">
+          <button class="w3-btn w3-blue w3-right w3-hover-green">Tambah</button>
+          <button class="w3-btn w3-light-grey w3-text-blue w3-right" type="reset">Atur Ulang</button>
+        </div>
+    </form>
+   </div>
+  </div>
+</div>
+<!--MANAGE LISTING-->
+<div id="manage-listing" class="main-tabs w3-container">
+  <!-- <h2>Manage Listing</h2> -->
+  <p class="w3-padding-left w3-opacity"><b>Manage listing element</b></p>
+  <div class="w3-row-padding w3-padding-0">
+    <div class="w3-half ">
+    <div class=" w3-card-2">
+      <img id="main-pic" class="w3-card-4" style="width:100%;height:auto" src="/img/house-5.jpg"> 
+       <div class="w3-container">
+              <p><b>Rumah Elit Kawasan Kuta </b></p>
+              <p>Rumah Dijual </p>
+              <p>Perum Sunset Road VII</p>
+              <p>Rp. 100,000,000 </p>
+            <div class="w3-btn-bar w3-border w3-margin-bottom">
+              <a href="">
+              <button class="w3-btn w3-hover-yellow ">Edit</button>
+              </a><a href="">
+              <button class="w3-btn w3-hover-red">Hapus</button>
+              </a>
+            </div>
+          </div>
+    </div>
+    </div>
+    <div class="w3-half w3-card-2">  
+      <ul class="w3-ul ">
+        <li class="w3-padding-32">Rumah Kerobokan</li>
+        <li class="w3-padding-32">Ruko Sunset Road</li>
+        <li class="w3-padding-32">Tanah Dalung Permai</li>
+        <li class="w3-padding-32">Gudang Galung Permai</li>
+        <li class="w3-padding-32">Ruang Usaha Simpang Siur</li>
+        <li class="w3-padding-32">Villa Jimbaran</li>
+        <li class="w3-padding-32">Apartemen Sanur</li>
+        <li class="w3-padding-32">Kondominium Sanglah</li>
+        <li class="w3-padding-32">Pabrik Tohpati</li>
+        <li class="w3-padding-32">Perkantoran Denpasar</li>
+      </ul>
+     </div> 
+  </div>
+</div>
+
+<!--MAPS LISTING-->
+<div id="map-listing" class="main-tabs w3-container">
+  <!-- <h2>Maps Listing</h2> -->
+  <p class="w3-padding-left w3-opacity"><b>Mapping for registered property assets</b></p>
+  <div class="w3-row w3-card-2">
+  <div id="map-dashboard" style="width:100%;height:500px"></div>
+  <div class="w3-container">
+    <p>lorem ipsum</p>
+  </div>
+  </div>
+</div>
+
+<!-- <footer class="w3-container w3-padding-16 w3-bottom w3-blue">
+<p id="status-bar" class="w3-text-light-gray" style="display:inline">Footer information goes here</p>
+</footer>-->
+</div>
+
+<script>
+//openMainTabs(null, 'dashboard')
+
+function testTabs(tabName){
+  document.getElementById('dashboard').style.display = "none";
+  document.getElementById(tabName).style.display = "block";
+}
+//Test Tabs to Show First
+testTabs('insert-listing');
+// testing code end..
+titleBar = document.getElementById('title-bar');
+titleBar.innerHTML = 'Dashboard';
+
+dashboard = document.getElementById('dashboard');
+var mapDashboard,mapInsertListing;
+
+function defaultTab(){
+  let tabs;
+  dashboard.style.display='block';
+  tabs = document.getElementsByClassName('main-tabs');
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].style.display = 'none';
+  }
+  titleBar.innerText = 'Dashboard';
+}
+//main tabs
+function openMainTabs(evt, tabName){
+  dashboard.style.display = 'none';
+  let i,tabs,tablinks;
+  tabs = document.getElementsByClassName('main-tabs');
+  for(i=0; i<tabs.length; i++){
+    tabs[i].style.display = 'none';
+  }
+  tablinks = document.getElementsByClassName('tablink');
+  for(i=0; i<tabs.length; i++){
+  tablinks[i].className = tablinks[i].className.replace(' w3-green','');
+ }
+  document.getElementById(tabName).style.display = 'block';
+  evt.currentTarget.className += ' w3-green';
+  titleBar.innerHTML = evt.target.innerText;
+  console.log(evt);
+}
+//navbar
+function w3_open(){
+  document.getElementById('main').style.marginLeft='20%';
+  document.getElementById('sideNavLeft').style.width='20%'
+  document.getElementById('sideNavLeft').style.display='block';
+  document.getElementById('openNav').style.display='none';
+}
+function w3_close(){
+  document.getElementById('main').style.marginLeft='0%';
+  document.getElementById('sideNavLeft').style.display='none';
+  document.getElementById('openNav').style.display='inline-block';
+}
+function initMap(){
+  mapDashboard = new google.maps.Map(document.getElementById('map-dashboard'),{
+    center:{lat:-6.8868245,lng:107.6152951},
+    zoom:15,
+    //disableDefaultUI:true,
+    //scrollwheel:false
+  });
+  mapInsertListing = new google.maps.Map(document.getElementById('map-insert-listing'),{
+    center:{lat:-6.8868245,lng:107.6152951},
+    zoom:15,
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAmS8vuCaGKypdZbXPWWrUo09cIjuTkgk&callback=initMap" async defer></script>

@@ -1,0 +1,255 @@
+<!--Navbar-->
+<div class="w3-top">
+<div id="main-navbar" class="w3-top w3-bar w3-text-white w3-animate-opacity">
+
+<a class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey" href="/listing"><i class="fa fa-home"></i> Property Listing</a>
+<a class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey" href="/findinmaps"><i class="fa fa-map-marker"></i> Find in Maps</a>
+<a class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey" href="/partners"><i class="fa fa-handshake-o"></i> Partners</a>
+<a title="Log in/Sign up" onclick="document.getElementById('modal-login').style.display='block'" class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey w3-right" href="javascript:void(0)"><%-req.session.user?'<i class="fa fa-user-circle"></i> '+req.session.user.username:'<i class="fa fa-sign-in"></i>'%></a>
+</div>
+</div>
+<!--Slide Show-->
+<section>
+<div class="w3-display-container">
+<div class="slideWrapper">
+<img class="mainSlides" style="width:100%;height:100%" src="img/building-4.jpg" alt="">
+<img class="mainSlides" style="width:100%;height:100%" src="img/building-3.jpg" alt="">
+<img class="mainSlides" style="width:100%;height:100%" src="img/house.jpg" alt="">
+
+<!--<img class="mainSlides" style="width:100%" src="img/pic-2.jpg" alt="">-->
+</div>
+
+<!--Floating Search Card-->
+<div class="w3-display-middle w3-card-4X w3-whiteX w3-round-small w3-animate-opacity" style="width:50%;opacity:0.95;padding-top:32px">
+  <div id="main-hero-logo" class="w3-row w3-center">
+    <img src="/img/rumah2q-logo.png" class="" style="width:30%;height:50%">
+    <!-- <h1 class="w3-tag w3-white w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></h1> -->
+    <!-- <p class="w3-center w3-text-blue-grey"><i>"show place<br>bring home to you"</i></p> -->
+  </div>
+<!--Search Panel-->
+  <form action="/listing" class="w3-card-4 w3-white">
+  <div class="w3-row">
+    
+    <div class="w3-col" style="width:17%">
+      <select id="searchStatus" style="height: 54px;" class="w3-padding-16 w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-light-grey" name="status">
+        <option value="dijual">Dijual</option>
+        <option value="disewa">Disewa</option>
+        <option value="">--Semua--</option>
+      </select>
+    </div>
+
+    <div class="w3-col" style="width:27%">
+       <select id="searchType" style="height: 54px;" class="w3-padding-16 w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-light-grey " name="type">
+         <option value="rumah">Rumah</option>
+            <option value="ruko">Ruko</option>
+            <option value="tanah">Tanah</option>
+            <option value="gudang">Gudang</option>
+            <option value="ruang usaha">Ruang Usaha</option>
+            <option value="villa">Villa</option>
+            <option value="apartemen">Apartemen</option>
+            <option value="kondominium">Kondominium</option>
+            <option value="pabrik">Pabrik</option>
+            <option value="perkantoran">Perkantoran</option>
+            <option value="">--Semua--</option>
+
+      </select>
+    </div>
+
+     <div class="w3-col w3-right" style="width:50px">
+      <button id="searchBtn" class="w3-padding-16 w3-button w3-block w3-white w3-hover-blue-grey w3-text-blue-grey" title="Lakukan Pencarian...">
+       
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  
+   <div class="w3-rest">
+
+      <input id="searchLocation" onclick="searchDropDown()" class="w3-padding-16 w3-input w3-white w3-hover-light-grey w3-border-0 " type="text" placeholder="Lokasi.. Ex: Kuta Utara" name="location" list="location-list">
+      <datalist id="location-list">
+        <option>Kuta</option>
+        <option>Denpasar</option>
+        <option>Sanur</option>
+      </datalist> 
+    </div>
+
+
+  </div>
+ 
+  <button id="option" onclick="accordion('more-ops')" class="w3-button w3-block w3-blue w3-hover-green w3-accordion" type="button">
+  <i class="fa fa-caret-down"></i> Opsi Lain
+  </button>
+  
+  <div id="more-ops" class="w3-container w3-hide">
+  
+  <a onclick="accordion('spek-ops')" class=" w3-light-grey w3-text-grey w3-accordion" >
+  Spesifikasi
+  </a>
+    <div id="spek-ops" class="w3-row w3-accordion-content">
+    
+      <div class="w3-col m2">
+        <input class="w3-hover-light-greyX w3-input w3-border-0" type="number" name="" placeholder="Jumlah Lantai">
+      </div>
+      <div class="w3-col m2">
+        <input class="w3-hover-light-greyX w3-input w3-border-0" type="number" name="" placeholder="Kamar Tidur">
+      </div>
+      <div class="w3-col m2">
+        <input class="w3-hover-light-greyX w3-input w3-border-0" type="number" name="" placeholder="Kamar Mandi">
+      </div> 
+       <div class="w3-col m3">
+        <input class="w3-hover-light-greyX w3-input w3-border-0" type="number" name="" placeholder="Luas Tanah">
+      </div> 
+       <div class="w3-col m3">
+        <input class="w3-hover-light-greyX w3-input w3-border-0" type="number" name="" placeholder="Luas Bangunan">
+      </div> 
+    </div>
+  <a onclick="accordion('daerah-ops')" class="w3-light-grey w3-text-grey w3-accordion">
+  Daerah
+  </a>
+    <div id="daerah-ops" class="w3-row w3-accordion-content">
+      <div class="w3-col m6">
+      <input placeholder="Provinsi" class="w3-hover-light-greyX w3-input w3-border-0" type="text" name="">
+      </div>
+      <div class="w3-col m6">
+      <input placeholder="Kota" class="w3-hover-light-greyX w3-input w3-border-0" type="text" name="">
+      </div>
+    </div>
+     <a onclick="accordion('harga-ops')" class="w3-light-grey w3-text-grey w3-accordion">
+  Harga
+  </a>
+  <div id="harga-ops" class="w3-row w3-accordion-content">
+    <div class="w3-col m6">
+        <input class="w3-hover-light-greyX w3-input w3-border-0" type="number" name="" placeholder="Harga minimum">
+      </div>
+        <div class="w3-col m6">
+        <input class="w3-hover-light-greyX w3-input w3-border-0" type="number" name="" placeholder="Harga maksimum">
+      </div>
+  </div>
+  </div>
+</form>
+</div>
+</div>
+</section>
+<!--End Main Slide-->
+
+
+<h3 class="w3-wide w3-blue-grey w3-border-black w3-center w3-padding-16" style="margin: 0">Find Your Home</h3>
+<div class="w3-row w3-blue-grey"  style="padding-top:128px;background:url('/img/building-horde-opacity-max.png');background-size:contain;">
+<section class="w3-white w3-card-4 w3-container w3-center w3-content w3-padding-128">
+<p class="w3-opacity">"EXPLORE YOUR LIVE TASTE"</p>
+<p class="w3-justify w3-padding-16">
+We have created a simple but useful maps apps. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</p>
+</section>
+</div>
+ <!-- The Maps -->
+<div id="map" class="Xw3-grayscale-max w3-opacity w3-hover-opacity-off" style="height:500px;"></div>
+<!-- Web Description -->
+<section class="w3-row w3-padding w3-center w3-blue-grey" style="">
+<div class="w3-container w3-content w3-card-2 w3-white w3-section">
+ <h2 class="w3-wide w3-bottombar w3-border-green w3-text-blue" style="max-width:200px;margin:auto;">The Tech</h2>
+ <p class="w3-opacity"><i>We Build Great Tech</i></p>
+ <p class="w3-justify">
+ We have created a simple but useful maps apps. Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut  enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill um  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt  in  culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed  do   eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ </p>
+</div>
+<div class="w3-container w3-content w3-card-2 w3-white w3-section">
+<h2 class="w3-wide w3-bottombar w3-border-green w3-text-blue" style="max-width:200px;margin:auto;">The Maps</h2>
+<p class="w3-opacity"><i>We Love Maps</i></p>
+<p class="w3-justify">
+We have created a simple but useful maps apps. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</p>
+</div>
+</section>
+<!-- Feature List -->
+<section class="w3-row-padding w3-center w3-white w3-margin">
+  <div class="w3-third">
+    <div class="w3-card" style="padding:32px 64px">
+    <p class="w3-large w3-bottombar w3-border-green w3-padding w3-margin-0">Google Maps</p>
+    <img class="w3-image" style="width:100%;height:300px" src="img/world-map.png" alt="world map">
+    <p>Deep integration with the powerful maps engine in the wold</p>
+  </div>    
+  </div>
+  <div class="w3-third">
+    <div class="w3-card" style="padding:32px 64px">
+    <p class="w3-large w3-bottombar w3-border-green w3-padding w3-margin-0">Many Database</p>
+    <img class="w3-image" style="width:100%;height:300px" src="img/database.png" alt="database">
+    <p>Agnostic Database Support with noSQL and SQL support well</p>
+  </div>    
+  </div>
+  <div class="w3-third">
+    <div class="w3-card" style="padding:32px 64px">
+    <p class="w3-large w3-bottombar w3-border-green w3-padding w3-margin-0">Enterprise Ready</p>
+    <img class="w3-image" style="width:100%;height:300px" src="img/building.png" alt="building">
+    <p>Ready to support your business needs into production level</p>
+  </div>
+  </div>
+</section>   
+<!-- End Visible Content -->
+
+<script>
+//Search Dropdown
+function searchDropDown() {
+  var elm = document.getElementById('search-dropdown-content');
+  if(elm.className.indexOf("w3-show")==-1)
+    elm.className += " w3-show";
+  else
+    elm.className = elm.className.replace(' w3-show','')
+}
+//Carousel
+var sIndex = 0;
+carousel();
+function carousel(){
+  var i;
+  var x = document.getElementsByClassName("mainSlides");
+  for (i=0;i<x.length;i++){
+      x[i].style.display = "none";
+  }
+  sIndex++;
+  if(sIndex > x.length){sIndex =1}
+    x[sIndex-1].style.display = "block";
+    setTimeout(carousel,10000);
+}
+//Dom Manipulated
+var searchBtn = document.getElementById('searchBtn');
+var searchText = document.getElementById('searchText');
+//searchBtn.addEventListener('click',function(){alert('finding');});
+
+
+//maps
+var map;
+function initMap(){
+    map = new google.maps.Map(document.getElementById('map'),{
+        center:{lat:-8.6537517,lng:115.1741465},
+        zoom:15,
+        disableDefaultUI:true,
+        scrollwheel:false
+    });
+}
+
+function accordion(id){
+  var elm = document.getElementById(id);
+  if(elm.className.indexOf('w3-show')== -1){
+    elm.className += " w3-show";
+  }else{
+    elm.className = elm.className.replace(' w3-show','');
+  }
+ // google.maps.event.trigger(map, 'resize');
+
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("main-navbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card-2" + " w3-animate-top" + " w3-blue-grey" +" w3-text-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card-2 w3-animate-top w3-blue-grey", "");
+    }
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAmS8vuCaGKypdZbXPWWrUo09cIjuTkgk&callback=initMap" async defer></script>
+
+<%- partial('../partials/footer.ejs')%>
+<%- partial('../partials/modal-login.ejs')%>

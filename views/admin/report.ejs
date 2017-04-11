@@ -1,0 +1,60 @@
+<div id="report" class="w3-container myDivToPrint">
+  <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Report</b></p>
+  <img src="/img/rumah2q-logo.png" style="width:20%">
+
+	<table class="w3-table w3-card-2 w3-hoverable">
+		<tr class="w3-light-grey">
+			<th>Judul</th>
+			<th>Penjual</th>
+			<th>Pembeli</th>
+		</tr>
+		<% for (var i = 0; i < data.length; i++) { -%>			
+		<tr>
+			<td><%=data[i].judul%></td>
+			<td><%=data[i].penjual%></td>
+			<td><%=data[i].pembeli%></td>
+		</tr>
+		<% } -%>
+		<tr  class="w3-hover-none">
+			<td colspan="3">
+			<button class="w3-blue w3-btn w3-right no-print" onclick="printDiv('report')">Print</button>
+			</td>
+		</tr>
+
+	</table>
+</div>
+
+<script>
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+
+	// function printElm(elm)
+ //    {
+ //      var mywindow = window.open('', 'PRINT', 'height=1000,width=900');
+
+
+ //        mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+
+ //        mywindow.document.write('</head><body >');
+ //      mywindow.document.write('<h1>' + document.title  + '</h1>');
+ //        mywindow.document.write(document.getElementById(elm).innerHTML);
+ //        mywindow.document.write('</body></html>');
+
+ //        mywindow.document.close(); // necessary for IE >= 10
+ //        mywindow.focus(); // necessary for IE >= 10*/
+
+ //        mywindow.print();
+ //        mywindow.close();
+
+ //        return true;
+
+ //        }
+</script>

@@ -1,0 +1,16 @@
+<div class="w3-padding-128 w3-center" style="background: url(/img/building-horde.png); background-size: cover;">
+  <div class="w3-white w3-card-4 w3-content w3-padding-64" style="width:50%">
+    <p class="w3-xxxlarge">
+    	<span class="w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></span>
+    </p>
+	  <h1 class="w3-jumbo w3-blue">403 !</h1>
+	  <p class="w3-white">Maaf, Anda tidak memiliki akses ke area ini</p>
+	   <p>
+        <% if (typeof data !== 'undefined') { %>
+        <%= data %>
+        <% } else { %>
+        You don't have permission to see the page you're trying to reach.
+        <% } %>
+      </p>
+  </div>
+</div>

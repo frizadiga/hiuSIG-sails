@@ -1,0 +1,74 @@
+<!--Navbar-->
+<div id="main-navbar" class="w3-top">
+<div class="w3-bar w3-blue-grey">
+<a class="w3-bar-item w3-button w3-white w3-hover-light-grey" href="/"><span class="w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></span></a>
+<a class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey" href="/listing"><i class="fa fa-home"></i> Property Listing</a>
+<a class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey" href="/findinmaps"><i class="fa fa-map-marker"></i> Find in Maps</a>
+<a class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey" href="/partners"><i class="fa fa-handshake-o"></i> Partners</a>
+<a title="Search Property" onclick="showSearchPanel()"
+ class="w3-bar-item w3-hover-white w3-hover-text-blue-grey w3-right" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+<div class="w3-right" title="Login/Signup" onclick="document.getElementById('modal-login').style.display='block'">
+<a class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey" href="javascript:void(0)"><%-req.session.user?'<i class="fa fa-user-circle"></i> '+req.session.user.username:'<i class="fa fa-sign-in"></i>'%></a>
+</div>
+
+</div>
+</div>
+
+
+<!--SearchBox-->
+<div id="searchDropNav" class="w3-top" style="display:none">
+  <div class="w3-bar w3-card w3-white w3-animate-opacity" style="/*width:50%">
+    <form id="navbar-form-search">
+    <div class="w3-row">
+      <div class="w3-col" style="width:17%">
+        <select id="searchStatusBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-white" name="status">
+        <option value="dijual">Dijual</option>
+        <option value="disewa">Disewa</option>
+        <option value="">--Semua--</option>
+
+        </select>
+      </div>
+      <div class="w3-col" style="width:27%">
+        <select id="searchTypeBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0" name="type">
+         <option value="rumah">Rumah</option>
+            <option value="ruko">Ruko</option>
+            <option value="tanah">Tanah</option>
+            <option value="gudang">Gudang</option>
+            <option value="ruang usaha">Ruang Usaha</option>
+            <option value="villa">Villa</option>
+            <option value="apartemen">Apartemen</option>
+            <option value="kondominium">Kondominium</option>
+            <option value="pabrik">Pabrik</option>
+            <option value="perkantoran">Perkantoran</option>
+            <option value="">--Semua--</option>
+
+        </select>
+      </div>
+
+      <div class="w3-col w3-right w3-center" style="width:50px">
+       <a class="w3-bar-item w3-button w3-white w3-hover-red" onclick="document.getElementById('searchDropNav').style.display='none'" title="Close Menu"><b class="fa fa-times"></b></a>
+      </div>
+
+      <div class="w3-col w3-right w3-center" style="width:50px" title="Lakukan Pencarian..">
+        <button class="w3-bar-item w3-button w3-white"><b class="fa fa-search"></b></button>
+      </div>
+   
+      <div class="w3-rest">
+        <input id="searchLocationBar" class="w3-bar-item w3-white w3-hover-white w3-input w3-border-0" placeholder="Masukan Lokasi" type="text" name="location">
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<!--END SearchBox-->
+
+<script>
+  var searchDropNav = document.getElementById('searchDropNav');
+  setTimeout(function(){
+    searchDropNav.style.display='block';
+  },500);
+  function showSearchPanel(){
+    searchDropNav.className = searchDropNav.className.replace(' w3-animate-opacity','');
+    document.getElementById('searchDropNav').style.display='block';
+  }
+</script>

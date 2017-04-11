@@ -1,0 +1,165 @@
+<%   String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}%>
+<!--Main-->
+<div id="main" class="" style="padding-top:54px!important">
+<div class="w3-row-padding w3-padding-0 w3-margin w3-card-2">
+<div class="w3-col m6 w3-padding-0">
+  <div class="">
+    <img id="main-pic" class="w3-card-4" style="width:100%;height:auto" src="<%=dataProperties.pictures[0].path%>" alt="">
+  </div>
+  <div class="w3-row">
+    <div class="w3-col s4">
+      <img class="w3-opacity w3-hover-opacity-off" style="width:100%" src="<%=dataProperties.pictures[0].path%>" alt="">
+    </div>
+    <div class="w3-col s4">
+      <img class="w3-opacity w3-hover-opacity-off" style="width:100%" src="<%=dataProperties.pictures[0].path%>" alt="">
+    </div>
+    <div class="w3-col s4">
+      <img class="w3-opacity w3-hover-opacity-off" style="width:100%" src="<%=dataProperties.pictures[0].path%>" alt="">
+    </div>
+  </div>
+</div>
+<div class="w3-col m6 w3-text-grey">
+<!--Tab Header-->
+<div class="w3-row">
+  <a href="javascript:void(0)" onclick="openTabs(event, 'info');">
+    <div id="default-tab-header" class="w3-third tablink w3-bottombar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-info"></i> Data Properti</div>
+  </a>
+  <a href="javascript:void(0)" onclick="openTabs(event, 'maps');initMap()">
+    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-map"></i> Maps</div>
+  </a>
+  <a href="javascript:void(0)" onclick="openTabs(event, 'agen');initMap()">
+    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-user-secret"></i> Agen</div>
+  </a>
+</div>
+<!--Tab Content-->
+<!--TAB INFO-->
+<div id="info" class="tab-detail">
+  <table class="w3-table Xw3-bordered Xw3-hoverable">
+    <th colspan="2" class="w3-large"><%=dataProperties.title%></th>
+    <tr>
+      <td style="width:150px">Harga</td><td><b>Rp. <%=dataProperties.price%></b></td>
+    </tr>
+    <tr>
+      <td>ID Listing</td><td><%=dataProperties.id%></td>
+    </tr>
+    <tr>
+      <td>Jenis Properti</td><td><%=dataProperties.type.capitalize()%> <b><%=dataProperties.status.capitalize()%></b></td>
+    </tr>
+    <tr>
+      <td>Alamat</td><td><%=dataProperties.address%></td>
+    </tr>
+    <tr>
+      <td>Kota</td><td><%=dataProperties.city%></td>
+    </tr>
+    <tr>
+      <td>Provinsi</td><td><%=dataProperties.province%></td>
+    </tr>
+    <tr>
+      <td>Deskripsi</td>
+      <td>
+        <%=dataProperties.description%>
+      </td>
+    </tr>
+  </table>
+  <hr>
+  <table class="w3-table">
+    <tr>
+      <td><b>Spesifikasi</b></td>
+    </tr>
+    <tr>
+      <td style="width:150px">Ruang</td>
+      <td><i class="fa fa-bed"></i> Kamar Tidur: <%=dataProperties.bed%></td>
+      <td><i class="fa fa-bath"></i> Kamar Mandi : <%=dataProperties.bath%></td>
+      <td><i class="fa fa-building"></i> Jumlah Lantai : <%=dataProperties.floor%></td>
+    </tr>
+    <tr>
+      <td>Ukuran</td>
+      <td><i class="fa fa-map-signs"></i> Luas Tanah : <%=dataProperties.lotSize%> m<sup>2</sup></td>
+      <td><i class="fa fa-home"></i> Luas Bangunan : <%=dataProperties.buildingSize%> m<sup>2</sup></td>
+    </tr>
+  </table>
+  <div class="w3-section">
+    <button class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b>Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
+    
+  </div>
+</div>
+<!--TAB MAPS-->
+<div id="maps" class="tab-detail">
+  <div id="map" style="width:100%;height:500px"></div>
+
+  <p class="w3-green w3-margin-0 w3-padding">Lokasi Sekitar</p>
+  <div class="w3-container">
+  <p>
+  <p><input placeholder="Masukan Radius dalam KM" class="w3-input w3-border-blue w3-hover-light-grey" type="text"></p>
+  <p><input placeholder="Masukan Kategori" class="w3-input w3-border-blue w3-hover-light-grey" type="text"></p>
+  </p>
+  <button class="w3-btn w3-blue w3-right">Cari</button>
+  </div>
+</div>
+<!--TAB AGEN-->
+<div id="agen" class="tab-detail">
+  <div class="w3-display-container">
+    <img style="width:100%" class="w3-grayscale" src="/img/building-horde.png"  alt="" />
+    <img style="width:25%" class="w3-circle w3-display-middle w3-card-4" src="/img/profile.jpg" alt="" />
+  </div>
+  <div class="w3-green w3-margin-0 w3-padding">Hubungi Agen</div>
+  <div class="w3-container">
+  <p>
+  <p><input placeholder="Masukan Nama Anda" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><input placeholder="Masukan No Handphone" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><input placeholder="Masukan Alamat Email" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  </p>
+  <button class="w3-button w3-blue-grey w3-hover-blue w3-right">Kirim</button>
+  </div>
+
+</div>
+
+
+</div>
+
+</div>
+</div>
+</div>
+<script>
+defaultTab();
+function defaultTab(){
+var defaultTabHeader = document.getElementById('default-tab-header');
+var defaultTabContent = document.getElementById('info');
+defaultTabContent.style.display='block'
+defaultTabHeader.className += ' w3-border-green';
+}
+function openTabs(evt,tabName){
+  console.log(evt);
+  var i, tabs, tablinks;
+  tabs = document.getElementsByClassName('tab-detail');
+  for (i=0;i<tabs.length;i++) {
+    tabs[i].style.display='none';
+  }
+  tablinks = document.getElementsByClassName('tablink');
+  for (i=0;i<tabs.length;i++) {
+    tablinks[i].className = tablinks[i].className.replace(' w3-border-green','');
+  }
+  document.getElementById(tabName).style.display='block';
+  evt.currentTarget.firstElementChild.className += ' w3-border-green';
+  console.log(evt.currentTarget.firstElementChild);
+  }
+
+var map;
+function initMap(){
+var coord = {lat:<%=dataProperties.lat%>,lng:<%=dataProperties.lng%>};
+var map = new google.maps.Map(document.getElementById('map'),{
+center: coord,
+zoom:15
+});
+var marker = new google.maps.Marker({
+  position: coord,
+  map: map,
+  animation: google.maps.Animation.BOUNCE,
+  title:'Lokasi Properti'
+
+});
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAmS8vuCaGKypdZbXPWWrUo09cIjuTkgk&callback="></script>
