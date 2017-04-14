@@ -65,6 +65,9 @@ module.exports = {
     pictures:{
       collection:'files',
       via:'idOwner'
+    },
+    idUser:{
+      model:'users'
     }
     
   },

@@ -31,6 +31,10 @@ module.exports = {
     },
     email:{
       type:'string'
+    },
+    properties:{
+      collection:'properties',
+      via:'idUser'
     }
   },
 
