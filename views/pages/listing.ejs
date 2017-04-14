@@ -16,10 +16,10 @@
      <!--LISTING CARD-->
     <div class="w3-col m6 w3-margin-bottom">
       <div class="w3-container w3-card-2 w3-white" style="padding: 0">
-        <div class="w3-col m6 w3-cell">
-          <img class="listing-img" src="<%=dataProperties[i].pictures[0].path%>" alt="<%=dataProperties[i].title%>">
+        <div class="w3-col m6 w3-cell w3-blueX" style="/*width:50% ;height:300px ;background-image: url(<%=dataProperties[i].pictures[0].path%>);background-position:center;background-size:cover;" >
+          <img width="100%" height="300" class="listing-imgX" src="<%=dataProperties[i].pictures[0].path%>" alt="<%=dataProperties[i].title%>">
         </div>
-        <div class="w3-container w3-col m6 w3-text-grey w3-white w3-cell">
+        <div class="w3-container w3-col m6 w3-text-grey w3-white w3-cell w3-cell-bottom">
           <%var title=dataProperties[i].title;%>
           <p title="<%=title%>">
             <b>
@@ -54,15 +54,15 @@
               <%=dataProperties[i].bath%>
             </span>
           </div>
-          <div class="w3-bar w3-border">
-            <a href="javasript:void(0)">
+          <div class="w3-bar w3-border w3-margin-bottom">
+            <!-- <a href="javasript:void(0)">
             <button class="w3-bar-item w3-button " style="width:33.3%" title="Favorit"><i class="fa fa-star"></i> Favorit</button>
-            </a>
+            </a> -->
             <a href="javasript:void(0)">
-            <button class="w3-bar-item w3-button " style="width:33.3%" title="Agen"><i class="fa fa-user"></i> Agen</button>
+            <button class="w3-bar-item w3-button w3-hover-blue" style="width: 50%" title="Agen"><i class="fa fa-user"></i> Agen</button>
             </a>
             <a href="/listing/detail/<%=dataProperties[i].id%>">
-            <button class="w3-bar-item w3-button " style="width:33.3%" title="Details"><i class="fa fa-info"></i> Details</button>
+            <button class="w3-bar-item w3-button w3-hover-green" style="width: 50%" title="Details"><i class="fa fa-info"></i> Details</button>
             </a>
           </div>
         </div>

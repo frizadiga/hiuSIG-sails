@@ -1,12 +1,12 @@
-<!--Side Nav-->
-<nav id="side-nav" class="w3-sidenav w3-top w3-card-4 xw3-white" style="display:block;width:25%;right:0;z-index:100"> 
+<!--Side Panel-->
+<nav id="side-bar" class="w3-sidebar w3-top w3-card-4" style="display:block;width:25%;right:0;z-index:100"> 
    <%
    String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}  %>
+    return this.charAt(0).toUpperCase() + this.slice(1);}
+    %>
   <ul class="w3-ul w3-text-blue-grey">
   <%for(i=0;i<dataProperties.length;i++){%>
-  <a class="w3-padding-0" href="/listing/detail/<%=dataProperties[i].id%>">
+  <a class="w3-padding-0" style="text-decoration: none;" href="/listing/detail/<%=dataProperties[i].id%>">
     <li class="w3-padding-16 w3-hover-blue-grey">
       <img class="w3-left w3-margin-right" style="width:80px;height:45px" src="<%=dataProperties[i].pictures[0].path%>">
       <span class="" style="font-weight: bold">
@@ -15,7 +15,7 @@
       </span><br>
       <span>
         <%address=dataProperties[i].address%>
-        <%=address.length>30?address.substr(0,30)+'...':address%>
+        <%=address.length>25?address.substr(0,25)+'...':address%>
       </span>
     </li>
     </a>
@@ -25,7 +25,7 @@
 <!-- <h1 class="w3-padding-16"></h1> -->
 <%- partial('../partials/navbar-search.ejs')%>
 <!-- MAIN CONTENT -->
-<div id="main" style="margin:0px 25% 0px 0px;padding-top:54px;height:100%;width:75%">
+<div id="main" style="margin:0px 25% 0px 0px;padding-top:38px;height:100%;width:75%">
   <div id="map" style="width:100%;height:100%;"></div>
 </div>
 <%- partial('../partials/modal-login.ejs')%>

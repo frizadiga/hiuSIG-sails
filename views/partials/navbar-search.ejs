@@ -45,14 +45,11 @@
         </select>
       </div>
 
-      <div class="w3-col w3-right w3-center" style="width:50px">
-       <a class="w3-bar-item w3-button w3-white w3-hover-red" onclick="document.getElementById('searchDropNav').style.display='none'" title="Close Menu"><b class="fa fa-times"></b></a>
-      </div>
+       <a class="w3-bar-item w3-button w3-white w3-hover-red w3-right" onclick="document.getElementById('searchDropNav').style.display='none'" title="Close Menu"><b class="fa fa-times"></b></a>
 
-      <div class="w3-col w3-right w3-center" style="width:50px" title="Lakukan Pencarian..">
-        <button class="w3-bar-item w3-button w3-white"><b class="fa fa-search"></b></button>
-      </div>
-   
+      
+        <a class="w3-bar-item w3-button w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></a>
+      
       <div class="w3-rest">
         <input id="searchLocationBar" class="w3-bar-item w3-white w3-hover-white w3-input w3-border-0" placeholder="Masukan Lokasi" type="text" name="location">
       </div>
@@ -64,9 +61,9 @@
 
 <script>
   var searchDropNav = document.getElementById('searchDropNav');
-  setTimeout(function(){
-    searchDropNav.style.display='block';
-  },500);
+  // setTimeout(function(){
+  //   searchDropNav.style.display='block';
+  // },500);
   function showSearchPanel(){
     searchDropNav.className = searchDropNav.className.replace(' w3-animate-opacity','');
     document.getElementById('searchDropNav').style.display='block';
