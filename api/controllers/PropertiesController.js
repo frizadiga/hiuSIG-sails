@@ -21,7 +21,8 @@ module.exports = {
     Properties.find().exec(function(err,data){
       if(err)res.send(err);
       let dataLocation = [];
-      for (let i = 0; i < data.length; i++) {
+      let len = data.length;
+      for (let i = 0; i < len; i++) {
         dataLocation.push(
         {
           //title:data[i].title,
