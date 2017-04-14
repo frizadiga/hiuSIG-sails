@@ -34,9 +34,8 @@ html,body{
 }
 
 .listing-img{
-    /*width:100%;*/
-    /*height:253px!important;*/
-    /*height:253px!important;*/
+    width:100%;
+    height:253px!important;
     }
 
 #main-pic{
