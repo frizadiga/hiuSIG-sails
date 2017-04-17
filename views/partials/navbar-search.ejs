@@ -18,7 +18,7 @@
 <!--SearchBox-->
 <div id="searchDropNav" class="w3-top" style="display:none">
   <div class="w3-bar w3-card w3-white w3-animate-opacity" style="/*width:50%">
-    <form id="navbar-form-search">
+    <form id="navbar-form-search" action="/listing">
     <div class="w3-row">
       <div class="w3-col" style="width:17%">
         <select id="searchStatusBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-white" name="status">
@@ -48,7 +48,7 @@
        <a class="w3-bar-item w3-button w3-white w3-hover-red w3-right" onclick="document.getElementById('searchDropNav').style.display='none'" title="Close Menu"><b class="fa fa-times"></b></a>
 
       
-        <a class="w3-bar-item w3-button w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></a>
+        <button type="submit" class="w3-bar-item w3-button w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></button>
       
       <div class="w3-rest">
         <input id="searchLocationBar" class="w3-bar-item w3-white w3-hover-white w3-input w3-border-0" placeholder="Masukan Lokasi" type="text" name="location">
