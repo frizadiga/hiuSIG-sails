@@ -2,7 +2,7 @@
   "name": "hiuSIG-sails",
   "private": true,
   "version": "0.0.1",
-  "description": "a Sails application",
+  "description": "Sistem Informasi Geografis Properti",
   "keywords": [],
   "dependencies": {
     "ejs": "2.3.4",
