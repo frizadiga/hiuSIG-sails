@@ -13,8 +13,8 @@ module.exports = {
     return res.send('<h1>'+greetings);
     },
   urlSlug:function(req,res){
-    // res.send(req.allParams());
-    res.send("<h3>urlslug worked</h3>");
+    res.send(req.allParams());
+    // res.send("<h3>urlslug worked</h3>");
   },
   propertiesInsertEdit:function(req,res){
     if(req.param('mode')==insert){

@@ -81,7 +81,7 @@ module.exports.routes = {
   '/admin/user/manage':'UsersController.userManage',
   '/admin/user/edit/:id':'UsersController.userEdit',
   //API
-  '/api/url-slug/':'PagesController.urlSlug',
+  '/api/url-slug':'PagesController.urlSlug',
   '/api/index':'PagesController.indexPage',
   'POST /api/userpost':'UsersController.response',
   '/api/getcoords':'PropertiesController.getCoords',
