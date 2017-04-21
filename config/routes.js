@@ -42,8 +42,8 @@ module.exports.routes = {
   '/test/response':function(req,res){
     res.searchNotFound('Hasil Pencarian Tidak Ditemukan');
   },
-  '/test/query':'QueryController.getAllAgent',
-  '/test/controller':'PropertiesController.s',
+  '/test/query':'QueryController.test',
+  '/test/controller':'PropertiesController.listingDetail',
 
   //PAGES
   '/':{view:'pages/index',locals:{layout:'layout-plain'}},

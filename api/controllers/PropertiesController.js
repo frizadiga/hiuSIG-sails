@@ -54,12 +54,12 @@ module.exports = {
   },
   
   listingDetail:function(req,res){
-    Properties.findOne({id:req.param('id')}).populate('pictures').exec(function(err,data){
+    Properties.findOne({id:req.param('id')}).populate('pictures').populate('idUser').exec(function(err,data){
     	// if(err)return res.send(err);
     	if(err)return res.negotiate(err);
     	if(!data)return res.notFound(req.param('id')+'tidak dapat ditemukan');
     	return res.view('pages/listing-detail',{dataProperties:data});
-      // return res.send(data);
+      // return res.json(data);
     });
   },
   
