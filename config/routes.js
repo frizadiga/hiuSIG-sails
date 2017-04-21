@@ -43,6 +43,7 @@ module.exports.routes = {
     res.searchNotFound('Hasil Pencarian Tidak Ditemukan');
   },
   '/test/query':'QueryController.getProperties',
+  '/test/controller':'PropertiesController.s',
 
   //PAGES
   '/':{view:'pages/index',locals:{layout:'layout-plain'}},
