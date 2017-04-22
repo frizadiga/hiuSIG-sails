@@ -30,11 +30,8 @@
     "start": "node app.js"
   },
   "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/anonymous node/sails user/hiuSIG-sails.git"
-  },
+  "repository": "https://github.com/frizadiga/hiuSIG-sails.git",
   "author": "frizadiga",
-  "license": "",
+  "license": "MIT",
   "devDependencies": {}
 }
