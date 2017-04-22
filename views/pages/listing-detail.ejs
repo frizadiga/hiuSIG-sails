@@ -159,10 +159,12 @@
 //Image Modal---------------------------------------------------
 function openModal() {
   document.getElementById('myModal').style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
   document.getElementById('myModal').style.display = "none";
+  document.body.style.overflow = "visible";
 }
 
 var slideIndex = 1;
