@@ -106,7 +106,7 @@ config/local.js
 
 node_modules
 bower_components
-
+node_modules_bak
 
 
 
