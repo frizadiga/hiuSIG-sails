@@ -1,0 +1,152 @@
+@media print {
+
+  /*body * {
+    visibility: hidden;
+  }
+  #section-to-print, #section-to-print * {
+    visibility: visible;
+  }*/
+  /*#section-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }*/
+
+  .no-print { display: none!important; }
+
+
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1
+}
+::-webkit-scrollbar-thumb {
+    background: #c7c7c7
+}
+
+.listing-img{
+    max-width:100%;
+    max-height:100%;
+    /*height:253px!important;*/
+    }
+
+#main-pic{
+    width:100%;
+    height:550px!important;
+}
+
+/*#map{
+    width:100%;height:75.5%;
+    position:relative;
+    overflow: hidden; padding-bottom: 56.25%;
+    }*/
+#maps-form{
+    margin-bottom:0px!important;
+    }
+.main-tabs,.tab-detail{
+    display: none;
+}
+
+#main-hero-logo{
+    background: url(/img/building-horde.png);
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: 0px -1px;
+    margin-bottom: -1px;
+}
+
+#searchStatus{
+    background: url(/img/icon-buy-or-rent.png) no-repeat;
+    background-position: 10px 18px;
+    padding-left: 25px;
+}
+
+#searchType{
+    background: url(/img/icon-houses.png) no-repeat;
+    background-position: 10px 18px;
+    padding-left: 28px;
+}
+
+#searchLocation{
+    background: url(/img/icon-location.png) no-repeat;
+    background-position: 10px 17px;
+    padding-left: 35px;
+}
+
+#searchStatusBar{
+    background: url(/img/icon-buy-or-rent.png) no-repeat;
+    background-position: 10px 10px;
+    padding-left: 25px;
+}
+
+#searchTypeBar{
+    background: url(/img/icon-houses.png) no-repeat;
+    background-position: 10px 10px;
+    padding-left: 28px;
+}
+#searchLocationBar{
+    background: url(/img/icon-location.png) no-repeat;
+    background-position: 10px 10px;
+    padding-left: 35px;
+}
+
+#admin-user-bg{
+    background: url(/img/building-horde-opacity-max.png);
+    background-size: cover;
+}
+
+#modal-login-header{
+    background: url(/img/building-horde.png);
+    background-size: cover;
+}
+
+.w3-hr{
+    border-style: dashed!important;
+    margin: 0px!important;
+}
+
+
+.row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+* And with max cross-browser enabled.
+* Nobody should ever write this by hand. 
+* Use a preprocesser with autoprefixing.
+*/
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
