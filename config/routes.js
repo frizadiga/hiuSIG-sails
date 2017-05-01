@@ -47,16 +47,18 @@ module.exports.routes = {
 
   //PAGES
   '/':{view:'pages/index',locals:{layout:'layout-plain'}},
-  '/listing':'PropertiesController.listing',
-  '/listing/detail/:id':'PropertiesController.listingDetail',
-  '/findinmaps':'PropertiesController.listing',
-  '/crud/ui':'CrudController.view',
-  '/users/ui':'UsersController.view',
-  '/partners':{view:'pages/partners'},
-  '/signup':{view:'pages/user-signup'},
-  '/login':{view:'pages/user-login'},
-  '/logout':'UsersController.logout',
-
+  'GET /listing':'PropertiesController.listing',
+  'GET /listing/detail/:id':'PropertiesController.listingDetail',
+  'GET /findinmaps':'PropertiesController.listing',
+  'GET /crud/ui':'CrudController.view',
+  'GET /users/ui':'UsersController.view',
+  'GET /partners':{view:'pages/partners'},
+  
+  //LOGIN/LOGOUT
+  'GET /signup':{view:'pages/user-signup'},
+  'GET /login':{view:'pages/user-login'},
+  'GET /logout':'UsersController.logout',
+  
   //ADMIN
   '/admin/report':'ReportsController.view',
   '/admin/old':{view:'admin/admin-index'},
