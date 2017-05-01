@@ -30,11 +30,16 @@ module.exports = {
     },
 
     logout:function(req,res){
-      req.session.destroy((err)=>{
-        setTimeout(function(){
-            return res.redirect('/login');
-        }, 10);
-      });
+      // req.session.destroy((err)=>{
+      //   setTimeout(function(){
+      //     // return res.redirect('/login');
+      //     return res.view('pages/user-logout',{user: null,message: 'Logout Berhasil!'});
+      //     // return res.view('pages/user-login');
+
+      //   }, 10);
+      // });
+      req.session.user = null;
+       return res.view('pages/user-logout',{message: 'Logout Berhasil!'});
     },
 
     findUser:function(req,res){
