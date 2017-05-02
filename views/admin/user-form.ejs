@@ -3,7 +3,7 @@
 }%>
 <form action="<%=dataEdit?'/api/user/edit/'+dataEdit.no:'/api/user/insert'%>" method="POST" enctype="multipart/form-data">
 	<div class="w3-padding">
-		<div class="w3-card-2 w3-content">
+		<div class="w3-card w3-content">
 		   <p class=" w3-text-blue w3-bottombar w3-border-light-grey w3-margin" style="border-width:2px!important;padding:16px 0px 0px 0px;margin:0px 8px 0px 8px">Form User
     </p>
 			<div class="w3-row w3-container">
@@ -23,7 +23,7 @@
 					<option value="administrator">Administrator</option>
 				</select>
 				<p>
-				<span class="xw3-tag w3-padding w3-blue">Foto Profil&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
+				<span class="w3-padding w3-blue">Foto Profil&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
 				<input type="file" name="picture">
 				</p>
 				<div class="w3-row w3-section">

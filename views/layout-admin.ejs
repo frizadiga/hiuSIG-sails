@@ -39,17 +39,17 @@
     <!--EJS Script-->
   <%//let user = {name: "Frizadiga",role:"Superadmin"}%>
 <!--Side Bar-->
-<nav class="w3-sidebar w3-bar-block w3-blue-grey w3-card-2" style="display:block;width:20%" id="sideBarLeft">
-  <div class="w3-bar w3-padding-0 w3-margin-bottom">
+<nav class="w3-sidebar w3-bar-block w3-blue-grey w3-card" style="display:block;width:20%" id="sideBarLeft">
+  <div class="w3-bar w3-margin-bottom">
    
-      <button onclick="w3_close()" class="w3-button w3-hover-red w3-padding-8 w3-padding-left w3-padding-right w3-right">&times;</button>
+      <button onclick="w3_close()" class="w3-button w3-hover-red w3-padding w3-padding-left w3-padding-right w3-right">&times;</button>
    
   </div>
-<div id="admin-user-bg" class="w3-container w3-padding-8">
+<div id="admin-user-bg" class="w3-container w3-padding">
   <!-- <img src="/img/building-horde.png" class="w3-opacity w3-hover-opacity-off" style="width:100%" alt="User Background"> -->
   <div class="w3-center">
     <img class="w3-hover-grayscale w3-circle w3-card-4 w3-show-block w3-margin-bottom" src="/img/profile.jpg" style="width:30%;margin:auto" alt="User Avatar">
-    <p class="w3-small w3-text-white w3-margin-0">
+    <p class="w3-small w3-text-white">
     <b><i class="fa fa-user"></i><br>
        <%=req.session.user.name%>|<%=req.session.user.role%></b>
     </p>
@@ -61,18 +61,18 @@
 <a href="/admin/listing/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white">Insert Listing</a>
 <a href="/admin/listing/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white">Manage Listing</a>
 <a href="/admin/listing/maps" class="w3-bar-item w3-padding-16 w3-button w3-hover-white">Maps Listing</a>
-<hr class="w3-margin-0 w3-opacity w3-hr">
+<hr class="w3-opacity w3-hr">
 <%if(req.session.user.role==='administrator'){%>
 <a href="/admin/user/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white">Insert User</a>
 <a href="/admin/user/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white">Manage User</a>
 <%}%>
-<hr class="w3-margin-0 w3-opacity w3-hr">
+<hr class="w3-opacity w3-hr">
 <a href="/admin/report" class="w3-bar-item w3-padding-16 w3-button w3-hover-white">Report</a>
-<hr class="w3-margin-0 w3-opacity w3-hr">
+<hr class="w3-opacity w3-hr">
 <a href="/admin/settings" class="w3-bar-item w3-button w3-hover-none"><button class="w3-button w3-blue-grey w3-hover-white w3-right"><i class="fa fa-cog"></i></button></a>
 
 <!--FOOTER-->
-<div class="w3-container w3-center w3-bottom w3-padding-8 w3-white" style="width:20%!important;">
+<div class="w3-container w3-center w3-bottom w3-padding w3-white" style="width:20%!important;">
   <p class="w3-text-blue-grey">
   &copy; 2016 <b>rumah<span class="w3-text-green">2Q</b></span>
   </p>
@@ -83,7 +83,7 @@
 <!--Main-->
 <div id="main" style="margin-left:20%;margin-bottom: 8px">
 <!--Header Navbar-->
-  <header class="w3-bar w3-padding-0 w3-blue-grey">
+  <header class="w3-bar  w3-blue-grey">
     
     <span id="openNav" class="w3-button w3-left" style="display:none" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     
