@@ -43,15 +43,17 @@ module.exports.routes = {
     res.searchNotFound('Hasil Pencarian Tidak Ditemukan');
   },
   '/test/query':'QueryController.test',
-  '/test/controller':'PropertiesController.listingDetail',
+  '/test/controller':'TestController.agentListing',
+  'GET /crud/ui':'CrudController.view',
+  'GET /users/ui':'UsersController.view',
 
   //PAGES
   '/':{view:'pages/index',locals:{layout:'layout-plain'}},
   'GET /listing':'PropertiesController.listing',
   'GET /listing/detail/:id':'PropertiesController.listingDetail',
   'GET /findinmaps':'PropertiesController.listing',
-  'GET /crud/ui':'CrudController.view',
-  'GET /users/ui':'UsersController.view',
+  'GET /agents':'UsersController.agentListing',
+  'GET /agent/detail/:id':'UsersController.agentDetail',
   'GET /partners':{view:'pages/partners'},
   
   //LOGIN/LOGOUT

@@ -96,6 +96,21 @@ module.exports = {
         if(err)return res.serverError(err);
             return res.ok(data.id+' berhasil dihapus');
         });
+    },
+
+    agentListing:function(req,res){
+      Users.find({role:'agen'}).exec(function(err,data){
+        if (err)return res.negotiate(err);
+        return res.view('pages/agent-listing',{dataAgents:data,layout:'layout-plain'});
+      });
+    },
+
+    agentDetail:function(req,res) {
+      Users.findOne({id:req.param('id')}).exec(function(err,data){
+        if (err)return res.negotiate(err);
+        return res.view('pages/agent-detail',{dataAgent:data});
+      });
     }
+    
 };
 

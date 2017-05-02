@@ -48,8 +48,8 @@ module.exports = {
       if(req.path === '/listing'){
       return res.view('pages/listing',{dataProperties:data,layout:'layout-plain'});}
       if(req.path === '/findinmaps'){
-      return res.view('pages/maps',{dataProperties:data,layout:'layout-plain'}
-      );}
+      return res.view('pages/maps',{dataProperties:data,layout:'layout-plain'});
+      }
     });
   },
   
