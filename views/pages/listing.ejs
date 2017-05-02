@@ -16,8 +16,8 @@
      <!--LISTING CARD-->
     <div class="w3-col m6 w3-margin-bottom">
       <div class="w3-container w3-card-2 w3-white" style="padding: 0">
-        <div class="w3-col m6 w3-cell w3-blueX" style="/*width:50% ;height:300px ;background-image: url(<%=dataProperties[i].pictures[0].path%>);background-position:center;background-size:cover;" ><a href="/listing/detail/<%=dataProperties[i].id%>">
-          <img width="100%" height="300" class="listing-imgX" src="<%=dataProperties[i].pictures[0].path%>" alt="<%=dataProperties[i].title%>"></a>
+        <div class="w3-col m6 w3-cell w3-blueX" style="/*width:50% ;height:300px ;background-image: url(<%=dataProperties[i].pictures[0].path%>);background-position:center;background-size:cover;" ><a href="/listing/detail/<%=dataProperties[i].id%>" title="<%=dataProperties[i].status.capitalize()%> <%=dataProperties[i].title%>">
+          <img width="100%" height="300" class="listing-imgX" src="<%=dataProperties[i].pictures[0].path%>" alt="<%=dataProperties[i].title%>" ></a>
         </div>
         <div class="w3-container w3-col m6 w3-text-grey w3-white w3-cell w3-cell-bottom">
           <%var title=dataProperties[i].title;%>
