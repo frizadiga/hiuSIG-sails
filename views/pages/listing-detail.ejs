@@ -2,10 +2,10 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
 }%>
 <!--Main-->
-<div id="main" class="w3-center Xw3-light-grey" style="padding-top:38px!important">
-<div class="">
-<div class="w3-content w3-card w3-section">
-<div class="" style="padding: 0px!important">
+<div id="main" class="w3-center" style="padding-top:38px!important">
+<div class="w3-card stripe-2" style="/*background:url('/img/building-horde-opacity-max.png');background-size:contain;">
+<!-- Properties Image -->
+<div class="w3-content" style="padding: 8px 0px 0px 0px!important">
   <div class="w3-center w3-gray">
     <img onclick="openModal();currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="cursor: pointer;">
   </div>
@@ -21,7 +21,10 @@
     </div>
   </div>
 </div>
-<div class="Xw3-col m6 w3-text-grey w3-padding">
+</div>
+
+<!-- Description -->
+<div class="w3-text-grey w3-padding w3-text-grey w3-content w3-card w3-section">
 <!--Tab Header-->
 <div class="w3-row">
   <a href="javascript:void(0)" onclick="openTabs(event, 'info');">
@@ -122,10 +125,6 @@
 
 </div>
 
-
-</div>
-
-</div>
 </div>
 </div>
 <!-- </div> -->
