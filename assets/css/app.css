@@ -150,3 +150,5 @@ html,body{
     -ms-flex-direction: column;
     flex-direction: column;
 }
+
+.w3-hover-text-blue-grey:hover{color:#607d8b!important}
