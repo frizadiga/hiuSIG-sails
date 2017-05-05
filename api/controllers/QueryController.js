@@ -21,10 +21,10 @@ module.exports = {
 	  });
 	},
 	getAllAgent:(req,res)=>{
-      Properties.query('SELECT * from properties INNER JOIN users ON properties.idUser=users.no',[],(err,result)=>{
-      	if(err){return res.serverError(err);}
-      	  return res.send(result);
-      });
+    Properties.query('SELECT * from properties INNER JOIN users ON properties.idUser=users.no',[],(err,result)=>{
+    	if(err){return res.serverError(err);}
+    	  return res.send(result);
+    });
 	}
 };
 
