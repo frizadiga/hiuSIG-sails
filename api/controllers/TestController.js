@@ -6,13 +6,16 @@
  */
 
 module.exports = {
-    agentListing:function(req,res){
-      Users.find({role:'agen'}).exec((err,data)=>{
-        if (err)return res.negotiate(err);
-        // return res.view('pages/agent-listing',{dataAgents:data,layout:'layout-plain'});
-        return res.json(data);
-      });
-    }
+	index:(req,res)=>{
+		res.send({message:'TestController Worked!...'});
+	},
+	agentListing:function(req,res){
+	  Users.find({role:'agen'}).exec((err,data)=>{
+	    if (err)return res.negotiate(err);
+	    // return res.view('pages/agent-listing',{dataAgents:data,layout:'layout-plain'});
+	    return res.json(data);
+	  });
+	}
 
 };
 
