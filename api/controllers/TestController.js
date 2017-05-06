@@ -7,7 +7,7 @@
 
 module.exports = {
 	index:(req,res)=>{
-		res.send({message:'TestController Worked!...'});
+		res.json({message:'TestController Worked!...'});
 	},
 	agentListing:function(req,res){
 	  Users.find({role:'agen'}).exec((err,data)=>{

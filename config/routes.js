@@ -63,7 +63,6 @@ module.exports.routes = {
   
   //ADMIN
   '/admin/report':'ReportsController.view',
-  '/admin/old':{view:'admin/admin-index'},
   '/admin':'UsersController.checkLogin',
   '/admin/dashboard':{
     view:'admin/dashboard',
