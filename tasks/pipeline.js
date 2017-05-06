@@ -18,6 +18,7 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'css/w3-4.css',
+  'css/app.css',
   'css/**/*.css'
 ];
 
