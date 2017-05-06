@@ -2,11 +2,14 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
 }%>
 <!--Main-->
-<div id="main" class="w3-center" style="padding-top:38px!important">
+<div id="main" style="padding-top:38px!important">
+
+<!-- Image Container -->
 <div class="w3-card stripe-2" style="/*background:url('/img/building-horde-opacity-max.png');background-size:contain;">
+
 <!-- Properties Image -->
 <div class="w3-content" style="padding: 8px 0px 0px 0px!important">
-  <div class="w3-center w3-gray">
+  <div class="w3-gray">
     <img onclick="openModal();currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="cursor: pointer;">
   </div>
   <div class="w3-row">
@@ -26,7 +29,7 @@
 <!-- Description -->
 <div class="w3-text-grey w3-padding w3-text-grey w3-content w3-card w3-section">
 <!--Tab Header-->
-<div class="w3-row">
+<div class="w3-row w3-center">
   <a href="javascript:void(0)" onclick="openTabs(event, 'info');">
     <div id="default-tab-header" class="w3-third tablink w3-bottombar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-info"></i> Data Properti</div>
   </a>
@@ -85,7 +88,7 @@
     </tr>
   </table>
   <div class="w3-section">
-    <button class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b>Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
+    <button class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
     
   </div>
 </div>
@@ -93,34 +96,34 @@
 <div id="maps" class="tab-detail">
   <div id="map" style="width:100%;height:500px"></div>
 
-  <p class="w3-green  w3-padding">Lokasi Sekitar</p>
+  <div class="w3-green  w3-padding">Lokasi Sekitar</div>
   <div class="w3-container">
   <p>
-  <p><input placeholder="Masukan Radius dalam KM" class="w3-input w3-border-blue w3-hover-light-grey" type="text"></p>
-  <p><input placeholder="Masukan Kategori" class="w3-input w3-border-blue w3-hover-light-grey" type="text"></p>
+  <p><label>Radius(KM):</label><input placeholder="Ex: 5" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><label>Kategori:</label><input placeholder="Ex: School" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
   </p>
-  <button class="w3-btn w3-blue w3-right">Cari</button>
+  <button class="w3-button w3-green w3-hover-blue w3-right" style="margin-bottom: 16px"><b><i class="fa fa-search"></i> Telusuri Lokasi</b></button>
   </div>
 </div>
 <!--TAB AGEN-->
 <div id="agen" class="tab-detail">
-  <div class="w3-display-container">
+  <div class="w3-display-container w3-center">
     <img style="width:100%" class="w3-grayscale" src="/img/building-horde.png"  alt="" />
-    <div class="w3-display-middle w3-center">
+    <div class="w3-display-middle">
     <a href="/agent/detail/<%=dataProperties.idUser.id%>">
     <img style="width:50%" class="w3-circle w3-card-4" src="/img/profile.jpg" alt="" />
     </a>
-    <p class="w3-large">Nama Agen: <%=dataProperties.idUser.name%></p>
+    <p class="w3-large"><%=dataProperties.idUser.name%></p>
     </div>
   </div>
-  <div class="w3-blue-grey w3-padding">Hubungi Agen</div>
+  <div class="w3-blue-grey w3-padding"><b>Hubungi Agen</b></div>
   <div class="w3-container">
   <p>
-  <p><input placeholder="Masukan Nama Anda" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
-  <p><input placeholder="Masukan No Handphone" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
-  <p><input placeholder="Masukan Alamat Email" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><label>Nama Anda:</label><input placeholder="Masukan Nama Anda" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><label>Phone/Mobile Phone:</label><input placeholder="Ex: 0812345678910" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><label>Email:</label><input placeholder="Ex: youremail@gmail.com" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
   </p>
-  <button class="w3-button w3-green w3-hover-blue w3-right"><b>Send</b></button>
+  <button class="w3-button w3-green w3-hover-blue w3-right w3-sectionX" style="margin-bottom: 16px"><b><i class="fa fa-send"></i> Kirim</b></button>
   </div>
 
 </div>
