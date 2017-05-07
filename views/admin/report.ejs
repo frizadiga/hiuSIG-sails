@@ -3,25 +3,34 @@
   <img src="/img/rumah2q-logo.png" style="width:20%">
 
 	<table class="w3-table w3-card w3-hoverable">
-		<tr class="w3-light-grey">
+		<tr class="w3-blue-grey">
+			<th>No</th>
 			<th>Judul</th>
 			<th>Penjual</th>
 			<th>Pembeli</th>
+			<th></th>
 		</tr>
 		<% for (var i = 0; i < data.length; i++) { -%>			
-		<tr>
-			<td><%=data[i].judul%></td>
-			<td><%=data[i].penjual%></td>
-			<td><%=data[i].pembeli%></td>
-		</tr>
-		<% } -%>
-		<tr  class="w3-hover-none">
-			<td colspan="3">
-			<button class="w3-blue w3-btn w3-right no-print" onclick="printDiv('report')">Print</button>
+		<tr class="w3-text-grey w3-hover-blue-grey">
+			<td style="vertical-align: middle"><%=i+1%></td>
+			<td style="vertical-align: middle"><%=data[i].judul%></td>
+			<td style="vertical-align: middle"><%=data[i].penjual%></td>
+			<td style="vertical-align: middle"><%=data[i].pembeli%></td>
+			<td style="vertical-align: middle" style="width: 50px">
+				<button class="w3-button w3-hover-green"><i class="fa fa-info"></i> </button>
 			</td>
 		</tr>
+		<% } -%>
+	<!-- 	<tr  class="w3-hover-none">
+			<td colspan="4">
+			<button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-print"></i> Print</b></button>
+			</td>
+		</tr> -->
 
 	</table>
+	<div class="w3-container w3-padding w3-section w3-card">
+		<button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-print"></i> Print</b></button>
+	</div>
 </div>
 
 <script>
