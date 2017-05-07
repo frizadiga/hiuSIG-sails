@@ -61,16 +61,32 @@ module.exports = {
 
     userInsert:function(req,res){
     var params = req.allParams();
+    var query;
+    // Create User ID
     Users.createId(function(err,id){
       params.id = id;
-    
-    Users.create(params).exec(function(err,data){
+
+    // Upload Avatar
+    req.file('avatar').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
+      if(err)return res.serverError(err);
+      var fileName = require('path').basename(uploadedFiles[0].fd);
+      var filePath = '/uploads/'+fileName;
+      //return res.json({name:'gambar',path:filePath,idOwner:'p1'});
+
+      // Insert FileName and Path to Database
+      // Files.create({name:fileName,path:filePath,idOwner:idOwner}).exec(function(err,data){
+      // if(err)return res.negotiate(err);
+    query = Object.assign(params,{avatar:fileName},{role:'member'});
+    // Insert User Record to Database
+    Users.create(query).exec(function(err,data){
       if(err)return res.negotiate(err);
 
         //return res.json(params);
         return res.redirect('/admin/user/manage');
       
       });//End Users.create()
+      // });//End Files.create()
+      });//End req.file('pictures')
     });//End createId()
     },
 
