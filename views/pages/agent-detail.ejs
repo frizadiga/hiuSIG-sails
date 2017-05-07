@@ -2,7 +2,7 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
 }%>
 <!--Main-->
-<div id="main" class="w3-center" style="padding-top:38px!important">
+<div id="main" style="padding-top:38px!important">
  
   <div class="w3-section w3-card w3-text-grey" style="max-width:700px;margin:auto;">
   <div class="w3-display-container">
@@ -17,7 +17,7 @@
         <td style="width:150px">ID</td><td><%=dataAgent.id%></td>
       </tr>
       <tr>
-        <td>Jenis Pengguna</td><td><%=dataAgent.role.capitalize()%> <b><%=dataAgent.role.capitalize()%></b></td>
+        <td>Jenis Pengguna</td><td><b><%=dataAgent.role.capitalize()%></b></td>
       </tr>
       <tr>
         <td>Alamat</td><td></td>
@@ -35,14 +35,15 @@
         </td>
       </tr>
     </table>
-  <div class="w3-blue-grey w3-margin-0 w3-padding">Hubungi Agen</div>
+  <div class="w3-blue-grey w3-padding">Hubungi Agen</div>
   <div class="w3-container w3-padding">
   <p>
-  <p><input placeholder="Masukan Nama Anda" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
-  <p><input placeholder="Masukan No Handphone" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
-  <p><input placeholder="Masukan Alamat Email" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><label>Nama Anda:</label><input placeholder="Masukan Nama Anda" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><label>Phone/Mobile Phone:</label><input placeholder="Ex: 0812345678910" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><label>Email:</label><input placeholder="Ex: youremail@gmail.com" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  <p><label>Pesan:</label><textarea placeholder="Ex: saya tertarik dengan properti anda" class="w3-input w3-border w3-hover-light-grey" type="text"></textarea></p>
   </p>
-  <button class="w3-button w3-green w3-hover-blue w3-right"><b>Send</b></button>
+  <button class="w3-button w3-green w3-hover-blue w3-right w3-margin-bottom"><b><i class="fa fa-send"></i>Kirim</b></button>
   </div>
   </div>
 </div> <!-- End Main -->
