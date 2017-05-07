@@ -35,6 +35,9 @@ module.exports = {
     email:{
       type:'string'
     },
+    avatar:{
+      type:'string'
+    },
     properties:{
       collection:'properties',
       via:'idUser'

@@ -17,22 +17,28 @@ module.exports = {
     '</form>'
     )
   },
-	uploadFile:function(req,res) {
-		req.file('file').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles) {
-			if(err)return res.serverError(err);
-      var fileName = require('path').basename(uploadedFiles[0].fd);
-      var fileURL = require('util').format('%s/uploads/%s',sails.getBaseUrl(), fileName);
-		  console.log('fileURL: ',fileURL);
-    var filePath='/uploads/'+fileName;
-    Files.create({name:req.param('name'),path:filePath}).exec(function(err,data){
-      if(err) return res.negotiate(err);
+  uploadFile:(req,res)=>{
+    Files.upload(req.allParams(),function(err,data){
+      if(err) return res.send(err);
+      return res.ok();
     });
-      // return res.json(uploadedFiles);
-      return res.send('<pre>'+JSON.stringify(uploadedFiles,undefined,2)+'</pre><a href="'+fileURL+'">upload link</a>');
+  }
+	// uploadFile:function(req,res) {
+	// 	req.file('file').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles) {
+	// 		if(err)return res.serverError(err);
+ //      var fileName = require('path').basename(uploadedFiles[0].fd);
+ //      var fileURL = require('util').format('%s/uploads/%s',sails.getBaseUrl(), fileName);
+	// 	  console.log('fileURL: ',fileURL);
+ //    var filePath='/uploads/'+fileName;
+ //    Files.create({name:req.param('name'),path:filePath}).exec(function(err,data){
+ //      if(err) return res.negotiate(err);
+ //    });
+ //      // return res.json(uploadedFiles);
+ //      return res.send('<pre>'+JSON.stringify(uploadedFiles,undefined,2)+'</pre><a href="'+fileURL+'">upload link</a>');
 
-  });
-	}
-
+ //  });
+	// }
+  
 
 };
 
