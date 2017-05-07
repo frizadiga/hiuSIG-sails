@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 Mei 2017 pada 19.59
+-- Generation Time: 07 Mei 2017 pada 20.45
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -19,6 +19,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `hiusig`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -175,7 +186,9 @@ CREATE TABLE `users` (
   `role` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -184,10 +197,12 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `email`, `createdAt`, `updatedAt`) VALUES
-(1, 'u1', 'frizadygates', 'administrator', 'root', 'frizadiga', 'frizadiga@gmail.com', '2016-12-23 21:09:57', '2016-12-25 19:56:16'),
-(2, 'u2', 'timogawa', 'member', 'root', 'Tomomi Ogawa', 'tomomi_ogw@gmail.com', '2016-12-25 22:30:28', '2016-12-26 02:16:32'),
-(3, 'u3', 'rinax', 'agen', 'root', 'Rina Suzuki', 'rinax@gmail.com', '2016-12-26 04:35:44', '2016-12-26 04:35:44');
+INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`, `email`, `avatar`, `createdAt`, `updatedAt`) VALUES
+(1, 'u1', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', 'avatar-friza.jpg', '2016-12-23 21:09:57', '2017-05-02 22:56:05'),
+(2, 'u2', 'timogawa', 'member', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', 'avatar-tomomi.jpg', '2016-12-25 22:30:28', '2016-12-26 02:16:32'),
+(3, 'u3', 'rinax', 'agen', 'root', 'Rina Suzuki', '087722867909', 'rinax@gmail.com', 'avatar-rina.jpg', '2016-12-26 04:35:44', '2016-12-26 04:35:44'),
+(4, 'u4', 'mami', 'agen', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', 'avatar-mami.jpg', '2017-05-02 20:05:00', '2017-05-02 20:05:00'),
+(5, 'u5', 'haruna', 'member', 'root', 'Haruna Ono', '087722867911', 'haruna@gmail.com', '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', '2017-05-08 01:08:45', '2017-05-08 01:08:45');
 
 --
 -- Indexes for dumped tables
@@ -243,7 +258,7 @@ ALTER TABLE `properties`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
