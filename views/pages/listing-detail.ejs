@@ -137,7 +137,7 @@
 <div id="myModal" class="w3-modal w3-black" style="padding-bottom: 100px">
  <span class="w3-text-white w3-xxlarge w3-hover-text-grey w3-container w3-display-topright" onclick="closeModal()" style="cursor:pointer">×</span>
  <div class="w3-modal-content">
-
+ <%var totalImages=3%>
   <div class="w3-content" style="max-width:1200px">
    <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
    <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
@@ -149,13 +149,13 @@
      <span class="w3-display-right w3-btn" onclick="plusDivs(1)">❯</span>
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(1)" alt="image 1">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(1)" alt="1 / <%=totalImages%>">
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(2)" alt="image 2">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(2)" alt="2 / <%=totalImages%>">
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(3)" alt="image 3">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(3)" alt="3 / <%=totalImages%>">
     </div>
    </div> <!-- End row -->
   </div> <!-- End w3-content -->
