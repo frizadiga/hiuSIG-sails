@@ -10,17 +10,17 @@
 <!-- Properties Image -->
 <div class="w3-content" style="padding: 8px 0px 0px 0px!important">
   <div class="w3-gray">
-    <img onclick="openModal();currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="cursor: pointer;">
+    <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="cursor: pointer;">
   </div>
   <div class="w3-row">
     <div class="w3-col s4">
-      <img onclick="openModal();currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+      <img onclick="openModal('modal-image');currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
     </div>
     <div class="w3-col s4">
-      <img onclick="openModal();currentdiv(2)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+      <img onclick="openModal('modal-image');currentdiv(2)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
     </div>
     <div class="w3-col s4">
-      <img onclick="openModal();currentdiv(3)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+      <img onclick="openModal('modal-image');currentdiv(3)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
     </div>
   </div>
 </div>
@@ -88,7 +88,7 @@
     </tr>
   </table>
   <div class="w3-section">
-    <button class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
+    <button onclick="openModal('modal-booking')" class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
     
   </div>
 </div>
@@ -133,9 +133,27 @@
 </div>
 </div>
 <!-- </div> -->
+<!-- Modal Booking -->
+<div id="modal-booking" class="w3-modal">
+  <div class="w3-modal-content" style="width:700px">
+    <header class="w3-container w3-blue-grey">
+    	<h3>Booking</h3>
+    	<span class="w3-button w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-booking')"><i class="fa fa-close"></i></span>
+    </header>
+    <div class="w3-container w3-padding-16 w3-center w3-text-grey" style="width:100%">
+    	<img class="w3-circle" style="width:30%" src="/uploads/<%=dataProperties.idUser.avatar%>">
+    	<p>Agent: <%=dataProperties.idUser.name%></p>
+    	<img class="w3-section" src="<%=dataProperties.pictures[0].path%>">
+    	<p><%=dataProperties.title%></p>
+    	<button class="w3-button w3-block w3-blue w3-hover-green">
+    		<i class="fa fa-address-book"></i> Ajukan Booking
+    	</button>
+    </div>
+  </div>
+</div>
 <!-- Modal Image -->
-<div id="myModal" class="w3-modal w3-black" style="padding-bottom: 100px">
- <span class="w3-text-white w3-xxlarge w3-hover-text-grey w3-container w3-display-topright" onclick="closeModal()" style="cursor:pointer">×</span>
+<div id="modal-image" class="w3-modal w3-black" style="padding-bottom: 100px">
+ <span class="w3-text-white w3-xxlarge w3-hover-text-grey w3-container w3-display-topright" onclick="closeModal('modal-image')" style="cursor:pointer">×</span>
  <div class="w3-modal-content">
  <%var totalImages=3%>
   <div class="w3-content" style="max-width:1200px">
@@ -165,13 +183,13 @@
 
 <script>
 //Image Modal---------------------------------------------------
-function openModal() {
-  document.getElementById('myModal').style.display = "block";
+function openModal(el) {
+  document.getElementById(el).style.display = "block";
   document.body.style.overflow = "hidden";
 }
 
-function closeModal() {
-  document.getElementById('myModal').style.display = "none";
+function closeModal(el) {
+  document.getElementById(el).style.display = "none";
   document.body.style.overflow = "visible";
 }
 
