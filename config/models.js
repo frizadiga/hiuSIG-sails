@@ -28,7 +28,7 @@ module.exports.models = {
   * See http://sailsjs.org/#!/documentation/concepts/ORM/model-settings.html  *
   *                                                                          *
   ***************************************************************************/
-  migrate:'alter',
+  migrate:'save',
   autoPK:false,
   autoCreatedAt:true,
   autoUpdateAt:true
