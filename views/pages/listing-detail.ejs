@@ -5,25 +5,25 @@
 <div id="main" style="padding-top:38px!important">
 
 <!-- Image Container -->
-<div class="w3-card stripe-2" style="/*background:url('/img/building-horde-opacity-max.png');background-size:contain;">
+  <div class="w3-card stripe-2">
 
 <!-- Properties Image -->
-<div class="w3-content" style="padding: 8px 0px 0px 0px!important">
-  <div class="w3-gray">
-    <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="cursor: pointer;">
-  </div>
-  <div class="w3-row">
-    <div class="w3-col s4">
-      <img onclick="openModal('modal-image');currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+    <div class="w3-content" style="padding: 8px 0px 0px 0px!important">
+      <div class="w3-gray">
+        <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="cursor: pointer;">
+      </div>
+      <div class="w3-row">
+        <div class="w3-col s4">
+          <img onclick="openModal('modal-image');currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+        </div>
+        <div class="w3-col s4">
+          <img onclick="openModal('modal-image');currentdiv(2)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+        </div>
+        <div class="w3-col s4">
+          <img onclick="openModal('modal-image');currentdiv(3)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+        </div>
+      </div>
     </div>
-    <div class="w3-col s4">
-      <img onclick="openModal('modal-image');currentdiv(2)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
-    </div>
-    <div class="w3-col s4">
-      <img onclick="openModal('modal-image');currentdiv(3)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
-    </div>
-  </div>
-</div>
 </div>
 
 <!-- Description -->
@@ -87,10 +87,7 @@
       <td><i class="fa fa-home"></i> Luas Bangunan : <%=dataProperties.buildingSize%> m<sup>2</sup></td>
     </tr>
   </table>
-  <div class="w3-section">
-    <button onclick="openModal('modal-booking')" class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
-    
-  </div>
+  
 </div>
 <!--TAB MAPS-->
 <div id="maps" class="tab-detail">
@@ -131,6 +128,12 @@
 </div>
 
 </div>
+
+<!-- BUTTON-BOOKING -->
+  <div class="w3-section w3-content w3-card w3-padding-16 w3-container">
+    <button onclick="openModal('modal-booking')" class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
+  </div>
+
 </div>
 <!-- </div> -->
 <!-- Modal Booking -->
