@@ -5,19 +5,20 @@
 	<table class="w3-table w3-card w3-hoverable">
 		<tr class="w3-blue-grey">
 			<th>No</th>
-			<th>Judul</th>
+			<th>Judul Properti</th>
 			<th>Penjual</th>
 			<th>Pembeli</th>
-			<th></th>
+			<th style="width: 200px"></th>
 		</tr>
 		<% for (var i = 0; i < data.length; i++) { -%>			
-		<tr class="w3-text-grey w3-hover-blue-grey">
+		<tr class="w3-text-grey w3-hover-green">
 			<td style="vertical-align: middle"><%=i+1%></td>
 			<td style="vertical-align: middle"><%=data[i].judul%></td>
 			<td style="vertical-align: middle"><%=data[i].penjual%></td>
 			<td style="vertical-align: middle"><%=data[i].pembeli%></td>
-			<td style="vertical-align: middle" style="width: 50px">
-				<button class="w3-button w3-hover-green"><i class="fa fa-info"></i> </button>
+			<td style="vertical-align: middle">
+				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
+				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-print"></i> Print</button>
 			</td>
 		</tr>
 		<% } -%>
