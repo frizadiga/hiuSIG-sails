@@ -135,16 +135,18 @@
 <!-- </div> -->
 <!-- Modal Booking -->
 <div id="modal-booking" class="w3-modal">
-  <div class="w3-modal-content" style="width:700px">
+  <div class="w3-modal-content" style="max-width:700px;margin-bottom: 100px">
     <header class="w3-container w3-blue-grey">
-    	<h3>Booking</h3>
-    	<span class="w3-button w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-booking')"><i class="fa fa-close"></i></span>
+    	<h3><i class="fa fa-address-book"></i> Booking</h3>
+    	<span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-booking')"><i class="fa fa-close"></i></span>
     </header>
     <div class="w3-container w3-padding-16 w3-center w3-text-grey" style="width:100%">
-    	<img class="w3-circle" style="width:30%" src="/uploads/<%=dataProperties.idUser.avatar%>">
+    	<img class="w3-circle" style="width:20%" src="/uploads/<%=dataProperties.idUser.avatar%>">
     	<p>Agent: <%=dataProperties.idUser.name%></p>
-    	<img class="w3-section" src="<%=dataProperties.pictures[0].path%>">
+      <hr>
+    	<img  style="max-width: 600px" src="<%=dataProperties.pictures[0].path%>">
     	<p><%=dataProperties.title%></p>
+      <hr>
     	<button class="w3-button w3-block w3-blue w3-hover-green">
     		<i class="fa fa-address-book"></i> Ajukan Booking
     	</button>
