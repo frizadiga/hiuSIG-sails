@@ -62,7 +62,7 @@ module.exports.routes = {
   'GET /logout':'UsersController.logout',
   
   //ADMIN
-  '/admin/report':'ReportsController.view',
+  '/admin/reports':'ReportsController.view',
   '/admin':'UsersController.checkLogin',
   '/admin/dashboard':{
     view:'admin/dashboard',

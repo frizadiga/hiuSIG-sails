@@ -22,8 +22,8 @@ module.exports = {
 			penjual:'Tomomi',
 			pembeli:'Rina'
 		}
-		]
-		return res.view('admin/report',{data:dataReports, layout:'layout-admin'});
+		];
+		return res.view('admin/reports',{data:dataReports, layout:'layout-admin'});
 	}
 };
 
