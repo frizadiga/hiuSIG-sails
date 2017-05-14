@@ -59,12 +59,12 @@
 <a href="/admin/dashboard" class="w3-bar-item w3-padding-16 w3-button w3-white w3-hover-opacity w3-text-blue-grey w3-hover-green w3-hover-text-white"><b><i class="fa fa-home"></i> Dashboard</b></a>
 
 <a href="/admin/listing/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Insert Listing</a>
-<a href="/admin/listing/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Manage Listing</a>
+<a href="/admin/listings/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Manage Listing</a>
 <a href="/admin/listing/maps" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Maps Listing</a>
 <hr class="w3-opacity w3-hr">
 <%if(req.session.user.role==='administrator'){%>
 <a href="/admin/user/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Insert User</a>
-<a href="/admin/user/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Manage User</a>
+<a href="/admin/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Manage User</a>
 <%}%>
 <hr class="w3-opacity w3-hr">
 <%if(req.session.user.role==='administrator'){%>
