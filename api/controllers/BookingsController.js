@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-	
+	bookingsList:(req,res)=>{
+		return res.json({message:"200 ok"});
+	}
 };
 

@@ -68,7 +68,7 @@ module.exports.routes = {
     view:'admin/dashboard',
     locals:{layout:'layout-admin'}
   },
-  '/admin/listing/manage':'PropertiesController.listingManage',
+  '/admin/listings/manage':'PropertiesController.listingManage',
   '/admin/listing/insert':{
     view:'admin/listing-form',
     locals:{layout:'layout-admin',dataEdit:null}
@@ -82,8 +82,9 @@ module.exports.routes = {
     view:'admin/user-form',
     locals:{layout:'layout-admin',dataEdit:null}
   },
-  '/admin/user/manage':'UsersController.userManage',
+  '/admin/users/manage':'UsersController.userManage',
   '/admin/user/edit/:id':'UsersController.userEdit',
+  '/admin/bookings':'BookingsController.bookingsList',
   //API
   '/api/url-slug':'PagesController.urlSlug',
   '/api/index':'PagesController.indexPage',
