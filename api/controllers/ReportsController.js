@@ -9,18 +9,18 @@ module.exports = {
 	view:function(req,res){
 		dataReports = [
 		{
-			judul:'Rumah 3 Lantai',
+			judul:'Rumah 2 Lantai',
 			penjual:'Tomomi',
 			pembeli:'Rina'
 		},
 		{
-			judul:'Rumah 3 Lantai',
-			penjual:'Tomomi',
-			pembeli:'Rina'
+			judul:'Ruko Strategis',
+			penjual:'Frizadiga',
+			pembeli:'Tomomi'
 		},{
-			judul:'Rumah 3 Lantai',
-			penjual:'Tomomi',
-			pembeli:'Rina'
+			judul:'Tanah Tepi Pantai',
+			penjual:'Mami',
+			pembeli:'Haruna'
 		}
 		];
 		return res.view('admin/reports',{data:dataReports, layout:'layout-admin'});
