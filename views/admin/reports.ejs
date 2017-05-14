@@ -2,7 +2,18 @@
   <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Report</b></p>
   <img src="/img/rumah2q-logo.png" style="width:20%">
 
-	<table class="w3-table w3-card w3-hoverable">
+  <div class="w3-row w3-section w3-border">
+    
+      <div class="w3-col w3-right" style="width:50px">
+        <button class="w3-blue-grey w3-button w3-block w3-paddingX"><i class="fa fa-search"></i></button>
+      </div>
+        <div class="w3-rest">
+        <input class="w3-hover-light-grey w3-input w3-border-0" type="text" name="" placeholder="Cari.." id="search-filter">
+      </div>  
+    
+  </div>
+
+	<table class="w3-table w3-card w3-hoverable" id="table-reports">
 		<tr class="w3-blue-grey">
 			<th>No</th>
 			<th>Judul Properti</th>
@@ -67,4 +78,25 @@ function printDiv(divName) {
  //        return true;
 
  //        }
+
+  document.getElementById('search-filter').addEventListener('keyup',searchFilter);
+
+  function searchFilter() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("search-filter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table-reports");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    trd = tr[i];
+    if (trd) {
+      if (trd.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
 </script>
