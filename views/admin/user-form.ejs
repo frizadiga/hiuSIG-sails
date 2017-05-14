@@ -2,10 +2,11 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
 }%>
 <form action="<%=dataEdit?'/api/user/edit/'+dataEdit.no:'/api/user/insert'%>" method="POST" enctype="multipart/form-data">
-	<div class="w3-padding">
-		<div class="w3-card" style="max-width: 700px;margin:auto;">
-		   <p class=" w3-text-blue w3-bottombar w3-border-light-grey w3-margin" style="border-width:2px!important;padding:16px 0px 0px 0px;margin:0px 8px 0px 8px">Form User
-    </p>
+	<div class="w3-padding"  style="max-width: 700px;margin:auto;">
+		<div class="w3-card">
+		   <p class=" w3-text-blue w3-margin" style="border-width:2px!important;padding:16px 0px 0px 0px;margin:0px 8px 0px 8px"><b><i class="fa fa-user"></i> Form User</b>
+      </p>
+      <hr class="w3-hr">
 			<div class="w3-row w3-container">
 			  <label class="w3-text-blue">Nama Lengkap</label>
 				<input class="w3-input w3-border" type="text" name="name" value="<%=dataEdit?dataEdit.name:''%>">
@@ -28,11 +29,14 @@
 				<span class="w3-padding w3-blue">Foto Profil&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
 				<input type="file" name="avatar">
 				</p>
-				<div class="w3-row w3-section">
-				<button class="w3-btn w3-blue w3-right"><%=dataEdit?'Edit User':'Create User'%></button>
-				<button class="w3-btn w3-light-grey w3-text-blue w3-right" type="reset">Kosongkan</button>
-			  </div>
+				
 			</div>
 		</div>
+
+		<div class="w3-card w3-container w3-section w3-padding-16">
+					<button class="w3-btn w3-blue w3-right"><%=dataEdit?'Edit User':'Create User'%></button>
+					<button class="w3-btn w3-light-grey w3-text-blue w3-right" type="reset">Kosongkan</button>
+		</div>
+
 	</div>
 </form>
