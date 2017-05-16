@@ -85,7 +85,7 @@ module.exports.routes = {
   '/admin/users/manage':'UsersController.userManage',
   '/admin/user/edit/:id':'UsersController.userEdit',
   '/admin/messages':'MessagesController.view',
-  '/admin/bookings':'BookingsController.bookingsList',
+  '/admin/bookings':'BookingsController.view',
   //API
   '/api/url-slug':'PagesController.urlSlug',
   '/api/index':'PagesController.indexPage',
