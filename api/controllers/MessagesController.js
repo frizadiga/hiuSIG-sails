@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-	
+	view:(req,res)=>{
+		res.view('admin/messages',{layout:"layout-admin"});
+	}
 };
 
