@@ -17,6 +17,12 @@ module.exports = {
   		type:'string',
   		unique:true
   	},
+  	sender:{
+  		model:'users'
+  	},
+  	receiver:{
+  		model:'users'
+  	},
   	message:{
   		type:'string'
   	}
