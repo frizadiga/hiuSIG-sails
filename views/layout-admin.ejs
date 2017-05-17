@@ -58,24 +58,25 @@
 <!--Tab Links-->
 <a href="/admin/dashboard" class="w3-bar-item w3-padding-16 w3-button w3-white w3-hover-opacity w3-text-blue-grey w3-hover-green w3-hover-text-white"><b><i class="fa fa-home"></i> Dashboard</b></a>
 
-<a href="/admin/listing/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Insert Listing</a>
-<a href="/admin/listings/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Manage Listing</a>
-<a href="/admin/listing/maps" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Maps Listing</a>
+<a href="/admin/listing/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-plus"></i> Insert Listing</a>
+<a href="/admin/listings/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-list"></i> Manage Listing</a>
+<a href="/admin/listing/maps" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-map"></i> Maps Listing</a>
 <hr class="w3-opacity w3-hr">
 <%if(req.session.user.role==='administrator'){%>
-<a href="/admin/user/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Insert User</a>
-<a href="/admin/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Manage User</a>
+<a href="/admin/user/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-user-plus"></i> Insert User</a>
+<a href="/admin/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-users"></i> Manage User</a>
 <%}%>
 <hr class="w3-opacity w3-hr">
 <%if(req.session.user.role==='administrator'){%>
-<a href="/admin/messages" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Message</a>
+<a href="/admin/messages" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-comment"></i> Message</a>
 <%}%>
 <%if(req.session.user.role==='administrator'){%>
-<a href="/admin/bookings" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Booking Request</a>
+<a href="/admin/bookings" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-address-book"></i> Booking Request</a>
 <%}%>
 <hr class="w3-opacity w3-hr">
-<a href="/admin/reports" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey">Report</a>
-<a href="/admin/settings" class="w3-bar-item w3-button w3-hover-none"><button class="w3-button w3-blue-grey w3-hover-white w3-right"><i class="fa fa-cog"></i></button></a>
+<a href="/admin/reports" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-book"></i> Report</a>
+<hr class="w3-opacity w3-hr">
+<a href="/admin/settings" class="w3-bar-item w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-cog"></i> Setting</b></a>
 
 <!--FOOTER-->
 <div class="w3-container w3-center w3-bottom w3-padding w3-white" style="width:20%!important;">
