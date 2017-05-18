@@ -158,7 +158,7 @@
     <h3><i class="fa fa-envelope"></i> Pesan</h3>
     <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-message')"><i class="fa fa-close"></i></span>
   </header>
-  <form action="/api/message" method="POST">
+  <form id="form-message">
   <input type="hidden" name="sender" value="<%=(req.session.user)?req.session.user.no:''%>">
   <input type="hidden" name="receiver" value="<%=(req.session.user)?dataProperties.idUser.no:''%>">
 
@@ -170,7 +170,7 @@
   </p>
   <p><label>Pesan:</label><textarea placeholder="Ex: saya tertarik dengan properti anda" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" name="message" rows="5" style="resize:vertical;"></textarea></p>
   </p>
-  <button class="w3-button w3-green w3-hover-blue w3-right w3-sectionX" style="margin-bottom: 16px"><b><i class="fa fa-send"></i> Kirim</b></button>
+  <button id="btn-send-message" class="w3-button w3-green w3-hover-blue w3-right" style="margin-bottom: 16px" type="button"><b><i class="fa fa-send"></i> Kirim</b></button>
   </div>
   </form>
   </div>
@@ -205,7 +205,19 @@
   
  </div> <!-- End modal content -->
 </div> <!-- End modal -->
-
+<script>
+var form = document.querySelector('#form-message');
+var modalSent = document.querySelector('#modal-sent-message')
+function postMessage(){
+fetch('/api/message',{
+  method:'POST',
+  body: new FormData(form)
+});
+closeModal('modal-message');
+}
+var submitBtn = document.querySelector('#btn-send-message');
+submitBtn.addEventListener('click',postMessage)
+</script>
 <script>
 //Image Modal---------------------------------------------------
 function openModal(el) {
