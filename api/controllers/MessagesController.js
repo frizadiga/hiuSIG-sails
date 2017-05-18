@@ -9,6 +9,7 @@ module.exports = {
 	view:(req,res)=>{
 		res.view('admin/messages',{layout:"layout-admin"});
 	},
+
 	messagesList:(req,res)=>{
 		const receiver = req.session.user;
 		let opts = {};
@@ -19,11 +20,17 @@ module.exports = {
 			return res.view('admin/messages',{dataMessages:data,layout:'layout-admin'})
 		});
 	},
+	
 	messageCreate:(req,res)=>{
-		Messages.create(req.allParams()).exec((err,data)=>{
-			if(err)return res.negotiate(err);
-			return res.json(data);
+		var params = req.allParams();
+		Messages.createId((err,id)=>{
+			params.id = id;
+			Messages.create(params).exec((err,data)=>{
+				if(err)return res.negotiate(err);
+				return res.json(data);
+			});
 		});
+		
 	}
 };
 
