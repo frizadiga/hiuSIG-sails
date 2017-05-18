@@ -103,7 +103,7 @@ module.exports.routes = {
   '/api/user/delete/:id':'UsersController.UserDelete',
   '/api/user/edit/:no':'UsersController.userEditPost',
   //API MESSAGE
-  'POST /api/messages':'MessagesController.messagesCreate'
+  'POST /api/messages':'MessagesController.messageCreate',
   //-------------------------------------------------------------------------
   '/hiuwave':function(req,res){
     res.redirect('http://hiuwave.com');
