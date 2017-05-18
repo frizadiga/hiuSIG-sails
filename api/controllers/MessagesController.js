@@ -16,7 +16,13 @@ module.exports = {
 		Messages.find(opts).populate('receiver').populate('sender').exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			// res.json(data);
-			res.view('admin/messages',{dataMessages:data,layout:'layout-admin'})
+			return res.view('admin/messages',{dataMessages:data,layout:'layout-admin'})
+		});
+	},
+	messageCreate:(req,res)=>{
+		Messages.create(req.allParams()).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data);
 		});
 	}
 };
