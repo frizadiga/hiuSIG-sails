@@ -45,7 +45,7 @@
   </div>
 <div id="admin-user-bg" class="w3-container">
   <div class="w3-center">
-    <img class="w3-hover-grayscale w3-circle w3-card-4 w3-show-block w3-margin-bottom" src="/img/profile.jpg" style="width:30%;margin:auto" alt="User Avatar">
+    <img class="w3-hover-grayscale w3-circle w3-card-4 w3-show-block w3-margin-bottom" src="/uploads/<%=req.session.user.avatar%>" style="width:30%;margin:auto" alt="User Avatar">
     <p class="w3-small w3-text-white">
     <b><i class="fa fa-user"></i><br>
        <%=req.session.user.name%>|<%=req.session.user.role%></b>
