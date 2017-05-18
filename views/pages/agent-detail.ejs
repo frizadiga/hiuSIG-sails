@@ -8,7 +8,9 @@
   <div class="w3-display-container">
     <img style="width:100%" class="w3-grayscale" src="/img/building-horde.png"  alt="" />
     <div class="w3-display-middle w3-center">
-    <img style="width:50%" class="w3-circle w3-card-4" src="/uploads/<%=dataAgent.avatar%>" alt="" />
+    <a href="/agent/detail/<%=dataAgent.id%>">
+      <img style="width:50%" class="w3-circle w3-card-4" src="/uploads/<%=dataAgent.avatar%>" alt="" />
+    </a>
     <p class="w3-large"><%=dataAgent.name%></p>
     </div>
   </div>
@@ -37,7 +39,7 @@
     </table>
   <div class="w3-blue-grey w3-padding">Hubungi Agen</div>
   <div class="w3-container w3-padding">
-    <form action="/api/message" method="POST">
+  <form id="form-message">
   <input type="hidden" name="sender" value="<%=(req.session.user)?req.session.user.no:''%>">
   <input type="hidden" name="receiver" value="<%=(req.session.user)?dataAgent.no:''%>">
 
@@ -49,12 +51,20 @@
   </p>
   <p><label>Pesan:</label><textarea placeholder="Ex: saya tertarik dengan properti anda" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" name="message"></textarea></p>
   </p>
-  <button class="w3-button w3-green w3-hover-blue w3-right w3-sectionX" style="margin-bottom: 16px"><b><i class="fa fa-send"></i> Kirim</b></button>
+  <button id="btn-send" class="w3-button w3-green w3-hover-blue w3-right" style="margin-bottom: 16px"><b><i class="fa fa-send"></i> Kirim</b></button>
   </div>
   </form>
   </div>
 </div> <!-- End Main -->
 
 <script>
-
+var form = document.querySelector('#form-message');
+function postMessage(){
+fetch('/api/message',{
+  method:'POST',
+  body: new FormData(form)
+});
+}
+var submitBtn = document.querySelector('#form-message');
+submitBtn.addEventListener('submit',postMessage)
 </script>
