@@ -30,7 +30,12 @@ module.exports = {
 				return res.json(data);
 			});
 		});
-		
+	},
+	messageDelete:(req,res)=>{
+		Messages.destroy({id:req.param('id')}).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.ok(data.id+'berhasil dihapus');
+		});
 	}
 };
 
