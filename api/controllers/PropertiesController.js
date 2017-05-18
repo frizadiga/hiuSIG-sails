@@ -104,7 +104,7 @@ module.exports = {
      Properties.create(params).exec(function(err,data){
        if(err)return res.negotiate(err);
        //return res.json(data);
-       return res.redirect('admin/listing/manage');
+       return res.redirect('admin/listings/manage');
 
      });//End Properties.create()
    
