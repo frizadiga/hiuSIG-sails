@@ -115,7 +115,7 @@ module.exports = {
     },
 
     agentListing:function(req,res){
-      Users.find({role:'agen'}).exec(function(err,data){
+      Users.find({role:'agent'}).exec(function(err,data){
         if (err)return res.negotiate(err);
         return res.view('pages/agent-listing',{dataAgents:data,layout:'layout-plain'});
       });

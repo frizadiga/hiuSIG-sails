@@ -7,13 +7,13 @@
 		   <p class=" w3-text-blue w3-margin" style="border-width:2px!important;padding:16px 0px 0px 0px;margin:0px 8px 0px 8px"><b><i class="fa fa-user"></i> Form User</b>
       </p>
       <hr class="w3-hr">
-			<div class="w3-row w3-container">
+			<div class="w3-row w3-container w3-padding-16">
 			  <label class="w3-text-blue">Nama Lengkap</label>
 				<input class="w3-input w3-border" type="text" name="name" value="<%=dataEdit?dataEdit.name:''%>">
 				<label class="w3-text-blue">Email</label>
 				<input class="w3-input w3-border" type="email" name="email" value="<%=dataEdit?dataEdit.email:''%>">
 				<label class="w3-text-blue">Phone</label>
-				<input class="w3-input w3-border" type="tel" name="email" value="<%=dataEdit?dataEdit.phone:''%>">
+				<input class="w3-input w3-border" type="tel" name="phone" value="<%=dataEdit?dataEdit.phone:''%>">
 				<label class="w3-text-blue">Username</label>
 				<input class="w3-input w3-border" type="text" name="username" value="<%=dataEdit?dataEdit.username:''%>" autocomplete="off">
 				<label class="w3-text-blue">Password</label>
@@ -22,13 +22,13 @@
 				<select class="w3-select w3-border" name="role">
 					<option value="<%=dataEdit?dataEdit.role:''%>"><%=dataEdit?dataEdit.role.capitalize():''%></option>
 					<option value="member">Member</option>
-					<option value="agen">agen</option>
+					<option value="agent">Agen</option>
 					<option value="administrator">Administrator</option>
 				</select>
-				<p>
+				<!-- <p>
 				<span class="w3-padding w3-blue">Foto Profil&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
-				<input type="file" name="avatar">
-				</p>
+				<input type="file" name="avatar" <%=dataEdit?'':'required'%>>
+				</p> -->
 				
 			</div>
 		</div>
