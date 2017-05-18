@@ -31,13 +31,13 @@ module.exports = {
    createId:function(cb){
     let query = Messages.find();
     //let sort = 'id DESC';
-    query.sort('id DESC');
+    query.sort('no DESC');
     query.exec((err,data)=> {
       if(err)return cb(err);
       var id = 'm'+(data[0].no+1);
       cb(err,id);
     });
   }
-  
+
 };
 

@@ -47,7 +47,7 @@ module.exports = {
   createId:function(cb){
     let query = Users.find();
     //let sort = 'id DESC';
-    query.sort('id DESC');
+    query.sort('no DESC');
     query.exec((err,data)=> {
       if(err)return cb(err);
       var id = 'u'+(data[0].no+1);
