@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Mei 2017 pada 18.44
+-- Generation Time: 18 Mei 2017 pada 21.56
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -148,7 +148,22 @@ INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`
 (7, 'm7', 2, 1, 'Bisa Ketemuan? saya tertarik banget dengan rumah ini', '2017-05-18 17:23:37', '2017-05-18 17:23:37'),
 (8, 'm8', 4, 3, 'hai rina saya tertarik untuk bertemu bicara harga', '2017-05-18 17:27:07', '2017-05-18 17:27:07'),
 (9, 'm9', 2, 1, 'bisa info lebih lanjut ke no 087722867908 ?', '2017-05-18 20:16:30', '2017-05-18 20:16:30'),
-(10, 'm10', 3, 1, 'more info please...', '2017-05-18 20:38:10', '2017-05-18 20:38:10');
+(18, 'm10', 1, 2, 'hi', '2017-05-19 00:50:41', '2017-05-19 00:50:41'),
+(19, 'm19', 1, 2, 'hai tomomi', '2017-05-19 00:55:43', '2017-05-19 00:55:43'),
+(20, 'm20', 1, 2, 'halo timo', '2017-05-19 00:57:07', '2017-05-19 00:57:07'),
+(21, 'm21', 1, 2, 'hi', '2017-05-19 01:11:05', '2017-05-19 01:11:05'),
+(22, 'm22', 1, 3, 'hi rina', '2017-05-19 01:13:13', '2017-05-19 01:13:13'),
+(23, 'm23', 1, 3, 'hi rina', '2017-05-19 01:16:32', '2017-05-19 01:16:32'),
+(24, 'm24', 1, 3, 'hai rina how do u do?', '2017-05-19 01:24:17', '2017-05-19 01:24:17'),
+(25, 'm25', 1, 3, 'test', '2017-05-19 01:26:36', '2017-05-19 01:26:36'),
+(26, 'm26', 1, 3, 'test', '2017-05-19 01:27:22', '2017-05-19 01:27:22'),
+(27, 'm27', 1, 3, 'ok', '2017-05-19 01:28:38', '2017-05-19 01:28:38'),
+(28, 'm28', 2, 1, 'hi friza', '2017-05-19 02:34:28', '2017-05-19 02:34:28'),
+(29, 'm29', 2, 1, 'hi friza', '2017-05-19 02:37:37', '2017-05-19 02:37:37'),
+(30, 'm30', 2, 1, 'test', '2017-05-19 02:39:31', '2017-05-19 02:39:31'),
+(31, 'm31', 2, 1, 'test friza', '2017-05-19 02:39:53', '2017-05-19 02:39:53'),
+(32, 'm32', 1, 2, 'pm harga ya', '2017-05-19 02:41:03', '2017-05-19 02:41:03'),
+(33, 'm33', 1, 2, 'hai timo saya tertarik membantu listing kamu', '2017-05-19 02:55:41', '2017-05-19 02:55:41');
 
 -- --------------------------------------------------------
 
@@ -196,7 +211,7 @@ INSERT INTO `properties` (`no`, `id`, `title`, `status`, `type`, `price`, `provi
 (24, 'p24', 'Tanah Rawa Daerah Serangan', 'dijual', 'tanah', 50000000, 'Bali', 'Denpasar', 'Jalan Rawa-rawa, Serangan, Kota Denpasar, Bali, Indonesia no 33', '-8.734714429762585', '115.23011543383791', '500', '0', 0, 0, 0, '- surat lengkap', 1, '2016-12-27 19:34:32', '2016-12-27 19:34:32'),
 (26, 'p25', 'Gudang Barang Strategis Depok', 'disewa', 'gudang', 30000000, 'Jawa Barat', 'Depok', 'Jalan Pusat Gudang no 77', '-6.364270647289123', '106.86221840527344', '700', '600', 2, 0, 0, '- Keamanan 24 Jam', 2, '2017-01-01 15:54:04', '2017-01-01 15:54:04'),
 (27, 'p27', 'Gudang Barang Strategis Bekasi', 'disewa', 'gudang', 50000000, 'Jawa Barat', 'Bekasi', 'Jalan Gudang Ratu no99c', '-6.232429896450983', '107.00837641640624', '1200', '900', 2, 3, 3, '', 3, '2017-01-01 15:56:59', '2017-01-01 15:56:59'),
-(28, 'p28', 'Apartement Sanur', 'dijual', 'apartemen', 150000000, 'Bali', 'Denpasar', 'Jalan Danau Tamblingan', '-8.694737', '115.26301420000004', '150', '150', 1, 2, 2, 'Fasilitas ISO Eropa', 2, '2017-05-18 23:42:13', '2017-05-18 23:42:13');
+(28, 'p28', 'Apartement Sanur', 'dijual', 'apartemen', 150000000, 'Bali', 'Denpasar', 'Jalan Danau Tamblingan no 55 Sanur Bali', '-8.694737', '115.26301420000004', '150', '150', 1, 2, 2, 'Fasilitas ISO Eropa', 2, '2017-05-18 23:42:13', '2017-05-19 02:08:19');
 
 -- --------------------------------------------------------
 
@@ -248,10 +263,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`, `email`, `avatar`, `createdAt`, `updatedAt`) VALUES
-(1, 'u1', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', 'avatar-friza.jpg', '2016-12-23 21:09:57', '2017-05-02 22:56:05'),
-(2, 'u2', 'timogawa', 'agen', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', 'avatar-tomomi.jpg', '2016-12-25 22:30:28', '2016-12-26 02:16:32'),
-(3, 'u3', 'rina', 'agen', 'root', 'Rina Suzuki', '087722867909', 'urarina@gmail.com,087722867909', 'avatar-rina.jpg', '2016-12-26 04:35:44', '2017-05-18 18:28:46'),
-(4, 'u4', 'mami', 'agen', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', 'avatar-mami.jpg', '2017-05-02 20:05:00', '2017-05-02 20:05:00'),
+(0, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', 'avatar-friza.jpg', '2016-12-23 21:09:57', '2017-05-02 22:56:05'),
+(1, 'u1', 'frizadiga', 'agent', 'root', 'frizadiga', '087722867907', 'frizadiga@gmail.com', '5cf153a3-93c2-4059-ad4d-859761cdfe17.jpg', '2017-05-19 02:11:51', '2017-05-19 02:20:20'),
+(2, 'u2', 'timogawa', 'agent', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', 'avatar-tomomi.jpg', '2016-12-25 22:30:28', '2017-05-19 02:27:50'),
+(3, 'u3', 'rina', 'agent', 'root', 'Rina Suzuki', '087722867909', 'urarina@gmail.com', 'avatar-rina.jpg', '2016-12-26 04:35:44', '2017-05-19 02:27:37'),
+(4, 'u4', 'mami', 'agent', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', 'avatar-mami.jpg', '2017-05-02 20:05:00', '2017-05-19 02:22:36'),
 (5, 'u5', 'haruna', 'member', 'root', 'Haruna Ono', '087722867911', 'haruna@gmail.com', '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', '2017-05-08 01:08:45', '2017-05-08 01:08:45');
 
 --
@@ -317,7 +333,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `properties`
 --
@@ -332,7 +348,7 @@ ALTER TABLE `propertiestypes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
