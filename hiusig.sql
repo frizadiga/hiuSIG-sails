@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 07 Mei 2017 pada 20.45
+-- Generation Time: 18 Mei 2017 pada 18.44
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -27,6 +27,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bookings` (
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -89,7 +93,8 @@ INSERT INTO `files` (`id`, `name`, `path`, `idOwner`, `createdAt`, `updatedAt`) 
 (15, 'a6438305-0aae-4785-ae0b-a335a7948359.jpg', '/uploads/a6438305-0aae-4785-ae0b-a335a7948359.jpg', 23, '2016-12-27 19:31:18', '2016-12-27 19:31:18'),
 (16, '78850efd-4d8b-4b90-a733-14c1c4f3cf65.jpg', '/uploads/78850efd-4d8b-4b90-a733-14c1c4f3cf65.jpg', 24, '2016-12-27 19:34:32', '2016-12-27 19:34:32'),
 (18, '797b4adf-5c31-4d1c-92ec-018ea9eae358.jpg', '/uploads/797b4adf-5c31-4d1c-92ec-018ea9eae358.jpg', 26, '2017-01-01 15:54:04', '2017-01-01 15:54:04'),
-(19, '5233368a-9237-448b-9cd3-1411124b83af.JPG', '/uploads/5233368a-9237-448b-9cd3-1411124b83af.JPG', 27, '2017-01-01 15:56:59', '2017-01-01 15:56:59');
+(19, '5233368a-9237-448b-9cd3-1411124b83af.JPG', '/uploads/5233368a-9237-448b-9cd3-1411124b83af.JPG', 27, '2017-01-01 15:56:59', '2017-01-01 15:56:59'),
+(20, '9fe3d221-aa15-4ccf-a635-1d04d30d3b3b.jpg', '/uploads/9fe3d221-aa15-4ccf-a635-1d04d30d3b3b.jpg', 28, '2017-05-18 23:42:13', '2017-05-18 23:42:13');
 
 -- --------------------------------------------------------
 
@@ -114,6 +119,36 @@ INSERT INTO `maps` (`id`, `name`, `lat`, `lng`, `createdAt`, `updatedAt`) VALUES
 ('m1', 'Place 1', '101', '201', '2016-10-09 10:36:25', '2016-10-09 10:36:25'),
 ('m2', 'Place 2', '102', '202', '2016-10-10 12:43:09', '2016-10-10 12:43:09'),
 ('m3', 'Place 3', '103', '203', '2016-10-11 14:54:31', '2016-10-11 14:54:31');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `messages`
+--
+
+CREATE TABLE `messages` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `sender` int(11) DEFAULT NULL,
+  `receiver` int(11) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `messages`
+--
+
+INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`, `updatedAt`) VALUES
+(1, 'm1', 2, 1, 'Saya tertarik pada properti anda', '2017-05-16 20:28:42', '2017-05-16 20:28:42'),
+(2, 'm2', 3, 1, 'Saya ingin bertanya tentang properti anda', '2017-05-18 01:09:01', '2017-05-18 01:09:01'),
+(5, 'm3', 2, 1, 'saya ingin ketemuan untuk membahas properti anda', '2017-05-18 17:09:00', '2017-05-18 17:09:00'),
+(6, 'm6', 1, 2, 'saya ingin bertemu membahas masalah harga', '2017-05-18 17:12:14', '2017-05-18 17:12:14'),
+(7, 'm7', 2, 1, 'Bisa Ketemuan? saya tertarik banget dengan rumah ini', '2017-05-18 17:23:37', '2017-05-18 17:23:37'),
+(8, 'm8', 4, 3, 'hai rina saya tertarik untuk bertemu bicara harga', '2017-05-18 17:27:07', '2017-05-18 17:27:07'),
+(9, 'm9', 2, 1, 'bisa info lebih lanjut ke no 087722867908 ?', '2017-05-18 20:16:30', '2017-05-18 20:16:30'),
+(10, 'm10', 3, 1, 'more info please...', '2017-05-18 20:38:10', '2017-05-18 20:38:10');
 
 -- --------------------------------------------------------
 
@@ -160,7 +195,22 @@ INSERT INTO `properties` (`no`, `id`, `title`, `status`, `type`, `price`, `provi
 (23, 'p23', 'Tanah Kosong Padang Sambian', 'dijual', 'tanah', 300000000, 'Bali', 'Kuta', 'Padangsambian, Kota Denpasar, Bali, Indonesia no 89', '-8.6546221', '115.18595170000003', '300', '1', 0, 0, 0, '- Surat Lengkap', 3, '2016-12-27 19:31:18', '2016-12-27 19:31:18'),
 (24, 'p24', 'Tanah Rawa Daerah Serangan', 'dijual', 'tanah', 50000000, 'Bali', 'Denpasar', 'Jalan Rawa-rawa, Serangan, Kota Denpasar, Bali, Indonesia no 33', '-8.734714429762585', '115.23011543383791', '500', '0', 0, 0, 0, '- surat lengkap', 1, '2016-12-27 19:34:32', '2016-12-27 19:34:32'),
 (26, 'p25', 'Gudang Barang Strategis Depok', 'disewa', 'gudang', 30000000, 'Jawa Barat', 'Depok', 'Jalan Pusat Gudang no 77', '-6.364270647289123', '106.86221840527344', '700', '600', 2, 0, 0, '- Keamanan 24 Jam', 2, '2017-01-01 15:54:04', '2017-01-01 15:54:04'),
-(27, 'p27', 'Gudang Barang Strategis Bekasi', 'disewa', 'gudang', 50000000, 'Jawa Barat', 'Bekasi', 'Jalan Gudang Ratu no99c', '-6.232429896450983', '107.00837641640624', '1200', '900', 2, 3, 3, '', 3, '2017-01-01 15:56:59', '2017-01-01 15:56:59');
+(27, 'p27', 'Gudang Barang Strategis Bekasi', 'disewa', 'gudang', 50000000, 'Jawa Barat', 'Bekasi', 'Jalan Gudang Ratu no99c', '-6.232429896450983', '107.00837641640624', '1200', '900', 2, 3, 3, '', 3, '2017-01-01 15:56:59', '2017-01-01 15:56:59'),
+(28, 'p28', 'Apartement Sanur', 'dijual', 'apartemen', 150000000, 'Bali', 'Denpasar', 'Jalan Danau Tamblingan', '-8.694737', '115.26301420000004', '150', '150', 1, 2, 2, 'Fasilitas ISO Eropa', 2, '2017-05-18 23:42:13', '2017-05-18 23:42:13');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `propertiestypes`
+--
+
+CREATE TABLE `propertiestypes` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -199,8 +249,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`, `email`, `avatar`, `createdAt`, `updatedAt`) VALUES
 (1, 'u1', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', 'avatar-friza.jpg', '2016-12-23 21:09:57', '2017-05-02 22:56:05'),
-(2, 'u2', 'timogawa', 'member', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', 'avatar-tomomi.jpg', '2016-12-25 22:30:28', '2016-12-26 02:16:32'),
-(3, 'u3', 'rinax', 'agen', 'root', 'Rina Suzuki', '087722867909', 'rinax@gmail.com', 'avatar-rina.jpg', '2016-12-26 04:35:44', '2016-12-26 04:35:44'),
+(2, 'u2', 'timogawa', 'agen', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', 'avatar-tomomi.jpg', '2016-12-25 22:30:28', '2016-12-26 02:16:32'),
+(3, 'u3', 'rina', 'agen', 'root', 'Rina Suzuki', '087722867909', 'urarina@gmail.com,087722867909', 'avatar-rina.jpg', '2016-12-26 04:35:44', '2017-05-18 18:28:46'),
 (4, 'u4', 'mami', 'agen', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', 'avatar-mami.jpg', '2017-05-02 20:05:00', '2017-05-02 20:05:00'),
 (5, 'u5', 'haruna', 'member', 'root', 'Haruna Ono', '087722867911', 'haruna@gmail.com', '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', '2017-05-08 01:08:45', '2017-05-08 01:08:45');
 
@@ -227,9 +277,23 @@ ALTER TABLE `maps`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `properties`
 --
 ALTER TABLE `properties`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `propertiestypes`
+--
+ALTER TABLE `propertiestypes`
   ADD PRIMARY KEY (`no`),
   ADD UNIQUE KEY `id` (`id`);
 
@@ -248,12 +312,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `properties`
 --
 ALTER TABLE `properties`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT for table `propertiestypes`
+--
+ALTER TABLE `propertiestypes`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
