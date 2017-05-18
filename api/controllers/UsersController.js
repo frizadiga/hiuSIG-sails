@@ -82,7 +82,7 @@ module.exports = {
       if(err)return res.negotiate(err);
 
         //return res.json(params);
-        return res.redirect('/admin/user/manage');
+        return res.redirect('/admin/users/manage');
       
       });//End Users.create()
       // });//End Files.create()
