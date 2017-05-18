@@ -129,7 +129,7 @@ module.exports = {
     //return res.json(params);
     Properties.update({no:params.no},params).exec(function(err,data){
       if(err)return res.negotiate(err);
-      return res.redirect('admin/listing/manage');
+      return res.redirect('admin/listings/manage');
     });
   },
   

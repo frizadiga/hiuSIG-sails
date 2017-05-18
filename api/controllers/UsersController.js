@@ -103,7 +103,7 @@ module.exports = {
       //return res.json(params);
       Users.update({no:params.no},params).exec(function(err,data){
         if(err)return res.negotiate(err);
-        return res.redirect('admin/user/manage');
+        return res.redirect('admin/users/manage');
     });
     },
 
