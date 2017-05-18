@@ -14,7 +14,7 @@ module.exports = {
 		const receiver = req.session.user;
 		let opts = {};
 		opts = {receiver:receiver.no};
-		Messages.find(opts).populate('receiver').populate('sender').exec((err,data)=>{
+		Messages.find(opts).populate('receiver').populate('sender').sort('createdAt DESC').exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			// res.json(data);
 			return res.view('admin/messages',{dataMessages:data,layout:'layout-admin'})
