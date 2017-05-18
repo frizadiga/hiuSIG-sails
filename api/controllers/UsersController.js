@@ -110,7 +110,7 @@ module.exports = {
     userDelete:function(req,res){
       Users.destroy({id:req.param('id')}).exec(function(err,data){
         if(err)return res.serverError(err);
-            return res.ok(data.id+' berhasil dihapus');
+            return res.json(data.id+' berhasil dihapus');
         });
     },
 

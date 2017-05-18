@@ -34,7 +34,7 @@ module.exports = {
 	messageDelete:(req,res)=>{
 		Messages.destroy({id:req.param('id')}).exec((err,data)=>{
 			if(err)return res.negotiate(err);
-			return res.ok(data.id+'berhasil dihapus');
+			return res.json(data.id+' berhasil dihapus');
 		});
 	}
 };

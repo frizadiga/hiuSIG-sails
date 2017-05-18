@@ -136,7 +136,7 @@ module.exports = {
   listingDelete:function(req,res){
 		Properties.destroy({id:req.param('id')}).exec(function(err,data){
 			if(err) return res.negotiate(err);
-			return res.ok(data.id+' berhasil dihapus');
+			return res.json(data.id+' berhasil dihapus');
 		})
 	}
 

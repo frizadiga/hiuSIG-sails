@@ -17,7 +17,7 @@
       
       <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
         <button onclick="document.getElementById('modal-confirm-delete-message').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
-        <button onclick="deleteUser(mi.innerHTML)" type="button" class="w3-btn w3-red w3-right">Hapus</button>
+        <button onclick="deleteMessage(mi.innerHTML)" type="button" class="w3-btn w3-red w3-right">Hapus</button>
       </footer>
     </form>
     
@@ -35,7 +35,7 @@ var md = document.getElementById('modal-data');
     mi.innerHTML = id;
     md.innerHTML = username;
   }
-  function deleteUser(id){
+  function deleteMessage(id){
     //alert(id)
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
