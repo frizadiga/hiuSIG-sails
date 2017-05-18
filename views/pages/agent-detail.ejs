@@ -37,7 +37,7 @@
     </table>
   <div class="w3-blue-grey w3-padding">Hubungi Agen</div>
   <div class="w3-container w3-padding">
-    <form action="/api/messages" method="POST">
+    <form action="/api/message" method="POST">
   <input type="hidden" name="sender" value="<%=(req.session.user)?req.session.user.no:''%>">
   <input type="hidden" name="receiver" value="<%=(req.session.user)?dataAgent.no:''%>">
 

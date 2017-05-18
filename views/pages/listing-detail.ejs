@@ -114,7 +114,7 @@
     </div>
   </div>
   <div class="w3-blue-grey w3-padding"><b>Hubungi Agen</b></div>
-  <form action="/api/messages" method="POST">
+  <form action="/api/message" method="POST">
   <input type="hidden" name="sender" value="<%=(req.session.user)?req.session.user.no:''%>">
   <input type="hidden" name="receiver" value="<%=(req.session.user)?dataProperties.idUser.no:''%>">
 
