@@ -132,7 +132,7 @@
 
 <!-- Modal Agent Message -->
 <div id="modal-message" class="w3-modal">
-  <div class="w3-modal-content w3-card-4" style="max-width:700px;margin-bottom:100px">
+  <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:700px;margin-bottom:100px">
   <header class="w3-container w3-blue-grey">
     <h3><i class="fa fa-envelope"></i> Pesan</h3>
     <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-message')"><i class="fa fa-close"></i></span>
@@ -157,7 +157,7 @@
 
 <!-- Modal Booking -->
 <div id="modal-booking" class="w3-modal">
-  <div class="w3-modal-content w3-card-4" style="max-width:700px;margin-bottom:100px">
+  <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:700px;margin-bottom:100px">
     <header class="w3-container w3-blue-grey">
       <h3><i class="fa fa-address-book"></i> Booking</h3>
       <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-booking')"><i class="fa fa-close"></i></span>
@@ -180,7 +180,7 @@
 <!-- Modal Image -->
 <div id="modal-image" class="w3-modal w3-black" style="padding-bottom: 100px">
  <span class="w3-text-white w3-xxlarge w3-hover-text-grey w3-container w3-display-topright" onclick="closeModal('modal-image')" style="cursor:pointer">×</span>
- <div class="w3-modal-content">
+ <div class="w3-modal-content w3-animate-opacity">
  <%var totalImages=3%>
   <div class="w3-content" style="max-width:1200px">
    <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
