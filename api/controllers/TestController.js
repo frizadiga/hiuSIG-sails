@@ -9,6 +9,15 @@ module.exports = {
 	index:(req,res)=>{
 		res.json({message:'TestController Worked!...'});
 	},
+	
+	bookingsList:(req,res)=>{
+		Bookings.find({}).populate('property').populate('buyer').populate('agent').exec((err,data)=>{
+			if(err)return res.json(err);
+			return res.json(data);
+			// return res.view('admin/bookings',{dataBookings:data,layout:'layout-admin'});
+		});
+	},
+
 	agentListing:function(req,res){
 	  Users.find({role:'agen'}).exec((err,data)=>{
 	    if (err)return res.negotiate(err);

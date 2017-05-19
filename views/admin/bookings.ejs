@@ -17,22 +17,22 @@
 		<tr class="w3-blue-grey">
 			<th>ID</th>
 			<th>Judul Properti</th>
+			<th>Pemohon</th>
 			<th>Agen</th>
-			<th>Pembeli</th>
 			<th style="width: 250px"></th>
 		</tr>
-		<%// for (var i = 0; i < data.length; i++) { -%>
+		<%for(var i=0, len=dataBookings.length; i < len; i++) { -%>
 		<tr class="w3-text-grey w3-hover-green">
-			<td style="vertical-align: middle"></td>
-			<td style="vertical-align: middle"></td>
-      <td style="vertical-align: middle"></td>
-			<td style="vertical-align: middle"></td>
+			<td style="vertical-align: middle"><%=dataBookings[i].id%></td>
+			<td style="vertical-align: middle"><%=dataBookings[i].property.title%></td>
+      <td style="vertical-align: middle"><%=dataBookings[i].buyer.name%></td>
+			<td style="vertical-align: middle"><%=dataBookings[i].agent.name%></td>
 			<td style="vertical-align: middle">
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-check"></i> Process</button>
 			</td>
 		</tr>
-		<%// } -%>
+		<% } -%>
 	<!-- 	<tr  class="w3-hover-none">
 			<td colspan="4">
 			<button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-print"></i> Print</b></button>

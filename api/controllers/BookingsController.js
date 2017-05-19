@@ -11,8 +11,9 @@ module.exports = {
 		return res.view('admin/bookings',{layout:'layout-admin'});
 	},
 	bookingsList:(req,res)=>{
-		Bookings.find({}).exec((err,data)=>{
-			res.view('admin/bookings',{dataBookings:data,layout:'layout-admin'});
+		Bookings.find({}).populate('property').populate('buyer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.view('admin/bookings',{dataBookings:data,layout:'layout-admin'});
 		});
 	}
 };
