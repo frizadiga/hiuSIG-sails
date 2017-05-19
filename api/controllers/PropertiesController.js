@@ -46,9 +46,21 @@ module.exports = {
          return res.searchNotFound('Listing yang anda cari tidak ditemukan!');
       }
       if(req.path === '/listing'){
-      return res.view('pages/listing',{dataProperties:data,layout:'layout-plain'});}
+        return res.view('pages/listing',{dataProperties:data,layout:'layout-plain'});}
       if(req.path === '/findinmaps'){
-      return res.view('pages/maps',{dataProperties:data,layout:'layout-plain'});
+        let dataLocation = [];
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+        dataLocation.push(
+        {
+          //title:data[i].title,
+          lat:Number(data[i].lat),
+          lng:Number(data[i].lng)
+        }
+        );
+      }
+        // return res.json({dataProperties:data,dataCoords:dataLocation});
+        return res.view('pages/maps',{dataProperties:data,dataCoords:dataLocation,layout:'layout-plain'});
       }
     });
   },
