@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Mei 2017 pada 21.56
+-- Generation Time: 19 Mei 2017 pada 14.29
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -27,9 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bookings` (
-  `name` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `property` int(11) DEFAULT NULL,
+  `buyer` int(11) DEFAULT NULL,
+  `agent` int(11) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
@@ -163,7 +165,11 @@ INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`
 (30, 'm30', 2, 1, 'test', '2017-05-19 02:39:31', '2017-05-19 02:39:31'),
 (31, 'm31', 2, 1, 'test friza', '2017-05-19 02:39:53', '2017-05-19 02:39:53'),
 (32, 'm32', 1, 2, 'pm harga ya', '2017-05-19 02:41:03', '2017-05-19 02:41:03'),
-(33, 'm33', 1, 2, 'hai timo saya tertarik membantu listing kamu', '2017-05-19 02:55:41', '2017-05-19 02:55:41');
+(33, 'm33', 1, 2, 'hai timo saya tertarik membantu listing kamu', '2017-05-19 02:55:41', '2017-05-19 02:55:41'),
+(34, 'm34', 0, 2, 'hai tomomi', '2017-05-19 13:52:44', '2017-05-19 13:52:44'),
+(35, 'm35', 1, 2, 'ruko baru ya?', '2017-05-19 17:08:54', '2017-05-19 17:08:54'),
+(36, 'm36', 1, 2, 'ruko ya?', '2017-05-19 17:11:12', '2017-05-19 17:11:12'),
+(37, 'm37', 1, 2, 'ruko ya?', '2017-05-19 17:12:36', '2017-05-19 17:12:36');
 
 -- --------------------------------------------------------
 
@@ -211,7 +217,7 @@ INSERT INTO `properties` (`no`, `id`, `title`, `status`, `type`, `price`, `provi
 (24, 'p24', 'Tanah Rawa Daerah Serangan', 'dijual', 'tanah', 50000000, 'Bali', 'Denpasar', 'Jalan Rawa-rawa, Serangan, Kota Denpasar, Bali, Indonesia no 33', '-8.734714429762585', '115.23011543383791', '500', '0', 0, 0, 0, '- surat lengkap', 1, '2016-12-27 19:34:32', '2016-12-27 19:34:32'),
 (26, 'p25', 'Gudang Barang Strategis Depok', 'disewa', 'gudang', 30000000, 'Jawa Barat', 'Depok', 'Jalan Pusat Gudang no 77', '-6.364270647289123', '106.86221840527344', '700', '600', 2, 0, 0, '- Keamanan 24 Jam', 2, '2017-01-01 15:54:04', '2017-01-01 15:54:04'),
 (27, 'p27', 'Gudang Barang Strategis Bekasi', 'disewa', 'gudang', 50000000, 'Jawa Barat', 'Bekasi', 'Jalan Gudang Ratu no99c', '-6.232429896450983', '107.00837641640624', '1200', '900', 2, 3, 3, '', 3, '2017-01-01 15:56:59', '2017-01-01 15:56:59'),
-(28, 'p28', 'Apartement Sanur', 'dijual', 'apartemen', 150000000, 'Bali', 'Denpasar', 'Jalan Danau Tamblingan no 55 Sanur Bali', '-8.694737', '115.26301420000004', '150', '150', 1, 2, 2, 'Fasilitas ISO Eropa', 2, '2017-05-18 23:42:13', '2017-05-19 02:08:19');
+(28, 'p28', 'Apartement dibilangan Sanur', 'dijual', 'apartemen', 150000000, 'Bali', 'Denpasar', 'Jalan Danau Tamblingan no 55 Sanur Bali', '-8.694737', '115.26301420000004', '150', '150', 1, 2, 2, 'Fasilitas ISO Eropa', 2, '2017-05-18 23:42:13', '2017-05-19 13:34:30');
 
 -- --------------------------------------------------------
 
@@ -263,16 +269,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`, `email`, `avatar`, `createdAt`, `updatedAt`) VALUES
-(0, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', 'avatar-friza.jpg', '2016-12-23 21:09:57', '2017-05-02 22:56:05'),
 (1, 'u1', 'frizadiga', 'agent', 'root', 'frizadiga', '087722867907', 'frizadiga@gmail.com', '5cf153a3-93c2-4059-ad4d-859761cdfe17.jpg', '2017-05-19 02:11:51', '2017-05-19 02:20:20'),
 (2, 'u2', 'timogawa', 'agent', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', 'avatar-tomomi.jpg', '2016-12-25 22:30:28', '2017-05-19 02:27:50'),
 (3, 'u3', 'rina', 'agent', 'root', 'Rina Suzuki', '087722867909', 'urarina@gmail.com', 'avatar-rina.jpg', '2016-12-26 04:35:44', '2017-05-19 02:27:37'),
 (4, 'u4', 'mami', 'agent', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', 'avatar-mami.jpg', '2017-05-02 20:05:00', '2017-05-19 02:22:36'),
-(5, 'u5', 'haruna', 'member', 'root', 'Haruna Ono', '087722867911', 'haruna@gmail.com', '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', '2017-05-08 01:08:45', '2017-05-08 01:08:45');
+(5, 'u5', 'haruna', 'member', 'root', 'Haruna Ono', '087722867911', 'haruna@gmail.com', '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', '2017-05-08 01:08:45', '2017-05-08 01:08:45'),
+(8, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', 'avatar-friza.jpg', '2016-12-23 21:09:57', '2017-05-02 22:56:05');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indexes for table `crud`
@@ -325,6 +338,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
@@ -333,7 +351,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `properties`
 --
@@ -348,7 +366,7 @@ ALTER TABLE `propertiestypes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

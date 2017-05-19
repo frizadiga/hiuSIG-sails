@@ -8,9 +8,24 @@
 module.exports = {
 
   attributes: {
-  	name:'string',
-  	phone:'string',
-  	email:'string',
+  	no:{
+  		type:'integer',
+  		autoIncrement:true,
+  		primaryKey:true
+  	},
+  	id:{
+  		type:'string',
+  		unique:true
+  	},
+  	property:{
+  		model:'properties'
+  	},
+  	buyer:{
+  		model:'users'
+  	},
+  	agent:{
+  		model:'users'
+  	},
   	message:'string'
   }
 };
