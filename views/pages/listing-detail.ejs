@@ -107,11 +107,11 @@
   <div class="w3-display-container w3-center">
     <img style="width:100%;height: auto" class="w3-grayscale" src="/img/building-horde.png"  alt="" />
     <div class="w3-display-middle">
-    <a href="/agent/detail/<%=dataProperties.idUser.id%>">
-    <img style="width:170px" class="w3-circle w3-card-4" src="/uploads/<%=dataProperties.idUser.avatar%>" alt="" />
+    <a href="/agent/detail/<%=dataProperties.agent.id%>">
+    <img style="width:170px" class="w3-circle w3-card-4" src="/uploads/<%=dataProperties.agent.avatar%>" alt="" />
     </a>
-    <p class="w3-large" style="margin-bottom: 0px"><%=dataProperties.idUser.name%></p>
-    <p class="w3-large" style="margin-bottom: 0px"><i class="fa fa-phone"></i> <%=dataProperties.idUser.phone%></p>
+    <p class="w3-large" style="margin-bottom: 0px"><%=dataProperties.agent.name%></p>
+    <p class="w3-large" style="margin-bottom: 0px"><i class="fa fa-phone"></i> <%=dataProperties.agent.phone%></p>
     <div class="w3-section">
       <button onclick="openModal('modal-message')" class="w3-button w3-blue-grey w3-hover-blue"><b><i class="fa fa-envelope"></i> Send</b> Message</button>
     </div>
@@ -139,7 +139,7 @@
   </header>
   <form id="form-message">
   <input type="hidden" name="sender" value="<%=(req.session.user)?req.session.user.no:''%>">
-  <input type="hidden" name="receiver" value="<%=(req.session.user)?dataProperties.idUser.no:''%>">
+  <input type="hidden" name="receiver" value="<%=(req.session.user)?dataProperties.agent.no:''%>">
 
   <div class="w3-container">
   <p>
@@ -166,8 +166,8 @@
       <img class="w3-card-4" style="max-width:600px" src="<%=dataProperties.pictures[0].path%>">
       <p><%=dataProperties.title%></p>
       <hr>
-      <img class="w3-circle w3-card" style="width:20%" src="/uploads/<%=dataProperties.idUser.avatar%>">
-      <p>Agent: <%=dataProperties.idUser.name%></p>
+      <img class="w3-circle w3-card" style="width:20%" src="/uploads/<%=dataProperties.agent.avatar%>">
+      <p>Agent: <%=dataProperties.agent.name%></p>
       <hr>
       
       <button id="btn-send-booking" class="w3-button w3-block w3-blue w3-hover-green">

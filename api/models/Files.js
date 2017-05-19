@@ -19,7 +19,7 @@ module.exports = {
     path:{
     	type:'string'
     },
-    idOwner:{
+    owner:{
         model:'properties'
     },
   },

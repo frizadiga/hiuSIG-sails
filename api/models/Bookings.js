@@ -21,10 +21,12 @@ module.exports = {
   		model:'properties'
   	},
   	buyer:{
-  		model:'users'
+  		model:'users',
+  		dominant:false
   	},
   	agent:{
-  		model:'users'
+  		model:'users',
+  		dominant:false
   	},
   	message:'string'
   }

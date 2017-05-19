@@ -64,16 +64,16 @@ module.exports = {
     },
     pictures:{
       collection:'files',
-      via:'idOwner'
+      via:'owner'
     },
-    idUser:{
+    agent:{
       model:'users'
     }
     
   },
 
   s:function(opts,cb){
-    Properties.find(opts).populate('pictures').populate('idUser').exec((err,data)=> {
+    Properties.find(opts).populate('pictures').populate('agent').exec((err,data)=> {
       if(err)return cb(err);
       cb(err,data);
     });
@@ -117,7 +117,7 @@ module.exports = {
       address:{'contains':location}
     };
     query = Object.assign(params,queryLocation);
-    Properties.find(query).populate('pictures').populate('idUser').exec(function(err,data){
+    Properties.find(query).populate('pictures').populate('agent').exec(function(err,data){
       if(err)return cb(err);
       cb(err,data);
     });

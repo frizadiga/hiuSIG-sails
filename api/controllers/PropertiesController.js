@@ -66,7 +66,7 @@ module.exports = {
   },
   
   listingDetail:function(req,res){
-    Properties.findOne({id:req.param('id')}).populate('pictures').populate('idUser').exec(function(err,data){
+    Properties.findOne({id:req.param('id')}).populate('pictures').populate('agent').exec(function(err,data){
     	// if(err)return res.send(err);
     	if(err)return res.negotiate(err);
     	if(!data)return res.notFound(req.param('id')+'tidak dapat ditemukan');
@@ -85,7 +85,7 @@ module.exports = {
   listingManage:function(req,res){
     var user = req.session.user;
     var opts = {};
-    if (user.role === 'administrator') {opts = {}} else {opts = {idUser:user.no}}
+    if (user.role === 'administrator') {opts = {}} else {opts = {agent:user.no}}
     Properties.find(opts).exec(function(err,data){
       return res.view('admin/listing-manage',{dataProperty:data,layout:'layout-admin'});
       // return res.json(user);

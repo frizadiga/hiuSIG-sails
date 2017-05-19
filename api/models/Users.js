@@ -40,7 +40,7 @@ module.exports = {
     },
     properties:{
       collection:'properties',
-      via:'idUser'
+      via:'agent'
     }
   },
 
