@@ -3,7 +3,9 @@
 }%>
 <!--INSERT LISTING-->
 <form action="<%=dataEdit?'/api/listing/edit/'+dataEdit.no:'/api/listing/insert/'%>" method="POST" enctype="multipart/form-data">
+<%if(req.session.user.role!=='administrator'){%>
 <input type="hidden" name="idUser" value="<%=req.session.user.no%>">
+<%}%>
 <div id="insert-listing" class="w3-padding">
  <!-- <h2>Insert Listing</h2> -->
  <!-- <p class="w3-padding-left w3-opacity"><b>Insert listing element</b></p> -->
