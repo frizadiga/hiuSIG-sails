@@ -149,7 +149,7 @@
   </p>
   <p><label>Pesan:</label><textarea placeholder="Ex: saya tertarik dengan properti anda" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" name="message" rows="5" style="resize:vertical;"></textarea></p>
   </p>
-  <button id="btn-send-message" class="w3-button w3-green w3-hover-blue w3-right" style="margin-bottom: 16px" type="button"><b><i class="fa fa-send"></i> Kirim</b></button>
+  <button id="btn-send-message" class="w3-button w3-blue w3-hover-green w3-block" style="margin-bottom: 16px" type="button"><b><i class="fa fa-send"></i> Kirim</b></button>
   </div>
   </form>
   </div>
@@ -212,6 +212,8 @@ var modalSent = document.querySelector('#modal-sent-message');
 var btnSendMessage = document.querySelector('#btn-send-message');
 var btnSendBooking = document.querySelector('#btn-send-booking');
 btnSendBooking.addEventListener('click',postBooking);
+btnSendMessage.addEventListener('click',postMessage)
+
 function postBooking(){
   btnSendBooking.innerHTML='<i class="fa fa-check"></i> Booked!';
   setTimeout(()=>{
@@ -223,9 +225,11 @@ fetch('/api/message',{
   method:'POST',
   body: new FormData(form)
 });
-closeModal('modal-message');
+  btnSendMessage.innerHTML='<i class="fa fa-check"></i> Pesan Terkirim!';
+  setTimeout(()=>{
+  closeModal('modal-message');
+  },3000);
 }
-btnSendMessage.addEventListener('click',postMessage)
 </script>
 <script>
 //Image Modal---------------------------------------------------
