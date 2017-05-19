@@ -9,12 +9,12 @@
 
 <!-- Properties Image -->
     <div class="w3-content w3-animate-opacity" style="padding: 8px 0px 0px 0px!important">
-      <div class="w3-gray">
+      <div class="w3-gray" style="height:500px;overflow:hidden;">
         <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="cursor: pointer;">
       </div>
-      <div class="w3-row">
+      <div class="w3-row w3-white">
         <div class="w3-col s4">
-          <img onclick="openModal('modal-image');currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+          <img onclick="openModal('modal-image');currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height:auto;cursor:pointer;vertical-align:middle;" src="<%=dataProperties.pictures[0].path%>" alt="">
         </div>
         <div class="w3-col s4">
           <img onclick="openModal('modal-image');currentdiv(2)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
@@ -132,7 +132,7 @@
 
 <!-- Modal Agent Message -->
 <div id="modal-message" class="w3-modal">
-  <div class="w3-modal-content" style="max-width:700px;margin-bottom:100px">
+  <div class="w3-modal-content w3-card-4" style="max-width:700px;margin-bottom:100px">
   <header class="w3-container w3-blue-grey">
     <h3><i class="fa fa-envelope"></i> Pesan</h3>
     <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-message')"><i class="fa fa-close"></i></span>
@@ -141,7 +141,7 @@
   <input type="hidden" name="sender" value="<%=(req.session.user)?req.session.user.no:''%>">
   <input type="hidden" name="receiver" value="<%=(req.session.user)?dataProperties.agent.no:''%>">
 
-  <div class="w3-container">
+  <div class="w3-container w3-text-grey">
   <p>
   <p><label>Nama Anda:</label><input placeholder="Masukan Nama Anda" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" name="" value="<%=(req.session.user)?req.session.user.name:''%>"></p>
   <p><label>Phone/Mobile Phone:</label><input placeholder="Ex: 0812345678910" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" value="<%=(req.session.user)?req.session.user.phone:''%>"></p>
@@ -157,7 +157,7 @@
 
 <!-- Modal Booking -->
 <div id="modal-booking" class="w3-modal">
-  <div class="w3-modal-content" style="max-width:700px;margin-bottom:100px">
+  <div class="w3-modal-content w3-card-4" style="max-width:700px;margin-bottom:100px">
     <header class="w3-container w3-blue-grey">
       <h3><i class="fa fa-address-book"></i> Booking</h3>
       <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-booking')"><i class="fa fa-close"></i></span>
