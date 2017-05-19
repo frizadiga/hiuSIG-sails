@@ -9,18 +9,19 @@
  <!-- <p class="w3-padding-left w3-opacity"><b>Insert listing element</b></p> -->
   <div class="w3-card">
   <div class="w3-row-padding">
-    <p class=" w3-text-blue w3-bottombar w3-border-light-grey" style="border-width:2px!important;padding:16px 0px 0px 0px;margin:0px 8px 0px 8px">Informasi Dasar
+    <p class="w3-text-grey" style="padding:16px 0px 0px 0px;margin:0px 8px 0px 8px;font-weight:bold;">Informasi Dasar
     </p>
+    <hr class="w3-hr w3-grey">
     <div class="w3-col m8">
     
       <p>
         <div class="w3-row">
           <!-- <div class="w3-col m2">
-            <label class="w3-text-blue">ID Listing</label>
+            <label class="w3-text-grey">ID Listing</label>
             <input type="text" name="id" class="w3-input w3-border" placeholder="p1" style="border-right:0px!important" required>
           </div> -->
           <div class="w3-col m12">
-          <label class=" w3-text-blue">Judul Listing</label>
+          <label class="w3-text-grey">Judul Listing</label>
             <input type="text" class="w3-input w3-border" placeholder="Ex: Rumah di Sunset Road dekat Tol laut" name="title" value="<%=dataEdit?dataEdit.title:''%>" required>
           </div>
         </div>
@@ -29,7 +30,7 @@
       <p>
       <div class="w3-row">
         <div class="w3-col m3">
-          <label class=" w3-text-blue">Jenis Listing</label>
+          <label class="w3-text-grey">Jenis Listing</label>
             <select class="w3-select w3-text-grey w3-border" name="status">
              <option value="<%=dataEdit?dataEdit.status:''%>"><%=dataEdit?dataEdit.status.capitalize():'--Pilih--'%></option>
             <option value="dijual">Dijual</option>
@@ -37,7 +38,7 @@
             </select>
         </div>
         <div class="w3-col m5">
-          <label class=" w3-text-blue">Tipe</label>
+          <label class="w3-text-grey">Tipe</label>
           <select class="w3-select w3-text-grey w3-border" name="type" style="border-left: 0px!important">
             <option value="<%=dataEdit?dataEdit.type:''%>"><%=dataEdit?dataEdit.type.capitalize():'--Pilih--'%></option>
             <option value="rumah">Rumah</option>
@@ -53,37 +54,37 @@
           </select>
         </div>
         <div class="w3-col m4">
-          <label class=" w3-text-blue">Harga(Rp.)</label>
+          <label class="w3-text-grey">Harga(Rp.)</label>
           <input type="number" min="500000" step="500000" class="w3-input w3-border" name="price" placeholder="Ex: 1000000000" style="border-left:0px!important" value="<%=dataEdit?dataEdit.price:''%>">
         </div>
         </div>
       </p>
       
       <p>
-      <p class=" w3-text-blue w3-bottombar w3-border-light-grey" style="border-width:2px!important">Spesifikasi
+      <p class="w3-text-grey w3-bottombar w3-border-light-grey" style="border-width:2px!important">Spesifikasi
       </p>
         <div class="w3-row">
          <div class="w3-half">
-           <label class=" w3-text-blue">Luas Tanah(m<sup>2</sup>)</label>
+           <label class="w3-text-grey">Luas Tanah(m<sup>2</sup>)</label>
            <input name="lotSize" type="number" min="0" class="w3-input w3-border" placeholder="Ex: 150" style="border-right: 0px!important" value="<%=dataEdit?dataEdit.lotSize:''%>">
          </div>
          <div class="w3-half">
-           <label class=" w3-text-blue">Luas Bangunan(m<sup>2</sup>)</label>
+           <label class="w3-text-grey">Luas Bangunan(m<sup>2</sup>)</label>
            <input name="buildingSize" type="number" min="0" class="w3-input w3-border" placeholder="Ex: 100" value="<%=dataEdit?dataEdit.buildingSize:''%>">
          </div>
         </div>
       </p>
       <div class="w3-row">
         <div class="w3-third">
-          <label class=" w3-text-blue">Jumlah Lantai</label>
+          <label class="w3-text-grey">Jumlah Lantai</label>
           <input name="floor" type="number" min="0" class="w3-input w3-border" placeholder="Ex: 2" style="border-right:0px!important" value="<%=dataEdit?dataEdit.floor:''%>">
         </div>
         <div class="w3-third">
-          <label class=" w3-text-blue">Jumlah Kamar Tidur</label>
+          <label class="w3-text-grey">Jumlah Kamar Tidur</label>
           <input name="bed" type="number" min="0" class="w3-input w3-border" placeholder="Ex:3" style="border-right:0px!important" value="<%=dataEdit?dataEdit.bed:''%>">
         </div>
         <div class="w3-third">
-          <label class=" w3-text-blue">Jumlah Kamar Mandi</label>
+          <label class="w3-text-grey">Jumlah Kamar Mandi</label>
           <input name="bath" type="number" min="0" class="w3-input w3-border" placeholder="Ex: 2" value="<%=dataEdit?dataEdit.bath:''%>"> 
         </div>
       </div>
@@ -91,7 +92,7 @@
   </div>
   <div class="w3-col m4">
     <p>
-      <label class=" w3-text-blue">Deskripsi</label>
+      <label class="w3-text-grey">Deskripsi</label>
         <textarea id="txt-desc" name="description" class="w3-input w3-border" rows="13" placeholder="Penjelasan Tambahan:
 - Garasi
 - Kolam Renang
@@ -103,10 +104,11 @@
 </div>
 <!--FORM LOKASI-->
     <div class="w3-row-padding">   
-      <p class=" w3-text-blue w3-bottombar w3-border-light-grey" style="border-width:2px!important">Lokasi
+      <p class="w3-text-grey" style="padding:16px 0px 0px 0px;margin:0px 8px 0px 8px;font-weight:bold;">Lokasi
       </p>
+          <hr class="w3-hr w3-grey" style="margin-bottom:16px!important">
       <div class="w3-accordion">
-        <button class="w3-button w3-block w3-blue w3-hover-green" onclick="accordion('map-form');//initMap()" type="button">Cari di Map <i class="fa fa-map"></i></button>
+        <button class="w3-button w3-block w3-blue-grey w3-hover-green" onclick="accordion('map-form');//initMap()" type="button">Cari di Map <i class="fa fa-map"></i></button>
       </div>
       <div id="map-form" class="w3-accordion-content w3-show">
 <!--INPUT MAP-->
@@ -116,30 +118,30 @@
       <!-- <p> -->
         <div class="w3-row">
           <div class="w3-col m2">
-            <label class="w3-text-blue">Latitude</label>
+            <label class="w3-text-grey">Latitude</label>
             <input class="w3-input w3-border" type="text" name="lat" id="lat" readonly value="<%=dataEdit?dataEdit.lat:''%>">
           </div>
           <div class="w3-col m2">
-            <label class="w3-text-blue">Longitude</label>
+            <label class="w3-text-grey">Longitude</label>
             <input class="w3-input w3-border" type="text" name="lng" id="lng" readonly value="<%=dataEdit?dataEdit.lng:''%>">
           </div>
           <div class="w3-col m4">
-            <label class=" w3-text-blue">Provinsi</label>
+            <label class="w3-text-grey">Provinsi</label>
             <input class="w3-input w3-border" placeholder="Ex: Bali" type="text" name="province" style="border-right:0px!important" required value="<%=dataEdit?dataEdit.province:''%>">            
           </div>
           <div class="w3-col m4">
-            <label class=" w3-text-blue">Kota</label>
+            <label class="w3-text-grey">Kota</label>
             <input class="w3-input w3-border" placeholder="Ex: Kuta" type="text" name="city" required value="<%=dataEdit?dataEdit.city:''%>">
           </div>
         </div>
       <!-- </p> -->
       <!-- <p> -->
-        <label class=" w3-text-blue">Alamat Lengkap</label>
+        <label class="w3-text-grey">Alamat Lengkap</label>
         <textarea id="txt-address" class="w3-input w3-border" placeholder="Ex: Jalan Ratu Lebah No 3, Kerobokan, Kuta Utara" name="address" style="resize:vertical;" required><%=dataEdit?dataEdit.address:''%></textarea>
       <!-- </p> -->
     <p>
       <!-- <img src="/img/placeholder_image_upload.png" class="w3-image" style="width:100%""> -->
-      <span class="xw3-tag w3-padding w3-blue">Gambar&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
+      <span class="w3-padding w3-blue-grey">Gambar&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
        <input class="" type="file" name="pictures" <%=dataEdit?'':'required'%>>       
     </p>
         
@@ -148,8 +150,8 @@
   </div>
 
   <div class="w3-container w3-section w3-card w3-padding-16">
-      <button class="w3-btn w3-blue w3-right w3-hover-green"><%=dataEdit?'Edit':'Tambah'%></button>
-      <button class="w3-btn w3-light-grey w3-text-blue w3-right" type="reset">Atur Ulang</button>
+      <button class="w3-btn w3-blue-grey w3-right w3-hover-green"><%=dataEdit?'Edit':'Tambah'%></button>
+      <button class="w3-btn w3-light-grey w3-text-grey w3-right" type="reset">Atur Ulang</button>
   </div>
 
 </div>
