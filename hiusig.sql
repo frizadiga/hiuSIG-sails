@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Mei 2017 pada 14.29
+-- Generation Time: 19 Mei 2017 pada 15.18
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -36,6 +36,14 @@ CREATE TABLE `bookings` (
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `bookings`
+--
+
+INSERT INTO `bookings` (`no`, `id`, `property`, `buyer`, `agent`, `message`, `createdAt`, `updatedAt`) VALUES
+(1, 'b1', 14, 2, 1, 'saya%20akan%20DP%2050%20%', '2017-05-19 19:35:40', '2017-05-19 19:35:40'),
+(2, 'b2', 15, 1, 2, 'saya%20akan%20DP%2070%20%', '2017-05-19 20:01:41', '2017-05-19 20:01:41');
 
 -- --------------------------------------------------------
 
@@ -341,7 +349,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `files`
 --
