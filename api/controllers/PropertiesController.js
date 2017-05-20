@@ -98,7 +98,7 @@ module.exports = {
     // Create Property ID
     Properties.createId(function(err,id){
       params.id = id;
-      var idOwner = parseInt(id.replace('p',''));
+      var owner = parseInt(id.replace('p',''));
      
    
     // Upload Picture
@@ -106,10 +106,10 @@ module.exports = {
       if(err)return res.serverError(err);
       var fileName = require('path').basename(uploadedFiles[0].fd);
       var filePath = '/uploads/'+fileName;
-      //return res.json({name:'gambar',path:filePath,idOwner:'p1'});
+      //return res.json({name:'gambar',path:filePath,owner:'p1'});
 
     // Insert FileName and Path to Database
-     Files.create({name:fileName,path:filePath,idOwner:idOwner}).exec(function(err,data){
+     Files.create({name:fileName,path:filePath,owner:owner}).exec(function(err,data){
      if(err)return res.negotiate(err);
     
      // Insert Property Record to Database 
