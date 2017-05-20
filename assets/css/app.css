@@ -103,7 +103,7 @@ html,body{
   background-size: cover;
 }
 
-#modal-login-header{
+.login-header{
   background: url(/img/building-horde.png);
   background-size: cover;
 }
