@@ -230,25 +230,6 @@ var btnSendBooking = document.querySelector('#btn-send-booking');
 btnSendBooking.addEventListener('click',postBooking);
 btnSendMessage.addEventListener('click',postMessage)
 
-function postBooking(){
-  btnSendBooking.innerHTML='<i class="fa fa-check"></i> Booked!';
-  setTimeout(()=>{
-  closeModal('modal-booking');  
-  },3000);
-}
-function postMessage(){
-fetch('/api/message',{
-  method:'POST',
-  body: new FormData(form)
-});
-  btnSendMessage.innerHTML='<i class="fa fa-check"></i> Pesan Terkirim!';
-  setTimeout(()=>{
-  closeModal('modal-message');
-  },3000);
-}
-</script>
-<script>
-//Image Modal---------------------------------------------------
 function openModal(el) {
   document.getElementById(el).style.display = "block";
   document.body.style.overflow = "hidden";
@@ -259,6 +240,36 @@ function closeModal(el) {
   document.body.style.overflow = "visible";
 }
 
+function postBooking(){
+  fetch('/api/booking',{
+    method:'POST',
+    body:JSON.stringify({
+      property:'<%-dataProperties.no%>',
+      buyer:'<%-req.session.user.no%>',
+      agent:'<%-dataProperties.agent.no%>',
+      message:'pesan tambahan',
+      status:'pending',
+    })
+  });
+
+  btnSendBooking.innerHTML='<i class="fa fa-check"></i> Booked!';
+  setTimeout(()=>{
+  closeModal('modal-booking');  
+  },2000);
+}
+function postMessage(){
+  fetch('/api/message',{
+    method:'POST',
+    body: new FormData(form)
+  });
+  btnSendMessage.innerHTML='<i class="fa fa-check"></i> Pesan Terkirim!';
+  setTimeout(()=>{
+  closeModal('modal-message');
+  },2000);
+}
+</script>
+<script>
+//Image Modal---------------------------------------------------
 var slideIndex = 1;
 showDivs(slideIndex);
 

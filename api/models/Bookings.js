@@ -28,7 +28,25 @@ module.exports = {
   		model:'users',
   		dominant:false
   	},
-  	message:'string'
+  	message:{
+      type:'string'
+    },
+    status:{
+      type:'string'
+    }
+
+  },
+
+   createId:function(cb){
+    let query = Bookings.find();
+    //let sort = 'id DESC';
+    query.sort('no DESC');
+    query.exec((err,data)=> {
+      if(err)return cb(err);
+      var id = 'b'+(data[0].no+1);
+      cb(err,id);
+    });
   }
+
 };
 

@@ -11,9 +11,22 @@ module.exports = {
 		return res.view('admin/bookings',{layout:'layout-admin'});
 	},
 	bookingsList:(req,res)=>{
-		Bookings.find({}).populate('property').populate('buyer').populate('agent').exec((err,data)=>{
+		const agent = req.session.user;
+		let opts = {};
+		opts = {agent:agent.no};
+		Bookings.find(opts).populate('property').populate('buyer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.view('admin/bookings',{dataBookings:data,layout:'layout-admin'});
+		});
+	},
+	bookingCreate:(req,res)=>{
+		var params = req.allParams();
+		Bookings.createId((err,id)=>{
+			params.id = id;
+			Bookings.create(params).exec((err,data)=>{
+				if(err)return res.negotiate(err);
+				return res.json(data);
+			});
 		});
 	}
 };

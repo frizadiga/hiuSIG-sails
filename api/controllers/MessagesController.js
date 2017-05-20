@@ -15,7 +15,7 @@ module.exports = {
 		let opts = {};
 		opts = {receiver:receiver.no};
 		Messages.find(opts).populate('receiver').populate('sender').sort('createdAt DESC').exec((err,data)=>{
-			if(err)return res.negotiate(err);
+			if(err)return res.serverError(err);
 			// res.json(data);
 			return res.view('admin/messages',{dataMessages:data,layout:'layout-admin'})
 		});

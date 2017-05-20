@@ -105,6 +105,8 @@ module.exports.routes = {
   //API MESSAGE
   'POST /api/message':'MessagesController.messageCreate',
   'DELETE /api/message/:id':'MessagesController.messageDelete',
+  //API BOOKINGS
+  'POST /api/booking':'BookingsController.bookingCreate',
   //-------------------------------------------------------------------------
   '/hiuwave':function(req,res){
     res.redirect('http://hiuwave.com');
