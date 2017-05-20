@@ -99,12 +99,16 @@
 <div id="maps" class="tab-detail w3-animate-opacity">
   <div id="map" class="w3-greyscale" style="width:100%;height:500px"></div>
 
-  <div class="w3-teal w3-padding"><i class="fa fa-map-marker"></i> Lokasi Sekitar</div>
+  <div class="w3-bottombar w3-border-green w3-padding w3-light-grey w3-text-blue-grey"><i class="fa fa-map-marker"></i> <b>Lokasi disekitar</b> <%=dataProperties.type.capitalize()%> ini</div>
   <div class="w3-container">
-  <p>
-  <p><label>Radius(KM):</label><input placeholder="Ex: 5" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
-  <p><label>Kategori:</label><input placeholder="Ex: School" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
-  </p>
+  
+  <div class="w3-col m6">
+    <p><label>Radius(KM):</label><input placeholder="Ex: 5" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  </div>
+  <div class="w3-half">
+    <p><label>Kategori:</label><input placeholder="Ex: School" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
+  </div>
+
   <div>
   <button class="w3-button w3-teal w3-hover-blue w3-block" style="margin-bottom: 16px"><b><i class="fa fa-search"></i> Telusuri</b> Lokasi</button>
   </div>
@@ -140,7 +144,7 @@
 
 <!-- Modal Agent Message -->
 <div id="modal-message" class="w3-modal">
-  <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:700px;margin-bottom:100px">
+  <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:500px;margin-bottom:100px">
   <header class="w3-container w3-blue-grey">
     <h3><i class="fa fa-envelope"></i> Pesan</h3>
     <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-message')"><i class="fa fa-close"></i></span>
