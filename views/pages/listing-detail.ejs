@@ -99,13 +99,15 @@
 <div id="maps" class="tab-detail w3-animate-opacity">
   <div id="map" class="w3-greyscale" style="width:100%;height:500px"></div>
 
-  <div class="w3-green  w3-padding">Lokasi Sekitar</div>
+  <div class="w3-teal w3-padding"><i class="fa fa-map-marker"></i> Lokasi Sekitar</div>
   <div class="w3-container">
   <p>
   <p><label>Radius(KM):</label><input placeholder="Ex: 5" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
   <p><label>Kategori:</label><input placeholder="Ex: School" class="w3-input w3-border w3-hover-light-grey" type="text"></p>
   </p>
-  <button class="w3-button w3-green w3-hover-blue w3-right" style="margin-bottom: 16px"><b><i class="fa fa-search"></i> Telusuri Lokasi</b></button>
+  <div>
+  <button class="w3-button w3-teal w3-hover-blue w3-block" style="margin-bottom: 16px"><b><i class="fa fa-search"></i> Telusuri</b> Lokasi</button>
+  </div>
   </div>
 </div>
 <!--TAB AGEN-->
@@ -130,7 +132,7 @@
 
 <!-- BUTTON-BOOKING -->
   <div class="w3-section w3-content w3-card w3-padding-16 w3-container">
-    <button onclick="openModal('modal-booking')" class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
+    <button onclick="openModal('modal-booking')" class="w3-button w3-padding-16 w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
   </div>
 
 </div>
