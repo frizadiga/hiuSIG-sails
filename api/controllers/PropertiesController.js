@@ -34,7 +34,17 @@ module.exports = {
       res.json(dataLocation);
     });
 	},
-	
+
+	newProperties:(req,res)=>{
+    Properties.newProperties({},(err,data)=>{
+      if(err)return res.serverError(err);
+      if(data.length<1){
+        return  res.searchNotFound('Listing tidak ditemukan!');
+      }
+      return res.view('pages/listing',{dataProperties:data,layout:'layout-plain'});
+    });
+  },
+
   listing:function(req,res){
     //return res.json(req.allParams());
     Properties.searchListing(req.allParams(),function(err,data){

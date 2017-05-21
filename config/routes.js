@@ -49,6 +49,7 @@ module.exports.routes = {
 
   //PAGES
   '/':{view:'pages/index',locals:{layout:'layout-plain'}},
+  'GET /new-property':'PropertiesController.newProperties',
   'GET /listing':'PropertiesController.listing',
   'GET /listing/detail/:id':'PropertiesController.listingDetail',
   'GET /findinmaps':'PropertiesController.listing',

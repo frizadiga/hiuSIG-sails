@@ -27,6 +27,11 @@
               <%=(title.length>30)?title.substring(0,30)+'...':title%>
             </b>
           </p>
+          <p class="w3-small">
+            <i class="fa fa-clock-o"></i>
+            <span class="w3-tiny"> Posted at </span>
+            <%=dataProperties[i].createdAt.toDateString()%>
+          </p>
           <p>
             <i class="fa fa-home"></i>&nbsp;
             <span> 

@@ -122,6 +122,13 @@ module.exports = {
       cb(err,data);
     });
 
+  },
+
+  newProperties:(params,cb)=>{
+    Properties.find({sort:'createdAt DESC',limit:6}).populate('pictures').populate('agent').exec((err,data)=>{
+      if(err)return cb(err);
+      cb(err,data);
+    });
   }
 
 
