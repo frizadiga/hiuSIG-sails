@@ -1,13 +1,14 @@
 <!--Floating Search Card-->
 <div class="w3-display-middle w3-round-small w3-animate-opacity" style="width:50%;opacity:0.95;padding-top:32px">
+
+<!-- MAIN LOGO -->
   <div id="main-hero-logo" class="w3-row w3-center">
     <img src="/img/rumah2q-logo.png" class="" style="width:30%;height:50%">
-    <!-- <h1 class="w3-tag w3-white w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></h1> -->
-    <!-- <p class="w3-center w3-text-blue-grey"><i>"show place<br>bring home to you"</i></p> -->
   </div>
-<!--Search Panel-->
-  <form action="/listing" class="w3-card-4 w3-white">
-  <div class="w3-row">
+
+<form action="/listing">
+<!--MAIN SEARCH-->
+  <div id="main-search" class="w3-row w3-card-4">
     
     <div class="w3-col" style="width:17%">
       <select id="searchStatus" style="height: 54px;" class="w3-padding-16 w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-light-grey" name="status">
@@ -40,7 +41,6 @@
         <i class="fa fa-search"></i>
       </button>
     </div>
-  
    <div class="w3-rest">
 
       <input id="searchLocation" onclick="searchDropDown()" class="w3-padding-16 w3-input w3-white w3-hover-light-grey w3-border-0 " type="text" placeholder="Lokasi.. Ex: Kuta Utara" name="location" list="location-list">
@@ -52,13 +52,15 @@
     </div>
 
 
-  </div>
  
   <button id="option" onclick="accordion('more-ops')" class="w3-button w3-block w3-blue w3-hover-green w3-accordion" type="button">
   <i class="fa fa-caret-down"></i> Opsi Lain
   </button>
+</div>
+
+
   <!-- MORE OPTIONS -->
-  <div id="more-ops" class="w3-hide w3-text-blue-grey" style="padding-bottom: 8px">
+  <div id="more-ops" class="w3-animate-bottom w3-padding-16 w3-section w3-hide w3-card-4 w3-white w3-text-blue-grey" style="padding-bottom: 8px">
   
   <p class="w3-margin-left" style="font-weight: bold;">Spesifikasi</p>
     <div id="spek-ops" class="w3-row-padding w3-margin-bottom">
