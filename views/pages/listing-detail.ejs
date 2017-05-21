@@ -245,7 +245,7 @@ function postBooking(){
     method:'POST',
     body:JSON.stringify({
       property:'<%-dataProperties.no%>',
-      buyer:'<%-req.session.user.no%>',
+      buyer:'<%-(req.session.user)?req.session.user.no:'anonymous'%>',
       agent:'<%-dataProperties.agent.no%>',
       message:'pesan tambahan',
       status:'pending',
