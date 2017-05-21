@@ -34,7 +34,9 @@
     <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--STYLES END-->
   </head>
-
+<%   String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}%>
   <body>
     <!--EJS Script-->
   <%//let user = {name: "Frizadiga",role:"Superadmin"}%>
@@ -48,7 +50,7 @@
     <img class="w3-hover-grayscale w3-circle w3-card-4 w3-show-block w3-margin-bottom" src="/uploads/<%=req.session.user.avatar%>" style="width:30%;margin:auto" alt="User Avatar">
     <p class="w3-small w3-text-white">
     <b><i class="fa fa-user"></i><br>
-       <%=req.session.user.name%>|<%=req.session.user.role%></b>
+       <%=req.session.user.name%> | <%=req.session.user.role.capitalize()%></b>
     </p>
   </div>
 </div>
