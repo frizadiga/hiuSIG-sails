@@ -41,7 +41,7 @@
     <!--EJS Script-->
   <%//let user = {name: "Frizadiga",role:"Superadmin"}%>
 <!--Side Bar-->
-<nav class="w3-sidebar w3-bar-block w3-blue-grey w3-card" style="display:block;width:20%" id="sideBarLeft">
+<nav class="w3-sidebar w3-bar-block w3-blue-grey w3-card" style="display:block;width:20%;padding-bottom:52.28px" id="sideBarLeft">
   <div class="w3-bar w3-margin-bottom">
       <button onclick="w3_close()" class="w3-button w3-hover-red w3-padding w3-padding-left w3-padding-right w3-right"><i class="fa fa-close"></i></button>
   </div>
@@ -73,12 +73,23 @@
 <a href="/admin/bookings" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-address-book"></i> Booking Request</a>
 
 <hr class="w3-opacity w3-hr">
-<a href="/admin/reports" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-files-o"></i> Documents Report <i class="fa fa-chevron-down w3-right"></i></a>
+<a href="javascript:void(0)" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"  onclick="accordion('more-docs')"><i class="fa fa-files-o"></i>
+  <!-- <span class="Xw3-button Xw3-block Xw3-left-align" onclick="accordion('more-docs')"> -->
+    Documents Report
+  <!-- </span> -->
+<i class="fa fa-chevron-down w3-right w3-hover-blue-grey"></i></a>
+
+<div id="more-docs" class="w3-hide w3-card" style="padding-left:16px">
+  <a href="javascript:void(0)" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-text"></i> Document 1</a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-text"></i> Document 2</a>
+  <a href="/admin/reports" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-pdf-o"></i> Report 1</a>
+</div>
+
 <hr class="w3-opacity w3-hr">
-<a href="/admin/settings" class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-cog"></i> Setting</b></a>
+<a href="/admin/settings" class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey w3-section"><i class="fa fa-cog"></i> Setting</b></a>
 
 <!--FOOTER-->
-<div class="w3-container w3-center w3-bottom w3-white" style="width:20%!important;">
+<div class="w3-container w3-center w3-bottom w3-white w3-card" style="width:20%!important">
   <p class="w3-text-blue-grey">
   &copy; 2017 <b>rumah<span class="w3-text-green">2Q</b></span>
   </p>
@@ -159,6 +170,17 @@
     <script src="/js/w3.js"></script>
     <!--SCRIPTS END-->
     <script>
+
+      function accordion(id){
+        let x = document.getElementById(id);
+        if(x.className.indexOf('w3-show')==-1){
+          x.className+=" w3-show";
+          x.previousElementSibling.className+=" w3-white w3-text-blue-grey";
+        }else{
+          x.className = x.className.replace(' w3-show','');
+          x.previousElementSibling.className = x.previousElementSibling.className.replace(' w3-white w3-text-blue-grey',' w3-blue-grey')
+        }
+      }
       //navbar
       function w3_open(){
         document.getElementById('main').style.marginLeft='20%';
