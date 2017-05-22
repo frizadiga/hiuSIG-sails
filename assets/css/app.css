@@ -151,13 +151,42 @@ html,body{
 }
 .w3-hover-text-blue-grey:hover{color:#607d8b!important}
 
-.stripe-4 {
+.stripe-4{
   color: white;
   background: -webkit-repeating-linear-gradient(145deg, #222, #222 10px, #333 10px, #333 20px);
   background: repeating-linear-gradient(-55deg, #222, #222 10px, #333 10px, #333 20px);
 }
 
-.stripe-2 {
+.stripe-2{
   background-color: #f7f7f7;
   background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+}
+
+.stripe-6{
+  background-color: grey;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+}
+
+.stripe-8{
+  color: white;
+  background: -webkit-repeating-linear-gradient(145deg, #222, #222 10px, #333 10px, #333 20px);
+  background: repeating-linear-gradient(-55deg, #222, #222 10px, #333 10px, #333 20px);
+}
+
+.pattern-1{
+  background:
+  radial-gradient(black 15%, transparent 16%) 0 0,
+  radial-gradient(black 15%, transparent 16%) 8px 8px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+  background-color:#282828;
+  background-size:16px 16px;
+}
+
+.pattern-2{
+  background-color: #fff; 
+  background-image: 
+  linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+  linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
 }
