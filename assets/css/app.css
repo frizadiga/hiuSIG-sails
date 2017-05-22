@@ -113,6 +113,9 @@ html,body{
   margin: 0px!important;
 }
 
+.w3-ul li {
+  border-bottom:none; 
+}
 
 .row.is-flex {
   display: flex;
