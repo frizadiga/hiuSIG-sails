@@ -50,7 +50,16 @@
 <!--TAB INFO-->
 <div id="info" class="tab-detail w3-animate-opacity">
   <table class="w3-table">
-    <th colspan="2" class="w3-large"><%=dataProperties.title%></th>
+    <th colspan="2" class="w3-large">
+      <%=dataProperties.title%>
+      <p class="w3-small">
+        <i class="fa fa-clock-o"></i>
+        <span class="w3-tiny"> Posted on 
+        <%=dataProperties.createdAt.toDateString()%>
+        </span>
+      </p>
+      <hr class="w3-hr">
+    </th>
     <tr>
       <td style="width:150px">Harga</td><td><b>Rp. <%=dataProperties.price%></b></td>
     </tr>
