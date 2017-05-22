@@ -32,18 +32,19 @@
     </div>
 </div>
 
-<!-- Description -->
+<!--PROPERTY INFORMATION-->
 <div class="w3-text-grey w3-padding w3-text-grey w3-content w3-card w3-section">
+
 <!--Tab Header-->
 <div class="w3-row w3-center">
   <a href="javascript:void(0)" onclick="openTabs(event, 'info');">
-    <div id="default-tab-header" class="w3-third tablink w3-bottombar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-info"></i> Data Properti</div>
+    <div id="default-tab-header" class="w3-third tablink w3-leftbar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-info"></i> Data Properti</div>
   </a>
   <a href="javascript:void(0)" onclick="openTabs(event, 'maps');initMap()">
-    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-map"></i> Maps</div>
+    <div class="w3-third tablink w3-leftbar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-map"></i> Maps</div>
   </a>
   <a href="javascript:void(0)" onclick="openTabs(event, 'agen');initMap()">
-    <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-user-secret"></i> Agen</div>
+    <div class="w3-third tablink w3-leftbar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-user-secret"></i> Agen</div>
   </a>
 </div>
 <!--Tab Content-->
@@ -108,7 +109,7 @@
 <div id="maps" class="tab-detail w3-animate-opacity">
   <div id="map" class="w3-greyscale" style="width:100%;height:500px"></div>
 
-  <div class="w3-bottombar w3-border-green w3-padding w3-light-grey w3-text-blue-grey"><i class="fa fa-map-marker"></i> <b>Lokasi disekitar</b> <%=dataProperties.type.capitalize()%> ini</div>
+  <div class="w3-leftbar w3-border-green w3-padding w3-light-grey w3-text-blue-grey"><i class="fa fa-map-marker"></i> <b>Lokasi disekitar</b> <%=dataProperties.type.capitalize()%> ini</div>
   <div class="w3-container">
   
   <div class="w3-col m6">
