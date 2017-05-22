@@ -76,27 +76,15 @@ We have created a simple but useful maps apps. Lorem ipsum dolor sit amet, conse
   </div>
 </section>   
 <!-- End Visible Content -->
-
+<script src="/js/w3.js"></script>
 <script>
+
 //Carousel
-var sIndex = 0;
-carousel();
-function carousel(){
-  var i;
-  var x = document.getElementsByClassName("mainSlides");
-  for (i=0;i<x.length;i++){
-      x[i].style.display = "none";
-  }
-  sIndex++;
-  if(sIndex > x.length){sIndex =1}
-    x[sIndex-1].style.display = "block";
-    setTimeout(carousel,10000);
-}
+w3.slideshow(".mainSlides",10000);
+
 //Dom Manipulated
 var searchBtn = document.getElementById('searchBtn');
 var searchText = document.getElementById('searchText');
-//searchBtn.addEventListener('click',function(){alert('finding');});
-
 
 //maps
 var map;
