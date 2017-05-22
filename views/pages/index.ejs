@@ -78,14 +78,6 @@ We have created a simple but useful maps apps. Lorem ipsum dolor sit amet, conse
 <!-- End Visible Content -->
 
 <script>
-//Search Dropdown
-function searchDropDown() {
-  var elm = document.getElementById('search-dropdown-content');
-  if(elm.className.indexOf("w3-show")==-1)
-    elm.className += " w3-show";
-  else
-    elm.className = elm.className.replace(' w3-show','')
-}
 //Carousel
 var sIndex = 0;
 carousel();
@@ -115,17 +107,6 @@ function initMap(){
         disableDefaultUI:true,
         scrollwheel:false
     });
-}
-
-function accordion(id){
-  var elm = document.getElementById(id);
-  if(elm.className.indexOf('w3-show')== -1){
-    elm.className += " w3-show";
-  }else{
-    elm.className = elm.className.replace(' w3-show','');
-  }
- // google.maps.event.trigger(map, 'resize');
-
 }
 
 // Change style of navbar on scroll

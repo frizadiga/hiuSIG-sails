@@ -102,3 +102,26 @@
   </div>
 </form>
 </div>
+
+<script async defer>
+
+//Search Dropdown
+function searchDropDown() {
+  var elm = document.getElementById('search-dropdown-content');
+  if(elm.className.indexOf("w3-show")==-1)
+    elm.className += " w3-show";
+  else
+    elm.className = elm.className.replace(' w3-show','')
+}
+
+//Accordion
+function accordion(id){
+  var elm = document.getElementById(id);
+  if(elm.className.indexOf('w3-show')== -1){
+    elm.className += " w3-show";
+  }else{
+    elm.className = elm.className.replace(' w3-show','');
+  }
+ // google.maps.event.trigger(map, 'resize');
+}
+</script>
