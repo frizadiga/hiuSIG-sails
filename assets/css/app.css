@@ -117,8 +117,16 @@ html,body{
   margin: 0px!important;
 }
 
-.w3-ul li {
+.w3-ul li{
   border-bottom:none; 
+}
+
+.w3-ul a{
+  text-decoration:none;
+}
+
+.w3-ul a:hover{
+  color:orange;
 }
 
 .row.is-flex {
