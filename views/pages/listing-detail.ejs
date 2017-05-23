@@ -19,15 +19,12 @@
       <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="height:551.25px;width:100%;cursor: pointer;object-fit:cover">
 
       <div class="w3-row w3-white" style="height:183.375px;overflow:hidden;">
+      
+      <%for(i=0,len=5;i<len;i++){%>  
         <div class="w3-col s4">
           <img onclick="openModal('modal-image');currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height:auto;cursor:pointer;vertical-align:middle;" src="<%=dataProperties.pictures[0].path%>" alt="">
         </div>
-        <div class="w3-col s4">
-          <img onclick="openModal('modal-image');currentdiv(2)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
-        </div>
-        <div class="w3-col s4">
-          <img onclick="openModal('modal-image');currentdiv(3)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
-        </div>
+      <%}%>
       </div>
     </div>
 </div>
@@ -200,7 +197,7 @@
 </div>
 
 <!-- Modal Image -->
-<div id="modal-image" class="w3-modal w3-black" style="padding-bottom: 100px">
+<div id="modal-image" class="w3-modal w3-black" style="padding:8px 0">
  <span class="w3-text-white w3-xxlarge w3-hover-text-grey w3-container w3-display-topright" onclick="closeModal('modal-image')" style="cursor:pointer">×</span>
  <div class="w3-modal-content w3-animate-opacity">
  <%var totalImages=3%>
