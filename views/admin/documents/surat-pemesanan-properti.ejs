@@ -1,19 +1,122 @@
-
 <style type="text/css">
-	<div class="book">
-    <div class="page">
-        <div class="subpage">Page 1/2</div>    
-    </div>
-    <div class="page">
-        <div class="subpage">Page 2/2</div>    
-    </div>
-</div>
+	body {
+  background: rgba(96, 125, 139, 0.55); 
+	}
+	page {
+	  background: white;
+	  display: block;
+	  margin: 0 auto;
+	  margin-bottom: 0.5cm;
+	  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+	}
+	page[size="A4"] {  
+	  width: 21cm;
+	  height: 29.7cm; 
+	}
+	page[size="A4"][layout="portrait"] {
+	  width: 29.7cm;
+	  height: 21cm;  
+	}
+	page[size="A3"] {
+	  width: 29.7cm;
+	  height: 42cm;
+	}
+	page[size="A3"][layout="portrait"] {
+	  width: 42cm;
+	  height: 29.7cm;  
+	}
+	page[size="A5"] {
+	  width: 14.8cm;
+	  height: 21cm;
+	}
+	page[size="A5"][layout="portrait"] {
+	  width: 21cm;
+	  height: 14.8cm;  
+	}
+	@media print {
+	  body, page {
+	    margin: 0;
+	    box-shadow: 0;
+	  }
+	}
 </style>
-<div class="book">
-    <div class="page">
-        <div class="subpage">Page 1/2</div>    
-    </div>
-    <div class="page">
-        <div class="subpage">Page 2/2</div>    
-    </div>
+
+<page id="spp" size="A4" class="w3-container w3-section">
+	<header class="w3-container w3-center">
+  <img src="/img/rumah2q-logo.png" style="width:20%;margin:auto!important">		
+	</header>
+  	<h3 class="w3-center">Surat Pemesanan Properti</h3>
+  	<p>Yang bertanda tangan dibawah ini:</p>
+
+  	<table>
+  		<tr>
+  			<td>Nama</td>
+  			<td>: Frizadiga</td>
+  		</tr>
+  		<tr>
+  			<td>Alamat</td>
+  			<td>: Jalan Yang Lurus</td>
+  		</tr>
+  		<tr>
+  			<td>No. Telp</td>
+  			<td>: 087722867907</td>
+  		</tr>
+  		<tr>
+  			<td>Pekerjaan</td>
+  			<td>: Wiraswasta</td>
+  		</tr>
+  		<tr>
+  			<td>No. Identitas</td>
+  			<td>: 03598076542878</td>
+  		</tr>
+  	</table>
+
+  	<p>Pada (tanggal) Telah Memesan untuk membeli sebuah properti berupa. Dengan keputusan seperti dibawah ini:</p>
+
+  	<p>I. Data Properti: </p>
+  	<hr>
+  	<p>II. Pembayaran: </p>
+  	<p>1. Cara Pembayaran</p>
+  	<hr>
+  	<p>2. Sanksi Pembayaran</p>
+  	<hr>
+
+  	<div class="w3-row w3-center">
+  		
+  		<div class="w3-col m6">
+  			<p>Mengetahui</p>
+  			<!-- <hr> -->
+  			<p>(Pemilik Properti)</p>
+  		</div>
+
+  		<div class="w3-col m6">
+  			<p>Menyetujui</p>
+  			<!-- <hr> -->
+  			<p>(Pemesan Properti)</p>
+  		</div>
+  	
+  	</div>
+  	<div class="w3-row w3-center">
+  		<div class="Xw3-col Xm12">
+  			<p>Mengetahui</p>
+  			<!-- <hr> -->
+  			<p>(Marketing Associate)</p>
+  		</div>
+  	</div>
+</page>
+
+<div class="w3-container w3-padding w3-section w3-card w3-white" style="width:21cm;margin:auto">
+		<button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('spp')"><b><i class="fa fa-print"></i> Print</b></button>
 </div>
+<script>
+	function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+	}
+</script>

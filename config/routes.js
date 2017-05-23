@@ -88,6 +88,10 @@ module.exports.routes = {
   '/admin/bookings':'BookingsController.bookingsList',
   
   //DOCUMENTS AND REPORTS
+  '/admin/documents/print-template':{
+    view:'admin/documents/print-template',
+    locals:{layout:'layout-admin'}
+  },
   '/admin/reports':'ReportsController.view',
   '/admin/documents/surat-pemesanan-properti':'DocumentsController.spp',
 

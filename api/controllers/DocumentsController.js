@@ -7,7 +7,7 @@
 
 module.exports = {
 	spp:(req,res)=>{
-		return res.view('admin/documents/surat-pemesanan-properti');
+		return res.view('admin/documents/surat-pemesanan-properti',{title:'Surat Pemesanan Properti',layout:'layout-admin'});
 	}
 };
 
