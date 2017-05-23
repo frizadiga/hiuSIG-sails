@@ -95,7 +95,7 @@ module.exports = {
   listingManage:function(req,res){
     var user = req.session.user;
     var opts = req.allParams();
-    if (user.role === 'administrator') {} else {opts = {agent:user.no}}
+    if (user.role === 'administrator') {} else {opts.agent = user.no}
     Properties.find(opts).exec(function(err,data){
       return res.view('admin/listing-manage',{dataProperties:data,layout:'layout-admin'});
       // return res.json(user);
