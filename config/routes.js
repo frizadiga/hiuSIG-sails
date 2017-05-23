@@ -63,7 +63,6 @@ module.exports.routes = {
   'GET /logout':'UsersController.logout',
   
   //ADMIN
-  '/admin/reports':'ReportsController.view',
   '/admin':'UsersController.checkLogin',
   '/admin/dashboard':{
     view:'admin/dashboard',
@@ -88,6 +87,10 @@ module.exports.routes = {
   '/admin/messages':'MessagesController.messagesList',
   '/admin/bookings':'BookingsController.bookingsList',
   
+  //DOCUMENTS AND REPORTS
+  '/admin/reports':'ReportsController.view',
+  '/admin/documents/surat-pemesanan-properti':'DocumentsController.spp',
+
   //API
   '/api/url-slug':'PagesController.urlSlug',
   '/api/index':'PagesController.indexPage',
