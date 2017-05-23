@@ -95,6 +95,7 @@ module.exports.routes = {
   '/admin/reports':'ReportsController.view',
   '/admin/documents/surat-pemesanan-properti':'DocumentsController.spp',
   '/admin/documents/surat-perjanjian-perangkat-jual-beli':'DocumentsController.sppjb',
+  '/admin/documents/surat-pengajuan-ajb':'DocumentsController.spajb',
 
   //API
   '/api/url-slug':'PagesController.urlSlug',

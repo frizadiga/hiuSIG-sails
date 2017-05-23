@@ -11,6 +11,9 @@ module.exports = {
 	},
 	sppjb:(req,res)=>{
 		return res.view('admin/documents/surat-perjanjian-perangkat-jual-beli',{title:'Surat Perjanjian Perangkat Jual Beli',layout:'layout-admin'});
+	},
+	spajb:(req,res)=>{
+		return res.view('admin/documents/surat-pengajuan-ajb',{title:'Surat Pengajuan Akad Jual Beli',layout:'layout-admin'});
 	}
 };
 
