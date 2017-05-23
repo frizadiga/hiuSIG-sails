@@ -23,7 +23,7 @@ module.exports = {
 			pembeli:'Haruna'
 		}
 		];
-		return res.view('admin/reports',{data:dataReports, layout:'layout-admin'});
+		return res.view('admin/documents/reports',{data:dataReports, layout:'layout-admin'});
 	}
 };
 
