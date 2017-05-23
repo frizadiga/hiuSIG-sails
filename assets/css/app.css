@@ -21,8 +21,12 @@ html,body{
   height:100%;
 }
 
+/* SCROLL BAR */
 ::-webkit-scrollbar {
    width: 10px;
+
+}nav::-webkit-scrollbar {
+   width: 5px;
 }
 
 ::-webkit-scrollbar-track {
