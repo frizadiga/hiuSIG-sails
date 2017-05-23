@@ -25,7 +25,7 @@ html,body{
 ::-webkit-scrollbar {
    width: 10px;
 
-}nav::-webkit-scrollbar {
+}nav.w3-sidebar::-webkit-scrollbar {
    width: 5px;
 }
 
