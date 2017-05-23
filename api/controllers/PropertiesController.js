@@ -97,7 +97,7 @@ module.exports = {
     var opts = req.allParams();
     if (user.role === 'administrator') {} else {opts = {agent:user.no}}
     Properties.find(opts).exec(function(err,data){
-      return res.view('admin/listing-manage',{dataProperty:data,layout:'layout-admin'});
+      return res.view('admin/listing-manage',{dataProperties:data,layout:'layout-admin'});
       // return res.json(user);
     });
   },

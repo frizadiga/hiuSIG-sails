@@ -37,21 +37,21 @@
         <th>Provinsi</th>
         <th style="width:100px"></th>
       </tr>
-      <%for(i=0;i<dataProperty.length;i++){%>
+      <%for(i=0;i<dataProperties.length;i++){%>
       <tr class="w3-text-grey w3-hover-green">
-        <td style="vertical-align:middle; width:80px"><%=dataProperty[i].id%></td>
-        <td style="vertical-align:middle"><%=dataProperty[i].type.capitalize()%></td>
-        <td style="vertical-align:middle"><%=dataProperty[i].title%></td>
-        <td style="vertical-align:middle">Rp. <%=dataProperty[i].price%></td>
-        <td style="vertical-align:middle"><%=dataProperty[i].city%></td>
-        <td style="vertical-align:middle"><%=dataProperty[i].province%></td>
+        <td style="vertical-align:middle; width:80px"><%=dataProperties[i].id%></td>
+        <td style="vertical-align:middle"><%=dataProperties[i].type.capitalize()%></td>
+        <td style="vertical-align:middle"><%=dataProperties[i].status.capitalize()%> <%=dataProperties[i].title%></td>
+        <td style="vertical-align:middle">Rp. <%=dataProperties[i].price%></td>
+        <td style="vertical-align:middle"><%=dataProperties[i].city%></td>
+        <td style="vertical-align:middle"><%=dataProperties[i].province%></td>
         <td style="width:180px">
           <div class="w3-bar w3-center w3-right w3-margin-right ">
-            <a href="/listing/detail/<%=dataProperty[i].id%>">
+            <a href="/listing/detail/<%=dataProperties[i].id%>">
             <button class="w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-info"></i></button></a>
-            <a href="/admin/listing/edit/<%=dataProperty[i].id%>">
+            <a href="/admin/listing/edit/<%=dataProperties[i].id%>">
             <button class="w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-pencil"></i></button></a>
-            <button class="w3-button w3-hover-red" onclick="modalData('<%=dataProperty[i].id%>','<%=dataProperty[i].title%>')"><i class="fa fa-trash"></i></button>
+            <button class="w3-button w3-hover-red" onclick="modalData('<%=dataProperties[i].id%>','<%=dataProperties[i].title%>')"><i class="fa fa-trash"></i></button>
           </div>
         </td>
       </tr>
