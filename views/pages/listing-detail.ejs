@@ -16,7 +16,7 @@
       </div> -->
 
       <!-- Use Object Fit -->
-      <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="height:551.25px;width:100%;cursor: pointer;object-fit:cover">
+      <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="height:551.25px;width:100%;cursor:pointer;object-fit:cover">
 
       <div class="w3-row w3-white" style="height:183.375px;overflow:hidden;">
       
@@ -166,7 +166,8 @@
   <p><label>Phone/Mobile Phone:</label><input placeholder="Ex: 0812345678910" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" value="<%=(req.session.user)?req.session.user.phone:''%>"></p>
   <p><label>Email:</label><input placeholder="Ex: youremail@gmail.com" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" value="<%=(req.session.user)?req.session.user.email:''%>"></p>
   </p>
-  <p><label>Pesan:</label><textarea placeholder="Ex: saya tertarik dengan properti anda" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" name="message" rows="5" style="resize:vertical;"></textarea></p>
+  <p><label>Pesan:</label>
+  <textarea placeholder="Ex: Saya tertarik dengan properti anda" class="w3-input w3-border w3-hover-light-grey w3-text-grey" type="text" name="message" rows="5" style="resize:vertical">Ex: Saya tertarik dengan properti anda</textarea></p>
   </p>
   <button id="btn-send-message" class="w3-button w3-blue w3-hover-green w3-block" style="margin-bottom: 16px" type="button"><b><i class="fa fa-send"></i> Kirim</b></button>
   </div>
@@ -175,18 +176,24 @@
 </div>
 
 <!-- Modal Booking -->
-<div id="modal-booking" class="w3-modal">
-  <div class="w3-modal-content w3-card-4 w3-animate-opacity" style="max-width:700px;margin-bottom:100px">
+<div id="modal-booking" class="w3-modal w3-display-container" style="padding:16px 0">
+  <div class="w3-modal-content w3-card-4 w3-animate-opacity w3-display-middle" style="max-width:700px">
     <header class="w3-container w3-blue-grey">
       <h3><i class="fa fa-address-book"></i> Booking</h3>
       <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-booking')"><i class="fa fa-close"></i></span>
     </header>
-    <div class="w3-container w3-padding-16 w3-center w3-text-grey" style="width:100%">
-      <img class="w3-card-4" style="max-width:600px" src="<%=dataProperties.pictures[0].path%>">
-      <p><%=dataProperties.title%></p>
-      <hr>
-      <img class="w3-circle w3-card" style="width:20%" src="/uploads/<%=dataProperties.agent.avatar%>">
+      <div class="w3-display-container" style="max-width:700px;margin:auto">
+        <img class="w3-greyscale-min" style="width:100%;height:300px;object-fit:cover" src="<%=dataProperties.pictures[0].path%>">
+        <p class="w3-display-bottommiddle w3-text-white"><b><%=dataProperties.title%></b></p>  
+        <div class="w3-display-bottommiddle"> 
+        </div>
+      </div>
+      <div class="w3-container w3-padding-16 w3-center w3-text-grey" style="width:100%">
+      <img class="w3-circle w3-card" style="width:15%" src="/uploads/<%=dataProperties.agent.avatar%>">
       <p>Agent: <%=dataProperties.agent.name%></p>
+      <hr>
+      <label class="w3-left">Pesan Tambahan:</label>
+      <textarea id="booking-message" placeholder="Ex: Saya Booking dengan DP 50%" rows="3" class="w3-input w3-border w3-text-grey w3-hover-light-grey" type="text" style="resize:vertical">Ex: Saya Booking dengan DP 50%</textarea>
       <hr>
       
       <button id="btn-send-booking" class="w3-button w3-block w3-blue w3-hover-green">
@@ -197,7 +204,7 @@
 </div>
 
 <!-- Modal Image -->
-<div id="modal-image" class="w3-modal w3-black" style="padding:8px 0">
+<div id="modal-image" class="w3-modal w3-black" style="padding:8px 0 !important">
  <span class="w3-text-white w3-xxlarge w3-hover-text-grey w3-container w3-display-topright" onclick="closeModal('modal-image')" style="cursor:pointer">×</span>
  <div class="w3-modal-content w3-animate-opacity">
  <%var totalImages=3%>
@@ -254,7 +261,7 @@ function postBooking(){
       property:'<%-dataProperties.no%>',
       buyer:'<%-(req.session.user)?req.session.user.no:'anonymous'%>',
       agent:'<%-dataProperties.agent.no%>',
-      message:'pesan tambahan',
+      message:document.getElementById('booking-message').value,
       status:'pending',
     })
   });
