@@ -52,12 +52,27 @@ var markerCoords = <%-JSON.stringify(dataCoords)%>;
 
 
 function initMap(){
-
-map = new google.maps.Map(document.getElementById('map'),{
-center:{lat:0.798538,lng:120.581768},
-zoom:5
-});
-var markers = markerCoords.map(function(location, i){
+  var mapOptions = {
+    zoom:5,
+    center:{lat:0.798538,lng:120.581768},
+    mapTypeControl:true,
+    mapTypeControlOptions:{
+      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      position: google.maps.ControlPosition.TOP_CENTER
+    },
+    zoomControl:true,
+    zoomControlOptions:{
+      position: google.maps.ControlPosition.RIGHT_CENTER
+    },
+    scaleControl:true,
+    streetViewControl:true,
+    streetViewControlOptions:{
+      position: google.maps.ControlPosition.RIGHT_BOTTOM
+    },
+    fullscreenControl:true
+  }
+  var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+  var markers = markerCoords.map(function(location, i){
   return new google.maps.Marker({
     position: location,
     label: ''
