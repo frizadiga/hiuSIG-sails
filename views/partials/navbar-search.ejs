@@ -8,8 +8,8 @@
 </div>
 
 <!--SearchBox-->
-<div id="searchDropNav" class="w3-top" style="display:none">
-  <div class="w3-bar w3-card w3-white w3-animate-opacity" style="/*width:50%">
+<div id="search-navbar" class="w3-top" style="display:none">
+  <div class="w3-bar w3-card w3-white w3-animate-opacity" style="min-width:700px;width:50%;margin:auto">
     <form id="navbar-form-search" action="/listing">
     <div class="w3-row">
       <div class="w3-col" style="width:17%">
@@ -36,7 +36,7 @@
         </select>
       </div>
 
-       <a class="w3-bar-item w3-button w3-white w3-hover-red w3-right" onclick="document.getElementById('searchDropNav').style.display='none'" title="Close Menu"><b class="fa fa-times"></b></a>
+       <a class="w3-bar-item w3-button w3-white w3-hover-red w3-right" onclick="closeSearchPanel()" title="Close Menu"><b class="fa fa-times"></b></a>
 
       
         <button type="submit" class="w3-bar-item w3-button w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></button>
@@ -51,12 +51,20 @@
 <!--END SearchBox-->
 
 <script async defer>
-  var searchDropNav = document.getElementById('searchDropNav');
+  var searchNavbar = document.getElementById('search-navbar');
   // setTimeout(function(){
-  //   searchDropNav.style.display='block';
+  //   search-navbar.style.display='block';
   // },500);
   function showSearchPanel(){
-    searchDropNav.className = searchDropNav.className.replace(' w3-animate-opacity','');
-    document.getElementById('searchDropNav').style.display='block';
+    searchNavbar.className = searchNavbar.className.replace(' w3-animate-opacity','');
+    document.getElementById('search-navbar').style.display='block';
+    document.getElementById('main-navbar').style.display='none';
+    document.getElementById('main-maps').style.paddingTop= "0";
+  }
+  function closeSearchPanel(){
+    searchNavbar.className = searchNavbar.className.replace(' w3-animate-opacity','');
+    document.getElementById('main-navbar').style.display='block';
+    document.getElementById('search-navbar').style.display='none';
+    document.getElementById('main-maps').style.paddingTop= "38px";
   }
 </script>

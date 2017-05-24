@@ -1,5 +1,12 @@
 <!--Side Panel-->
-<nav id="side-bar" class="w3-sidebar w3-top w3-card-4" style="display:block;width:25%;right:0;z-index:100"> 
+<nav id="side-bar" class="w3-sidebar w3-top w3-card-4"
+  style="
+  display:block;
+  width:25%;
+  min-width:370px;
+  right:0;
+  z-index:100
+  "> 
    <%
    String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);}    
@@ -33,7 +40,7 @@
 <!-- <h1 class="w3-padding-16"></h1> -->
 <%- partial('../partials/navbar-search.ejs')%>
 <!-- MAIN CONTENT -->
-<div id="main" style="margin:0px 25% 0px 0px;padding-top:38px;height:100%;width:75%">
+<div id="main-maps" style="margin:0px 25% 0px 0px;padding-top:38px;height:100%;width:75%">
   <div id="map" class="w3-greyscale" style="width:100%;height:100%;"></div>
 </div>
 <%- partial('../partials/modal-login.ejs')%>
@@ -42,7 +49,7 @@
 document.getElementById('navbar-form-search').action='/findinmaps';
 
 document.getElementById('main-navbar').style.width='75%';
-document.getElementById('searchDropNav').style.width ='75%';
+document.getElementById('search-navbar').style.width ='75%';
 
 
 var markerCoords = <%-JSON.stringify(dataCoords)%>;
@@ -58,7 +65,7 @@ function initMap(){
     mapTypeControl:true,
     mapTypeControlOptions:{
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-      position: google.maps.ControlPosition.TOP_CENTER
+      position: google.maps.ControlPosition.BOTTOM_CENTER
     },
     zoomControl:true,
     zoomControlOptions:{
