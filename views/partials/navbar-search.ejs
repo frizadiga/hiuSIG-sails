@@ -1,13 +1,11 @@
 <!--Navbar-->
-<div id="main-navbar" class="w3-top w3-bar w3-blue-grey">
-<%-partial('./top-logo-badge.ejs')%>
-<a title="Search Property" onclick="showSearchPanel()"
- class="w3-bar-item w3-hover-white w3-hover-text-blue-grey w3-right" href="javascript:void(0)"><i class="fa fa-search"></i></a>
-<%-partial('./top-navbar-items.ejs')%>
+<div class="w3-top">
+  <nav id="main-navbar" class="w3-bar w3-blue-grey">
+    <%-partial('./top-logo-badge.ejs')%>
+    <a title="Search Property" onclick="showSearchPanel()" class="w3-bar-item w3-hover-white w3-hover-text-blue-grey w3-right" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+    <%-partial('./top-navbar-items.ejs')%>
+  </nav>
 </div>
-
-</div>
-
 
 <!--SearchBox-->
 <div id="searchDropNav" class="w3-top" style="display:none">
