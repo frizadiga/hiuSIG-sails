@@ -47,7 +47,9 @@ module.exports = {
 
   listingsList:function(req,res){
     //return res.json(req.allParams());
-    Listings.searchListing(req.allParams(),function(err,data){
+    let opts = req.allParams();
+    opts.sort = 'createdAt DESC';
+    Listings.searchListing(opts,function(err,data){
       if(err)return res.negotiate(err);
       //TEST PARAMETER
       // return res.json(data);
@@ -93,8 +95,8 @@ module.exports = {
   },
   
   listingManage:function(req,res){
-    var user = req.session.user;
-    var opts = req.allParams();
+    const user = req.session.user;
+    let opts = req.allParams();
     if (user.role === 'administrator') {} else {opts.agent = user.no}
     Listings.find(opts).exec(function(err,data){
       return res.view('admin/listing-manage',{dataListings:data,layout:'layout-admin'});
@@ -146,7 +148,7 @@ module.exports = {
   },
 
   listingEditPost:function(req,res){
-    var params = req.allParams();
+    let params = req.allParams();
     delete params.pictures;
     //return res.json(params);
     Listings.update({no:params.no},params).exec(function(err,data){
