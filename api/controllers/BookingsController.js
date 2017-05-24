@@ -14,6 +14,7 @@ module.exports = {
 		const agent = req.session.user;
 		let opts = {};
 		opts = {agent:agent.no};
+		opts.sort = 'createdAt DESC';
 		Bookings.find(opts).populate('property').populate('buyer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.view('admin/bookings',{dataBookings:data,layout:'layout-admin'});
