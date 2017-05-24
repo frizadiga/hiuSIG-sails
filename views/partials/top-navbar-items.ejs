@@ -1,3 +1,4 @@
+<div id="top-navbar-items">
 <a class="w3-bar-item w3-button w3-hover-text-blue-grey w3-hover-white" href="/listing?status=dijual"><i class="fa fa-chevron-circle-down	"></i> Dijual</a>
 <a class="w3-bar-item w3-button w3-hover-text-blue-grey w3-hover-white" href="/listing?status=disewa"><i class="fa fa-chevron-circle-down	"></i> Disewa</a>
 <a class="w3-bar-item w3-button w3-hover-text-blue-grey w3-hover-white" href="/new-property"><i class="fa fa-home"></i> New Property</a>
@@ -6,3 +7,4 @@
 <a class="w3-bar-item w3-button w3-hover-text-blue-grey w3-hover-white" href="/agents"><i class="fa fa-user-secret"></i> Find Agents</a>
 <a class="w3-bar-item w3-button w3-hover-text-blue-grey w3-hover-white" href="/partners"><i class="fa fa-handshake-o"></i> Partners</a>
 <a <%-req.session.user?'href="/admin" title="'+req.session.user.username+'"':'href="javascript:void(0)" title="Log in/Sign up"'%> <%-req.session.user?``:`onclick="document.getElementById('modal-login').style.display='block'"`%>  class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey w3-right"> <%-req.session.user?'<img class="w3-circle w3-card" style="width:1.49em" src="/uploads/'+req.session.user.avatar+'"> ':'<i class="fa fa-sign-in"></i>'%></a>
+</div>
