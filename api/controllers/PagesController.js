@@ -16,9 +16,9 @@ module.exports = {
     res.send(req.allParams());
     // res.send("<h3>urlslug worked</h3>");
   },
-  propertiesInsertEdit:function(req,res){
+  listingsInsertEdit:function(req,res){
     if(req.param('mode')==insert){
-    	return res.view('admin/listing/form',{layout:'layout-admin'})
+    	return res.view('admin/listings/form',{layout:'layout-admin'})
     }
   }
   

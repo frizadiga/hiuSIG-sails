@@ -6,17 +6,17 @@
 <div class="w3-row-padding w3-margin w3-card" style="padding-left: 0px!important">
 <div class="w3-col m6" style="padding:0">
   <div class="w3-center w3-gray">
-    <img onclick="openModal();currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="cursor: pointer;">
+    <img onclick="openModal();currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataListings.pictures[0].path%>" alt="<%=dataListings.pictures[0].path%>" style="cursor: pointer;">
   </div>
   <div class="w3-row">
     <div class="w3-col s4">
-      <img onclick="openModal();currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+      <img onclick="openModal();currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataListings.pictures[0].path%>" alt="">
     </div>
     <div class="w3-col s4">
-      <img onclick="openModal();currentdiv(2)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+      <img onclick="openModal();currentdiv(2)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataListings.pictures[0].path%>" alt="">
     </div>
     <div class="w3-col s4">
-      <img onclick="openModal();currentdiv(3)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataProperties.pictures[0].path%>" alt="">
+      <img onclick="openModal();currentdiv(3)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height: auto;cursor: pointer;" src="<%=dataListings.pictures[0].path%>" alt="">
     </div>
   </div>
 </div>
@@ -37,29 +37,29 @@
 <!--TAB INFO-->
 <div id="info" class="tab-detail">
   <table class="w3-table">
-    <th colspan="2" class="w3-large"><%=dataProperties.title%></th>
+    <th colspan="2" class="w3-large"><%=dataListings.title%></th>
     <tr>
-      <td style="width:150px">Harga</td><td><b>Rp. <%=dataProperties.price%></b></td>
+      <td style="width:150px">Harga</td><td><b>Rp. <%=dataListings.price%></b></td>
     </tr>
     <tr>
-      <td>ID Listing</td><td><%=dataProperties.id%></td>
+      <td>ID Listing</td><td><%=dataListings.id%></td>
     </tr>
     <tr>
-      <td>Jenis Properti</td><td><%=dataProperties.type.capitalize()%> <b><%=dataProperties.status.capitalize()%></b></td>
+      <td>Jenis Properti</td><td><%=dataListings.type.capitalize()%> <b><%=dataListings.status.capitalize()%></b></td>
     </tr>
     <tr>
-      <td>Alamat</td><td><%=dataProperties.address%></td>
+      <td>Alamat</td><td><%=dataListings.address%></td>
     </tr>
     <tr>
-      <td>Kota</td><td><%=dataProperties.city%></td>
+      <td>Kota</td><td><%=dataListings.city%></td>
     </tr>
     <tr>
-      <td>Provinsi</td><td><%=dataProperties.province%></td>
+      <td>Provinsi</td><td><%=dataListings.province%></td>
     </tr>
     <tr>
       <td>Deskripsi</td>
       <td>
-        <%=dataProperties.description%>
+        <%=dataListings.description%>
       </td>
     </tr>
   </table>
@@ -70,18 +70,18 @@
     </tr>
     <tr>
       <td style="width:150px">Ruang</td>
-      <td><i class="fa fa-bed"></i> Kamar Tidur: <%=dataProperties.bed%></td>
-      <td><i class="fa fa-bath"></i> Kamar Mandi : <%=dataProperties.bath%></td>
-      <td><i class="fa fa-building"></i> Jumlah Lantai : <%=dataProperties.floor%></td>
+      <td><i class="fa fa-bed"></i> Kamar Tidur: <%=dataListings.bed%></td>
+      <td><i class="fa fa-bath"></i> Kamar Mandi : <%=dataListings.bath%></td>
+      <td><i class="fa fa-building"></i> Jumlah Lantai : <%=dataListings.floor%></td>
     </tr>
     <tr>
       <td>Ukuran</td>
-      <td><i class="fa fa-map-signs"></i> Luas Tanah : <%=dataProperties.lotSize%> m<sup>2</sup></td>
-      <td><i class="fa fa-home"></i> Luas Bangunan : <%=dataProperties.buildingSize%> m<sup>2</sup></td>
+      <td><i class="fa fa-map-signs"></i> Luas Tanah : <%=dataListings.lotSize%> m<sup>2</sup></td>
+      <td><i class="fa fa-home"></i> Luas Bangunan : <%=dataListings.buildingSize%> m<sup>2</sup></td>
     </tr>
   </table>
   <div class="w3-section">
-    <button class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b>Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
+    <button class="w3-button w3-block w3-hover-blue w3-green w3-padding"><b>Booking</b> <%= dataListings.type.capitalize() %> ini</button>
     
   </div>
 </div>
@@ -103,10 +103,10 @@
   <div class="w3-display-container">
     <img style="width:100%" class="w3-grayscale" src="/img/building-horde.png"  alt="" />
     <div class="w3-display-middle w3-center">
-    <a href="/agent/detail/<%=dataProperties.idUser.id%>">
+    <a href="/agent/detail/<%=dataListings.idUser.id%>">
     <img style="width:50%" class="w3-circle w3-card-4" src="/img/profile.jpg" alt="" />
     </a>
-    <p class="w3-large">Nama Agen: <%=dataProperties.idUser.name%></p>
+    <p class="w3-large">Nama Agen: <%=dataListings.idUser.name%></p>
     </div>
   </div>
   <div class="w3-blue-grey w3-padding">Hubungi Agen</div>
@@ -133,9 +133,9 @@
  <div class="w3-modal-content">
 
   <div class="w3-content" style="max-width:1200px">
-   <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
-   <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
-   <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
+   <img class="mySlides" src="<%=dataListings.pictures[0].path%>" style="width:100%">
+   <img class="mySlides" src="<%=dataListings.pictures[0].path%>" style="width:100%">
+   <img class="mySlides" src="<%=dataListings.pictures[0].path%>" style="width:100%">
    <div class="w3-row w3-black w3-center">
     <div class="w3-display-container">
      <p id="caption"></p>
@@ -143,13 +143,13 @@
      <span class="w3-display-right w3-btn" onclick="plusDivs(1)">❯</span>
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(1)" alt="image 1">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[0].path%>" style="width:100%" onclick="currentDiv(1)" alt="image 1">
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(2)" alt="image 2">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[0].path%>" style="width:100%" onclick="currentDiv(2)" alt="image 2">
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(3)" alt="image 3">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[0].path%>" style="width:100%" onclick="currentDiv(3)" alt="image 3">
     </div>
    </div> <!-- End row -->
   </div> <!-- End w3-content -->
@@ -224,7 +224,7 @@ function openTabs(evt,tabName){
 //Google Maps---------------------------------------------------------------------
 var map;
 function initMap(){
-var coord = {lat:<%=dataProperties.lat%>,lng:<%=dataProperties.lng%>};
+var coord = {lat:<%=dataListings.lat%>,lng:<%=dataListings.lng%>};
 var map = new google.maps.Map(document.getElementById('map'),{
 center: coord,
 zoom:15

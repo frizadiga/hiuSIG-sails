@@ -1,7 +1,7 @@
 /**
- * PropertiesController
+ * ListingsController
  *
- * @description :: Server-side logic for managing properties
+ * @description :: Server-side logic for managing Listings
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
@@ -11,14 +11,14 @@ module.exports = {
 	},
 	
   s:function(req,res){
-		Properties.s(req.allParams(),function(err,data){
+		Listings.s(req.allParams(),function(err,data){
 			if(err)res.send(err);
 			res.send(data);
 		});
 	},
 	
   getCoords:function(req,res){
-    Properties.find().exec(function(err,data){
+    Listings.find().exec(function(err,data){
       if(err)res.send(err);
       let dataLocation = [];
       let len = data.length;
@@ -35,19 +35,19 @@ module.exports = {
     });
 	},
 
-	newProperties:(req,res)=>{
-    Properties.newProperties({},(err,data)=>{
+	newListings:(req,res)=>{
+    Listings.newListings({},(err,data)=>{
       if(err)return res.serverError(err);
       if(data.length<1){
         return  res.searchNotFound('Listing tidak ditemukan!');
       }
-      return res.view('pages/listing',{dataProperties:data,layout:'layout-plain'});
+      return res.view('pages/listings',{dataListings:data,layout:'layout-plain'});
     });
   },
 
-  listing:function(req,res){
+  listingsList:function(req,res){
     //return res.json(req.allParams());
-    Properties.searchListing(req.allParams(),function(err,data){
+    Listings.searchListing(req.allParams(),function(err,data){
       if(err)return res.negotiate(err);
       //TEST PARAMETER
       // return res.json(data);
@@ -55,8 +55,8 @@ module.exports = {
         //return res.json({message:'Tidak satu Listingpun ditemukan',dataLength:data.length});
          return res.searchNotFound('Listing yang anda cari tidak ditemukan!');
       }
-      if(req.path === '/listing'){
-        return res.view('pages/listing',{dataProperties:data,layout:'layout-plain'});}
+      if(req.path === '/listings'){
+        return res.view('pages/listings',{dataListings:data,layout:'layout-plain'});}
       if(req.path === '/findinmaps'){
         let dataLocation = [];
         let len = data.length;
@@ -69,26 +69,26 @@ module.exports = {
         }
         );
       }
-        // return res.json({dataProperties:data,dataCoords:dataLocation});
-        return res.view('pages/maps',{dataProperties:data,dataCoords:dataLocation,layout:'layout-plain'});
+        // return res.json({dataListings:data,dataCoords:dataLocation});
+        return res.view('pages/maps',{dataListings:data,dataCoords:dataLocation,layout:'layout-plain'});
       }
     });
   },
   
   listingDetail:function(req,res){
-    Properties.findOne({id:req.param('id')}).populate('pictures').populate('agent').exec(function(err,data){
+    Listings.findOne({id:req.param('id')}).populate('pictures').populate('agent').exec(function(err,data){
     	// if(err)return res.send(err);
     	if(err)return res.negotiate(err);
     	if(!data)return res.notFound(req.param('id')+'tidak dapat ditemukan');
-    	return res.view('pages/listing-detail',{dataProperties:data});
+    	return res.view('pages/listing-detail',{dataListings:data});
       // return res.json(data);
     });
   },
   
   findInMaps:function(req,res){
-  	Properties.s(req.allParams(),function(err,data){
+  	Listings.s(req.allParams(),function(err,data){
   		if(err)return res.send(err);
-  		return res.view('pages/maps',{dataProperties:data,layout:'layout-plain'});
+  		return res.view('pages/maps',{dataListings:data,layout:'layout-plain'});
   	});
   },
   
@@ -96,8 +96,8 @@ module.exports = {
     var user = req.session.user;
     var opts = req.allParams();
     if (user.role === 'administrator') {} else {opts.agent = user.no}
-    Properties.find(opts).exec(function(err,data){
-      return res.view('admin/listing-manage',{dataProperties:data,layout:'layout-admin'});
+    Listings.find(opts).exec(function(err,data){
+      return res.view('admin/listing-manage',{dataListings:data,layout:'layout-admin'});
       // return res.json(user);
     });
   },
@@ -106,7 +106,7 @@ module.exports = {
     var params = req.allParams();
 
     // Create Property ID
-    Properties.createId(function(err,id){
+    Listings.createId(function(err,id){
       params.id = id;
       var owner = parseInt(id.replace('p',''));
      
@@ -123,12 +123,12 @@ module.exports = {
      if(err)return res.negotiate(err);
     
      // Insert Property Record to Database 
-     Properties.create(params).exec(function(err,data){
+     Listings.create(params).exec(function(err,data){
        if(err)return res.negotiate(err);
        //return res.json(data);
        return res.redirect('admin/listings/manage');
 
-     });//End Properties.create()
+     });//End Listings.create()
    
     });//End Files.create()
   
@@ -139,7 +139,7 @@ module.exports = {
   },
   
   listingEdit:function(req,res){
-    Properties.findOne({id:req.param('id')}).exec(function(err,data){
+    Listings.findOne({id:req.param('id')}).exec(function(err,data){
       if(err)return res.negotiate(err);
       return res.view('admin/listing-form',{dataEdit:data,layout:'layout-admin'});
     });
@@ -149,14 +149,14 @@ module.exports = {
     var params = req.allParams();
     delete params.pictures;
     //return res.json(params);
-    Properties.update({no:params.no},params).exec(function(err,data){
+    Listings.update({no:params.no},params).exec(function(err,data){
       if(err)return res.negotiate(err);
       return res.redirect('admin/listings/manage');
     });
   },
   
   listingDelete:function(req,res){
-		Properties.destroy({id:req.param('id')}).exec(function(err,data){
+		Listings.destroy({id:req.param('id')}).exec(function(err,data){
 			if(err) return res.negotiate(err);
       return res.json(data.id);
 		})

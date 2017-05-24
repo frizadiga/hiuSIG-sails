@@ -2,7 +2,7 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
 }%>
 <!--INSERT LISTING-->
-<form action="<%=dataEdit?'/api/listing/edit/'+dataEdit.no:'/api/listing/insert/'%>" method="POST" enctype="multipart/form-data">
+<form action="<%=dataEdit?'/api/listings/edit/'+dataEdit.no:'/api/listings/insert/'%>" method="POST" enctype="multipart/form-data">
 <%if(req.session.user.role!=='administrator'){%>
 <input type="hidden" name="agent" value="<%=req.session.user.no%>">
 <%}%>

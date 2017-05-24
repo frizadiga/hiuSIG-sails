@@ -10,7 +10,7 @@
 
 
 
-  <%for(var i=0,len=dataProperties.length;i<len;i++){%>
+  <%for(var i=0,len=dataListings.length;i<len;i++){%>
   <%if(i%2===0||i===0){%>
   <!--LISTING ROW-->
   <div class="w3-row-padding ">
@@ -19,11 +19,11 @@
      <!--LISTING CARD-->
     <div class="w3-col m6 w3-margin-bottom">
       <div class="w3-container w3-card w3-white" style="padding: 0">
-        <div class="w3-col m6 w3-cell" style="/*width:50% ;height:300px ;background-image: url(<%=dataProperties[i].pictures[0].path%>);background-position:center;background-size:cover;" ><a href="/listing/detail/<%=dataProperties[i].id%>" title="<%=dataProperties[i].status.capitalize()%> <%=dataProperties[i].title%>">
-          <img style="width:100%;height:300px;object-fit:cover;" class="w3-animate-opacity" src="<%=dataProperties[i].pictures[0].path%>" alt="<%=dataProperties[i].title%>" ></a>
+        <div class="w3-col m6 w3-cell" style="/*width:50% ;height:300px ;background-image: url(<%=dataListings[i].pictures[0].path%>);background-position:center;background-size:cover;" ><a href="/listings/detail/<%=dataListings[i].id%>" title="<%=dataListings[i].status.capitalize()%> <%=dataListings[i].title%>">
+          <img style="width:100%;height:300px;object-fit:cover;" class="w3-animate-opacity" src="<%=dataListings[i].pictures[0].path%>" alt="<%=dataListings[i].title%>" ></a>
         </div>
         <div class="w3-container w3-col m6 w3-text-grey w3-white w3-cell w3-cell-bottom">
-          <%var title=dataProperties[i].title;%>
+          <%var title=dataListings[i].title;%>
           <p title="<%=title%>">
             <b>
               <%=(i+1)+' - '%>
@@ -33,44 +33,44 @@
           <p class="w3-small">
             <i class="fa fa-clock-o"></i>
             <span class="w3-tiny"> Posted on 
-            <%=dataProperties[i].createdAt.toDateString()%>
+            <%=dataListings[i].createdAt.toDateString()%>
             </span>
           </p>
           <p>
             <i class="fa fa-home"></i>&nbsp;
             <span> 
-              <%=dataProperties[i].type.capitalize()%>
-              <b><%=dataProperties[i].status.capitalize()%></b>
+              <%=dataListings[i].type.capitalize()%>
+              <b><%=dataListings[i].status.capitalize()%></b>
             </span>
           </p>
-          <%var address=dataProperties[i].address;%>
+          <%var address=dataListings[i].address;%>
           <p title="<%=address%>"><i class="fa fa-map-marker"></i>&nbsp;
             <span>
               <%=(address.length>35)?address.substring(0,35)+'...':address%>
             </span></p>
           <p><i class="fa fa-money"></i>&nbsp;
             <span>
-              Rp. <%=dataProperties[i].price%>
+              Rp. <%=dataListings[i].price%>
             </span>
           </p>
           <div class="w3-row-padding  w3-margin-bottom">
             <i class="fa fa-bed"></i>&nbsp;
             <span>
-              <%=dataProperties[i].bed%>
+              <%=dataListings[i].bed%>
             </span>
             <i class="fa fa-bath"></i>&nbsp;
             <span>
-              <%=dataProperties[i].bath%>
+              <%=dataListings[i].bath%>
             </span>
           </div>
           <div class="w3-bar w3-border w3-margin-bottom">
             <!-- <a href="javascript:void(0)">
             <button class="w3-bar-item w3-button " style="width:33.3%" title="Favorit"><i class="fa fa-star"></i> Favorit</button>
             </a> -->
-            <a href="/agent/detail/<%=dataProperties[i].agent.id%>">
-            <button class="w3-bar-item w3-button w3-hover-blue" style="width: 50%" title="<%=dataProperties[i].agent.name%>"><i class="fa fa-user"></i> Agen</button>
+            <a href="/agent/detail/<%=dataListings[i].agent.id%>">
+            <button class="w3-bar-item w3-button w3-hover-blue" style="width: 50%" title="<%=dataListings[i].agent.name%>"><i class="fa fa-user"></i> Agen</button>
             </a>
-            <a href="/listing/detail/<%=dataProperties[i].id%>">
+            <a href="/listings/detail/<%=dataListings[i].id%>">
             <button class="w3-bar-item w3-button w3-hover-green" style="width: 50%" title="More information about this"><i class="fa fa-info"></i> Details</button>
             </a>
           </div>
@@ -80,7 +80,7 @@
     </div><!-- END LISTING CARD -->
   
   
-  <%if(i%2!==0||i===1||i===dataProperties.length-1){%>
+  <%if(i%2!==0||i===1||i===dataListings.length-1){%>
   </div>
   <!--END LISTING ROW-->
   <%}%> 
@@ -91,5 +91,5 @@
 <%- partial('../partials/modal-login.ejs')%>
 
 <script>
-  document.getElementById('navbar-form-search').action='/listing';
+  document.getElementById('navbar-form-search').action='/listings';
 </script>

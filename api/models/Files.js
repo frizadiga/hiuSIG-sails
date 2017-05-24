@@ -20,7 +20,7 @@ module.exports = {
     	type:'string'
     },
     owner:{
-        model:'properties'
+        model:'listings'
     },
   },
 

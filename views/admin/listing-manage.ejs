@@ -27,7 +27,7 @@
 
   <div class="w3-row">
 
-    <table class="w3-card w3-table w3-hoverable" id="properties-table">
+    <table class="w3-card w3-table w3-hoverable" id="listings-table">
       <tr class="w3-blue-grey">
         <th>ID</th>
         <th>Tipe</th>
@@ -37,21 +37,21 @@
         <th>Provinsi</th>
         <th style="width:100px"></th>
       </tr>
-      <%for(i=0;i<dataProperties.length;i++){%>
+      <%for(i=0;i<dataListings.length;i++){%>
       <tr class="w3-text-grey w3-hover-green">
-        <td style="vertical-align:middle; width:80px"><%=dataProperties[i].id%></td>
-        <td style="vertical-align:middle"><%=dataProperties[i].type.capitalize()%></td>
-        <td style="vertical-align:middle"><%=dataProperties[i].status.capitalize()%> <%=dataProperties[i].title%></td>
-        <td style="vertical-align:middle">Rp. <%=dataProperties[i].price%></td>
-        <td style="vertical-align:middle"><%=dataProperties[i].city%></td>
-        <td style="vertical-align:middle"><%=dataProperties[i].province%></td>
+        <td style="vertical-align:middle; width:80px"><%=dataListings[i].id%></td>
+        <td style="vertical-align:middle"><%=dataListings[i].type.capitalize()%></td>
+        <td style="vertical-align:middle"><%=dataListings[i].status.capitalize()%> <%=dataListings[i].title%></td>
+        <td style="vertical-align:middle">Rp. <%=dataListings[i].price%></td>
+        <td style="vertical-align:middle"><%=dataListings[i].city%></td>
+        <td style="vertical-align:middle"><%=dataListings[i].province%></td>
         <td style="width:180px">
           <div class="w3-bar w3-center w3-right w3-margin-right ">
-            <a href="/listing/detail/<%=dataProperties[i].id%>">
+            <a href="/listings/detail/<%=dataListings[i].id%>">
             <button class="w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-info"></i></button></a>
-            <a href="/admin/listing/edit/<%=dataProperties[i].id%>">
+            <a href="/admin/listings/edit/<%=dataListings[i].id%>">
             <button class="w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-pencil"></i></button></a>
-            <button class="w3-button w3-hover-red" onclick="modalData('<%=dataProperties[i].id%>','<%=dataProperties[i].title%>')"><i class="fa fa-trash"></i></button>
+            <button class="w3-button w3-hover-red" onclick="modalData('<%=dataListings[i].id%>','<%=dataListings[i].title%>')"><i class="fa fa-trash"></i></button>
           </div>
         </td>
       </tr>
@@ -76,7 +76,7 @@
   var input, filter, table, tr, td, i;
   input = document.getElementById("search-filter");
   filter = input.value.toUpperCase();
-  table = document.getElementById("properties-table");
+  table = document.getElementById("listings-table");
   tr = table.getElementsByTagName("tr");
   for (i = 1; i < tr.length; i++) {
     trd = tr[i];

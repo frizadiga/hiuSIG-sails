@@ -1,5 +1,5 @@
 /**
- * Properties.js
+ * Listings.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -73,21 +73,21 @@ module.exports = {
   },
 
   s:function(opts,cb){
-    Properties.find(opts).populate('pictures').populate('agent').exec((err,data)=> {
+    Listings.find(opts).populate('pictures').populate('agent').exec((err,data)=> {
       if(err)return cb(err);
       cb(err,data);
     });
   },
 
   c:function(opts,cb){
-    Properties.create(opts).exec((err,data)=>{
+    Listings.create(opts).exec((err,data)=>{
       if(err)return cb(err);
       cb(err,data);
     });
   },
 
   createId:function(cb){
-    let query = Properties.find();
+    let query = Listings.find();
     //let sort = 'no DESC';
     query.sort('no DESC');
     query.exec((err,data)=> {
@@ -117,15 +117,15 @@ module.exports = {
       address:{'contains':location}
     };
     query = Object.assign(params,queryLocation);
-    Properties.find(query).populate('pictures').populate('agent').exec(function(err,data){
+    Listings.find(query).populate('pictures').populate('agent').exec(function(err,data){
       if(err)return cb(err);
       cb(err,data);
     });
 
   },
 
-  newProperties:(params,cb)=>{
-    Properties.find({sort:'createdAt DESC',limit:6}).populate('pictures').populate('agent').exec((err,data)=>{
+  newListings:(params,cb)=>{
+    Listings.find({sort:'createdAt DESC',limit:6}).populate('pictures').populate('agent').exec((err,data)=>{
       if(err)return cb(err);
       cb(err,data);
     });

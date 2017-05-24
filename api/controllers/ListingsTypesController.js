@@ -1,7 +1,7 @@
 /**
- * PropertiesTypesController
+ * ListingsTypesController
  *
- * @description :: Server-side logic for managing Propertiestypes
+ * @description :: Server-side logic for managing Listingstypes
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

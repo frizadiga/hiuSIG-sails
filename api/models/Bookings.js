@@ -18,7 +18,7 @@ module.exports = {
   		unique:true
   	},
   	property:{
-  		model:'properties'
+  		model:'listings'
   	},
   	buyer:{
   		model:'users',

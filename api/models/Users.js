@@ -38,8 +38,8 @@ module.exports = {
     avatar:{
       type:'string'
     },
-    properties:{
-      collection:'properties',
+    listings:{
+      collection:'listings',
       via:'agent'
     }
   },

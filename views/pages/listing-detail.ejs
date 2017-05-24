@@ -7,22 +7,22 @@
 <!-- Image Container -->
   <div class="w3-card w3-light-grey">
 
-<!-- Properties Image -->
+<!-- Listings Image -->
     <div class="w3-content w3-animate-opacity" style="padding: 8px 0px 0px 0px!important">
      
       <!-- Use Div Overflow:hidden -->
       <!--  <div class="w3-card-4" style="height:551.25px;overflow:hidden;">
-        <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="width:100%;cursor: pointer;">
+        <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" src="<%=dataListings.pictures[0].path%>" alt="<%=dataListings.pictures[0].path%>" style="width:100%;cursor: pointer;">
       </div> -->
 
       <!-- Use Object Fit -->
-      <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataProperties.pictures[0].path%>" alt="<%=dataProperties.pictures[0].path%>" style="height:551.25px;width:100%;cursor:pointer;object-fit:cover">
+      <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataListings.pictures[0].path%>" alt="<%=dataListings.pictures[0].path%>" style="height:551.25px;width:100%;cursor:pointer;object-fit:cover">
 
       <div class="w3-row w3-white" style="height:183.375px;overflow:hidden;">
       
       <%for(i=0,len=5;i<len;i++){%>  
         <div class="w3-col s4">
-          <img onclick="openModal('modal-image');currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height:auto;cursor:pointer;vertical-align:middle;" src="<%=dataProperties.pictures[0].path%>" alt="">
+          <img onclick="openModal('modal-image');currentdiv(1)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height:auto;cursor:pointer;vertical-align:middle;" src="<%=dataListings.pictures[0].path%>" alt="">
         </div>
       <%}%>
       </div>
@@ -49,37 +49,37 @@
 <div id="info" class="tab-detail w3-animate-opacity">
   <table class="w3-table">
     <th colspan="2" class="w3-large">
-      <%=dataProperties.title%>
+      <%=dataListings.title%>
       <p class="w3-small">
         <i class="fa fa-clock-o"></i>
         <span class="w3-tiny"> Posted on 
-        <%=dataProperties.createdAt.toDateString()%>
+        <%=dataListings.createdAt.toDateString()%>
         </span>
       </p>
       <hr class="w3-hr">
     </th>
     <tr>
-      <td style="width:150px">Harga</td><td><b>Rp. <%=dataProperties.price%></b></td>
+      <td style="width:150px">Harga</td><td><b>Rp. <%=dataListings.price%></b></td>
     </tr>
     <tr>
-      <td>ID Listing</td><td><%=dataProperties.id%></td>
+      <td>ID Listing</td><td><%=dataListings.id%></td>
     </tr>
     <tr>
-      <td>Jenis Properti</td><td><%=dataProperties.type.capitalize()%> <b><%=dataProperties.status.capitalize()%></b></td>
+      <td>Jenis Properti</td><td><%=dataListings.type.capitalize()%> <b><%=dataListings.status.capitalize()%></b></td>
     </tr>
     <tr>
-      <td>Alamat</td><td><%=dataProperties.address%></td>
+      <td>Alamat</td><td><%=dataListings.address%></td>
     </tr>
     <tr>
-      <td>Kota</td><td><%=dataProperties.city%></td>
+      <td>Kota</td><td><%=dataListings.city%></td>
     </tr>
     <tr>
-      <td>Provinsi</td><td><%=dataProperties.province%></td>
+      <td>Provinsi</td><td><%=dataListings.province%></td>
     </tr>
     <tr>
       <td>Deskripsi</td>
       <td>
-        <%=dataProperties.description%>
+        <%=dataListings.description%>
       </td>
     </tr>
   </table>
@@ -90,14 +90,14 @@
     </tr>
     <tr>
       <td style="width:150px">Ruang</td>
-      <td><i class="fa fa-bed"></i> Kamar Tidur: <%=dataProperties.bed%></td>
-      <td><i class="fa fa-bath"></i> Kamar Mandi : <%=dataProperties.bath%></td>
-      <td><i class="fa fa-building"></i> Jumlah Lantai : <%=dataProperties.floor%></td>
+      <td><i class="fa fa-bed"></i> Kamar Tidur: <%=dataListings.bed%></td>
+      <td><i class="fa fa-bath"></i> Kamar Mandi : <%=dataListings.bath%></td>
+      <td><i class="fa fa-building"></i> Jumlah Lantai : <%=dataListings.floor%></td>
     </tr>
     <tr>
       <td>Ukuran</td>
-      <td><i class="fa fa-map-signs"></i> Luas Tanah : <%=dataProperties.lotSize%> m<sup>2</sup></td>
-      <td><i class="fa fa-home"></i> Luas Bangunan : <%=dataProperties.buildingSize%> m<sup>2</sup></td>
+      <td><i class="fa fa-map-signs"></i> Luas Tanah : <%=dataListings.lotSize%> m<sup>2</sup></td>
+      <td><i class="fa fa-home"></i> Luas Bangunan : <%=dataListings.buildingSize%> m<sup>2</sup></td>
     </tr>
   </table>
   
@@ -106,7 +106,7 @@
 <div id="maps" class="tab-detail w3-animate-opacity">
   <div id="map" class="w3-greyscale" style="width:100%;height:500px"></div>
 
-  <div class="w3-leftbar w3-border-green w3-padding w3-light-grey w3-text-blue-grey"><i class="fa fa-map-marker"></i> <b>Lokasi disekitar</b> <%=dataProperties.type.capitalize()%> ini</div>
+  <div class="w3-leftbar w3-border-green w3-padding w3-light-grey w3-text-blue-grey"><i class="fa fa-map-marker"></i> <b>Lokasi disekitar</b> <%=dataListings.type.capitalize()%> ini</div>
   <div class="w3-container">
   
   <div class="w3-col m6">
@@ -126,11 +126,11 @@
   <div class="w3-display-container w3-center">
     <img style="width:100%;height: auto" class="w3-grayscale" src="/img/building-horde.png"  alt="" />
     <div class="w3-display-middle">
-    <a href="/agent/detail/<%=dataProperties.agent.id%>">
-    <img style="width:170px" class="w3-circle w3-card-4" src="/uploads/<%=dataProperties.agent.avatar%>" alt="" />
+    <a href="/agent/detail/<%=dataListings.agent.id%>">
+    <img style="width:170px" class="w3-circle w3-card-4" src="/uploads/<%=dataListings.agent.avatar%>" alt="" />
     </a>
-    <p class="w3-large" style="margin-bottom: 0px"><%=dataProperties.agent.name%></p>
-    <p class="w3-large" style="margin-bottom: 0px"><i class="fa fa-phone"></i> <%=dataProperties.agent.phone%></p>
+    <p class="w3-large" style="margin-bottom: 0px"><%=dataListings.agent.name%></p>
+    <p class="w3-large" style="margin-bottom: 0px"><i class="fa fa-phone"></i> <%=dataListings.agent.phone%></p>
     <div class="w3-section">
       <button onclick="openModal('modal-message')" class="w3-button w3-blue-grey w3-hover-blue"><b><i class="fa fa-envelope"></i> Send</b> Message</button>
     </div>
@@ -143,7 +143,7 @@
 
 <!-- BUTTON-BOOKING -->
   <div class="w3-section w3-content w3-card w3-padding-16 w3-container">
-    <button onclick="openModal('modal-booking')" class="w3-button w3-padding-16 w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataProperties.type.capitalize() %> ini</button>
+    <button onclick="openModal('modal-booking')" class="w3-button w3-padding-16 w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Booking</b> <%= dataListings.type.capitalize() %> ini</button>
   </div>
 
 </div>
@@ -158,7 +158,7 @@
   </header>
   <form id="form-message">
   <input type="hidden" name="sender" value="<%=(req.session.user)?req.session.user.no:''%>">
-  <input type="hidden" name="receiver" value="<%=(req.session.user)?dataProperties.agent.no:''%>">
+  <input type="hidden" name="receiver" value="<%=(req.session.user)?dataListings.agent.no:''%>">
 
   <div class="w3-container w3-text-grey">
   <p>
@@ -183,14 +183,14 @@
       <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-booking')"><i class="fa fa-close"></i></span>
     </header>
       <div class="w3-display-container" style="max-width:700px;margin:auto">
-        <img class="w3-greyscale-min" style="width:100%;height:300px;object-fit:cover" src="<%=dataProperties.pictures[0].path%>">
-        <p class="w3-display-bottommiddle w3-text-white"><b><%=dataProperties.title%></b></p>  
+        <img class="w3-greyscale-min" style="width:100%;height:300px;object-fit:cover" src="<%=dataListings.pictures[0].path%>">
+        <p class="w3-display-bottommiddle w3-text-white"><b><%=dataListings.title%></b></p>  
         <div class="w3-display-bottommiddle"> 
         </div>
       </div>
       <div class="w3-container w3-padding-16 w3-center w3-text-grey" style="width:100%">
-      <img class="w3-circle w3-card" style="width:15%" src="/uploads/<%=dataProperties.agent.avatar%>">
-      <p>Agent: <%=dataProperties.agent.name%></p>
+      <img class="w3-circle w3-card" style="width:15%" src="/uploads/<%=dataListings.agent.avatar%>">
+      <p>Agent: <%=dataListings.agent.name%></p>
       <hr class="w3-hr">
       <label class="w3-left">Pesan Tambahan:</label>
       <textarea id="booking-message" placeholder="Ex: Saya Booking dengan DP 50%" rows="3" class="w3-input w3-border w3-text-grey w3-hover-light-grey" type="text" style="resize:vertical">Ex: Saya Booking dengan DP 50%</textarea>
@@ -208,9 +208,9 @@
  <div class="w3-modal-content w3-animate-opacity">
  <%var totalImages=3%>
   <div class="w3-content" style="max-width:1200px">
-   <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
-   <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
-   <img class="mySlides" src="<%=dataProperties.pictures[0].path%>" style="width:100%">
+   <img class="mySlides" src="<%=dataListings.pictures[0].path%>" style="width:100%">
+   <img class="mySlides" src="<%=dataListings.pictures[0].path%>" style="width:100%">
+   <img class="mySlides" src="<%=dataListings.pictures[0].path%>" style="width:100%">
    <div class="w3-row w3-black w3-center">
     <div class="w3-display-container">
      <p id="caption"></p>
@@ -218,13 +218,13 @@
      <span class="w3-display-right w3-btn" onclick="plusDivs(1)">❯</span>
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(1)" alt="1 / <%=totalImages%>">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[0].path%>" style="width:100%" onclick="currentDiv(1)" alt="1 / <%=totalImages%>">
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(2)" alt="2 / <%=totalImages%>">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[0].path%>" style="width:100%" onclick="currentDiv(2)" alt="2 / <%=totalImages%>">
     </div>
     <div class="w3-col s4">
-     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataProperties.pictures[0].path%>" style="width:100%" onclick="currentDiv(3)" alt="3 / <%=totalImages%>">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[0].path%>" style="width:100%" onclick="currentDiv(3)" alt="3 / <%=totalImages%>">
     </div>
    </div> <!-- End row -->
   </div> <!-- End w3-content -->
@@ -257,9 +257,9 @@ function postBooking(){
   fetch('/api/booking',{
     method:'POST',
     body:JSON.stringify({
-      property:'<%-dataProperties.no%>',
+      property:'<%-dataListings.no%>',
       buyer:'<%-(req.session.user)?req.session.user.no:'anonymous'%>',
-      agent:'<%-dataProperties.agent.no%>',
+      agent:'<%-dataListings.agent.no%>',
       message:document.getElementById('booking-message').value,
       status:'pending',
     })
@@ -338,7 +338,7 @@ function openTabs(evt,tabName){
 //Google Maps---------------------------------------------------------------------
 var map;
 function initMap(){
-var coord = {lat:<%=dataProperties.lat%>,lng:<%=dataProperties.lng%>};
+var coord = {lat:<%=dataListings.lat%>,lng:<%=dataListings.lng%>};
 var map = new google.maps.Map(document.getElementById('map'),{
 center: coord,
 zoom:15

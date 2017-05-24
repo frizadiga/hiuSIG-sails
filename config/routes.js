@@ -49,11 +49,11 @@ module.exports.routes = {
 
   //PAGES
   '/':{view:'pages/index',locals:{layout:'layout-plain'}},
-  'GET /new-property':'PropertiesController.newProperties',
-  'GET /listing':'PropertiesController.listing',
-  'GET /listing/detail/:id':'PropertiesController.listingDetail',
-  'GET /findinmaps':'PropertiesController.listing',
-  'GET /agents':'UsersController.agentListing',
+  'GET /new-property':'ListingsController.newListings',
+  'GET /listings':'ListingsController.listingsList',
+  'GET /listings/detail/:id':'ListingsController.listingDetail',
+  'GET /findinmaps':'ListingsController.listingsList',
+  'GET /agents':'UsersController.agentsList',
   'GET /agent/detail/:id':'UsersController.agentDetail',
   'GET /partners':{view:'pages/partners'},
   
@@ -68,13 +68,13 @@ module.exports.routes = {
     view:'admin/dashboard',
     locals:{layout:'layout-admin'}
   },
-  '/admin/listings/manage':'PropertiesController.listingManage',
-  '/admin/listing/insert':{
+  '/admin/listings/manage':'ListingsController.listingManage',
+  '/admin/listings/insert':{
     view:'admin/listing-form',
     locals:{layout:'layout-admin',dataEdit:null}
   },
-  '/admin/listing/edit/:id':'PropertiesController.listingEdit',
-  '/admin/listing/maps':{
+  '/admin/listings/edit/:id':'ListingsController.listingEdit',
+  '/admin/listings/maps':{
     view:'admin/listing-maps',
     locals:{layout:'layout-admin'}
   },
@@ -101,13 +101,13 @@ module.exports.routes = {
   '/api/url-slug':'PagesController.urlSlug',
   '/api/index':'PagesController.indexPage',
   'POST /api/userpost':'UsersController.response',
-  '/api/getcoords':'PropertiesController.getCoords',
+  '/api/getcoords':'ListingsController.getCoords',
   '/api/mapspage':'MapsController.view',
   '/api/finduser':'UsersController.findUser',
   //API LISTING
-  'POST /api/listing/insert':'PropertiesController.listingInsert',
-  'POST /api/listing/edit/:no':'PropertiesController.listingEditPost',
-  '/api/listing/delete/:id':'PropertiesController.listingDelete',
+  'POST /api/listings/insert':'ListingsController.listingInsert',
+  'POST /api/listings/edit/:no':'ListingsController.listingEditPost',
+  '/api/listings/delete/:id':'ListingsController.listingDelete',
   //API USER
   '/api/user/insert':'UsersController.userInsert',
   '/api/user/delete/:id':'UsersController.UserDelete',
