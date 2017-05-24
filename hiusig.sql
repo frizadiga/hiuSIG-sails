@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 Mei 2017 pada 08.52
+-- Generation Time: 25 Mei 2017 pada 00.05
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -33,6 +33,7 @@ CREATE TABLE `bookings` (
   `buyer` int(11) DEFAULT NULL,
   `agent` int(11) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -41,9 +42,16 @@ CREATE TABLE `bookings` (
 -- Dumping data untuk tabel `bookings`
 --
 
-INSERT INTO `bookings` (`no`, `id`, `property`, `buyer`, `agent`, `message`, `createdAt`, `updatedAt`) VALUES
-(1, 'b1', 14, 2, 1, 'saya akan DP 50%', '2017-05-19 19:35:40', '2017-05-19 19:35:40'),
-(2, 'b2', 15, 1, 2, 'saya akan DP 70%', '2017-05-19 20:01:41', '2017-05-19 20:01:41');
+INSERT INTO `bookings` (`no`, `id`, `property`, `buyer`, `agent`, `message`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, 'b1', 14, 2, 1, 'saya akan DP 50%', 'pending', '2017-05-19 19:35:40', '2017-05-19 19:35:40'),
+(2, 'b2', 15, 1, 2, 'saya akan DP 70%', 'pending', '2017-05-19 20:01:41', '2017-05-19 20:01:41'),
+(3, 'b3', 15, 8, 2, 'pesan tambahan', 'pending', '2017-05-20 19:38:53', '2017-05-20 19:38:53'),
+(4, 'b4', 30, 8, 2, 'pesan tambahan', 'pending', '2017-05-20 22:48:13', '2017-05-20 22:48:13'),
+(5, 'b5', 21, 8, 3, 'pesan tambahan', 'pending', '2017-05-21 15:25:16', '2017-05-21 15:25:16'),
+(6, 'b6', 30, 8, 2, 'pesan tambahan', 'pending', '2017-05-22 02:45:14', '2017-05-22 02:45:14'),
+(7, 'b7', 15, 8, 2, 'pesan tambahan', 'pending', '2017-05-23 21:24:15', '2017-05-23 21:24:15'),
+(8, 'b8', 31, 8, 2, 'pesan tambahan', 'pending', '2017-05-24 15:50:24', '2017-05-24 15:50:24'),
+(9, 'b9', 31, 8, 2, 'Ex: Saya Booking dengan DP 50% ya', 'pending', '2017-05-24 17:01:42', '2017-05-24 17:01:42');
 
 -- --------------------------------------------------------
 
@@ -177,11 +185,14 @@ INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`
 (31, 'm31', 2, 1, 'test friza', '2017-05-19 02:39:53', '2017-05-19 02:39:53'),
 (32, 'm32', 1, 2, 'pm harga ya', '2017-05-19 02:41:03', '2017-05-19 02:41:03'),
 (33, 'm33', 1, 2, 'hai timo saya tertarik membantu listing kamu', '2017-05-19 02:55:41', '2017-05-19 02:55:41'),
-(34, 'm34', 0, 2, 'hai tomomi', '2017-05-19 13:52:44', '2017-05-19 13:52:44'),
 (35, 'm35', 1, 2, 'ruko baru ya?', '2017-05-19 17:08:54', '2017-05-19 17:08:54'),
-(36, 'm36', 1, 2, 'ruko ya?', '2017-05-19 17:11:12', '2017-05-19 17:11:12'),
 (37, 'm37', 1, 2, 'ruko ya?', '2017-05-19 17:12:36', '2017-05-19 17:12:36'),
-(38, 'm38', 1, 1, 'test', '2017-05-19 21:24:34', '2017-05-19 21:24:34');
+(38, 'm38', 1, 1, 'test', '2017-05-19 21:24:34', '2017-05-19 21:24:34'),
+(39, 'm39', 2, 1, 'hi friza', '2017-05-20 14:18:48', '2017-05-20 14:18:48'),
+(40, 'm40', 8, 2, 'bisa ketemuan dilokasi?', '2017-05-20 22:53:40', '2017-05-20 22:53:40'),
+(41, 'pt3', 1, 8, 'test from postman', '2017-05-21 21:48:32', '2017-05-21 21:48:32'),
+(42, 'm42', 8, 2, 'perumahan bagus saya tertarik, bisa ketemuan?', '2017-05-22 12:31:49', '2017-05-22 12:31:49'),
+(43, 'm43', 8, 2, 'Ex: Saya tertarik dengan properti anda lho', '2017-05-25 02:02:38', '2017-05-25 02:02:38');
 
 -- --------------------------------------------------------
 
@@ -227,12 +238,12 @@ INSERT INTO `properties` (`no`, `id`, `title`, `status`, `type`, `price`, `provi
 (22, 'p22', 'Gedung Perkantoran Kemang', 'disewa', 'perkantoran', 100000000, 'Jakarta', 'Jakarta Selatan', 'Kemang Icon by Alila, Bangka, Kota Jakarta Selatan, Jakarta Raya, Indonesia', '-6.255591523485944', '106.81475853677057', '500', '300', 10, 10, 20, '- Kawasan Tenang dan nyaman\r\n- Standar Fasilitas Internasional', 4, '2016-12-23 22:15:01', '2016-12-25 15:05:05'),
 (23, 'p23', 'Tanah Kosong Padang Sambian', 'dijual', 'tanah', 300000000, 'Bali', 'Kuta', 'Padangsambian, Kota Denpasar, Bali, Indonesia no 89', '-8.6546221', '115.18595170000003', '300', '1', 0, 0, 0, '- Surat Lengkap', 1, '2016-12-27 19:31:18', '2016-12-27 19:31:18'),
 (24, 'p24', 'Tanah Rawa Daerah Serangan', 'dijual', 'tanah', 50000000, 'Bali', 'Denpasar', 'Jalan Rawa-rawa, Serangan, Kota Denpasar, Bali, Indonesia no 33', '-8.734714429762585', '115.23011543383791', '500', '0', 0, 0, 0, '- surat lengkap', 2, '2016-12-27 19:34:32', '2016-12-27 19:34:32'),
-(26, 'p25', 'Gudang Barang Strategis Depok', 'disewa', 'gudang', 30000000, 'Jawa Barat', 'Depok', 'Jalan Pusat Gudang no 77', '-6.364270647289123', '106.86221840527344', '700', '600', 2, 0, 0, '- Keamanan 24 Jam', 3, '2017-01-01 15:54:04', '2017-01-01 15:54:04'),
+(26, 'p25', 'Gudang Barang Strategis Depok', 'dijual', 'gudang', 30000000, 'Jawa Barat', 'Depok', 'Jalan Pusat Gudang no 77', '-6.364270647289123', '106.86221840527344', '700', '600', 2, 0, 0, '- Keamanan 24 Jam', 3, '2017-01-01 15:54:04', '2017-05-21 15:00:43'),
 (27, 'p27', 'Gudang Barang Strategis Bekasi', 'disewa', 'gudang', 50000000, 'Jawa Barat', 'Bekasi', 'Jalan Gudang Ratu no99c', '-6.232429896450983', '107.00837641640624', '1200', '900', 2, 3, 3, '', 4, '2017-01-01 15:56:59', '2017-01-01 15:56:59'),
 (28, 'p28', 'Apartement dibilangan Sanur', 'dijual', 'apartemen', 150000000, 'Bali', 'Denpasar', 'Jalan Danau Tamblingan no 55 Sanur Bali', '-8.694737', '115.26301420000004', '150', '150', 1, 2, 2, 'Fasilitas ISO Eropa', 2, '2017-05-18 23:42:13', '2017-05-19 13:34:30'),
 (29, 'p29', 'Rumah Tipe 38', 'disewa', 'rumah', 1200000000, 'Bali', 'Kuta', 'Jl Muding Mekar No 11 F, Kerobokan, Badung, Bali', '-8.65011358262249', '115.17551176190182', '150', '150', 2, 2, 2, 'One way Gate System\r\nSecuruty 24 Jam', 2, '2017-05-20 13:19:12', '2017-05-20 13:21:28'),
 (30, 'p30', 'Perumahan Kesambi Raya', 'disewa', 'rumah', 1300000000, 'Bali', 'Badung', 'Perum Kesambi raya no 9F, Kerobokan, Badung, Bali', '-8.653155100000001', '115.17380730000002', '150', '200', 2, 3, 3, 'Keamanan 24 jam\r\nOne Gate System', 2, '2017-05-20 13:32:04', '2017-05-20 13:32:04'),
-(31, 'p31', 'Villa Mewah Sanur', 'dijual', 'villa', 2147483647, 'Bali', 'Denpasar', 'Jalan Hang Tuah no 8, Sanur, Denpasar, Bali', '-8.674427542151289', '115.26289072491454', '500', '700', 2, 7, 3, '- Kolam Renang\r\n- Security 24 Jam\r\n- CCTV\r\n- Fresh Water Tank Stock', 2, '2017-05-20 13:38:01', '2017-05-20 13:38:01');
+(31, 'p31', 'Villa Mewah di bilangan Sanur', 'dijual', 'villa', 310000000, 'Bali', 'Denpasar', 'Jalan Hang Tuah no 8, Sanur, Denpasar, Bali', '-8.674427542151289', '115.26289072491454', '500', '700', 2, 7, 3, '- Kolam Renang\r\n- Security 24 Jam\r\n- CCTV\r\n- Fresh Water Tank Stock', 2, '2017-05-20 13:38:01', '2017-05-20 14:12:43');
 
 -- --------------------------------------------------------
 
@@ -260,7 +271,6 @@ INSERT INTO `propertiestypes` (`no`, `id`, `type`, `createdAt`, `updatedAt`) VAL
 (5, 'pt5', 'ruang usaha', '2017-05-20 13:47:42', '2017-05-20 13:47:42'),
 (6, 'pt6', 'villa', '2017-05-20 13:47:51', '2017-05-20 13:47:51'),
 (9, 'pt7', 'apartemen', '2017-05-20 13:50:46', '2017-05-20 13:50:46'),
-(10, 'pt8', 'kondominium', '2017-05-20 13:51:02', '2017-05-20 13:51:02'),
 (11, 'pt9', 'pabrik', '2017-05-20 13:51:13', '2017-05-20 13:51:13'),
 (12, 'pt10', 'perkantoran', '2017-05-20 13:51:31', '2017-05-20 13:51:31');
 
@@ -372,7 +382,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `files`
 --
@@ -382,7 +392,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `properties`
 --
