@@ -153,7 +153,9 @@
   </div>
 
   <div class="w3-container w3-section w3-card w3-padding-16">
-      <button class="w3-btn w3-blue-grey w3-right w3-hover-green"><%=dataEdit?'Edit':'Tambah'%></button>
+      <button class="w3-btn w3-blue-grey w3-right w3-hover-green">
+        <%-dataEdit?`<i class='fa fa-pencil'></i> Edit`:`<i class='fa fa-plus'></i> Tambah`%>
+      </button>
       <button class="w3-btn w3-light-grey w3-text-grey w3-right" type="reset">Atur Ulang</button>
   </div>
 

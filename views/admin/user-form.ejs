@@ -1,49 +1,57 @@
-<%   String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}%>
 <form action="<%=dataEdit?'/api/user/edit/'+dataEdit.no:'/api/user/insert'%>" method="POST" enctype="multipart/form-data">
 	<div id="user-form" class="w3-padding w3-container">
-	<div class="w3-card">
-	<div class="w3-padding"  style="max-width: 700px;margin:auto;">
-		   <p class=" w3-text-grey w3-margin" style="border-width:2px!important;padding:16px 0px 0px 0px;margin:0px 8px 0px 8px"><b><i class="fa fa-user"></i> Form User</b>
-      </p>
-      <hr class="w3-hr w3-grey">
-			<div class="w3-row w3-container w3-padding-16">
-			  <label class="w3-text-grey">Nama Lengkap</label>
-				<input class="w3-input w3-border" type="text" name="name" value="<%=dataEdit?dataEdit.name:''%>">
-				<label class="w3-text-grey">Email</label>
-				<input class="w3-input w3-border" type="email" name="email" value="<%=dataEdit?dataEdit.email:''%>">
-				<label class="w3-text-grey">Phone</label>
-				<input class="w3-input w3-border" type="tel" name="phone" value="<%=dataEdit?dataEdit.phone:''%>">
-				<label class="w3-text-grey">Username</label>
-				<input class="w3-input w3-border" type="text" name="username" value="<%=dataEdit?dataEdit.username:''%>" autocomplete="off">
-				<label class="w3-text-grey">Password</label>
-				<input class="w3-input w3-border" type="password" name="password" value="<%=dataEdit?dataEdit.password:''%>" autocomplete="off">
-				<label class="w3-text-grey">Role</label>
-				<select class="w3-select w3-border" name="role">
-					<option value="<%=dataEdit?dataEdit.role:''%>"><%=dataEdit?dataEdit.role.capitalize():''%></option>
-					<option value="member">Member</option>
-					<option value="agent">Agen</option>
-					<option value="administrator">Administrator</option>
-				</select>
-				<p>
-       	<hr class="w3-hr w3-grey">
-				</p>
+		<div class="w3-card w3-padding-64">
+			<div class="w3-container w3-border"  style="max-width: 700px;margin:auto;">
+		  	<p class="w3-text-grey" style="border-width:2px!important;padding:16px 0px 0px 0px;margin:0px 8px 0px 8px"><b><i class="fa fa-user"></i> Form User</b>
+      	</p>
+      	<hr class="w3-hr w3-grey">
+					<p>
+			  		<label class="w3-text-grey">Nama Lengkap</label>
+						<input class="w3-input w3-border" type="text" name="name" value="<%=dataEdit?dataEdit.name:''%>">
+					</p>
+					<p>
+						<label class="w3-text-grey">Email</label>
+						<input class="w3-input w3-border" type="email" name="email" value="<%=dataEdit?dataEdit.email:''%>">
+					</p>
+					<p>
+						<label class="w3-text-grey">Phone</label>
+						<input class="w3-input w3-border" type="tel" name="phone" value="<%=dataEdit?dataEdit.phone:''%>">
+					</p>
+					<p>
+						<label class="w3-text-grey">Username</label>
+						<input class="w3-input w3-border" type="text" name="username" value="<%=dataEdit?dataEdit.username:''%>" autocomplete="off">
+					</p>
+					<p>
+						<label class="w3-text-grey">Password</label>
+						<input class="w3-input w3-border" type="password" name="password" value="<%=dataEdit?dataEdit.password:''%>" autocomplete="off">		
+					</p>
+					<p>
+						<label class="w3-text-grey">Role</label>
+						<select class="w3-select w3-border" name="role">
+							<option value="<%=dataEdit?dataEdit.role:''%>"><%=dataEdit?dataEdit.role.capitalize():''%></option>
+							<option value="member">Member</option>
+							<option value="agent">Agen</option>
+							<option value="administrator">Administrator</option>
+						</select>		
+					</p>
+				
+					<p>
+       			<hr class="w3-hr w3-grey">
+					</p>
 
 				<!-- <p>
 				<span class="w3-padding w3-grey">Foto Profil&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
 				<input type="file" name="avatar" <%=dataEdit?'':'required'%>>
 				</p> -->
-				
-			</div>
-
 
 		</div>
 		</div>
 		
 		<div class="w3-card w3-container w3-section w3-padding-16">
-					<button class="w3-btn w3-blue-grey w3-right"><%=dataEdit?'Edit User':'Tambah User'%></button>
-					<button class="w3-btn w3-light-grey w3-text-grey w3-right" type="reset">Kosongkan</button>
+			<button class="w3-btn w3-blue-grey w3-right">
+      	<%-dataEdit?`<i class='fa fa-pencil'></i> Edit`:`<i class='fa fa-plus'></i> Tambah`%>
+			</button>
+			<button class="w3-btn w3-light-grey w3-text-grey w3-right" type="reset">Kosongkan</button>
 		</div>
 	
 	</div>
