@@ -49,7 +49,7 @@ module.exports = {
     //return res.json(req.allParams());
     let opts = req.allParams();
     opts.sort = 'createdAt DESC';
-    Listings.searchListing(opts,function(err,data){
+    Listings.searchListings(opts,function(err,data){
       if(err)return res.negotiate(err);
       //TEST PARAMETER
       // return res.json(data);

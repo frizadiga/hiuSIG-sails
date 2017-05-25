@@ -50,13 +50,13 @@ module.exports = {
     buildingSize:{
       type:'string'
     },
-    floor:{
+    floors:{
       type:'integer'
     },
-    bed:{
+    beds:{
       type:'integer'
     },
-    bath:{
+    baths:{
       type:'integer'
     },
     description:{
@@ -97,10 +97,13 @@ module.exports = {
     });
   },
 
-  searchListing:function(params,cb){
+  searchListings:function(params,cb){
+    
+    //REDUCE PARAMETERS
     var status, type, location;
     if(params.status === '') delete params.status;
     if(params.type === '') delete params.type;
+    
     if(params.location === ''){
       location = '';
     }else if(params.location!=='' && params.location){
