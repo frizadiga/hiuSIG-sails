@@ -42,7 +42,7 @@
   <%//let user = {name: "Frizadiga",role:"Superadmin"}%>
 <!--Side Bar-->
 <nav class="w3-sidebar w3-bar-block w3-blue-grey w3-card" style="display:block;width:20%;padding-bottom:52.28px;overflow-y:scroll" id="sideBarLeft">
-  <div class="w3-bar w3-margin-bottom">
+  <div class="w3-bar">
       <button onclick="w3_close()" class="w3-button w3-hover-red w3-padding w3-padding-left w3-padding-right w3-right"><i class="fa fa-close"></i></button>
   </div>
 <div id="admin-user-bg" class="w3-container">
@@ -50,7 +50,7 @@
     <img class="w3-hover-grayscale w3-circle w3-card-4 w3-show-block w3-margin-bottom" src="/uploads/<%=req.session.user.avatar%>" style="width:30%;margin:auto" alt="User Avatar">
     <p class="w3-small w3-text-white">
     <b><i class="fa fa-user"></i><br>
-       <%=req.session.user.name%> | <%=req.session.user.role.capitalize()%></b>
+      <%=req.session.user.name%> | <%=req.session.user.role.capitalize()%></b>
     </p>
   </div>
 </div>
@@ -83,7 +83,7 @@
   <a href="/admin/documents/surat-pemesanan-properti" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-text"></i> Surat Pemesanan Properti</a>
   <a href="/admin/documents/surat-perjanjian-perangkat-jual-beli" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-text"></i> Surat PPJB</a>
   <a href="/admin/documents/surat-pengajuan-ajb" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-text"></i> Surat Pengajuan AJB</a>
-  <a href="/admin/reports" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-pdf-o"></i> Report 1</a>
+  <a href="/admin/reports" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-pdf-o"></i> Laporan Transaksi</a>
 </div>
 
 <hr class="w3-opacity w3-hr">
