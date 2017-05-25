@@ -103,6 +103,11 @@ module.exports = {
     var status, type, location;
     if(params.status === '') delete params.status;
     if(params.type === '') delete params.type;
+    if(params.floors === '') delete params.floors;
+    if(params.baths === '') delete params.baths;
+    if(params.beds === '') delete params.beds;
+    if(params.minPrice === '') delete params.minPrice;
+    if(params.maxPrice === '') delete params.maxPrice;
     
     if(params.location === ''){
       location = '';
