@@ -6,8 +6,13 @@
  */
 
 module.exports = {
+	
 	index:(req,res)=>{
-		res.json({message:'TestController Worked!...'});
+		return res.json({message:'TestController Worked!...'});
+	},
+	
+	allParams:(req,res)=>{
+		return res.json(req.allParams());
 	},
 	
 	bookingsList:(req,res)=>{
