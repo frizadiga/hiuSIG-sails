@@ -2,75 +2,129 @@
 <div class="w3-top">
   <nav id="main-navbar" class="w3-bar w3-blue-grey">
     <%-partial('./top-logo-badge.ejs')%>
-    <a title="Search Property" onclick="showSearchPanel()" class="w3-bar-item w3-hover-white w3-hover-text-blue-grey w3-right" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+    <a title="Search Property" onclick="showSearchPanel('search-panel')" class="w3-bar-item w3-hover-white w3-hover-text-blue-grey w3-right" href="javascript:void(0)"><i class="fa fa-search"></i></a>
     <%-partial('./top-navbar-items.ejs')%>
   </nav>
 </div>
 
-<!--SearchBox-->
-<div id="search-navbar" class="w3-top" style="display:none;top:8px">
+<!--SEARCH PANEL-->
+<div id="search-panel" class="w3-top" style="display:none;top:8px">
   <div class="w3-bar w3-card w3-white w3-animate-opacity" style="min-width:700px;width:50%;margin:auto">
-    <form id="navbar-form-search" action="/listings">
-    <div class="w3-row">
-      <div class="w3-col" style="width:17%">
-        <select style="width:100%" id="searchStatusBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-white" name="status">
-        <option value="dijual">Dijual</option>
-        <option value="disewa">Disewa</option>
-        <option value="">--Semua--</option>
-        </select>
-      </div>
-      <div class="w3-col" style="width:27%">
-        <select style="width:100%" id="searchTypeBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0" name="type">
-         <option value="rumah">Rumah</option>
-            <option value="ruko">Ruko</option>
-            <option value="tanah">Tanah</option>
-            <option value="gudang">Gudang</option>
-            <option value="ruang usaha">Ruang Usaha</option>
-            <option value="villa">Villa</option>
-            <option value="apartemen">Apartemen</option>
-            <option value="pabrik">Pabrik</option>
-            <option value="perkantoran">Perkantoran</option>
-            <option value="">--Semua--</option>
-
-        </select>
+    
+    <div class="w3-row w3-text-grey">
+      <div id="tab-search-link">
+        <button title="Search for Listings" class="tablink w3-bar-item w3-button w3-hover-light-grey w3-green" type="button" onclick="openTab(event,'listing-search-panel')"><i class="fa fa-list"></i></button>
+        <button title="Search for Agents" class="tablink w3-bar-item w3-button w3-hover-light-grey" type="button" onclick="openTab(event,'agent-search-panel')"><i class="fa fa-user-secret"></i></button>
       </div>
 
-       <a class="w3-bar-item w3-button w3-white w3-hover-red w3-right" onclick="closeSearchPanel()" title="Close Menu"><b class="fa fa-times"></b></a>
+      <!--lISTING SEARCH PANEL-->
+      <div id="listing-search-panel" class="tab-search">
+        <form id="navbar-form-search" action="/listings">
+          
+          <div class="w3-col" style="width:17%">
+            <select style="width:100%" id="searchStatusBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-white" name="status">
+              <option value="dijual">Dijual</option>
+              <option value="disewa">Disewa</option>
+              <option value="">-Semua-</option>
+            </select>
+          </div>          
+          <div class="w3-col" style="width:18%">
+            <select style="width:100%" id="searchTypeBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0" name="type">
+              <option value="rumah">Rumah</option>
+              <option value="ruko">Ruko</option>
+              <option value="tanah">Tanah</option>
+              <option value="gudang">Gudang</option>
+              <option value="ruang usaha">Ruang Usaha</option>
+              <option value="villa">Villa</option>
+              <option value="apartemen">Apartemen</option>
+              <option value="pabrik">Pabrik</option>
+              <option value="perkantoran">Perkantoran</option>
+              <option value="">-Semua-</option>
+            </select>
+          </div>
+  
+          <a class="w3-bar-item w3-button w3-white w3-hover-red w3-right" onclick="closeSearchPanel('search-panel')" title="Close Menu"><b class="fa fa-times"></b></a>
+  
+          <button type="submit" class="w3-bar-item w3-button w3-hover-blue-grey w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></button>
+          
+          <div class="w3-rest">
+            <input style="width:100%" id="searchLocationBar" class="w3-bar-item w3-white w3-hover-white w3-input w3-border-0" placeholder="Masukan Lokasi" type="text" name="location" list="locations-list">
+            <datalist id="locations-list">
+              <option>Kuta</option>
+              <option>Denpasar</option>
+              <option>Sanur</option>
+              <option>Kerobokan</option>
+              <option>Jakarta</option>
+            </datalist> 
+          </div>
+        </form>
+      </div><!--END LISTING SEARCH PANEL-->
 
-      
-        <button type="submit" class="w3-bar-item w3-button w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></button>
-      
-      <div class="w3-rest">
-        <input style="width:100%" id="searchLocationBar" class="w3-bar-item w3-white w3-hover-white w3-input w3-border-0" placeholder="Masukan Lokasi" type="text" name="location" list="locations-list">
-        <datalist id="locations-list">
-        <option>Kuta</option>
-        <option>Denpasar</option>
-        <option>Sanur</option>
-        <option>Kerobokan</option>
-        <option>Jakarta</option>
-      </datalist> 
-      </div>
+      <!--AGENT SEARCH PANEL-->
+      <div id="agent-search-panel" class="tab-search" style="display:none">
+        <form  action="/agents">
+               
+          <div class="w3-col" style="width:20%">
+            <select style="width:100%" id="searchTypeBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0" name="">
+              <option value="">Nama</option>
+              <option value="">No Telp</option>
+              <option value="">Email</option>
+              <option value="">-Semua-</option>
+            </select>
+          </div>
+  
+          <a class="w3-bar-item w3-button w3-white w3-hover-red w3-right" onclick="closeSearchPanel('search-panel')" title="Close Menu"><b class="fa fa-times"></b></a>
+  
+          <button type="submit" class="w3-bar-item w3-button w3-hover-blue-grey w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></button>
+          
+          <div class="w3-rest">
+            <input style="width:100%" id="searchLocationBar" class="w3-bar-item w3-white w3-hover-white w3-input w3-border-0" placeholder="Nama, Alamat Agent" type="text" name="name" list="agents-list">
+            <datalist id="agents-list">
+              <option>frizadiga</option>
+              <option>Tomomi Ogawa</option>
+              <option>Rina Suzuki</option>
+              <option>Mami Sasazaki</option>
+            </datalist> 
+          </div>
+        </form>
+      </div><!--END AGENT SEARCH PANEL-->
     </div>
-    </form>
+
   </div>
 </div>
-<!--END SearchBox-->
+<!--END SEARCH PANEL-->
+
 
 <script async defer>
-  var searchNavbar = document.getElementById('search-navbar');
+
+  function openTab(e,tab) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("tab-search");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-green", "");
+    }
+    document.getElementById(tab).style.display = "block";
+    e.currentTarget.className += " w3-green";  
+  }
   // setTimeout(function(){
-  //   search-navbar.style.display='block';
+  //   listing-search-panel.style.display='block';
   // },500);
-  function showSearchPanel(){
-    searchNavbar.className = searchNavbar.className.replace(' w3-animate-opacity','');
-    document.getElementById('search-navbar').style.display='block';
+  function showSearchPanel(id){
+    var searchPanel = document.getElementById(id);
+    searchPanel.className = searchPanel.className.replace(' w3-animate-opacity','');
+    document.getElementById(id).style.display='block';
     document.getElementById('main-navbar').style.display='none';
     document.getElementById('main-maps').style.paddingTop= "0";
   }
-  function closeSearchPanel(){
-    searchNavbar.className = searchNavbar.className.replace(' w3-animate-opacity','');
+  function closeSearchPanel(id){
+    var searchPanel = document.getElementById(id);
+    searchPanel.className = searchPanel.className.replace(' w3-animate-opacity','');
     document.getElementById('main-navbar').style.display='block';
-    document.getElementById('search-navbar').style.display='none';
+    document.getElementById(id).style.display='none';
     document.getElementById('main-maps').style.paddingTop= "38px";
   }
 </script>
