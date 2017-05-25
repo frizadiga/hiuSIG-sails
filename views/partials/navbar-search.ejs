@@ -41,7 +41,14 @@
         <button type="submit" class="w3-bar-item w3-button w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></button>
       
       <div class="w3-rest">
-        <input style="width:100%" id="searchLocationBar" class="w3-bar-item w3-white w3-hover-white w3-input w3-border-0" placeholder="Masukan Lokasi" type="text" name="location">
+        <input style="width:100%" id="searchLocationBar" class="w3-bar-item w3-white w3-hover-white w3-input w3-border-0" placeholder="Masukan Lokasi" type="text" name="location" list="locations-list">
+        <datalist id="locations-list">
+        <option>Kuta</option>
+        <option>Denpasar</option>
+        <option>Sanur</option>
+        <option>Kerobokan</option>
+        <option>Jakarta</option>
+      </datalist> 
       </div>
     </div>
     </form>
