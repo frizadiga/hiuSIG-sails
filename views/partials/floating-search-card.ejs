@@ -6,7 +6,7 @@
     <img src="/img/rumah2q-logo.png" class="" style="width:30%;height:50%">
   </div>
 
-<form action="/listings">
+<form id="listings" action="/listings">
 <!--MAIN SEARCH-->
   <div id="main-search" class="w3-row w3-card-4">
     
@@ -67,19 +67,59 @@
     <div id="spek-ops" class="w3-row-padding w3-margin-bottom">
     
       <div class="w3-col m2">
-        <input class="w3-input w3-border" type="number" name="" placeholder="Jml Lantai">
+        <label>Jumlah Lantai</label>
+        <input class="w3-input w3-border" type="text" name="" placeholder="Ex: 1" list="floors-list">
+        <datalist id="floors-list">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>+5</option>
+        </datalist> 
       </div>
       <div class="w3-col m2">
-        <input class="w3-input w3-border" type="number" name="" placeholder="Kmr Tidur">
+        <label>Kamar Tidur</label>
+        <input class="w3-input w3-border" type="text" name="" placeholder="Ex: 2" list="beds-list">
+        <datalist id="beds-list">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>+5</option>
+        </datalist>
       </div>
       <div class="w3-col m2">
-        <input class="w3-input w3-border" type="number" name="" placeholder="Kmr Mandi">
+        <label>Kamar Mandi</label>
+        <input class="w3-input w3-border" type="text" name="" placeholder="Ex: 1" list="baths-list">
+        <datalist id="baths-list">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>+5</option>
+        </datalist>
       </div> 
        <div class="w3-col m3">
-        <input class="w3-input w3-border" type="number" name="" placeholder="Luas Tanah">
+        <label>Luas Tanah (m<sup>2</sup>)</label>
+        <input class="w3-input w3-border" type="text" name="" placeholder="Luas Tanah" list="lot-sizes-list">
+        <datalist id="lot-sizes-list">
+          <option>50</option>
+          <option>100</option>
+          <option>200</option>
+          <option>500</option>
+          <option>1000</option>
+        </datalist>
       </div> 
        <div class="w3-col m3">
-        <input class="w3-input w3-border" type="number" name="" placeholder="Luas Bangunan">
+        <label>Luas Bangunan (m<sup>2</sup>)</label>
+        <input class="w3-input w3-border" type="text" name="" placeholder="Luas Bangunan" list="building-sizes-list">
+        <datalist id="building-sizes-list">
+          <option>50</option>
+          <option>100</option>
+          <option>200</option>
+          <option>500</option>
+          <option>1000</option>
+        </datalist>
       </div> 
     </div>
   <!-- <p class="w3-margin-left" style="font-weight: bold;">Daerah</p>
@@ -94,17 +134,64 @@
   <p class="w3-margin-left" style="font-weight: bold;">Harga</p>
   <div id="harga-ops" class="w3-row-padding w3-margin-bottom">
     <div class="w3-col m6">
-        <input class="w3-input w3-border" type="number" name="" placeholder="Harga minimum">
-      </div>
-        <div class="w3-col m6">
-        <input class="w3-input w3-border" type="number" name="" placeholder="Harga maksimum">
-      </div>
+      <label>Harga Minimum (Rp)</label>
+      <input id="min-price" class="w3-input w3-border" type="text" placeholder="Harga minimum" list="min-prices-list">
+      <datalist id="min-prices-list">
+        <option data-value="50000000">Rp. 50.000.000</option>
+        <option data-value="100000000">Rp. 100.000.000</option>
+        <option data-value="200000000">Rp. 200.000.000</option>
+        <option data-value="500000000">Rp. 500.000.000</option>
+        <option data-value="1000000000">Rp. 1.000.000.000</option>
+        <option data-value="2000000000">Rp. 2.000.000.000</option>
+        <option data-value="5000000000">Rp. 5.000.000.000</option>
+        <option data-value="10000000000">Rp. 10.000.000.000</option>
+        <option data-value="20000000000">Rp. 20.000.000.000</option>
+      </datalist>
+      <input id="min-prices-hidden" type="hidden" name="min-price">
+    </div>
+    <div class="w3-col m6">
+      <label>Harga Maksimum (Rp)</label>
+      <input id="max-price" class="w3-input w3-border" type="text" placeholder="Harga maksimum" list="max-prices-list">
+      <datalist id="max-prices-list">
+        <option data-value="50000000">Rp. 50.000.000</option>
+        <option data-value="100000000">Rp. 100.000.000</option>
+        <option data-value="200000000">Rp. 200.000.000</option>
+        <option data-value="500000000">Rp. 500.000.000</option>
+        <option data-value="1000000000">Rp. 1.000.000.000</option>
+        <option data-value="2000000000">Rp. 2.000.000.000</option>
+        <option data-value="5000000000">Rp. 5.000.000.000</option>
+        <option data-value="10000000000">Rp. 10.000.000.000</option>
+        <option data-value="20000000000">Rp. 20.000.000.000</option>
+      </datalist>
+      <input id="max-prices-hidden" type="hidden" name="max-price">
+    </div>
   </div>
   </div>
 </form>
 </div>
 
 <script async defer>
+document.querySelector('#min-price').addEventListener('input',dataList)
+document.querySelector('#max-price').addEventListener('input',dataList)
+//Data List
+function dataList(e){
+	 var input = e.target,
+        list = input.getAttribute('list'),
+        options = document.querySelectorAll('#' + list + ' option'),
+        hiddenInput = document.getElementById(input.getAttribute('id') + 's-hidden'),
+        label = input.value;
+
+    hiddenInput.value = label;
+
+    for(var i = 0; i < options.length; i++) {
+        var option = options[i];
+
+        if(option.innerText === label) {
+            hiddenInput.value = option.getAttribute('data-value');
+            break;
+        }
+    }
+}
 
 //Search Dropdown
 function searchDropDown() {
