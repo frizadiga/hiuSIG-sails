@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 25 Mei 2017 pada 02.34
+-- Generation Time: 25 Mei 2017 pada 15.04
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -138,9 +138,9 @@ CREATE TABLE `listings` (
   `lng` varchar(255) DEFAULT NULL,
   `lotSize` varchar(255) DEFAULT NULL,
   `buildingSize` varchar(255) DEFAULT NULL,
-  `floor` int(11) DEFAULT NULL,
-  `bed` int(11) DEFAULT NULL,
-  `bath` int(11) DEFAULT NULL,
+  `floors` int(11) DEFAULT NULL,
+  `beds` int(11) DEFAULT NULL,
+  `baths` int(11) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `agent` int(11) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
@@ -151,7 +151,7 @@ CREATE TABLE `listings` (
 -- Dumping data untuk tabel `listings`
 --
 
-INSERT INTO `listings` (`no`, `id`, `title`, `status`, `type`, `price`, `province`, `city`, `address`, `lat`, `lng`, `lotSize`, `buildingSize`, `floor`, `bed`, `bath`, `description`, `agent`, `createdAt`, `updatedAt`) VALUES
+INSERT INTO `listings` (`no`, `id`, `title`, `status`, `type`, `price`, `province`, `city`, `address`, `lat`, `lng`, `lotSize`, `buildingSize`, `floors`, `beds`, `baths`, `description`, `agent`, `createdAt`, `updatedAt`) VALUES
 (14, 'p14', 'Rumah Tepi di Sawah Kesambi Raya', 'dijual', 'rumah', 500000, 'Bali', 'Kuta Utara', 'Perum Kesambi Raya no 77', '-8.653635', '115.1719873', '1', '1', 1, 1, 1, 'View Bagus Landscape Sawah asri', 1, '2016-12-21 19:33:49', '2017-05-02 00:58:37'),
 (15, 'p15', 'Rumah 100', 'dijual', 'rumah', 100000000, 'Bali', 'Denpasar', 'Bagus Jaya Residence, Padangsambian Klod, Kota Denpasar, Bali, Indonesia no 7', '-8.6681273', '115.18169149999994', '100', '100', 1, 1, 1, 'family 100', 2, '2016-12-21 19:41:10', '2016-12-27 12:41:17'),
 (17, 'p17', 'Rumah Minimalis Kerobokan', 'dijual', 'rumah', 100500000, 'Bali', 'Denpasar', 'Kerobokan, Kabupaten Badung, Bali, Indonesia', '-8.651221199999998', '115.16223630000002', '1', '1', 1, 1, 1, '- Modern\r\n- Minimalis', 3, '2016-12-21 19:46:56', '2016-12-27 12:42:08'),
