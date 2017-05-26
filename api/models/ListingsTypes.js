@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+  tableName:'listings_types',
   attributes: {
   	no:{
   		type:'integer',

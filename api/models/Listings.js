@@ -62,6 +62,10 @@ module.exports = {
     description:{
       type:'string'
     },
+    sor:{
+      columnName:'sold_or_rent',
+      type:'boolean'
+    },
     pictures:{
       collection:'files',
       via:'owner'
