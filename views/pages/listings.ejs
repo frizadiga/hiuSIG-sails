@@ -54,14 +54,26 @@
             </span>
           </p>
           <div class="w3-row-padding  w3-margin-bottom">
-            <i class="fa fa-bed"></i>&nbsp;
-            <span>
+            <span title="Luas Tanah">
+              <i class="fa fa-map-signs"></i>
+              <%=dataListings[i].lotSize%> m<sup>2</sup>
+            </span>
+            &nbsp;&nbsp;
+            <span title="Luas Bangunan">
+              <i class="fa fa-home"></i>
+              <%=dataListings[i].buildingSize%> m<sup>2</sup>
+            </span>
+            &nbsp;&nbsp;
+            <span title="Jumlah Kamar Tidur">
+              <i class="fa fa-bed"></i>
               <%=dataListings[i].beds%>
             </span>
-            <i class="fa fa-bath"></i>&nbsp;
-            <span>
+            &nbsp;&nbsp;
+            <span title="Jumlah Kamar Mandi">
+              <i class="fa fa-bath"></i>
               <%=dataListings[i].baths%>
             </span>
+            &nbsp;&nbsp;
           </div>
           <div class="w3-bar w3-border w3-margin-bottom">
             <!-- <a href="javascript:void(0)">
