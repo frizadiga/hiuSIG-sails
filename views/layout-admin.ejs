@@ -58,18 +58,19 @@
 <hr class="w3-opacity w3-hr">
 <a href="/admin/dashboard" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><b><i class="fa fa-home"></i> Dashboard</b></a>
 
+<%if(req.session.user.role===('administrator'||'agent')){%>
 <a href="/admin/listings/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-plus"></i> Tambah Listing</a>
 
-<a href="/admin/listings/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-list"></i> Manage Listing</a>
-
-<a href="/admin/listings/maps" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-map"></i> Maps Listing</a>
+<a href="/admin/listings/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-list"></i> Kelola Listing</a>
+<%}%>
+<!-- <a href="/admin/listings/maps" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-map"></i> Maps Listing</a> -->
 
 <%if(req.session.user.role==='administrator'){%>
 <hr class="w3-opacity w3-hr">
 
 <a href="/admin/user/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-user-plus"></i> Tambah User</a>
 
-<a href="/admin/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-users"></i> Manage User</a>
+<a href="/admin/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-users"></i> Kelola User</a>
 <%}%>
 
 <hr class="w3-opacity w3-hr">
@@ -77,7 +78,7 @@
 
 <a href="/admin/bookings" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-address-book"></i> Pemesanan</a>
 
-<%if(req.session.user.role==='member'){%>
+<%if(req.session.user.role==='agent'||'member'){%>
 <a href="/admin/payments" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-money"></i> Pembayaran</a>
 <%}%>
 
