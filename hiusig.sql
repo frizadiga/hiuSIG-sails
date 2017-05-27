@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Mei 2017 pada 18.26
+-- Generation Time: 27 Mei 2017 pada 18.57
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `bookings` (
   `no` int(10) UNSIGNED NOT NULL,
   `id` varchar(255) DEFAULT NULL,
-  `property` int(11) DEFAULT NULL,
+  `listing` int(11) DEFAULT NULL,
   `buyer` int(11) DEFAULT NULL,
   `agent` int(11) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
@@ -42,19 +42,9 @@ CREATE TABLE `bookings` (
 -- Dumping data untuk tabel `bookings`
 --
 
-INSERT INTO `bookings` (`no`, `id`, `property`, `buyer`, `agent`, `message`, `status`, `createdAt`, `updatedAt`) VALUES
-(1, 'b1', 14, 2, 1, 'saya akan DP 50%', 'pending', '2017-05-19 19:35:40', '2017-05-19 19:35:40'),
-(2, 'b2', 15, 1, 2, 'saya akan DP 70%', 'pending', '2017-05-19 20:01:41', '2017-05-19 20:01:41'),
-(3, 'b3', 15, 8, 2, 'pesan tambahan', 'pending', '2017-05-20 19:38:53', '2017-05-20 19:38:53'),
-(4, 'b4', 30, 8, 2, 'pesan tambahan', 'pending', '2017-05-20 22:48:13', '2017-05-20 22:48:13'),
-(5, 'b5', 21, 8, 3, 'pesan tambahan', 'pending', '2017-05-21 15:25:16', '2017-05-21 15:25:16'),
-(6, 'b6', 30, 8, 2, 'pesan tambahan', 'pending', '2017-05-22 02:45:14', '2017-05-22 02:45:14'),
-(7, 'b7', 15, 8, 2, 'pesan tambahan', 'pending', '2017-05-23 21:24:15', '2017-05-23 21:24:15'),
-(8, 'b8', 31, 8, 2, 'pesan tambahan', 'pending', '2017-05-24 15:50:24', '2017-05-24 15:50:24'),
-(9, 'b9', 31, 8, 2, 'Ex: Saya Booking dengan DP 50% ya', 'pending', '2017-05-24 17:01:42', '2017-05-24 17:01:42'),
-(10, 'b10', 31, 8, 2, 'Ex: Saya Booking dengan DP 90% Mbak', 'pending', '2017-05-25 06:07:22', '2017-05-25 06:07:22'),
-(11, 'b11', 15, 8, 2, 'Ex: Saya Booking dengan DP 50%', 'pending', '2017-05-27 15:12:45', '2017-05-27 15:12:45'),
-(12, 'b12', 31, 5, 2, 'Ex: Saya Booking dengan DP 50%', 'pending', '2017-05-27 23:01:16', '2017-05-27 23:01:16');
+INSERT INTO `bookings` (`no`, `id`, `listing`, `buyer`, `agent`, `message`, `status`, `createdAt`, `updatedAt`) VALUES
+(16, 'bk16', 31, 5, 2, 'Ex: Saya Booking dengan DP 50%', 'pending', '2017-05-27 23:54:53', '2017-05-27 23:54:53'),
+(17, 'bk17', 31, 5, 2, 'Ex: Saya Booking dengan DP 50% !Baru', 'pending', '2017-05-27 23:56:21', '2017-05-27 23:56:21');
 
 -- --------------------------------------------------------
 
@@ -251,7 +241,8 @@ INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`
 (22, 'm22', 1, 3, 'hi rina', '2017-05-19 01:13:13', '2017-05-19 01:13:13'),
 (23, 'm23', 1, 3, 'hi rina', '2017-05-19 01:16:32', '2017-05-19 01:16:32'),
 (24, 'm24', 1, 3, 'hai rina how do u do?', '2017-05-19 01:24:17', '2017-05-19 01:24:17'),
-(25, 'm25', 8, 2, 'Ex: Saya tertarik dengan anda', '2017-05-25 06:07:45', '2017-05-25 06:07:45');
+(25, 'm25', 8, 2, 'Ex: Saya tertarik dengan anda', '2017-05-25 06:07:45', '2017-05-25 06:07:45'),
+(26, 'msg26', 5, 2, 'Ex: Saya tertarik dengan properti anda', '2017-05-27 23:50:45', '2017-05-27 23:50:45');
 
 -- --------------------------------------------------------
 
@@ -262,7 +253,7 @@ INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`
 CREATE TABLE `payments` (
   `no` int(10) UNSIGNED NOT NULL,
   `id` varchar(255) DEFAULT NULL,
-  `property` int(11) DEFAULT NULL,
+  `listing` int(11) DEFAULT NULL,
   `buyer` int(11) DEFAULT NULL,
   `agent` int(11) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
@@ -386,7 +377,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `files`
 --
@@ -406,7 +397,7 @@ ALTER TABLE `listings_types`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `payments`
 --
