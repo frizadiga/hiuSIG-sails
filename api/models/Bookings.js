@@ -43,7 +43,7 @@ module.exports = {
     query.sort('no DESC');
     query.exec((err,data)=> {
       if(err)return cb(err);
-      var id = 'b'+(data[0].no+1);
+      var id = 'bk'+(data[0].no+1);
       cb(err,id);
     });
   }

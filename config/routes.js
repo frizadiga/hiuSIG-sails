@@ -86,6 +86,7 @@ module.exports.routes = {
   '/admin/user/edit/:id':'UsersController.userEdit',
   '/admin/messages':'MessagesController.messagesList',
   '/admin/bookings':'BookingsController.bookingsList',
+  '/admin/payments':'PaymentsController.paymentsList',
   
   //DOCUMENTS AND REPORTS
   '/admin/documents/print-template':{
