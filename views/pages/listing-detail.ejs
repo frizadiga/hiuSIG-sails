@@ -257,7 +257,7 @@ function postBooking(){
   fetch('/api/booking',{
     method:'POST',
     body:JSON.stringify({
-      property:'<%-dataListings.no%>',
+      listing:'<%-dataListings.no%>',
       buyer:'<%-(req.session.user)?req.session.user.no:'anonymous'%>',
       agent:'<%-dataListings.agent.no%>',
       message:document.getElementById('booking-message').value,
