@@ -17,7 +17,7 @@ module.exports = {
   		type:'string',
   		unique:true
   	},
-  	property:{
+  	listing:{
   		model:'listings'
   	},
   	buyer:{

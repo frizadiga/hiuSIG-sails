@@ -11,7 +11,7 @@ module.exports = {
 		let opts = {};
 		opts = {agent:agent.no};
 		opts.sort = 'createdAt DESC';
-		Bookings.find(opts).populate('property').populate('buyer').populate('agent').exec((err,data)=>{
+		Bookings.find(opts).populate('listing').populate('buyer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.view('admin/payments',{dataBookings:data,layout:'layout-admin'});
 		});

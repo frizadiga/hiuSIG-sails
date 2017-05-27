@@ -26,7 +26,7 @@
 		<%for(var i=0, len=dataBookings.length; i < len; i++) { -%>
 		<tr class="w3-text-grey w3-hover-green">
 			<td style="vertical-align: middle"><%=dataBookings[i].id%></td>
-			<td style="vertical-align: middle"><%=dataBookings[i].property.title%></td>
+			<td style="vertical-align: middle"><%=dataBookings[i].listing.title%></td>
       <td style="vertical-align: middle"><%=dataBookings[i].buyer.name%></td>
       <td style="vertical-align: middle"><%=dataBookings[i].agent.name%></td>
       <td style="vertical-align: middle"><%=dataBookings[i].message%></td>
