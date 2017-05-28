@@ -99,7 +99,7 @@ module.exports = {
     let opts = req.allParams();
     if (user.role === 'administrator') {} else {opts.agent = user.no}
     Listings.find(opts).exec(function(err,data){
-      return res.view('admin/listing-manage',{dataListings:data,layout:'layout-admin'});
+      return res.view('dashboards/listing-manage',{dataListings:data,layout:'layout-dashboards'});
       // return res.json(user);
     });
   },
@@ -128,7 +128,7 @@ module.exports = {
      Listings.create(params).exec(function(err,data){
        if(err)return res.negotiate(err);
        //return res.json(data);
-       return res.redirect('admin/listings/manage');
+       return res.redirect('dashboards/listings/manage');
 
      });//End Listings.create()
    
@@ -143,7 +143,7 @@ module.exports = {
   listingEdit:function(req,res){
     Listings.findOne({id:req.param('id')}).exec(function(err,data){
       if(err)return res.negotiate(err);
-      return res.view('admin/listing-form',{dataEdit:data,layout:'layout-admin'});
+      return res.view('dashboards/listing-form',{dataEdit:data,layout:'layout-dashboards'});
     });
   },
 
@@ -153,7 +153,7 @@ module.exports = {
     //return res.json(params);
     Listings.update({no:params.no},params).exec(function(err,data){
       if(err)return res.negotiate(err);
-      return res.redirect('admin/listings/manage');
+      return res.redirect('dashboards/listings/manage');
     });
   },
   

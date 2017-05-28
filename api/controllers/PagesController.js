@@ -18,7 +18,7 @@ module.exports = {
   },
   listingsInsertEdit:function(req,res){
     if(req.param('mode')==insert){
-    	return res.view('admin/listings/form',{layout:'layout-admin'})
+    	return res.view('dashboards/listings/form',{layout:'layout-dashboards'})
     }
   }
   

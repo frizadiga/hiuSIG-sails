@@ -8,7 +8,7 @@
 module.exports = {
 	view:(req,res)=>{
 		// return res.json({message:"200 ok"});
-		return res.view('admin/bookings',{layout:'layout-admin'});
+		return res.view('dashboards/bookings',{layout:'layout-dashboards'});
 	},
 	bookingsList:(req,res)=>{
 		const agent = req.session.user;
@@ -17,7 +17,7 @@ module.exports = {
 		opts.sort = 'createdAt DESC';
 		Bookings.find(opts).populate('listing').populate('buyer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
-			return res.view('admin/bookings',{dataBookings:data,layout:'layout-admin'});
+			return res.view('dashboards/bookings',{dataBookings:data,layout:'layout-dashboards'});
 		});
 	},
 	bookingCreate:(req,res)=>{

@@ -1,19 +1,22 @@
+<%   String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}%>
 <!--MANAGE LISTING-->
 <div id="manage-listing" class="w3-container">
   <!-- <h2>Manage Listing</h2> -->
-  <p class="w3-padding-left w3-opacity"><b>Manage Users</b></p>
+  <p class="w3-padding-left w3-opacity"><b>Manage listing property</b></p>
   
   <div class="w3-row w3-section w3-border">
     
-    <!--   <div class="w3-col m2">
+      <!--  <div class="w3-col m2">
         <select class="w3-text-blue-grey w3-hover-text-black w3-select w3-border-0">
           <option>ID</option>
-          <option>Role</option>
-          <option>Username</option>
+          <option>Tipe</option>
+          <option>Judul</option>
         </select>
       </div> -->
       <div class="w3-col w3-right" style="width:50px">
-        <button class="w3-blue-grey w3-button w3-block w3-padding"><i class="fa fa-search"></i></button>
+        <button class="w3-blue-grey w3-button w3-block w3-paddingX"><i class="fa fa-search"></i></button>
       </div>
         <div class="w3-rest">
         <input class="w3-hover-light-grey w3-input w3-border-0" type="text" name="" placeholder="Cari.." id="search-filter">
@@ -24,28 +27,31 @@
 
   <div class="w3-row">
 
-    <table class="w3-card w3-table w3-hoverable" id="users-table">
+    <table class="w3-card w3-table w3-hoverable" id="listings-table">
       <tr class="w3-blue-grey">
         <th>ID</th>
-        <th>Role</th>
-        <th>Username</th>
-        <th>Name</th>
+        <th>Tipe</th>
+        <th>Judul</th>
+        <th>Harga</th>
+        <th>Kota</th>
+        <th>Provinsi</th>
         <th style="width:100px"></th>
       </tr>
-      <%for(i=0;i<dataUsers.length;i++){%>
+      <%for(i=0;i<dataListings.length;i++){%>
       <tr class="w3-text-grey w3-hover-green">
-        <td style="vertical-align:middle; width:80px"><%=dataUsers[i].id%></td>
-        <td style="vertical-align:middle"> <%=dataUsers[i].role%></td>
-        <td style="vertical-align:middle"> <%=dataUsers[i].username%></td>
-        <td style="vertical-align:middle"> <%=dataUsers[i].name%></td>
-       
+        <td style="vertical-align:middle; width:80px"><%=dataListings[i].id%></td>
+        <td style="vertical-align:middle"><%=dataListings[i].type.capitalize()%></td>
+        <td style="vertical-align:middle"><%=dataListings[i].status.capitalize()%> <%=dataListings[i].title%></td>
+        <td style="vertical-align:middle">Rp. <%=dataListings[i].price%></td>
+        <td style="vertical-align:middle"><%=dataListings[i].city%></td>
+        <td style="vertical-align:middle"><%=dataListings[i].province%></td>
         <td style="width:180px">
           <div class="w3-bar w3-center w3-right w3-margin-right ">
-            <a href="/agent/detail/<%=dataUsers[i].id%>">
+            <a href="/listings/detail/<%=dataListings[i].id%>">
             <button class="w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-info"></i></button></a>
-            <a href="/admin/user/edit/<%=dataUsers[i].id%>">
+            <a href="/dashboards/listings/edit/<%=dataListings[i].id%>">
             <button class="w3-button w3-hover-white w3-hover-text-grey"><i class="fa fa-pencil"></i></button></a>
-            <button class="w3-button w3-hover-red" onclick="modalData('<%=dataUsers[i].id%>','<%=dataUsers[i].username%>')"><i class="fa fa-trash"></i></button>
+            <button class="w3-button w3-hover-red" onclick="modalData('<%=dataListings[i].id%>','<%=dataListings[i].title%>')"><i class="fa fa-trash"></i></button>
           </div>
         </td>
       </tr>
@@ -61,15 +67,16 @@
 
 </div>
 
-<%- partial('../partials/modal-confirm-delete-user.ejs') %>
+<%- partial('../partials/modal-confirm-delete-listing.ejs') %>
 
 <script>
   document.getElementById('search-filter').addEventListener('keyup',searchFilter);
+
   function searchFilter() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("search-filter");
   filter = input.value.toUpperCase();
-  table = document.getElementById("users-table");
+  table = document.getElementById("listings-table");
   tr = table.getElementsByTagName("tr");
   for (i = 1; i < tr.length; i++) {
     trd = tr[i];

@@ -7,7 +7,7 @@
 
 module.exports = {
 	view:(req,res)=>{
-		res.view('admin/messages',{layout:"layout-admin"});
+		res.view('dashboards/messages',{layout:"layout-dashboards"});
 	},
 
 	messagesList:(req,res)=>{
@@ -17,7 +17,7 @@ module.exports = {
 		Messages.find(opts).populate('receiver').populate('sender').sort('createdAt DESC').exec((err,data)=>{
 			if(err)return res.serverError(err);
 			// res.json(data);
-			return res.view('admin/messages',{dataMessages:data,layout:'layout-admin'})
+			return res.view('dashboards/messages',{dataMessages:data,layout:'layout-dashboards'})
 		});
 	},
 	

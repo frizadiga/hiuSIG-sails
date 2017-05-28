@@ -15,7 +15,7 @@ module.exports = {
     },
   checkLogin:function(req,res){
     if (!req.session.user) return res.redirect('/login');
-    return res.view('admin/dashboard',{layout:'layout-admin'});
+    return res.view('dashboards/dashboard',{layout:'layout-dashboards'});
       
   },
   
@@ -24,8 +24,8 @@ module.exports = {
       if(err) return //res.negotiate(err);
       if(!data) return res.json({pesan:'username / password salah!'});
       req.session.user = data;
-      return res.view('admin/dashboard',{layout:'layout-admin'});
-      //return res.redirect('/admin');
+      return res.view('dashboards/dashboard',{layout:'layout-dashboards'});
+      //return res.redirect('/dashboards');
     });
   },
 
@@ -53,7 +53,7 @@ module.exports = {
   userManage:function(req,res){
     Users.find().exec(function(err,data){
       if(err)return res.negotiate(err);
-        return res.view('admin/user-manage',{dataUsers:data,layout:'layout-admin'})
+        return res.view('dashboards/user-manage',{dataUsers:data,layout:'layout-dashboards'})
       });
   },
 
@@ -80,7 +80,7 @@ module.exports = {
       if(err)return res.negotiate(err);
 
         //return res.json(params);
-        return res.redirect('/admin/users/manage');
+        return res.redirect('/dashboards/users/manage');
       
       });//End Users.create()
       // });//End Files.create()
@@ -91,7 +91,7 @@ module.exports = {
   userEdit:function(req,res){
     Users.findOne({id:req.param('id')}).exec(function(err,data){
       if(err)return res.negotiate(err);
-        return res.view('admin/user-form',{dataEdit:data,layout:'layout-admin'});
+        return res.view('dashboards/user-form',{dataEdit:data,layout:'layout-dashboards'});
     });
   },
 
@@ -101,7 +101,7 @@ module.exports = {
     //return res.json(params);
     Users.update({no:params.no},params).exec(function(err,data){
       if(err)return res.negotiate(err);
-      return res.redirect('admin/users/manage');
+      return res.redirect('dashboards/users/manage');
     });
   },
 

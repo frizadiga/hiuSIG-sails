@@ -13,7 +13,7 @@ module.exports = {
 		opts.sort = 'createdAt DESC';
 		Payments.find(opts).populate('listing').populate('buyer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
-			return res.view('admin/payments',{dataPayments:data,layout:'layout-admin'});
+			return res.view('dashboards/payments',{dataPayments:data,layout:'layout-dashboards'});
 		});
 	},
 	paymentCreate:(req,res)=>{

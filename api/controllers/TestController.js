@@ -23,7 +23,7 @@ module.exports = {
 		Bookings.find({}).populate('property').populate('buyer').populate('agent').exec((err,data)=>{
 			if(err)return res.json(err);
 			return res.json(data);
-			// return res.view('admin/bookings',{dataBookings:data,layout:'layout-admin'});
+			// return res.view('dashboards/bookings',{dataBookings:data,layout:'layout-dashboards'});
 		});
 	},
 

@@ -62,41 +62,41 @@ module.exports.routes = {
   'GET /login':{view:'pages/user-login'},
   'GET /logout':'UsersController.logout',
   
-  //ADMIN
-  '/admin':'UsersController.checkLogin',
-  '/admin/dashboard':{
-    view:'admin/dashboard',
-    locals:{layout:'layout-admin'}
+  //DASHBOARD
+  '/dashboards':'UsersController.checkLogin',
+  '/dashboards/dashboard':{
+    view:'dashboards/dashboard',
+    locals:{layout:'layout-dashboards'}
   },
-  '/admin/listings/manage':'ListingsController.listingManage',
-  '/admin/listings/insert':{
-    view:'admin/listing-form',
-    locals:{layout:'layout-admin',dataEdit:null}
+  '/dashboards/listings/manage':'ListingsController.listingManage',
+  '/dashboards/listings/insert':{
+    view:'dashboards/listing-form',
+    locals:{layout:'layout-dashboards',dataEdit:null}
   },
-  '/admin/listings/edit/:id':'ListingsController.listingEdit',
-  '/admin/listings/maps':{
-    view:'admin/listing-maps',
-    locals:{layout:'layout-admin'}
+  '/dashboards/listings/edit/:id':'ListingsController.listingEdit',
+  '/dashboards/listings/maps':{
+    view:'dashboards/listing-maps',
+    locals:{layout:'layout-dashboards'}
   },
-  '/admin/user/insert':{
-    view:'admin/user-form',
-    locals:{layout:'layout-admin',dataEdit:null}
+  '/dashboards/user/insert':{
+    view:'dashboards/user-form',
+    locals:{layout:'layout-dashboards',dataEdit:null}
   },
-  '/admin/users/manage':'UsersController.userManage',
-  '/admin/user/edit/:id':'UsersController.userEdit',
-  '/admin/messages':'MessagesController.messagesList',
-  '/admin/bookings':'BookingsController.bookingsList',
-  '/admin/payments':'PaymentsController.paymentsList',
+  '/dashboards/users/manage':'UsersController.userManage',
+  '/dashboards/user/edit/:id':'UsersController.userEdit',
+  '/dashboards/messages':'MessagesController.messagesList',
+  '/dashboards/bookings':'BookingsController.bookingsList',
+  '/dashboards/payments':'PaymentsController.paymentsList',
   
   //DOCUMENTS AND REPORTS
-  '/admin/documents/print-template':{
-    view:'admin/documents/print-template',
-    locals:{layout:'layout-admin'}
+  '/dashboards/documents/print-template':{
+    view:'dashboards/documents/print-template',
+    locals:{layout:'layout-dashboards'}
   },
-  '/admin/reports':'ReportsController.view',
-  '/admin/documents/surat-pemesanan-properti':'DocumentsController.spp',
-  '/admin/documents/surat-perjanjian-perangkat-jual-beli':'DocumentsController.sppjb',
-  '/admin/documents/surat-pengajuan-ajb':'DocumentsController.spajb',
+  '/dashboards/reports':'ReportsController.view',
+  '/dashboards/documents/surat-pemesanan-properti':'DocumentsController.spp',
+  '/dashboards/documents/surat-perjanjian-perangkat-jual-beli':'DocumentsController.sppjb',
+  '/dashboards/documents/surat-pengajuan-ajb':'DocumentsController.spajb',
 
   //API
   '/api/url-slug':'PagesController.urlSlug',
