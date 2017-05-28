@@ -258,7 +258,7 @@ function postBooking(){
     method:'POST',
     body:JSON.stringify({
       listing:'<%-dataListings.no%>',
-      buyer:'<%-(req.session.user)?req.session.user.no:'anonymous'%>',
+      customer:'<%-(req.session.user)?req.session.user.no:'anonymous'%>',
       agent:'<%-dataListings.agent.no%>',
       message:document.getElementById('booking-message').value,
       status:'pending',
