@@ -63,8 +63,9 @@ module.exports = {
       type:'string'
     },
     sor:{
-      columnName:'sold_or_rent',
-      type:'boolean'
+      columnName:'sold_or_rented',
+      type:'boolean',
+      defaultTo:true
     },
     pictures:{
       collection:'files',
