@@ -29,6 +29,13 @@ module.exports = {
 				return res.json(data);
 			});
 		});
+	},
+	bookingDenied:(req,res)=>{
+		Bookings.destroy({id:req.param('id')}).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data);
+		});
 	}
+
 };
 

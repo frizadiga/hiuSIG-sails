@@ -32,7 +32,8 @@ module.exports = {
       type:'string'
     },
     status:{
-      type:'string'
+      type:'string',
+      enum: ['pending', 'approved', 'denied']
     }
 
   },

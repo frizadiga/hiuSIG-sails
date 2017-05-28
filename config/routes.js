@@ -118,6 +118,7 @@ module.exports.routes = {
   'DELETE /api/message/:id':'MessagesController.messageDelete',
   //API BOOKINGS
   'POST /api/booking':'BookingsController.bookingCreate',
+  'DELETE /api/booking/:id':'BookingsController.bookingDenied',
   //-------------------------------------------------------------------------
   '/hiuwave':function(req,res){
     res.redirect('http://hiuwave.com');
