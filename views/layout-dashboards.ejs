@@ -86,6 +86,10 @@
 <a href="/dashboards/payments" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-money"></i> Pembayaran</a>
 <%}%>
 
+<%if(userRole==='agent'||'member'){%>
+<a href="/dashboards/payments" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check"></i> Konfirmasi Pembayaran</a>
+<%}%>
+
 <hr class="w3-opacity w3-hr">
 <a href="javascript:void(0)" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"  onclick="accordion('more-docs')"><i class="fa fa-files-o"></i>
   <!-- <span class="Xw3-button Xw3-block Xw3-left-align" onclick="accordion('more-docs')"> -->
