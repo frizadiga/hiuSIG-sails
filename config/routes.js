@@ -55,7 +55,7 @@ module.exports.routes = {
   'GET /findinmaps':'ListingsController.listingsList',
   'GET /agents':'UsersController.agentsList',
   'GET /agent/detail/:id':'UsersController.agentDetail',
-  'GET /partners':{view:'pages/partners'},
+  'GET /about-us':{view:'pages/about-us'},
   
   //LOGIN/LOGOUT
   'GET /signup':{view:'pages/user-signup'},
