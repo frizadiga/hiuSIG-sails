@@ -1,6 +1,6 @@
 <div id="report" class="w3-container myDivToPrint">
-  <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Report</b></p>
-  <img src="/img/rumah2q-logo.png" style="width:20%">
+  <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Laporan Transaksi</b></p>
+  <!-- <img src="/img/rumah2q-logo.png" style="width:20%"> -->
 
   <div class="w3-row w3-section w3-border">
     
@@ -17,8 +17,9 @@
 		<tr class="w3-blue-grey">
 			<th>No</th>
 			<th>Judul Properti</th>
-			<th>Penjual</th>
-			<th>Pembeli</th>
+			<th>Agent</th>
+      <th>Customer</th>
+			<th>Pembayaran</th>
 			<th style="width: 200px"></th>
 		</tr>
 		<% for (var i = 0; i < data.length; i++) { -%>			
@@ -26,7 +27,8 @@
 			<td style="vertical-align: middle"><%=i+1%></td>
 			<td style="vertical-align: middle"><%=data[i].judul%></td>
 			<td style="vertical-align: middle"><%=data[i].penjual%></td>
-			<td style="vertical-align: middle"><%=data[i].pembeli%></td>
+      <td style="vertical-align: middle"><%=data[i].pembeli%></td>
+			<td style="vertical-align: middle"><%=data[i].harga%></td>
 			<td style="vertical-align: middle">
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-print"></i> Print</button>

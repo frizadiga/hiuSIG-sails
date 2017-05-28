@@ -11,16 +11,19 @@ module.exports = {
 		{
 			judul:'Rumah 2 Lantai',
 			penjual:'Tomomi',
-			pembeli:'Rina'
+			pembeli:'Rina',
+			harga:1500000000
 		},
 		{
 			judul:'Ruko Strategis',
 			penjual:'Frizadiga',
-			pembeli:'Tomomi'
+			pembeli:'Tomomi',
+			harga:1000000000
 		},{
 			judul:'Tanah Tepi Pantai',
 			penjual:'Mami',
-			pembeli:'Haruna'
+			pembeli:'Haruna',
+			harga:800000000
 		}
 		];
 		return res.view('dashboards/documents/reports',{data:dataReports, layout:'layout-dashboards'});
