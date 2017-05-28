@@ -33,8 +33,14 @@ module.exports = {
 	bookingDenied:(req,res)=>{
 		Bookings.destroy({id:req.param('id')}).exec((err,data)=>{
 			if(err)return res.negotiate(err);
-			return res.json(data);
+			return res.json(data.id);
 		});
+	},
+	bookingApproved:(req,res)=>{
+		Bookings.update({id:req.param('id')},{status:'approved'}).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data.id);
+		})
 	}
 
 };
