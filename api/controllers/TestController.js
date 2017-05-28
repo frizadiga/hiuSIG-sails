@@ -14,7 +14,11 @@ module.exports = {
 	allParams:(req,res)=>{
 		return res.json(req.allParams());
 	},
-	
+
+	getSession:(req,res)=>{
+		return res.json({session:req.session,userSession:req.session.user});
+	},
+
 	bookingsList:(req,res)=>{
 		Bookings.find({}).populate('property').populate('buyer').populate('agent').exec((err,data)=>{
 			if(err)return res.json(err);
