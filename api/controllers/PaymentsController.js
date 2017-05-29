@@ -9,7 +9,7 @@ module.exports = {
 	paymentsList:(req,res)=>{
 		const customer = req.session.user;
 		let opts = {};
-		opts = {customer:customer};
+		opts = {customer:customer.no};
 		opts.sort = 'createdAt DESC';
 		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
