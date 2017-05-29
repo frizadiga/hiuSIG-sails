@@ -7,13 +7,23 @@
 
 module.exports = {
 	paymentsList:(req,res)=>{
+		const customer = req.session.user;
+		let opts = {};
+		opts = {customer:customer};
+		opts.sort = 'createdAt DESC';
+		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.view('dashboards/payments',{dataPayments:data,layout:'layout-dashboards'});
+		});
+	},
+	paymentsConfirm:(req,res)=>{
 		const agent = req.session.user;
 		let opts = {};
 		opts = {agent:agent.no};
 		opts.sort = 'createdAt DESC';
-		Payments.find(opts).populate('listing').populate('buyer').populate('agent').exec((err,data)=>{
+		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
-			return res.view('dashboards/payments',{dataPayments:data,layout:'layout-dashboards'});
+			return res.view('dashboards/payments-confirm',{dataPayments:data,layout:'layout-dashboards'});
 		});
 	},
 	paymentCreate:(req,res)=>{

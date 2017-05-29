@@ -11,13 +11,23 @@ module.exports = {
 		return res.view('dashboards/bookings',{layout:'layout-dashboards'});
 	},
 	bookingsList:(req,res)=>{
+		const customer = req.session.user;
+		let opts = {};
+		opts = {customer:customer.no};
+		opts.sort = 'createdAt DESC';
+		Bookings.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.view('dashboards/bookings',{dataBookings:data,layout:'layout-dashboards'});
+		});
+	},
+	bookingsConfirm:(req,res)=>{
 		const agent = req.session.user;
 		let opts = {};
 		opts = {agent:agent.no};
 		opts.sort = 'createdAt DESC';
 		Bookings.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
-			return res.view('dashboards/bookings',{dataBookings:data,layout:'layout-dashboards'});
+			return res.view('dashboards/bookings-confirm',{dataBookings:data,layout:'layout-dashboards'});
 		});
 	},
 	bookingCreate:(req,res)=>{

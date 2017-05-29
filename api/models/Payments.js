@@ -20,7 +20,7 @@ module.exports = {
   	listing:{
   		model:'listings'
   	},
-  	buyer:{
+  	customer:{
   		model:'users',
   		dominant:false
   	},

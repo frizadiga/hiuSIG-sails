@@ -86,7 +86,9 @@ module.exports.routes = {
   '/dashboards/user/edit/:id':'UsersController.userEdit',
   '/dashboards/messages':'MessagesController.messagesList',
   '/dashboards/bookings':'BookingsController.bookingsList',
+  '/dashboards/bookings-confirm':'BookingsController.bookingsConfirm',
   '/dashboards/payments':'PaymentsController.paymentsList',
+  '/dashboards/payments-confirm':'PaymentsController.paymentsConfirm',
   
   //DOCUMENTS AND REPORTS
   '/dashboards/documents/print-template':{
