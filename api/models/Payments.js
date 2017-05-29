@@ -15,7 +15,7 @@ module.exports = {
   	},
   	id:{
   		type:'string',
-  		unique:true
+      unique:true
   	},
   	listing:{
   		model:'listings'
@@ -37,12 +37,12 @@ module.exports = {
   },
 
   createId:function(cb){
-    let query = Bookings.find();
+    let query = Payments.find();
     //let sort = 'id DESC';
     query.sort('no DESC');
     query.exec((err,data)=> {
       if(err)return cb(err);
-      var id = 'pyt'+(data[0].no+1);
+      let id = 'pyt'+(data[0].no+1);
       cb(err,id);
     });
   }

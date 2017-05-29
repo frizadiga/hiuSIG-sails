@@ -27,9 +27,11 @@ module.exports = {
 		});
 	},
 	paymentCreate:(req,res)=>{
-		var params = req.allParams();
+		// return res.json(req.allParams());
 		Payments.createId((err,id)=>{
+		let params = req.allParams();
 			params.id = id;
+			params.status = 'belum bayar';
 			Payments.create(params).exec((err,data)=>{
 				if(err)return res.negotiate(err);
 				return res.json(data);

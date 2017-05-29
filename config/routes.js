@@ -123,6 +123,7 @@ module.exports.routes = {
   'POST /api/booking':'BookingsController.bookingCreate',
   'DELETE /api/booking/:id':'BookingsController.bookingDenied',
   'PUT /api/booking/:id':'BookingsController.bookingApproved',
+  'POST /api/payment':'PaymentsController.paymentCreate',
   //-------------------------------------------------------------------------
   '/hiuwave':function(req,res){
     res.redirect('http://hiuwave.com');
