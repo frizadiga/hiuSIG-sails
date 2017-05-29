@@ -77,16 +77,14 @@
 <a href="/dashboards/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-users"></i> Kelola User</a>
 <%}%>
 
-<hr class="w3-opacity w3-hr">
-<a href="/dashboards/messages" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-comment"></i> Pesan</a>
-
-<%if(userRole==='agent'||'member'){%>
+<%if(userRole==='agent'||userRole==='administrator'){%>
 <a href="/dashboards/bookings-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Pemesanan</a>
-<%}%>
 
-<%if(userRole==='agent'||'member'){%>
 <a href="/dashboards/payments-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Pembayaran</a>
 <%}%>
+
+<hr class="w3-opacity w3-hr">
+<a href="/dashboards/messages" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-comment"></i> Pesan</a>
 
 <a href="/dashboards/bookings" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-address-book"></i> Daftar Pemesanan Anda</a>
 
