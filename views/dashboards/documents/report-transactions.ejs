@@ -1,0 +1,96 @@
+<style type="text/css">
+	body {
+  background: rgba(96, 125, 139, 0.55); 
+	}
+	page {
+	  background: white;
+	  display: block;
+	  margin: 0 auto;
+	  margin-bottom: 0.5cm;
+	  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+	}
+	page[size="A4"] {  
+	  width: 21cm;
+	  height: 29.7cm; 
+	}
+	page[size="A4"][layout="portrait"] {
+	  width: 29.7cm;
+	  height: 21cm;  
+	}
+	page[size="A3"] {
+	  width: 29.7cm;
+	  height: 42cm;
+	}
+	page[size="A3"][layout="portrait"] {
+	  width: 42cm;
+	  height: 29.7cm;  
+	}
+	page[size="A5"] {
+	  width: 14.8cm;
+	  height: 21cm;
+	}
+	page[size="A5"][layout="portrait"] {
+	  width: 21cm;
+	  height: 14.8cm;  
+	}
+	@media print {
+	  body, page {
+	    margin: 0;
+	    box-shadow: 0;
+	  }
+	}
+</style>
+
+<page id="report-transaction" size="A4" class="w3-container w3-section">
+	<header class="w3-container w3-center">
+    <img src="/img/rumah2q-logo.png" style="width:20%;margin:auto!important">		
+	</header>
+
+<table class="w3-table w3-card w3-hoverable" id="table-reports">
+    <tr class="w3-blue-grey">
+      <th>No</th>
+      <th>Judul Properti</th>
+      <th>Agent</th>
+      <th>Customer</th>
+      <th>Pembayaran</th>
+      <th style="width: 200px"></th>
+    </tr>
+    <% for (var i = 0; i < data.length; i++) { -%>      
+    <tr class="w3-text-grey w3-hover-green">
+      <td style="vertical-align: middle"><%=i+1%></td>
+      <td style="vertical-align: middle"><%=data[i].judul%></td>
+      <td style="vertical-align: middle"><%=data[i].penjual%></td>
+      <td style="vertical-align: middle"><%=data[i].pembeli%></td>
+      <td style="vertical-align: middle"><%=data[i].harga%></td>
+      <td style="vertical-align: middle">
+        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
+        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-print"></i> Print</button>
+      </td>
+    </tr>
+    <% } -%>
+  <!--  <tr  class="w3-hover-none">
+      <td colspan="4">
+      <button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-print"></i> Print</b></button>
+      </td>
+    </tr> -->
+
+  </table>  
+  	
+
+</page>
+
+<div class="w3-container w3-padding-16 w3-section w3-card w3-white" style="width:21cm;margin:auto">
+		<button class="w3-blue-grey w3-hover-green w3-block w3-button w3-right no-print" onclick="printDiv('report-transaction')"><b><i class="fa fa-print"></i> Print</b></button>
+</div>
+<script>
+	function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+	}
+</script>
