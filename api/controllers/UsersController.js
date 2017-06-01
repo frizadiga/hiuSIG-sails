@@ -21,11 +21,10 @@ module.exports = {
   
   login:function(req,res){
     Users.findOne(req.allParams()).exec(function(err,data){
-      if(err) return //res.negotiate(err);
+      if(err) return res.negotiate(err);
       if(!data) return res.json({pesan:'username / password salah!'});
       req.session.user = data;
-      return res.view('dashboards/dashboard',{layout:'layout-dashboards'});
-      //return res.redirect('/dashboards');
+      return res.redirect('/dashboards');
     });
   },
 

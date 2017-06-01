@@ -50,7 +50,7 @@ module.exports = {
 		Bookings.update({id:req.param('id')},{status:'approved'}).exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
-		})
+		});
 	}
 
 };
