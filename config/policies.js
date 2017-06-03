@@ -18,6 +18,43 @@
 
 
 module.exports.policies = {
+  
+  ListingsController:{
+    listingForm:'isLogin',
+    listingsManage:'isLogin',
+    listingEdit:'isLogin'
+  },
+
+  UsersController:{
+    userForm:'isLogin',
+    usersManage:'isLogin',
+    userEdit:'isLogin'
+  },
+
+  BookingsController:{
+    bookingsList:'isLogin',
+    bookingsConfirm:'isLogin'
+  },
+
+  PaymentsController:{
+    PaymentsList:'isLogin',
+    PaymentsConfirm:'isLogin'
+  },
+
+  MessagesController:{
+    messagesList:'isLogin'
+  },
+
+  ReportsController:{
+    view:'isLogin',
+    reportTransaction:'isLogin'
+  },
+
+  DocumentsController:{
+    spp:'isLogin',
+    sppjb:'isLogin',
+    spajb:'isLogin'
+  }
 
   /***************************************************************************
   *                                                                          *

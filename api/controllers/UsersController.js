@@ -49,11 +49,17 @@ module.exports = {
     })
   },
 
-  userManage:function(req,res){
+  usersManage:function(req,res){
     Users.find().exec(function(err,data){
       if(err)return res.negotiate(err);
         return res.view('dashboards/user-manage',{dataUsers:data,layout:'layout-dashboards'})
       });
+  },
+
+  userForm:(req,res)=>{
+
+    res.view('dashboards/user-form',{layout:'layout-dashboards',dataEdit:null});
+  
   },
 
   userInsert:function(req,res){

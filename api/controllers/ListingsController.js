@@ -94,7 +94,7 @@ module.exports = {
   	});
   },
   
-  listingManage:function(req,res){
+  listingsManage:function(req,res){
     const user = req.session.user;
     let opts = req.allParams();
     if (user.role === 'administrator') {} else {opts.agent = user.no}
@@ -102,6 +102,12 @@ module.exports = {
       return res.view('dashboards/listing-manage',{dataListings:data,layout:'layout-dashboards'});
       // return res.json(user);
     });
+  },
+
+  listingForm:(req,res)=>{
+
+    res.view('dashboards/listing-form',{layout:'layout-dashboards',dataEdit:null});
+  
   },
   
   listingInsert:function(req,res){

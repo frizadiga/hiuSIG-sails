@@ -64,29 +64,23 @@ module.exports.routes = {
   
   //DASHBOARD
   '/dashboards':'UsersController.checkLogin',
-  '/dashboards/dashboard':{
-    view:'dashboards/dashboard',
-    locals:{layout:'layout-dashboards'}
-  },
-  '/dashboards/listings/manage':'ListingsController.listingManage',
-  '/dashboards/listings/insert':{
-    view:'dashboards/listing-form',
-    locals:{layout:'layout-dashboards',dataEdit:null}
-  },
+
+  '/dashboards/listings/insert':'ListingsController.listingForm',
+  '/dashboards/listings/manage':'ListingsController.listingsManage',
   '/dashboards/listings/edit/:id':'ListingsController.listingEdit',
   '/dashboards/listings/maps':{
     view:'dashboards/listing-maps',
     locals:{layout:'layout-dashboards'}
   },
-  '/dashboards/user/insert':{
-    view:'dashboards/user-form',
-    locals:{layout:'layout-dashboards',dataEdit:null}
-  },
-  '/dashboards/users/manage':'UsersController.userManage',
+  '/dashboards/user/insert':'UsersController.userForm',
+  '/dashboards/users/manage':'UsersController.usersManage',
   '/dashboards/user/edit/:id':'UsersController.userEdit',
+  
   '/dashboards/messages':'MessagesController.messagesList',
+  
   '/dashboards/bookings':'BookingsController.bookingsList',
   '/dashboards/bookings-confirm':'BookingsController.bookingsConfirm',
+  
   '/dashboards/payments':'PaymentsController.paymentsList',
   '/dashboards/payments-confirm':'PaymentsController.paymentsConfirm',
   
@@ -96,9 +90,11 @@ module.exports.routes = {
     locals:{layout:'layout-dashboards'}
   },
   '/dashboards/reports':'ReportsController.view',
+  
   '/dashboards/documents/surat-pemesanan-properti':'DocumentsController.spp',
   '/dashboards/documents/surat-perjanjian-perangkat-jual-beli':'DocumentsController.sppjb',
   '/dashboards/documents/surat-pengajuan-ajb':'DocumentsController.spajb',
+  
   '/dashboards/reports/report-transaction':'ReportsController.reportTransaction',
 
   //API
@@ -108,22 +104,28 @@ module.exports.routes = {
   '/api/getcoords':'ListingsController.getCoords',
   '/api/mapspage':'MapsController.view',
   '/api/finduser':'UsersController.findUser',
+  
   //API LISTING
   'POST /api/listings/insert':'ListingsController.listingInsert',
   'POST /api/listings/edit/:no':'ListingsController.listingEditPost',
   '/api/listings/delete/:id':'ListingsController.listingDelete',
+  
   //API USER
   '/api/user/insert':'UsersController.userInsert',
   '/api/user/delete/:id':'UsersController.UserDelete',
   '/api/user/edit/:no':'UsersController.userEditPost',
+  
   //API MESSAGE
   'POST /api/message':'MessagesController.messageCreate',
   'DELETE /api/message/:id':'MessagesController.messageDelete',
+  
   //API BOOKINGS
   'POST /api/booking':'BookingsController.bookingCreate',
   'DELETE /api/booking/:id':'BookingsController.bookingDenied',
   'PUT /api/booking/:id':'BookingsController.bookingApproved',
   'POST /api/payment':'PaymentsController.paymentCreate',
+  
+  
   //-------------------------------------------------------------------------
   '/hiuwave':function(req,res){
     res.redirect('http://hiuwave.com');
