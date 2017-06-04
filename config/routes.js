@@ -83,6 +83,8 @@ module.exports.routes = {
   
   '/dashboards/payments':'PaymentsController.paymentsList',
   '/dashboards/payments-confirm':'PaymentsController.paymentsConfirm',
+  '/dashboards/pay':'PaymentsController.pay',
+  '/dashboards/has-paid':'PaymentsController.hasPaid',
   
   //DOCUMENTS AND REPORTS
   '/dashboards/documents/print-template':{

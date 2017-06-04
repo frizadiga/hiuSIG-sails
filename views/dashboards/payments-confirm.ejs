@@ -1,4 +1,4 @@
-<div id="booking" class="w3-container myDivToPrint">
+<div id="payments" class="w3-container myDivToPrint">
   <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Konfirmasi Pembayaran</b></p>
   <!-- <img src="/img/rumah2q-logo.png" style="width:20%"> -->
 
@@ -21,7 +21,7 @@
       <th>Agen</th>
       <th>Pesan</th>
 			<th>Status</th>
-			<th style="width: 250px"></th>
+			<th style="width: auto"></th>
 		</tr>
 		<%for(var i=0, len=dataPayments.length; i < len; i++) { -%>
 		<tr class="w3-text-grey w3-hover-green">
@@ -32,6 +32,7 @@
       <td style="vertical-align: middle"><%=dataPayments[i].message%></td>
 			<td style="vertical-align: middle"><%=dataPayments[i].status%></td>
 			<td style="vertical-align: middle" class="w3-center">
+        <button class="w3-button w3-hover-red" onclick="openModal('modal-payments')"><i class="fa fa-info"></i> Detil</button>
 				<button class="w3-button w3-hover-red"><i class="fa fa-ban"></i> Tolak</button>
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-check"></i> Terima</button>
 			</td>
@@ -50,39 +51,45 @@
   </div>
 </div>
 
+<!-- Modal Detail -->
+<div id="modal-payments" class="w3-modal w3-display-container" style="padding:16px 0">
+  <div class="w3-modal-content w3-card-4 w3-animate-opacity w3-display-middle" style="max-width:700px">
+    <header class="w3-container w3-blue-grey">
+      <h3><i class="fa fa-money"></i> Pembayaran</h3>
+      <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-payments')"><i class="fa fa-close"></i></span>
+    </header>
+      <div class="w3-display-container" style="max-width:700px;margin:auto">
+        <img class="w3-greyscale-min" style="width:100%;height:300px;object-fit:cover" src="<%=%>">
+        <p class="w3-display-topmiddle w3-text-white"><b><%=%></b></p>  
+        <p class="w3-display-bottommiddle w3-text-white"><b>Rp. <%=%></b></p>  
+        
+      </div>
+      <div class="w3-container w3-padding-16 w3-center w3-text-grey" style="width:100%">
+      <img class="w3-circle w3-card" style="width:15%" src="/uploads/<%=%>">
+      <p>Agent: <%=%></p>
+      <hr class="w3-hr">
+      <label class="w3-left">Pesan Tambahan:</label>
+      <textarea id="payments-message" placeholder="Ex: Saya Booking dengan DP 50%" rows="3" class="w3-input w3-border w3-text-grey w3-hover-light-grey" type="text" style="resize:vertical">Ex: Saya Booking dengan DP 50%</textarea>
+      <hr>
+      <div class="w3-bar">
+        <button id="btn-send-payments" class="w3-button w3-blue w3-hover-green"><i class="fa fa-ban"></i> Tolak</button>
+        <button id="btn-send-payments" class="w3-button w3-blue w3-hover-green"><i class="fa fa-check"></i> Terima</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
+function openModal(el) {
+  document.getElementById(el).style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
-	// function printElm(elm)
- //    {
- //      var mywindow = window.open('', 'PRINT', 'height=1000,width=900');
-
-
- //        mywindow.document.write('<html><head><title>' + document.title  + '</title>');
-
- //        mywindow.document.write('</head><body >');
- //      mywindow.document.write('<h1>' + document.title  + '</h1>');
- //        mywindow.document.write(document.getElementById(elm).innerHTML);
- //        mywindow.document.write('</body></html>');
-
- //        mywindow.document.close(); // necessary for IE >= 10
- //        mywindow.focus(); // necessary for IE >= 10*/
-
- //        mywindow.print();
- //        mywindow.close();
-
- //        return true;
-
- //        }
+function closeModal(el) {
+  document.getElementById(el).style.display = "none";
+  document.body.style.overflow = "visible";
+}
 
   document.getElementById('search-filter').addEventListener('keyup',searchFilter);
 

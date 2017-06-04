@@ -6,6 +6,7 @@
  */
 
 module.exports = {
+	
 	paymentsList:(req,res)=>{
 		const customer = req.session.user;
 		let opts = {};
@@ -16,6 +17,7 @@ module.exports = {
 			return res.view('dashboards/payments',{dataPayments:data,layout:'layout-dashboards'});
 		});
 	},
+	
 	paymentsConfirm:(req,res)=>{
 		const agent = req.session.user;
 		let opts = {};
@@ -26,6 +28,7 @@ module.exports = {
 			return res.view('dashboards/payments-confirm',{dataPayments:data,layout:'layout-dashboards'});
 		});
 	},
+	
 	paymentCreate:(req,res)=>{
 		// return res.json(req.allParams());
 		Payments.createId((err,id)=>{
@@ -37,6 +40,18 @@ module.exports = {
 				return res.json(data);
 			});
 		});
+	},
+
+	pay:(req,res)=>{
+		const dataPay = {
+			amount:1500000000
+		}
+		return res.view('dashboards/pay',{dataPay:dataPay,layout:'layout-dashboards'});
+	},
+
+	hasPaid:(req,res)=>{
+		return res.json(req.allParams());
 	}
+
 };
 
