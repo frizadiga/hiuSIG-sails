@@ -63,7 +63,7 @@ module.exports.routes = {
   'GET /logout':'UsersController.logout',
   
   //DASHBOARD
-  '/dashboards':'UsersController.checkLogin',
+  '/dashboards':'DashboardsController.dashboards',
 
   '/dashboards/listings/insert':'ListingsController.listingForm',
   '/dashboards/listings/manage':'ListingsController.listingsManage',

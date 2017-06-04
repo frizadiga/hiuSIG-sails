@@ -28,7 +28,7 @@
       <td style="vertical-align: middle"><%=dataMessages[i].message%></td>
       <%var tgl=dataMessages[i].createdAt;%>
 			<td style="vertical-align: middle"><%=tgl.toDateString()%></td>
-			<td style="vertical-align: middle">
+			<td style="vertical-align: middle" class="w3-center">
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
 				<button class="w3-button w3-hover-red" onclick="modalData('<%=dataMessages[i].id%>','<%=dataMessages[i].sender.name%>')"><i class="fa fa-trash"></i> Delete</button>
 			</td>

@@ -13,6 +13,7 @@ module.exports = {
   response:function(req,res){
     res.json({name:req.body.name.toUpperCase(),role:req.param('role').toUpperCase(),ip:req.ip});
     },
+    
   checkLogin:function(req,res){
     if (!req.session.user) return res.redirect('/login');
     return res.view('dashboards/dashboard',{layout:'layout-dashboards'});
