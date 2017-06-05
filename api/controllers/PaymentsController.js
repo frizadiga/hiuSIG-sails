@@ -44,13 +44,27 @@ module.exports = {
 
 	pay:(req,res)=>{
 		const dataPay = {
+			noPayment:'pyt1',
 			amount:1500000000
 		}
 		return res.view('dashboards/pay',{dataPay:dataPay,layout:'layout-dashboards'});
 	},
 
 	hasPaid:(req,res)=>{
-		return res.json(req.allParams());
+		// return res.json(req.allParams());
+		let params = req.allParams();
+			params.status = 'pending';
+			Payments.update({id:params.noPayment},params).exec((err,data)=>{
+				if(err)return res.negotiate(err);
+				return res.json(data);
+			});
+	},
+
+	paymentApproved:(req,res)=>{
+		Payments.update({id:req.param('id')},{status:'approved'}).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data.id);
+		});
 	}
 
 };

@@ -1,12 +1,16 @@
 <form action="has-paid" method="POST" enctype="multipart/form-data">
-	<div id="user-form" class="w3-padding w3-container w3-padding-32">
+	<div id="user-form" class="w3-padding w3-container w3-padding">
 		<div class="Xw3-card w3-border" style="max-width: 700px;margin:auto">
-      <p class="w3-blue w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran</b></p>
+      <p class="w3-teal w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran</b></p>
 						
 			<div class="w3-container">
 					<p>
-			  		<label class="w3-text-grey">Nama Lengkap</label>
-						<input class="w3-input w3-border" type="text" name="name" value="<%=(req.session.user)?req.session.user.name:``%>">
+			  		<label class="w3-text-grey">No Pembayaran</label>
+						<input class="w3-input w3-border" type="text" name="noPayment" value="<%=(dataPay)?dataPay.noPayment:``%>">
+					</p>
+					<p>
+			  		<label class="w3-text-grey">Nama Pemilik Rekening</label>
+						<input class="w3-input w3-border" type="text" name="accountOwner" value="<%=(req.session.user)?req.session.user.name:``%>">
 					</p>
 					<p>
 						<label class="w3-text-grey">Email</label>
@@ -19,12 +23,12 @@
 
 					<p>
 						<label class="w3-text-grey">Nominal Bayar (Rp.)</label>
-						<input class="w3-input w3-border" type="number" name="" value="<%=dataPay.amount%>" autocomplete="off">
+						<input class="w3-input w3-border" type="number" name="" value="<%=(dataPay)?dataPay.amount:``%>" autocomplete="off">
 					</p>
 					
 					<p>
 						<label class="w3-text-grey">Tgl Bayar</label>
-						<input class="w3-input w3-border" type="date" name="payAt" value="<%=%>" autocomplete="off">		
+						<input class="w3-input w3-border" type="date" name="paidOn" value="<%=%>" autocomplete="off">		
 					</p>
 
 					<p>
@@ -54,8 +58,8 @@
 
 			
 			<div class="w3-bar w3-section w3-padding-16">
-				<button class="w3-button w3-bar-item w3-blue-grey w3-right w3-hover-green" style="width:70%"><i class='fa fa-money'></i> Bayar</button>
-				<button class="w3-button w3-bar-item w3-light-grey w3-text-grey w3-right w3-hover-grey" style="width:30%" type="reset">Kosongkan</button>
+				<button class="w3-button w3-bar-item w3-teal w3-right w3-hover-green" style="width:70%"><i class='fa fa-money'></i> Bayar</button>
+				<button class="w3-button w3-bar-item w3-light-grey w3-text-grey w3-right w3-hover-grey" style="width:30%" type="reset">Reset</button>
 			</div>
 		
 		</div>

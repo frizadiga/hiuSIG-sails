@@ -28,10 +28,34 @@ module.exports = {
   		model:'users',
   		dominant:false
   	},
+    accountOwner:{
+      type:'string'
+    },
+    email:{
+      type:'email'
+    },
+    phone:{
+      type:'string'
+    },
+    paidOn:{
+      type:'date'
+    },
+    fromBank:{
+      type:'string'
+    },
+    toBank:{
+      type:'string'
+    },
+    amount:{
+      type:'integer'
+    },
   	message:{
       type:'string'
     },
     status:{
+      type:'string'
+    },
+    proof:{
       type:'string'
     }
   },
