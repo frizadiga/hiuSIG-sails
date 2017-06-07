@@ -71,29 +71,39 @@
 <%if(userRole==='administrator'){%>
 <hr class="w3-opacity w3-hr">
 
+<a href="/dashboards/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Agen</a>
+
 <a href="/dashboards/user/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-user-plus"></i> Tambah User</a>
 
 <a href="/dashboards/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-users"></i> Kelola User</a>
-
-<a href="/dashboards/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Agen</a>
 <%}%>
 
 <%if(userRole==='agent'||userRole==='administrator'){%>
+<hr class="w3-opacity w3-hr">
 <a href="/dashboards/bookings-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Pemesanan</a>
 
-<a href="/dashboards/payments-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Pembayaran</a>
+<a href="/dashboards/payments-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-chevron-down w3-right"></i> Konfirmasi Pembayaran</a>
+
+<a href="/dashboards/payments-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi DP</a>
+
+<a href="/dashboards/payments-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Pelunasan</a>
 <%}%>
 
+<%if(userRole==='agent'||userRole==='member'||userRole==='administrator'){%>
 <hr class="w3-opacity w3-hr">
-<a href="/dashboards/messages" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-comment"></i> Pesan</a>
+<a href="/dashboards/bookings" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-address-book"></i> Pemesanan Anda</a>
 
-<a href="/dashboards/bookings" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-address-book"></i> Daftar Pemesanan Anda</a>
+<a href="/dashboards/payments" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-chevron-down w3-right"></i> Pembayaran Anda</a>
 
-<%if(userRole==='agent'||'member'){%>
-<a href="/dashboards/payments" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-money"></i> Daftar Pembayaran Anda</a>
+<a href="/dashboards/payments" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-money"></i> Pembayaran DP Anda</a>
+
+<a href="/dashboards/payments" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-money"></i> Pelunasan Anda</a>
 <%}%>
 
 <a href="/dashboards/pay" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-th-list"></i> Form Pembayaran</a>
+
+<hr class="w3-opacity w3-hr">
+<a href="/dashboards/messages" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-comment"></i> Pesan</a>
 
 <hr class="w3-opacity w3-hr">
 <a href="javascript:void(0)" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"  onclick="accordion('more-docs')"><i class="fa fa-files-o"></i>
