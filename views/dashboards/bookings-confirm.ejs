@@ -181,41 +181,6 @@ function setDataPayment(){
       body:JSON.stringify(dataPayment)
     })
   }
-</script>
-
-<script>
-function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-}
-
-	// function printElm(elm)
- //    {
- //      var mywindow = window.open('', 'PRINT', 'height=1000,width=900');
-
-
- //        mywindow.document.write('<html><head><title>' + document.title  + '</title>');
-
- //        mywindow.document.write('</head><body >');
- //      mywindow.document.write('<h1>' + document.title  + '</h1>');
- //        mywindow.document.write(document.getElementById(elm).innerHTML);
- //        mywindow.document.write('</body></html>');
-
- //        mywindow.document.close(); // necessary for IE >= 10
- //        mywindow.focus(); // necessary for IE >= 10*/
-
- //        mywindow.print();
- //        mywindow.close();
-
- //        return true;
-
- //        }
 
   document.getElementById('search-filter').addEventListener('keyup',searchFilter);
 

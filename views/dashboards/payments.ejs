@@ -23,7 +23,7 @@
 			<th>Status</th>
 			<th></th>
 		</tr>
-		<%for(var i=0, len=dataPayments.length; i < len; i++) { -%>
+		<%for(var i=0, len=dataPayments.length; i < len; i++) {%>
 		<tr class="w3-text-grey w3-hover-green">
 			<td style="vertical-align: middle"><%=dataPayments[i].id%></td>
 			<td style="vertical-align: middle"><%=dataPayments[i].listing.title%></td>
@@ -34,16 +34,14 @@
 			<td style="vertical-align: middle" class="w3-center">
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
         
-        <a href="javascript:void(0)" onclick="openModal('modal-pay-dp')" style="text-decoration:none">
-          <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-money"></i> Bayar DP</button>
-        </a>
+          <button class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-dp" onclick="modalPayDp('<%-dataPayments[i].id%>')" data-id="<%=dataPayments[i].id%>"><i class="fa fa-money"></i> Bayar DP</button>
         
         <a href="pay" style="text-decoration:none">
           <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-money"></i> Bayar Lunas</button>
         </a>
 			</td>
 		</tr>
-		<% } -%>
+		<%}%>
 	<!-- 	<tr  class="w3-hover-none">
 			<td colspan="4">
 			<button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-print"></i> Print</b></button>
@@ -57,7 +55,7 @@
   </div>
 </div>
 
-<!-- MODAL PAY -->
+<!-- MODAL PAY DP -->
 <div id="modal-pay-dp" class="w3-modal" style="padding:8px 0px">
   <div class="w3-modal-content" style="max-width: 700px;margin:auto">
     <form action="has-paid" method="POST" enctype="multipart/form-data">
@@ -69,7 +67,7 @@
       <div class="w3-container">
           <p>
             <label class="w3-text-grey">No Pembayaran</label>
-            <input class="w3-input w3-border" type="text" name="noPayment" value="">
+            <input class="w3-input w3-border" id="noPayment" type="text" name="noPayment" value="">
           </p>
           <p>
             <label class="w3-text-grey">Nama Pemilik Rekening</label>
@@ -135,6 +133,20 @@
 </div>
 
 <script>
+var dataPayment = {};
+//ADD EVENT LISTENER
+var btnPayDp = document.getElementsByClassName('pay-button-dp');
+for(var i=0,len=btnPayDp.length;i<len;i++){
+  btnPayDp[i].addEventListener('click',setDataPayment);
+}
+
+function setDataPayment(){
+  dataPayment.id = this.dataset.id;
+  // alert(`
+  //   listing: ${dataPayment.listing} 
+  //   customer: ${dataPayment.customer} 
+  //   agent: ${dataPayment.agent}`);
+}
 
 function openModal(el) {
   document.getElementById(el).style.display = "block";
@@ -146,21 +158,25 @@ function closeModal(el) {
   document.body.style.overflow = "visible";
 }
 
-  document.getElementById('search-filter').addEventListener('keyup',searchFilter);
+function modalPayDp(data){
+  document.getElementById('noPayment').value = data;
+  openModal('modal-pay-dp');
+}
+document.getElementById('search-filter').addEventListener('keyup',searchFilter);
 
-  function searchFilter() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("search-filter");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("table-payments");
-  tr = table.getElementsByTagName("tr");
+function searchFilter() {
+var input, filter, table, tr, td, i;
+input = document.getElementById("search-filter");
+filter = input.value.toUpperCase();
+table = document.getElementById("table-payments");
+tr = table.getElementsByTagName("tr");
   for (i = 1; i < tr.length; i++) {
     trd = tr[i];
     if (trd) {
       if (trd.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+    } else {
+      tr[i].style.display = "none";
       }
     }
   }
