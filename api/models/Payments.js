@@ -46,6 +46,12 @@ module.exports = {
     toBank:{
       type:'string'
     },
+    dp:{
+      type:'integer'
+    },
+    remainingPayment:{
+      type:'integer'
+    },
     amount:{
       type:'integer'
     },
