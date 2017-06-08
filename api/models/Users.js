@@ -35,7 +35,13 @@ module.exports = {
     email:{
       type:'string'
     },
+    idNumber:{
+      type:'string'
+    },
     avatar:{
+      type:'string'
+    },
+    status:{
       type:'string'
     },
     listings:{
