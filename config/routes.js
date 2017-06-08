@@ -82,7 +82,11 @@ module.exports.routes = {
   '/dashboards/bookings-confirm':'BookingsController.bookingsConfirm',
   
   '/dashboards/payments':'PaymentsController.paymentsList',
+  '/dashboards/payments-dp':'PaymentsController.paymentsDpList',
+  '/dashboards/payments-repayment':'PaymentsController.paymentsRepaymentList',
   '/dashboards/payments-confirm':'PaymentsController.paymentsConfirm',
+  '/dashboards/payments-dp-confirm':'PaymentsController.paymentsDpConfirm',
+  '/dashboards/payments-repayment-confirm':'PaymentsController.paymentsRepaymentConfirm',
   '/dashboards/pay':'PaymentsController.pay',
   '/dashboards/has-paid':'PaymentsController.hasPaid',
   

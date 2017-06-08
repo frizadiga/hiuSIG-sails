@@ -1,5 +1,5 @@
 <div id="payments" class="w3-container myDivToPrint">
-  <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Konfirmasi Pembayaran</b></p>
+  <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Konfirmasi Pelunasan</b></p>
   <!-- <img src="/img/rumah2q-logo.png" style="width:20%"> -->
 
   <div class="w3-row w3-section w3-border">
@@ -13,39 +13,39 @@
     
   </div>
 
-	<table class="w3-table w3-card w3-hoverable" id="table-payments">
-		<tr class="w3-blue-grey">
-			<th>ID</th>
-			<th>Judul Properti</th>
-			<th>Pemohon</th>
+  <table class="w3-table w3-card w3-hoverable" id="table-payments">
+    <tr class="w3-blue-grey">
+      <th>ID</th>
+      <th>Judul Properti</th>
+      <th>Pemohon</th>
       <th>Agen</th>
       <th>Pesan</th>
-			<th>Status</th>
-			<th style="width: auto"></th>
-		</tr>
-		<%for(var i=0, len=dataPayments.length; i < len; i++) { -%>
-		<tr class="w3-text-grey w3-hover-green">
-			<td style="vertical-align: middle"><%=dataPayments[i].id%></td>
-			<td style="vertical-align: middle"><%=dataPayments[i].listing.title%></td>
+      <th>Status</th>
+      <th style="width: auto"></th>
+    </tr>
+    <%for(var i=0, len=dataPayments.length; i < len; i++) { -%>
+    <tr class="w3-text-grey w3-hover-green">
+      <td style="vertical-align: middle"><%=dataPayments[i].id%></td>
+      <td style="vertical-align: middle"><%=dataPayments[i].listing.title%></td>
       <td style="vertical-align: middle"><%=dataPayments[i].customer.name%></td>
       <td style="vertical-align: middle"><%=dataPayments[i].agent.name%></td>
       <td style="vertical-align: middle"><%=dataPayments[i].message%></td>
-			<td style="vertical-align: middle"><%=dataPayments[i].status%></td>
-			<td style="vertical-align: middle" class="w3-center">
+      <td style="vertical-align: middle"><%=dataPayments[i].status%></td>
+      <td style="vertical-align: middle" class="w3-center">
         <button class="w3-button w3-hover-red" onclick="openModal('modal-payments')"><i class="fa fa-info"></i> Detil</button>
-				<button class="w3-button w3-hover-red"><i class="fa fa-ban"></i> Tolak</button>
-				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-check"></i> Terima</button>
-			</td>
-		</tr>
-		<% } -%>
-	<!-- 	<tr  class="w3-hover-none">
-			<td colspan="4">
-			<button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-print"></i> Print</b></button>
-			</td>
-		</tr> -->
+        <button class="w3-button w3-hover-red"><i class="fa fa-ban"></i> Tolak</button>
+        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-check"></i> Terima</button>
+      </td>
+    </tr>
+    <% } -%>
+  <!--  <tr  class="w3-hover-none">
+      <td colspan="4">
+      <button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-print"></i> Print</b></button>
+      </td>
+    </tr> -->
 
-	</table>
-	<div class="w3-cell-row w3-container w3-padding w3-section w3-card">
+  </table>
+  <div class="w3-cell-row w3-container w3-padding w3-section w3-card">
     <p class="w3-cell w3-cell-middle w3-text-blue-grey">Total Rows <%=i%></p>
     <!-- <button class="w3-blue-grey w3-hover-red w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-trash"></i> Delete All</b></button> -->
   </div>

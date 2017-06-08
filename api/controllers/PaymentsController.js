@@ -17,6 +17,28 @@ module.exports = {
 			return res.view('dashboards/payments',{dataPayments:data,layout:'layout-dashboards'});
 		});
 	},
+
+	paymentsDpList:(req,res)=>{
+		const customer = req.session.user;
+		let opts = {};
+		opts = {customer:customer.no};
+		opts.sort = 'createdAt DESC';
+		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.view('dashboards/payments-dp',{dataPayments:data,layout:'layout-dashboards'});
+		});
+	},
+
+	paymentsRepaymentList:(req,res)=>{
+		const customer = req.session.user;
+		let opts = {};
+		opts = {customer:customer.no};
+		opts.sort = 'createdAt DESC';
+		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.view('dashboards/payments-repayment',{dataPayments:data,layout:'layout-dashboards'});
+		});
+	},
 	
 	paymentsConfirm:(req,res)=>{
 		const agent = req.session.user;
@@ -29,6 +51,28 @@ module.exports = {
 		});
 	},
 	
+	paymentsDpConfirm:(req,res)=>{
+		const agent = req.session.user;
+		let opts = {};
+		opts = {agent:agent.no};
+		opts.sort = 'createdAt DESC';
+		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.view('dashboards/payments-dp-confirm',{dataPayments:data,layout:'layout-dashboards'});
+		});
+	},
+
+	paymentsRepaymentConfirm:(req,res)=>{
+		const agent = req.session.user;
+		let opts = {};
+		opts = {agent:agent.no};
+		opts.sort = 'createdAt DESC';
+		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.view('dashboards/payments-repayment-confirm',{dataPayments:data,layout:'layout-dashboards'});
+		});
+	},
+
 	paymentCreate:(req,res)=>{
 		// return res.json(req.allParams());
 		Payments.createId((err,id)=>{
