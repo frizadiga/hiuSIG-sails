@@ -21,7 +21,7 @@
       <th>Agen</th>
       <th>Pesan</th>
 			<th>Status</th>
-			<th style="width: 250px"></th>
+			<th></th>
 		</tr>
 		<%for(var i=0, len=dataPayments.length; i < len; i++) { -%>
 		<tr class="w3-text-grey w3-hover-green">
@@ -33,9 +33,13 @@
 			<td style="vertical-align: middle"><%=dataPayments[i].status%></td>
 			<td style="vertical-align: middle" class="w3-center">
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
-        <a href="pay">
-        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-money"></i> Bayar</button>
-          
+        
+        <a href="javascript:void(0)" onclick="openModal('modal-pay-dp')" style="text-decoration:none">
+          <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-money"></i> Bayar DP</button>
+        </a>
+        
+        <a href="pay" style="text-decoration:none">
+          <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-money"></i> Bayar Lunas</button>
         </a>
 			</td>
 		</tr>
@@ -53,39 +57,94 @@
   </div>
 </div>
 
+<!-- MODAL PAY -->
+<div id="modal-pay-dp" class="w3-modal" style="padding:8px 0px">
+  <div class="w3-modal-content" style="max-width: 700px;margin:auto">
+    <form action="has-paid" method="POST" enctype="multipart/form-data">
+  <!-- <div id="user-form" class="w3-padding w3-container w3-padding"> -->
+    <div class="w3-card">
+      <p class="w3-teal w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran</b><span onclick="closeModal('modal-pay-dp')" 
+      class="w3-button w3-display-topright">&times;</span></p>
+            
+      <div class="w3-container">
+          <p>
+            <label class="w3-text-grey">No Pembayaran</label>
+            <input class="w3-input w3-border" type="text" name="noPayment" value="">
+          </p>
+          <p>
+            <label class="w3-text-grey">Nama Pemilik Rekening</label>
+            <input class="w3-input w3-border" type="text" name="accountOwner" value="<%=(req.session.user)?req.session.user.name:``%>">
+          </p>
+          <p>
+            <label class="w3-text-grey">Email</label>
+            <input class="w3-input w3-border" type="email" name="email" value="<%=(req.session.user)?req.session.user.email:``%>">
+          </p>
+          <p>
+            <label class="w3-text-grey">Phone</label>
+            <input class="w3-input w3-border" type="tel" name="phone" value="<%=(req.session.user)?req.session.user.phone:``%>">
+          </p>
+
+          <p>
+            <label class="w3-text-grey">Nominal Bayar (Rp.)</label>
+            <input class="w3-input w3-border" type="number" name="amount" value="" autocomplete="off">
+          </p>
+          
+          <p>
+            <label class="w3-text-grey">Tgl Bayar</label>
+            <input class="w3-input w3-border" type="date" name="paidOn" value="<%=%>" autocomplete="off">   
+          </p>
+
+          <p>
+            <label class="w3-text-grey">Dari Bank</label>
+            <select class="w3-select w3-border" name="fromBank">
+              <option value="">-Pilih Bank-</option>
+              <option value="bca">BCA</option>
+              <option value="mandiri">Mandiri</option>
+              <option value="bni">BNI</option>
+            </select>   
+          </p>
+
+          <p>
+            <label class="w3-text-grey">Ke Bank</label>
+            <select class="w3-select w3-border" name="toBank">
+              <option value="">-Pilih Bank-</option>
+              <option value="bca">BCA</option>
+              <option value="mandiri">Mandiri</option>
+              <option value="bni">BNI</option>
+            </select>   
+          </p>
+
+        <p>
+        <span class="w3-padding w3-teal">Bukti Pembayaran &nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
+        <input type="file" name="proof" <%=%>>
+        </p>
+
+      
+      <div class="w3-bar w3-section w3-padding-16">
+        <button class="w3-button w3-bar-item w3-teal w3-right w3-hover-green" style="width:70%"><i class='fa fa-money'></i> Bayar</button>
+        <button class="w3-button w3-bar-item w3-light-grey w3-text-grey w3-right w3-hover-grey" style="width:30%" type="reset">Reset</button>
+      </div>
+    
+    </div>
+
+    </div>
+  
+  <!-- </div> -->
+</form>
+  </div>
+</div>
+
 <script>
-function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
+function openModal(el) {
+  document.getElementById(el).style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
-	// function printElm(elm)
- //    {
- //      var mywindow = window.open('', 'PRINT', 'height=1000,width=900');
-
-
- //        mywindow.document.write('<html><head><title>' + document.title  + '</title>');
-
- //        mywindow.document.write('</head><body >');
- //      mywindow.document.write('<h1>' + document.title  + '</h1>');
- //        mywindow.document.write(document.getElementById(elm).innerHTML);
- //        mywindow.document.write('</body></html>');
-
- //        mywindow.document.close(); // necessary for IE >= 10
- //        mywindow.focus(); // necessary for IE >= 10*/
-
- //        mywindow.print();
- //        mywindow.close();
-
- //        return true;
-
- //        }
+function closeModal(el) {
+  document.getElementById(el).style.display = "none";
+  document.body.style.overflow = "visible";
+}
 
   document.getElementById('search-filter').addEventListener('keyup',searchFilter);
 
