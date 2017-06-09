@@ -38,7 +38,11 @@ module.exports.policies = {
 
   PaymentsController:{
     PaymentsList:'isLogin',
+    PaymentsDpList:'isLogin',
+    PaymentsRepaymentList:'isLogin',
     PaymentsConfirm:'isLogin',
+    PaymentsDpConfirm:'isLogin',
+    PaymentsRepaymentConfirm:'isLogin',
     pay:'isLogin',
     hasPaid:'isLogin'
   },
