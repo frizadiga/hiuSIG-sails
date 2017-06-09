@@ -111,6 +111,8 @@ module.exports = {
     if(params.floors === '') delete params.floors;
     if(params.baths === '') delete params.baths;
     if(params.beds === '') delete params.beds;
+    if(params.lotSize === '') delete params.lotSize;
+    if(params.buildingSize === '') delete params.buildingSize;
     if(params.minPrice === '') delete params.minPrice;
     if(params.maxPrice === '') delete params.maxPrice;
     
