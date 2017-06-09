@@ -34,7 +34,7 @@
 			<td style="vertical-align: middle" class="w3-center">
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
         
-          <button class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-dp" onclick="modalPayDp('<%-dataPayments[i].id%>')" data-id="<%=dataPayments[i].id%>"><i class="fa fa-money"></i> Bayar DP</button>
+          <button class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-dp" onclick="modalPayDp(<%-`'${dataPayments[i].id}',${dataPayments[i].listing.price}`%>)" data-id="<%=dataPayments[i].id%>"><i class="fa fa-money"></i> Bayar DP</button>
         
           <button class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-paid-off" onclick="modalPayPaidOff(<%-`'${dataPayments[i].id}',${dataPayments[i].listing.price}`%>)" 
           data-id="<%=dataPayments[i].id%>"
@@ -86,8 +86,21 @@
           </p>
 
           <p>
-            <label class="w3-text-grey">Nominal Bayar (Rp.)</label>
-            <input class="w3-input w3-border" type="number" name="amount" value="" autocomplete="off">
+            <div class="w3-col m4">
+              <label class="w3-text-grey">% dari harga properti</label>
+              <input class="w3-input w3-border" type="text" id="percentage-price" list="percentage" onkeyup="toPercentagePrice()" value="30">
+              <datalist id="percentage">
+                <option>10</option>
+                <option>30</option>
+                <option>50</option>
+                <option>60</option>
+              </datalist>  
+            </div>
+            <div class="w3-col m8">
+              <label class="w3-text-grey">Nominal Bayar DP (Rp.)</label>
+              <input class="w3-input w3-border" id="price-dp" type="number" name="amount" value="" autocomplete="off">      
+            </div>
+        
           </p>
           
           <p>
@@ -213,6 +226,13 @@
 </div>
 
 <script>
+var listingPrice;
+var percentPrice = document.getElementById('percentage-price').value;
+function toPercentagePrice(){
+  let percentagePrice = document.getElementById('percentage-price').value * listingPrice / 100
+  document.getElementById('price-dp').value = percentagePrice;
+}
+
 var dataPayment = {};
 //ADD EVENT LISTENER
 var btnPayDp = document.getElementsByClassName('pay-button-dp');
@@ -242,12 +262,15 @@ function closeModal(el) {
   document.body.style.overflow = "visible";
 }
 
-function modalPayDp(id){
+function modalPayDp(id,price){
+  listingPrice = price;
+  document.getElementById('price-dp').value = price * percentPrice / 100;
   document.getElementById('no-payment-dp').value = id;
   openModal('modal-pay-dp');
 }
 
 function modalPayPaidOff(id,price){
+  listingPrice = price;
   document.getElementById('no-payment-paid-off').value = id;
   document.getElementById('price-paid-off').value = price;
   openModal('modal-pay-paid-off');
