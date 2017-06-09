@@ -37,12 +37,12 @@ module.exports.policies = {
   },
 
   PaymentsController:{
-    PaymentsList:'isLogin',
-    PaymentsDpList:'isLogin',
-    PaymentsRepaymentList:'isLogin',
-    PaymentsConfirm:'isLogin',
-    PaymentsDpConfirm:'isLogin',
-    PaymentsRepaymentConfirm:'isLogin',
+    paymentsList:'isLogin',
+    paymentsDpList:'isLogin',
+    paymentsRepaymentList:'isLogin',
+    paymentsConfirm:'isLogin',
+    paymentsDpConfirm:'isLogin',
+    paymentsRepaymentConfirm:'isLogin',
     pay:'isLogin',
     hasPaid:'isLogin'
   },
