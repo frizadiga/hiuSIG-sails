@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Jun 2017 pada 08.43
+-- Generation Time: 09 Jun 2017 pada 11.30
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -43,7 +43,7 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`no`, `id`, `listing`, `customer`, `agent`, `message`, `status`, `createdAt`, `updatedAt`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 'bk1', 14, 2, 1, 'im interested', 'pending', '2017-06-09 00:00:00', '2017-06-09 00:00:00'),
 (31, 'bk31', 14, 2, 1, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-05-30 17:09:54', '2017-06-02 14:43:24'),
 (32, 'bk32', 19, 2, 1, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-05-30 21:42:48', '2017-06-02 14:42:52'),
 (35, 'bk35', 28, 1, 2, 'Saya ingin ketemuan dilokasi', 'approved', '2017-06-02 14:56:16', '2017-06-03 12:53:22'),
@@ -268,7 +268,7 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`no`, `id`, `listing`, `customer`, `agent`, `accountOwner`, `email`, `phone`, `paidOn`, `fromBank`, `toBank`, `dp`, `remainingPayment`, `amount`, `message`, `status`, `proof`, `createdAt`, `updatedAt`) VALUES
-(1, 'pyt1', NULL, NULL, NULL, 'Tomomi Ogawa', 'tomomi_ogw@gmail.com', '087722867908', '2017-06-06', 'bca', 'mandiri', NULL, NULL, 1500000000, 'Pembayaran Lunas', 'belum bayar', '', '2017-05-29 00:00:00', '2017-06-06 14:36:36'),
+(1, 'pyt1', 14, 2, 1, 'Tomomi Ogawa', 'tomomi_ogw@gmail.com', '087722867908', '2017-06-06', 'bca', 'mandiri', NULL, NULL, 1500000000, 'Pembayaran Lunas', 'belum bayar', '', '2017-05-29 00:00:00', '2017-06-06 14:36:36'),
 (9, 'pyt2', 28, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:43:18', '2017-05-30 01:43:18'),
 (10, 'pyt10', 31, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:52:23', '2017-05-30 01:52:23'),
 (11, 'pyt11', 29, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:54:41', '2017-05-30 01:54:41'),
@@ -323,12 +323,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`, `email`, `idNumber`, `avatar`, `status`, `createdAt`, `updatedAt`) VALUES
-(1, 'u1', 'frizadiga', 'agent', 'root', 'frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, '5cf153a3-93c2-4059-ad4d-859761cdfe17.jpg', NULL, '2017-05-19 02:11:51', '2017-05-19 02:20:20'),
-(2, 'u2', 'timogawa', 'agent', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', NULL, 'avatar-tomomi.jpg', NULL, '2016-12-25 22:30:28', '2017-05-19 02:27:50'),
-(3, 'u3', 'haruna', 'member', 'root', 'Rina Suzuki', '087722867909', 'haruna@gmail.com', NULL, '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', NULL, '2016-12-26 04:35:44', '2017-05-19 02:27:37'),
-(4, 'u4', 'mami', 'agent', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', NULL, 'avatar-mami.jpg', NULL, '2017-05-02 20:05:00', '2017-05-19 02:22:36'),
-(5, 'u5', 'rina', 'member', 'root', 'Rina Suzuki', '087722867911', 'urarina@gmail.com', NULL, 'avatar-rina.jpg', NULL, '2017-05-08 01:08:45', '2017-05-08 01:08:45'),
-(8, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, 'avatar-friza.jpg', NULL, '2016-12-23 21:09:57', '2017-05-02 22:56:05');
+(1, 'u1', 'frizadiga', 'agent', 'root', 'frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, '5cf153a3-93c2-4059-ad4d-859761cdfe17.jpg', 'on', '2017-05-19 02:11:51', '2017-05-19 02:20:20'),
+(2, 'u2', 'timogawa', 'agent', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', NULL, 'avatar-tomomi.jpg', 'on', '2016-12-25 22:30:28', '2017-05-19 02:27:50'),
+(3, 'u3', 'haruna', 'agent', 'root', 'Rina Suzuki', '087722867909', 'haruna@gmail.com', NULL, '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', 'on', '2016-12-26 04:35:44', '2017-05-19 02:27:37'),
+(4, 'u4', 'mami', 'agent', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', NULL, 'avatar-mami.jpg', 'on', '2017-05-02 20:05:00', '2017-05-19 02:22:36'),
+(5, 'u5', 'rina', 'member', 'root', 'Rina Suzuki', '087722867911', 'urarina@gmail.com', NULL, 'avatar-rina.jpg', 'on', '2017-05-08 01:08:45', '2017-05-08 01:08:45'),
+(8, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, 'avatar-friza.jpg', 'on', '2016-12-23 21:09:57', '2017-05-02 22:56:05');
 
 --
 -- Indexes for dumped tables
