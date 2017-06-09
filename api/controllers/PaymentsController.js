@@ -137,7 +137,7 @@ module.exports = {
 	},
 
 	dpApproved:(req,res)=>{
-		Payments.update({id:req.param('id')},{status:'dp lunas'}).exec((err,data)=>{
+		Payments.update({id:req.param('id')},{status:'dp lunas & menunggu pelunasan'}).exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 		});

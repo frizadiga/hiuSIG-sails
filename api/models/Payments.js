@@ -63,7 +63,7 @@ module.exports = {
     },
     status:{
       type:'string',
-      enum:['belum bayar','pending dp','dp lunas','belum pelunasan','pending pelunasan','pelunasan lunas']
+      enum:['belum bayar','pending dp','dp lunas & menunggu pelunasan','pending pelunasan','pelunasan lunas']
     },
     dpProof:{
       type:'string'
