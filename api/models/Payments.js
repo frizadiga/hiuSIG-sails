@@ -60,7 +60,7 @@ module.exports = {
     },
     status:{
       type:'string',
-      enum:['belum bayar','pending dp','dp lunas','pending lunas','lunas']
+      enum:['belum bayar','pending dp','dp','pending lunas','lunas']
     },
     proof:{
       type:'string'

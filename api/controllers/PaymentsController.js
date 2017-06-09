@@ -34,6 +34,7 @@ module.exports = {
 		const customer = req.session.user;
 		let opts = {};
 		opts = {customer:customer.no};
+		opts.status = {'contains':'lunas'};
 		opts.sort = 'createdAt DESC';
 		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
