@@ -1,0 +1,113 @@
+<!--Approve Modal-->
+<div id="modal-confirm-approve-dp" class="w3-modal">
+  <div class="w3-modal-content w3-card-4" style="max-width:399px;opacity:0.95">
+   <header id="modal-login-header" class="w3-center"><br>
+      <span onclick="document.getElementById('modal-confirm-approve-dp').style.display='none'" class="w3-button w3-hover-red w3-padding w3-display-topright" title="Close">&times;</span>
+    
+      <p class="w3-xlarge w3-margin w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></p>
+      <hr">
+    </header>
+   
+    <form class="" action="">
+      <div class="w3-container">
+        <p>Anda yakin akan <b>Menerima</b> Pembayaran DP ini?</p>
+        <p>ID: <span id="modal-id-approve"></span></p>
+        <p>Customer: <span id="modal-data-approve"></span></p>
+      </div>
+      
+      <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
+        <button onclick="document.getElementById('modal-confirm-approve-dp').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
+        <button onclick="approveDp(mia.innerHTML)" type="button" class="w3-btn w3-green w3-right">Terima</button>
+      </footer>
+    </form>
+    
+  </div>
+</div>
+
+<!--Denied Modal-->
+<div id="modal-confirm-denied-dp" class="w3-modal">
+  <div class="w3-modal-content w3-card-4" style="max-width:399px;opacity:0.95">
+   <header id="modal-login-header" class="w3-center"><br>
+      <span onclick="document.getElementById('modal-confirm-denied-dp').style.display='none'" class="w3-button w3-hover-red w3-padding w3-display-topright" title="Close">&times;</span>
+    
+      <p class="w3-xlarge w3-margin w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></p>
+      <hr">
+    </header>
+   
+    <form class="" action="">
+      <div class="w3-container">
+        <p>Anda yakin akan <b>Menolak</b> Pembayaran DP ini?</p>
+        <p>ID: <span id="modal-id-delete"></span></p>
+        <p>Customer: <span id="modal-data-delete"></span></p>
+      </div>
+      
+      <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
+        <button onclick="document.getElementById('modal-confirm-denied-dp').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
+        <button onclick="deniedDp(mid.innerHTML)" type="button" class="w3-btn w3-red w3-right">Tolak</button>
+      </footer>
+    </form>
+    
+  </div>
+</div>
+
+<script>
+  var id = 0;
+var mia = document.getElementById('modal-id-approve');
+var mda = document.getElementById('modal-data-approve');
+var mid = document.getElementById('modal-id-delete');
+var mdd = document.getElementById('modal-data-delete');
+var dataPayment = {};
+
+//ADD EVENT LISTENER
+var btnConfirm = document.getElementsByClassName('confirm-button');
+for(var i=0,len=btnConfirm.length;i<len;i++){
+  btnConfirm[i].addEventListener('click',setDataPayment);
+}
+
+function setDataPayment(){
+  dataPayment.listing = this.dataset.listing;
+  dataPayment.customer = this.dataset.customer;
+  dataPayment.agent = this.dataset.agent;
+  // alert(`
+  //   listing: ${dataPayment.listing} 
+  //   customer: ${dataPayment.customer} 
+  //   agent: ${dataPayment.agent}`);
+}
+
+  function openModal(el) {
+    document.getElementById(el).style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(el) {
+    document.getElementById(el).style.display = "none";
+    document.body.style.overflow = "visible";
+  }
+  function modalDeniedDp(id,username){
+    id = id;
+    openModal('modal-confirm-denied-dp');
+    mid.innerHTML = id;
+    mdd.innerHTML = username;
+  }
+  function modalApproveDp(id,username){
+    id = id;
+    openModal('modal-confirm-approve-dp');
+    mia.innerHTML = id;
+    mda.innerHTML = username;
+  }
+  function deniedDp(id){
+    fetch(`/api/payment/dp-denied/${id}`,{
+      method:'PUT'
+    }).then((res)=>{
+      mdd.innerHTML = res.text();
+      location.reload();
+    })
+  }
+  function approveDp(id){
+    fetch(`/api/payment/dp-approved/${id}`,{
+      method:'PUT',
+    }).then((res)=>{
+      mda.innerHTML = res.text();
+      location.reload();
+    })
+  }
+</script>

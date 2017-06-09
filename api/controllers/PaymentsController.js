@@ -34,7 +34,7 @@ module.exports = {
 		const customer = req.session.user;
 		let opts = {};
 		opts = {customer:customer.no};
-		opts.status = {'contains':'lunas'};
+		opts.status = {'contains':'pelunasan'};
 		opts.sort = 'createdAt DESC';
 		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
@@ -69,7 +69,7 @@ module.exports = {
 		const agent = req.session.user;
 		let opts = {};
 		opts = {agent:agent.no};
-		opts.status = {'contains':'lunas'};
+		opts.status = {'contains':'pelunasan'};
 		opts.sort = 'createdAt DESC';
 		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
@@ -134,8 +134,21 @@ module.exports = {
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 		});
-	}
+	},
 
+	dpApproved:(req,res)=>{
+		Payments.update({id:req.param('id')},{status:'dp lunas'}).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data.id);
+		});
+	},
+
+	dpDenied:(req,res)=>{
+		Payments.update({id:req.param('id')},{status:'belum bayar'}).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data.id);
+		});
+	}
 
 };
 
