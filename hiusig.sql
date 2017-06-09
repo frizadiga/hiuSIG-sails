@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Mei 2017 pada 18.57
+-- Generation Time: 09 Jun 2017 pada 08.43
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -30,7 +30,7 @@ CREATE TABLE `bookings` (
   `no` int(10) UNSIGNED NOT NULL,
   `id` varchar(255) DEFAULT NULL,
   `listing` int(11) DEFAULT NULL,
-  `buyer` int(11) DEFAULT NULL,
+  `customer` int(11) DEFAULT NULL,
   `agent` int(11) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
@@ -42,9 +42,15 @@ CREATE TABLE `bookings` (
 -- Dumping data untuk tabel `bookings`
 --
 
-INSERT INTO `bookings` (`no`, `id`, `listing`, `buyer`, `agent`, `message`, `status`, `createdAt`, `updatedAt`) VALUES
-(16, 'bk16', 31, 5, 2, 'Ex: Saya Booking dengan DP 50%', 'pending', '2017-05-27 23:54:53', '2017-05-27 23:54:53'),
-(17, 'bk17', 31, 5, 2, 'Ex: Saya Booking dengan DP 50% !Baru', 'pending', '2017-05-27 23:56:21', '2017-05-27 23:56:21');
+INSERT INTO `bookings` (`no`, `id`, `listing`, `customer`, `agent`, `message`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 'bk31', 14, 2, 1, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-05-30 17:09:54', '2017-06-02 14:43:24'),
+(32, 'bk32', 19, 2, 1, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-05-30 21:42:48', '2017-06-02 14:42:52'),
+(35, 'bk35', 28, 1, 2, 'Saya ingin ketemuan dilokasi', 'approved', '2017-06-02 14:56:16', '2017-06-03 12:53:22'),
+(36, 'bk36', 31, 8, 2, 'Ex: Saya Booking dengan DP 50%', 'pending', '2017-06-03 16:25:01', '2017-06-03 16:25:01'),
+(37, 'bk37', 26, 8, 3, 'Ex: Saya Booking dengan DP 50%', 'pending', '2017-06-04 00:43:11', '2017-06-04 00:43:11'),
+(38, 'bk38', 29, 5, 2, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-06-06 14:33:11', '2017-06-06 14:35:29'),
+(39, 'bk39', 29, 1, 2, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-06-09 12:49:42', '2017-06-09 12:50:15');
 
 -- --------------------------------------------------------
 
@@ -65,7 +71,6 @@ CREATE TABLE `crud` (
 --
 
 INSERT INTO `crud` (`id`, `value1`, `value2`, `createdAt`, `updatedAt`) VALUES
-('', '', '', '2016-10-16 16:01:33', '2016-10-16 16:01:33'),
 ('p1', 'isi value 1', 'isi value 2', '2016-10-14 12:55:09', '2016-10-14 15:13:45'),
 ('p100', 'value1 p100 ', 'value2 p100', '2016-11-17 00:25:01', '2016-11-17 00:25:01'),
 ('P1000', 'Value 1 P1000', 'Value 2 P1000', '2016-11-24 18:18:46', '2016-11-24 18:18:46'),
@@ -137,30 +142,30 @@ CREATE TABLE `listings` (
   `agent` int(11) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
-  `sold_or_rent` tinyint(1) DEFAULT NULL
+  `sold_or_rented` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `listings`
 --
 
-INSERT INTO `listings` (`no`, `id`, `title`, `status`, `type`, `price`, `province`, `city`, `address`, `lat`, `lng`, `lotSize`, `buildingSize`, `floors`, `beds`, `baths`, `description`, `agent`, `createdAt`, `updatedAt`, `sold_or_rent`) VALUES
-(14, 'p14', 'Rumah Tepi di Sawah Kesambi Raya', 'dijual', 'rumah', 500000, 'Bali', 'Kuta Utara', 'Perum Kesambi Raya no 77', '-8.653635', '115.1719873', '1', '1', 1, 1, 1, 'View Bagus Landscape Sawah asri', 1, '2016-12-21 19:33:49', '2017-05-26 14:26:13', 0),
-(15, 'p15', 'Rumah 100', 'dijual', 'rumah', 100000000, 'Bali', 'Denpasar', 'Bagus Jaya Residence, Padangsambian Klod, Kota Denpasar, Bali, Indonesia no 7', '-8.6681273', '115.18169149999994', '100', '100', 1, 1, 1, 'family 100', 2, '2016-12-21 19:41:10', '2017-05-26 14:26:29', 0),
-(17, 'p17', 'Rumah Minimalis Kerobokan', 'dijual', 'rumah', 100500000, 'Bali', 'Denpasar', 'Kerobokan, Kabupaten Badung, Bali, Indonesia', '-8.651221199999998', '115.16223630000002', '1', '1', 1, 1, 1, '- Modern\r\n- Minimalis', 3, '2016-12-21 19:46:56', '2017-05-26 14:26:38', 0),
-(18, 'p18', 'Ruko 3 Lantai dekat Pasar Badung', 'dijual', 'ruko', 50000000, 'Bali', 'Badung', 'Pasar Badung, Dauh Puri Kangin, Kota Denpasar, Bali, Indonesia', '-8.656546580789643', '115.21237500244672', '100', '80', 2, 1, 1, '-24 jam full Security', 4, '2016-12-21 20:04:38', '2017-05-26 14:26:41', 0),
-(19, 'p19', 'Ruko Strategis Pusat Kota Jakarta', 'disewa', 'ruko', 111000000, 'Jakarta', 'Jakarta', 'Jalan Jakarta Besar no 60 Jakarta Pusat, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia', '-6.186486399999999', '106.83409110000002', '1000', '700', 55, 50, 100, '- full furniture', 1, '2016-12-21 20:15:37', '2017-05-26 14:26:44', 0),
-(20, 'p20', 'Gedung Perkantoran Pusat Kota Jakarta', 'dijual', 'gedung', 2100000000, 'Jakarta', 'Jakarta', 'Jalan Jakarta Besar no 60 Jakarta Pusat, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia', '-6.186486399999999', '106.83409110000002', '1000', '700', 55, 50, 100, '- Fasilitas premium \r\n- Lokasi strategis', 2, '2016-12-21 20:16:16', '2017-05-26 14:26:46', 0),
-(21, 'p21', 'Perkantoran High venue Jakarta Pusat', 'disewa', 'perkantoran', 150000000, 'Jakarta', 'Jakarta Pusat', 'Gedung Bursa Efek Indonesia, Senayan, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta, Indonesia', '-6.223559709560551', '106.80813927909844', '800', '600', 60, 60, 120, '- Full security sistem \r\n- Free Maintenance Bill', 3, '2016-12-23 22:11:55', '2017-05-26 14:26:50', 0),
-(22, 'p22', 'Gedung Perkantoran Kemang', 'disewa', 'perkantoran', 100000000, 'Jakarta', 'Jakarta Selatan', 'Kemang Icon by Alila, Bangka, Kota Jakarta Selatan, Jakarta Raya, Indonesia', '-6.255591523485944', '106.81475853677057', '500', '300', 10, 10, 20, '- Kawasan Tenang dan nyaman\r\n- Standar Fasilitas Internasional', 4, '2016-12-23 22:15:01', '2017-05-26 14:26:52', 0),
-(23, 'p23', 'Tanah Kosong Padang Sambian', 'dijual', 'tanah', 300000000, 'Bali', 'Kuta', 'Padangsambian, Kota Denpasar, Bali, Indonesia no 89', '-8.6546221', '115.18595170000003', '300', '1', 0, 0, 0, '- Surat Lengkap', 1, '2016-12-27 19:31:18', '2017-05-26 14:27:48', 0),
-(24, 'p24', 'Tanah Rawa Daerah Serangan', 'dijual', 'tanah', 50000000, 'Bali', 'Denpasar', 'Jalan Rawa-rawa, Serangan, Kota Denpasar, Bali, Indonesia no 33', '-8.734714429762585', '115.23011543383791', '500', '0', 0, 0, 0, '- surat lengkap', 2, '2016-12-27 19:34:32', '2017-05-26 14:27:50', 0),
-(26, 'p25', 'Gudang Barang Strategis Depok', 'dijual', 'gudang', 30000000, 'Jawa Barat', 'Depok', 'Jalan Pusat Gudang no 77', '-6.364270647289123', '106.86221840527344', '700', '600', 2, 0, 0, '- Keamanan 24 Jam', 3, '2017-01-01 15:54:04', '2017-05-26 14:27:58', 0),
-(27, 'p27', 'Gudang Barang Strategis Bekasi', 'disewa', 'gudang', 50000000, 'Jawa Barat', 'Bekasi', 'Jalan Gudang Ratu no99c', '-6.232429896450983', '107.00837641640624', '1200', '900', 2, 3, 3, '', 4, '2017-01-01 15:56:59', '2017-05-26 14:28:00', 0),
-(28, 'p28', 'Apartement dibilangan Sanur', 'dijual', 'apartemen', 150000000, 'Bali', 'Denpasar', 'Jalan Danau Tamblingan no 55 Sanur Bali', '-8.694737', '115.26301420000004', '150', '150', 1, 2, 2, 'Fasilitas ISO Eropa', 2, '2017-05-18 23:42:13', '2017-05-26 14:28:02', 0),
-(29, 'p29', 'Rumah Tipe 38', 'disewa', 'rumah', 1200000000, 'Bali', 'Kuta', 'Jl Muding Mekar No 11 F, Kerobokan, Badung, Bali', '-8.65011358262249', '115.17551176190182', '150', '150', 2, 2, 2, 'One way Gate System\r\nSecuruty 24 Jam', 2, '2017-05-20 13:19:12', '2017-05-26 14:28:04', 0),
-(30, 'p30', 'Perumahan Kesambi Raya', 'disewa', 'rumah', 1300000000, 'Bali', 'Badung', 'Perum Kesambi raya no 9F, Kerobokan, Badung, Bali', '-8.653155100000001', '115.17380730000002', '150', '200', 2, 3, 3, 'Keamanan 24 jam\r\nOne Gate System', 2, '2017-05-20 13:32:04', '2017-05-26 14:28:08', 0),
-(31, 'p31', 'Villa Mewah di bilangan Sanur', 'dijual', 'villa', 310000000, 'Bali', 'Denpasar', 'Jalan Hang Tuah no 8, Sanur, Denpasar, Bali', '-8.674427542151289', '115.26289072491454', '500', '700', 2, 7, 3, '- Kolam Renang\r\n- Security 24 Jam\r\n- CCTV\r\n- Fresh Water Tank Stock', 2, '2017-05-20 13:38:01', '2017-05-26 14:28:13', 0);
+INSERT INTO `listings` (`no`, `id`, `title`, `status`, `type`, `price`, `province`, `city`, `address`, `lat`, `lng`, `lotSize`, `buildingSize`, `floors`, `beds`, `baths`, `description`, `agent`, `createdAt`, `updatedAt`, `sold_or_rented`) VALUES
+(14, 'p14', 'Rumah Tepi di Sawah Kesambi Raya', 'dijual', 'rumah', 500000, 'Bali', 'Kuta Utara', 'Perum Kesambi Raya no 77', '-8.653635', '115.1719873', '120', '100', 1, 1, 1, 'View Bagus Landscape Sawah asri', 1, '2016-12-21 19:33:49', '2017-05-26 14:26:13', NULL),
+(15, 'p15', 'Rumah 100', 'dijual', 'rumah', 100000000, 'Bali', 'Denpasar', 'Bagus Jaya Residence, Padangsambian Klod, Kota Denpasar, Bali, Indonesia no 7', '-8.6681273', '115.18169149999994', '100', '100', 1, 1, 1, 'family 100', 2, '2016-12-21 19:41:10', '2017-05-26 14:26:29', NULL),
+(17, 'p17', 'Rumah Minimalis Kerobokan', 'dijual', 'rumah', 100500000, 'Bali', 'Denpasar', 'Kerobokan, Kabupaten Badung, Bali, Indonesia', '-8.651221199999998', '115.16223630000002', '100', '80', 1, 1, 1, '- Modern\r\n- Minimalis', 3, '2016-12-21 19:46:56', '2017-05-26 14:26:38', NULL),
+(18, 'p18', 'Ruko 3 Lantai dekat Pasar Badung', 'dijual', 'ruko', 50000000, 'Bali', 'Badung', 'Pasar Badung, Dauh Puri Kangin, Kota Denpasar, Bali, Indonesia', '-8.656546580789643', '115.21237500244672', '100', '80', 2, 1, 1, '-24 jam full Security', 4, '2016-12-21 20:04:38', '2017-05-26 14:26:41', NULL),
+(19, 'p19', 'Ruko Strategis Pusat Kota Jakarta', 'disewa', 'ruko', 111000000, 'Jakarta', 'Jakarta', 'Jalan Jakarta Besar no 60 Jakarta Pusat, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia', '-6.186486399999999', '106.83409110000002', '1000', '700', 55, 50, 100, '- full furniture', 1, '2016-12-21 20:15:37', '2017-05-26 14:26:44', NULL),
+(20, 'p20', 'Gedung Perkantoran Pusat Kota Jakarta', 'dijual', 'gedung', 2100000000, 'Jakarta', 'Jakarta', 'Jalan Jakarta Besar no 60 Jakarta Pusat, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia', '-6.186486399999999', '106.83409110000002', '1000', '700', 55, 50, 100, '- Fasilitas premium \r\n- Lokasi strategis', 2, '2016-12-21 20:16:16', '2017-05-26 14:26:46', NULL),
+(21, 'p21', 'Perkantoran High venue Jakarta Pusat', 'disewa', 'perkantoran', 150000000, 'Jakarta', 'Jakarta Pusat', 'Gedung Bursa Efek Indonesia, Senayan, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta, Indonesia', '-6.223559709560551', '106.80813927909844', '800', '600', 60, 60, 120, '- Full security sistem \r\n- Free Maintenance Bill', 3, '2016-12-23 22:11:55', '2017-05-26 14:26:50', NULL),
+(22, 'p22', 'Gedung Perkantoran Kemang', 'disewa', 'perkantoran', 100000000, 'Jakarta', 'Jakarta Selatan', 'Kemang Icon by Alila, Bangka, Kota Jakarta Selatan, Jakarta Raya, Indonesia', '-6.255591523485944', '106.81475853677057', '500', '300', 10, 10, 20, '- Kawasan Tenang dan nyaman\r\n- Standar Fasilitas Internasional', 4, '2016-12-23 22:15:01', '2017-05-26 14:26:52', NULL),
+(23, 'p23', 'Tanah Kosong Padang Sambian', 'dijual', 'tanah', 300000000, 'Bali', 'Kuta', 'Padangsambian, Kota Denpasar, Bali, Indonesia no 89', '-8.6546221', '115.18595170000003', '300', '0', 0, 0, 0, '- Surat Lengkap', 1, '2016-12-27 19:31:18', '2017-05-26 14:27:48', NULL),
+(24, 'p24', 'Tanah Rawa Daerah Serangan', 'dijual', 'tanah', 50000000, 'Bali', 'Denpasar', 'Jalan Rawa-rawa, Serangan, Kota Denpasar, Bali, Indonesia no 33', '-8.734714429762585', '115.23011543383791', '500', '0', 0, 0, 0, '- surat lengkap', 2, '2016-12-27 19:34:32', '2017-05-26 14:27:50', NULL),
+(26, 'p25', 'Gudang Barang Strategis Depok', 'dijual', 'gudang', 30000000, 'Jawa Barat', 'Depok', 'Jalan Pusat Gudang no 77', '-6.364270647289123', '106.86221840527344', '700', '600', 2, 0, 0, '- Keamanan 24 Jam', 3, '2017-01-01 15:54:04', '2017-05-26 14:27:58', NULL),
+(27, 'p27', 'Gudang Barang Strategis Bekasi', 'disewa', 'gudang', 50000000, 'Jawa Barat', 'Bekasi', 'Jalan Gudang Ratu no99c', '-6.232429896450983', '107.00837641640624', '1200', '900', 2, 3, 3, '', 4, '2017-01-01 15:56:59', '2017-05-26 14:28:00', NULL),
+(28, 'p28', 'Apartement dibilangan Sanur', 'dijual', 'apartemen', 150000000, 'Bali', 'Denpasar', 'Jalan Danau Tamblingan no 55 Sanur Bali', '-8.694737', '115.26301420000004', '150', '150', 1, 2, 2, 'Fasilitas ISO Eropa', 2, '2017-05-18 23:42:13', '2017-05-26 14:28:02', NULL),
+(29, 'p29', 'Rumah Tipe 38', 'disewa', 'rumah', 1200000000, 'Bali', 'Kuta', 'Jl Muding Mekar No 11 F, Kerobokan, Badung, Bali', '-8.65011358262249', '115.17551176190182', '150', '150', 2, 2, 2, 'One way Gate System\r\nSecuruty 24 Jam', 2, '2017-05-20 13:19:12', '2017-05-26 14:28:04', NULL),
+(30, 'p30', 'Perumahan Kesambi Raya', 'disewa', 'rumah', 1300000000, 'Bali', 'Badung', 'Perum Kesambi raya no 9F, Kerobokan, Badung, Bali', '-8.653155100000001', '115.17380730000002', '150', '200', 2, 3, 3, 'Keamanan 24 jam\r\nOne Gate System', 2, '2017-05-20 13:32:04', '2017-05-26 14:28:08', NULL),
+(31, 'p31', 'Villa Mewah di bilangan Sanur', 'dijual', 'villa', 310000000, 'Bali', 'Denpasar', 'Jalan Hang Tuah no 8, Sanur, Denpasar, Bali', '-8.674427542151289', '115.26289072491454', '500', '700', 2, 7, 3, '- Kolam Renang\r\n- Security 24 Jam\r\n- CCTV\r\n- Fresh Water Tank Stock', 2, '2017-05-20 13:38:01', '2017-05-26 14:28:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -227,22 +232,8 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`, `updatedAt`) VALUES
-(1, 'm1', 2, 1, 'Saya tertarik pada properti anda', '2017-05-16 20:28:42', '2017-05-16 20:28:42'),
-(2, 'm2', 3, 1, 'Saya ingin bertanya tentang properti anda', '2017-05-18 01:09:01', '2017-05-18 01:09:01'),
-(5, 'm3', 2, 1, 'saya ingin ketemuan untuk membahas properti anda', '2017-05-18 17:09:00', '2017-05-18 17:09:00'),
-(6, 'm6', 1, 2, 'saya ingin bertemu membahas masalah harga', '2017-05-18 17:12:14', '2017-05-18 17:12:14'),
-(7, 'm7', 2, 1, 'Bisa Ketemuan? saya tertarik banget dengan rumah ini', '2017-05-18 17:23:37', '2017-05-18 17:23:37'),
-(8, 'm8', 4, 3, 'hai rina saya tertarik untuk bertemu bicara harga', '2017-05-18 17:27:07', '2017-05-18 17:27:07'),
-(9, 'm9', 2, 1, 'bisa info lebih lanjut ke no 087722867908 ?', '2017-05-18 20:16:30', '2017-05-18 20:16:30'),
-(18, 'm10', 1, 2, 'hi', '2017-05-19 00:50:41', '2017-05-19 00:50:41'),
-(19, 'm19', 1, 2, 'hai tomomi', '2017-05-19 00:55:43', '2017-05-19 00:55:43'),
-(20, 'm20', 1, 2, 'halo timo', '2017-05-19 00:57:07', '2017-05-19 00:57:07'),
-(21, 'm21', 1, 2, 'hi', '2017-05-19 01:11:05', '2017-05-19 01:11:05'),
-(22, 'm22', 1, 3, 'hi rina', '2017-05-19 01:13:13', '2017-05-19 01:13:13'),
-(23, 'm23', 1, 3, 'hi rina', '2017-05-19 01:16:32', '2017-05-19 01:16:32'),
-(24, 'm24', 1, 3, 'hai rina how do u do?', '2017-05-19 01:24:17', '2017-05-19 01:24:17'),
-(25, 'm25', 8, 2, 'Ex: Saya tertarik dengan anda', '2017-05-25 06:07:45', '2017-05-25 06:07:45'),
-(26, 'msg26', 5, 2, 'Ex: Saya tertarik dengan properti anda', '2017-05-27 23:50:45', '2017-05-27 23:50:45');
+(1, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'msg2', 3, 2, 'Hi Tomomi Saya tertarik dengan properti anda', '2017-06-08 04:00:02', '2017-06-08 04:00:02');
 
 -- --------------------------------------------------------
 
@@ -254,13 +245,40 @@ CREATE TABLE `payments` (
   `no` int(10) UNSIGNED NOT NULL,
   `id` varchar(255) DEFAULT NULL,
   `listing` int(11) DEFAULT NULL,
-  `buyer` int(11) DEFAULT NULL,
+  `customer` int(11) DEFAULT NULL,
   `agent` int(11) DEFAULT NULL,
+  `accountOwner` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `paidOn` date DEFAULT NULL,
+  `fromBank` varchar(255) DEFAULT NULL,
+  `toBank` varchar(255) DEFAULT NULL,
+  `dp` int(11) DEFAULT NULL,
+  `remainingPayment` int(11) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
+  `proof` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `payments`
+--
+
+INSERT INTO `payments` (`no`, `id`, `listing`, `customer`, `agent`, `accountOwner`, `email`, `phone`, `paidOn`, `fromBank`, `toBank`, `dp`, `remainingPayment`, `amount`, `message`, `status`, `proof`, `createdAt`, `updatedAt`) VALUES
+(1, 'pyt1', NULL, NULL, NULL, 'Tomomi Ogawa', 'tomomi_ogw@gmail.com', '087722867908', '2017-06-06', 'bca', 'mandiri', NULL, NULL, 1500000000, 'Pembayaran Lunas', 'belum bayar', '', '2017-05-29 00:00:00', '2017-06-06 14:36:36'),
+(9, 'pyt2', 28, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:43:18', '2017-05-30 01:43:18'),
+(10, 'pyt10', 31, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:52:23', '2017-05-30 01:52:23'),
+(11, 'pyt11', 29, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:54:41', '2017-05-30 01:54:41'),
+(12, 'pyt12', 28, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-31 09:53:53', '2017-05-31 09:53:53'),
+(13, 'pyt13', 31, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-02 14:20:52', '2017-06-02 14:20:52'),
+(14, 'pyt14', 19, 2, 1, 'Tomomi Ogawa', 'tomomi_ogw@gmail.com', '087722867908', '2017-06-05', 'mandiri', 'mandiri', NULL, NULL, 1500000000, NULL, 'pending dp', '', '2017-06-02 14:42:52', '2017-06-05 17:50:15'),
+(15, 'pyt15', 14, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-02 14:43:24', '2017-06-02 14:43:24'),
+(16, 'pyt16', 28, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-03 12:53:22', '2017-06-03 12:53:22'),
+(17, 'pyt17', 29, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-06 14:35:30', '2017-06-06 14:35:30'),
+(18, 'pyt18', 29, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-09 12:50:15', '2017-06-09 12:50:15');
 
 -- --------------------------------------------------------
 
@@ -269,6 +287,11 @@ CREATE TABLE `payments` (
 --
 
 CREATE TABLE `reports` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `listing` int(11) DEFAULT NULL,
+  `customer` int(11) DEFAULT NULL,
+  `agent` int(11) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -288,7 +311,9 @@ CREATE TABLE `users` (
   `name` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `idNumber` varchar(255) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -297,13 +322,13 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`, `email`, `avatar`, `createdAt`, `updatedAt`) VALUES
-(1, 'u1', 'frizadiga', 'agent', 'root', 'frizadiga', '087722867907', 'frizadiga@gmail.com', '5cf153a3-93c2-4059-ad4d-859761cdfe17.jpg', '2017-05-19 02:11:51', '2017-05-19 02:20:20'),
-(2, 'u2', 'timogawa', 'agent', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', 'avatar-tomomi.jpg', '2016-12-25 22:30:28', '2017-05-19 02:27:50'),
-(3, 'u3', 'rina', 'agent', 'root', 'Rina Suzuki', '087722867909', 'urarina@gmail.com', 'avatar-rina.jpg', '2016-12-26 04:35:44', '2017-05-19 02:27:37'),
-(4, 'u4', 'mami', 'agent', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', 'avatar-mami.jpg', '2017-05-02 20:05:00', '2017-05-19 02:22:36'),
-(5, 'u5', 'haruna', 'member', 'root', 'Haruna Ono', '087722867911', 'haruna@gmail.com', '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', '2017-05-08 01:08:45', '2017-05-08 01:08:45'),
-(8, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', 'avatar-friza.jpg', '2016-12-23 21:09:57', '2017-05-02 22:56:05');
+INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`, `email`, `idNumber`, `avatar`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, 'u1', 'frizadiga', 'agent', 'root', 'frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, '5cf153a3-93c2-4059-ad4d-859761cdfe17.jpg', NULL, '2017-05-19 02:11:51', '2017-05-19 02:20:20'),
+(2, 'u2', 'timogawa', 'agent', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', NULL, 'avatar-tomomi.jpg', NULL, '2016-12-25 22:30:28', '2017-05-19 02:27:50'),
+(3, 'u3', 'haruna', 'member', 'root', 'Rina Suzuki', '087722867909', 'haruna@gmail.com', NULL, '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', NULL, '2016-12-26 04:35:44', '2017-05-19 02:27:37'),
+(4, 'u4', 'mami', 'agent', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', NULL, 'avatar-mami.jpg', NULL, '2017-05-02 20:05:00', '2017-05-19 02:22:36'),
+(5, 'u5', 'rina', 'member', 'root', 'Rina Suzuki', '087722867911', 'urarina@gmail.com', NULL, 'avatar-rina.jpg', NULL, '2017-05-08 01:08:45', '2017-05-08 01:08:45'),
+(8, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, 'avatar-friza.jpg', NULL, '2016-12-23 21:09:57', '2017-05-02 22:56:05');
 
 --
 -- Indexes for dumped tables
@@ -363,6 +388,13 @@ ALTER TABLE `payments`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -377,7 +409,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `files`
 --
@@ -397,11 +429,16 @@ ALTER TABLE `listings_types`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
   MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
