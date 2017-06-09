@@ -37,7 +37,10 @@ module.exports = {
     phone:{
       type:'string'
     },
-    paidOn:{
+    dpPaidOn:{
+      type:'date'
+    },
+    repaymentPaidOn:{
       type:'date'
     },
     fromBank:{
@@ -62,7 +65,10 @@ module.exports = {
       type:'string',
       enum:['belum bayar','pending dp','dp','pending lunas','lunas']
     },
-    proof:{
+    dpProof:{
+      type:'string'
+    },
+    repaymentProof:{
       type:'string'
     }
   },
