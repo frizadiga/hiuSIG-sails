@@ -38,7 +38,8 @@
             </div>
             <div class="w3-col m8">
               <label class="w3-text-grey">Nominal Bayar DP (Rp.)</label>
-              <input class="w3-input w3-border" id="price-dp" type="number" name="amount" value="" autocomplete="off">      
+              <input class="w3-input w3-border" id="price-dp" type="number" name="dp" value="" autocomplete="off">
+              <input id="listing-price" type="hidden" name="listingPrice">      
             </div>
         
           </p>
@@ -124,6 +125,7 @@ function closeModal(el) {
 
 function modalPayDp(id,price){
   listingPrice = price;
+  document.getElementById('listing-price').value = listingPrice;
   document.getElementById('price-dp').value = price * percentPrice / 100;
   document.getElementById('no-payment-dp').value = id;
   openModal('modal-pay-dp');
