@@ -1,5 +1,5 @@
 <div id="booking" class="w3-container myDivToPrint">
-  <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Pembayaran</b></p>
+  <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Pembayaran Anda</b></p>
   <!-- <img src="/img/rumah2q-logo.png" style="width:20%"> -->
 
   <div class="w3-row w3-section w3-border">
@@ -36,9 +36,12 @@
         
           <button class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-dp" onclick="modalPayDp('<%-dataPayments[i].id%>')" data-id="<%=dataPayments[i].id%>"><i class="fa fa-money"></i> Bayar DP</button>
         
-        <a href="pay" style="text-decoration:none">
-          <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-money"></i> Bayar Lunas</button>
-        </a>
+          <button class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-paid-off" onclick="modalPayPaidOff(<%-`'${dataPayments[i].id}',${dataPayments[i].listing.price}`%>)" 
+          data-id="<%=dataPayments[i].id%>"
+          data-listing-price="<%=dataPayments[i].listing.price%>"
+
+          ><i class="fa fa-money"></i> Bayar Lunas</button>
+        
 			</td>
 		</tr>
 		<%}%>
@@ -61,13 +64,13 @@
     <form action="has-paid" method="POST" enctype="multipart/form-data">
   <!-- <div id="user-form" class="w3-padding w3-container w3-padding"> -->
     <div class="w3-card">
-      <p class="w3-teal w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran</b><span onclick="closeModal('modal-pay-dp')" 
+      <p class="w3-teal w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran DP</b><span onclick="closeModal('modal-pay-dp')" 
       class="w3-button w3-display-topright">&times;</span></p>
             
       <div class="w3-container">
           <p>
             <label class="w3-text-grey">No Pembayaran</label>
-            <input class="w3-input w3-border" id="noPayment" type="text" name="noPayment" value="">
+            <input class="w3-input w3-border" id="no-payment-dp" type="text" name="noPayment" value="" disabled>
           </p>
           <p>
             <label class="w3-text-grey">Nama Pemilik Rekening</label>
@@ -132,12 +135,93 @@
   </div>
 </div>
 
+<!-- MODAL PAY PAID OFF -->
+<div id="modal-pay-paid-off" class="w3-modal" style="padding:8px 0px">
+  <div class="w3-modal-content" style="max-width: 700px;margin:auto">
+    <form action="has-paid" method="POST" enctype="multipart/form-data">
+  <!-- <div id="user-form" class="w3-padding w3-container w3-padding"> -->
+    <div class="w3-card">
+      <p class="w3-teal w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran Langsung Lunas</b><span onclick="closeModal('modal-pay-paid-off')" 
+      class="w3-button w3-display-topright">&times;</span></p>
+            
+      <div class="w3-container">
+          <p>
+            <label class="w3-text-grey">No Pembayaran</label>
+            <input class="w3-input w3-border" id="no-payment-paid-off" type="text" name="noPayment" value="" disabled>
+          </p>
+          <p>
+            <label class="w3-text-grey">Nama Pemilik Rekening</label>
+            <input class="w3-input w3-border" type="text" name="accountOwner" value="<%=(req.session.user)?req.session.user.name:``%>">
+          </p>
+          <p>
+            <label class="w3-text-grey">Email</label>
+            <input class="w3-input w3-border" type="email" name="email" value="<%=(req.session.user)?req.session.user.email:``%>">
+          </p>
+          <p>
+            <label class="w3-text-grey">Phone</label>
+            <input class="w3-input w3-border" type="tel" name="phone" value="<%=(req.session.user)?req.session.user.phone:``%>">
+          </p>
+
+          <p>
+            <label class="w3-text-grey">Nominal Bayar (Rp.)</label>
+            <input class="w3-input w3-border" id="price-paid-off" type="number" name="amount" value="" autocomplete="off">
+          </p>
+          
+          <p>
+            <label class="w3-text-grey">Tgl Bayar</label>
+            <input class="w3-input w3-border" type="date" name="paidOn" value="<%=%>" autocomplete="off">   
+          </p>
+
+          <p>
+            <label class="w3-text-grey">Dari Bank</label>
+            <select class="w3-select w3-border" name="fromBank">
+              <option value="">-Pilih Bank-</option>
+              <option value="bca">BCA</option>
+              <option value="mandiri">Mandiri</option>
+              <option value="bni">BNI</option>
+            </select>   
+          </p>
+
+          <p>
+            <label class="w3-text-grey">Ke Bank</label>
+            <select class="w3-select w3-border" name="toBank">
+              <option value="">-Pilih Bank-</option>
+              <option value="bca">BCA</option>
+              <option value="mandiri">Mandiri</option>
+              <option value="bni">BNI</option>
+            </select>   
+          </p>
+
+        <p>
+        <span class="w3-padding w3-teal">Bukti Pembayaran &nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
+        <input type="file" name="proof" <%=%>>
+        </p>
+
+      
+      <div class="w3-bar w3-section w3-padding-16">
+        <button class="w3-button w3-bar-item w3-teal w3-right w3-hover-green" style="width:70%"><i class='fa fa-money'></i> Bayar</button>
+        <button class="w3-button w3-bar-item w3-light-grey w3-text-grey w3-right w3-hover-grey" style="width:30%" type="reset">Reset</button>
+      </div>
+    
+    </div>
+
+    </div>
+  
+  <!-- </div> -->
+</form>
+  </div>
+</div>
+
 <script>
 var dataPayment = {};
 //ADD EVENT LISTENER
 var btnPayDp = document.getElementsByClassName('pay-button-dp');
 for(var i=0,len=btnPayDp.length;i<len;i++){
   btnPayDp[i].addEventListener('click',setDataPayment);
+}
+var btnPayPaidOff = document.getElementsByClassName('pay-button-paid-off');
+for(var i=0,len=btnPayPaidOff.length;i<len;i++){
+  btnPayPaidOff[i].addEventListener('click',setDataPayment);
 }
 
 function setDataPayment(){
@@ -158,10 +242,17 @@ function closeModal(el) {
   document.body.style.overflow = "visible";
 }
 
-function modalPayDp(data){
-  document.getElementById('noPayment').value = data;
+function modalPayDp(id){
+  document.getElementById('no-payment-dp').value = id;
   openModal('modal-pay-dp');
 }
+
+function modalPayPaidOff(id,price){
+  document.getElementById('no-payment-paid-off').value = id;
+  document.getElementById('price-paid-off').value = price;
+  openModal('modal-pay-paid-off');
+}
+
 document.getElementById('search-filter').addEventListener('keyup',searchFilter);
 
 function searchFilter() {
