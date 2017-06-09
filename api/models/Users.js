@@ -42,7 +42,8 @@ module.exports = {
       type:'string'
     },
     status:{
-      type:'string'
+      type:'string',
+      enum:['on','off','pending']
     },
     listings:{
       collection:'listings',
