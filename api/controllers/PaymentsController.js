@@ -113,7 +113,28 @@ module.exports = {
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 		});
+	},
+
+	payDp:(req,res)=>{
+		const params = req.allParams();
+		params.status = 'pending dp';
+		// return res.json(params);
+		Payments.update({id:req.param('id')},params).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data.id);
+			return res.redirect(req.get('referer'));
+		});
+	},
+
+	payRepayment:(req,res)=>{
+		const params = req.allParams();
+		params.status = 'pending lunas';
+		Payments.update({id:req.param('id')},params).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data.id);
+		});
 	}
+
 
 };
 
