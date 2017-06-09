@@ -57,6 +57,7 @@ module.exports = {
 		const agent = req.session.user;
 		let opts = {};
 		opts = {agent:agent.no};
+		opts.status = {'contains':'dp'};
 		opts.sort = 'createdAt DESC';
 		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
@@ -68,6 +69,7 @@ module.exports = {
 		const agent = req.session.user;
 		let opts = {};
 		opts = {agent:agent.no};
+		opts.status = {'contains':'lunas'};
 		opts.sort = 'createdAt DESC';
 		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
