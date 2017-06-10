@@ -33,10 +33,9 @@
 			<td style="vertical-align: middle"><%=dataPayments[i].status%></td>
 			<td style="vertical-align: middle" class="w3-center">
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
-        <a href="pay">
-        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-money"></i> Bayar</button>
+        
+        <button onclick="modalPayRepayment(<%-`'${dataPayments[i].id}',${dataPayments[i].remainingPayment}`%>)" class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-money"></i> Bayar</button>
           
-        </a>
 			</td>
 		</tr>
 		<% } -%>
@@ -52,6 +51,8 @@
     <!-- <button class="w3-blue-grey w3-hover-red w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-trash"></i> Delete All</b></button> -->
   </div>
 </div>
+
+<%-partial('../partials/modal-pay-repayment.ejs')%>
 
 <script>
 

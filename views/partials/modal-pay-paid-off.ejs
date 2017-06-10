@@ -1,16 +1,16 @@
 <!-- MODAL PAY PAID OFF -->
-<div id="modal-pay-repayment" class="w3-modal" style="padding:8px 0px">
+<div id="modal-pay-paid-off" class="w3-modal" style="padding:8px 0px">
   <div class="w3-modal-content" style="max-width: 700px;margin:auto">
     <form action="" method="" enctype="multipart/form-data">
   <!-- <div id="user-form" class="w3-padding w3-container w3-padding"> -->
     <div class="w3-card">
-      <p class="w3-teal w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran Pelunasan</b><span onclick="closeModal('modal-pay-repayment')" 
+      <p class="w3-teal w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran Langsung Lunas</b><span onclick="closeModal('modal-pay-paid-off')" 
       class="w3-button w3-display-topright">&times;</span></p>
             
       <div class="w3-container">
           <p>
             <label class="w3-text-grey">No Pembayaran</label>
-            <input class="w3-input w3-border" id="no-payment-repayment" type="text" name="noPayment" value="" disabled>
+            <input class="w3-input w3-border" id="no-payment-paid-off" type="text" name="noPayment" value="" disabled>
           </p>
           <p>
             <label class="w3-text-grey">Nama Pemilik Rekening</label>
@@ -26,8 +26,8 @@
           </p>
 
           <p>
-            <label class="w3-text-grey">Nominal Bayar Sisa Pelunasan (Rp.)</label>
-            <input class="w3-input w3-border" id="price-repayment" type="number" name="amount" value="" disabled>
+            <label class="w3-text-grey">Nominal Bayar Pelunasan (Rp.)</label>
+            <input class="w3-input w3-border" id="price-paid-off" type="number" name="amount" value="" disabled>
           </p>
           
           <p>
@@ -80,9 +80,9 @@ var listingPrice;
 
 var dataPayment = {};
 //ADD EVENT LISTENER
-var btnPayRepayment = document.getElementsByClassName('pay-button-repayment');
-for(var i=0,len=btnPayRepayment.length;i<len;i++){
-  btnPayRepayment[i].addEventListener('click',setDataPayment);
+var btnPayPaidOff = document.getElementsByClassName('pay-button-paid-off');
+for(var i=0,len=btnPayPaidOff.length;i<len;i++){
+  btnPayPaidOff[i].addEventListener('click',setDataPayment);
 }
 
 function setDataPayment(){
@@ -103,11 +103,11 @@ function closeModal(el) {
   document.body.style.overflow = "visible";
 }
 
-function modalPayRepayment(id,remainingPayment){
-  // listingPrice = price;
-  document.getElementById('no-payment-repayment').value = id;
-  document.getElementById('price-repayment').value = remainingPayment;
-  openModal('modal-pay-repayment');
+function modalPayPaidOff(id,price){
+  listingPrice = price;
+  document.getElementById('no-payment-paid-off').value = id;
+  document.getElementById('price-paid-off').value = price;
+  openModal('modal-pay-paid-off');
 }
 
 </script>

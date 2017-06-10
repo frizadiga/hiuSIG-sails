@@ -21,7 +21,7 @@
       <th>Agen</th>
       <th>Pesan</th>
 			<th>Status</th>
-			<th style="width: 250px"></th>
+<!-- 			<th style="width: 250px"></th> -->
 		</tr>
 		<%for(var i=0, len=dataBookings.length; i < len; i++) { -%>
 		<tr class="w3-text-grey w3-hover-green">
@@ -31,10 +31,10 @@
       <td style="vertical-align: middle"><%=dataBookings[i].agent.name%></td>
       <td style="vertical-align: middle"><%=dataBookings[i].message%></td>
 			<td style="vertical-align: middle"><%=dataBookings[i].status.capitalize()%></td>
-			<td style="vertical-align: middle" class="w3-center">
-				<!-- <button class="w3-button w3-hover-red" onclick="modalDeleteBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')"><i class="fa fa-ban"></i> Tolak</button> -->
+			<!-- <td style="vertical-align: middle" class="w3-center">
+				<button class="w3-button w3-hover-red" onclick="modalDeleteBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')"><i class="fa fa-ban"></i> Tolak</button>
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white" onclick="modalApproveBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')"><i class="fa fa-info"></i> Detail</button>
-			</td>
+			</td> -->
 		</tr>
 		<% } -%>
 	<!-- 	<tr  class="w3-hover-none">
