@@ -136,6 +136,8 @@ module.exports.routes = {
   'PUT /api/payment/pay-repayment/:id':'PaymentsController.payRepayment',
   'PUT /api/payment/dp-approved/:id':'PaymentsController.dpApproved',
   'PUT /api/payment/dp-denied/:id':'PaymentsController.dpDenied',
+  'PUT /api/payment/repayment-approved/:id':'PaymentsController.repaymentApproved',
+  'PUT /api/payment/repayment-denied/:id':'PaymentsController.repaymentDenied',
   
   //-------------------------------------------------------------------------
   '/hiuwave':function(req,res){

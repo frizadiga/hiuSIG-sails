@@ -148,6 +148,20 @@ module.exports = {
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 		});
+	},
+
+	repaymentApproved:(req,res)=>{
+		Payments.update({id:req.param('id')},{status:'pelunasan lunas'}).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data.id);
+		});
+	},
+
+	repaymentDenied:(req,res)=>{
+		Payments.update({id:req.param('id')},{status:'dp lunas & menunggu pelunasan'}).exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json(data.id);
+		});
 	}
 
 };

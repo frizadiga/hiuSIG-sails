@@ -17,7 +17,7 @@
       
       <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
         <button onclick="document.getElementById('modal-confirm-approve-repayment').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
-        <button onclick="approveBooking(mia.innerHTML)" type="button" class="w3-btn w3-green w3-right">Terima</button>
+        <button onclick="approveRepayment(mia.innerHTML)" type="button" class="w3-btn w3-green w3-right">Terima</button>
       </footer>
     </form>
     
@@ -43,9 +43,71 @@
       
       <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
         <button onclick="document.getElementById('modal-confirm-delete-repayment').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
-        <button onclick="deleteBooking(mid.innerHTML)" type="button" class="w3-btn w3-red w3-right">Tolak</button>
+        <button onclick="deniedRepayment(mid.innerHTML)" type="button" class="w3-btn w3-red w3-right">Tolak</button>
       </footer>
     </form>
     
   </div>
 </div>
+
+<script>
+var id = 0;
+var mia = document.getElementById('modal-id-approve');
+var mda = document.getElementById('modal-data-approve');
+var mid = document.getElementById('modal-id-delete');
+var mdd = document.getElementById('modal-data-delete');
+var dataPayment = {};
+
+//ADD EVENT LISTENER
+var btnConfirm = document.getElementsByClassName('confirm-button');
+for(var i=0,len=btnConfirm.length;i<len;i++){
+  btnConfirm[i].addEventListener('click',setDataPayment);
+}
+
+function setDataPayment(){
+  dataPayment.listing = this.dataset.listing;
+  dataPayment.customer = this.dataset.customer;
+  dataPayment.agent = this.dataset.agent;
+  // alert(`
+  //   listing: ${dataPayment.listing} 
+  //   customer: ${dataPayment.customer} 
+  //   agent: ${dataPayment.agent}`);
+}
+
+  function openModal(el) {
+    document.getElementById(el).style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(el) {
+    document.getElementById(el).style.display = "none";
+    document.body.style.overflow = "visible";
+  }
+  function modalDeniedRepayment(id,username){
+    id = id;
+    openModal('modal-confirm-denied-repayment');
+    mid.innerHTML = id;
+    mdd.innerHTML = username;
+  }
+  function modalApproveRepayment(id,username){
+    id = id;
+    openModal('modal-confirm-approve-repayment');
+    mia.innerHTML = id;
+    mda.innerHTML = username;
+  }
+  function deniedRepayment(id){
+    fetch(`/api/payment/repayment-denied/${id}`,{
+      method:'PUT'
+    }).then((res)=>{
+      mdd.innerHTML = res.text();
+      location.reload();
+    })
+  }
+  function approveRepayment(id){
+    fetch(`/api/payment/repayment-approved/${id}`,{
+      method:'PUT',
+    }).then((res)=>{
+      mda.innerHTML = res.text();
+      location.reload();
+    })
+  }
+</script>

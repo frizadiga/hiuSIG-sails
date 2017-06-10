@@ -1,4 +1,4 @@
-<div id="payments" class="w3-container myDivToPrint">
+<div class="w3-container myDivToPrint">
   <p class="w3-padding-left w3-opacity" style="margin-bottom: 0px"><b>Konfirmasi Pelunasan</b></p>
   <!-- <img src="/img/rumah2q-logo.png" style="width:20%"> -->
 
@@ -33,8 +33,11 @@
       <td style="vertical-align: middle"><%=dataPayments[i].status%></td>
       <td style="vertical-align: middle" class="w3-center">
         <button class="w3-button w3-hover-red" onclick="openModal('modal-payments')"><i class="fa fa-info"></i> Detil</button>
-        <button class="w3-button w3-hover-red"><i class="fa fa-ban"></i> Tolak</button>
-        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-check"></i> Terima</button>
+        
+        <button class="w3-button w3-hover-red" onclick="modalDeniedRepayment('<%=dataPayments[i].id%>','<%=dataPayments[i].customer.name%>')"><i class="fa fa-ban"></i> Tolak</button>
+        <button class="w3-button w3-hover-text-blue-grey w3-hover-white" onclick="modalApproveRepayment('<%=dataPayments[i].id%>','<%=dataPayments[i].customer.name%>')"><i class="fa fa-check"></i> Terima</button>
+        
+      
       </td>
     </tr>
     <% } -%>
@@ -78,6 +81,8 @@
     </div>
   </div>
 </div>
+
+<%-partial('../partials/modal-confirm-repayment.ejs')%>
 
 <script>
 
