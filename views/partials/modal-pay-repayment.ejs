@@ -1,7 +1,7 @@
 <!-- MODAL PAY PAID OFF -->
 <div id="modal-pay-repayment" class="w3-modal" style="padding:8px 0px">
   <div class="w3-modal-content" style="max-width: 700px;margin:auto">
-    <form action="" method="" enctype="multipart/form-data">
+    <form id="form-pay-repayment" action="" method="" enctype="multipart/form-data">
   <!-- <div id="user-form" class="w3-padding w3-container w3-padding"> -->
     <div class="w3-card">
       <p class="w3-teal w3-container w3-padding-16" style="border-width:2px!important;margin:0"><b><i class="fa fa-money"></i> Form Pembayaran Pelunasan</b><span onclick="closeModal('modal-pay-repayment')" 
@@ -32,7 +32,7 @@
           
           <p>
             <label class="w3-text-grey">Tgl Bayar</label>
-            <input class="w3-input w3-border" type="date" name="paidOn" value="<%=%>" autocomplete="off">   
+            <input class="w3-input w3-border" type="date" name="repaymentPaidOn" value="<%=%>" autocomplete="off">   
           </p>
 
           <p>
@@ -57,12 +57,12 @@
 
         <p>
         <span class="w3-padding w3-teal">Bukti Pembayaran &nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
-        <input type="file" name="proof" <%=%>>
+        <input type="file" name="repaymentProof" <%=%>>
         </p>
 
       
       <div class="w3-bar w3-section w3-padding-16">
-        <button class="w3-button w3-bar-item w3-teal w3-right w3-hover-green" style="width:70%"><i class='fa fa-money'></i> Bayar</button>
+        <button onclick="payRepayment(dataPayment.id)" type="button" class="w3-button w3-bar-item w3-teal w3-right w3-hover-green" style="width:70%"><i class='fa fa-money'></i> Bayar</button>
         <button class="w3-button w3-bar-item w3-light-grey w3-text-grey w3-right w3-hover-grey" style="width:30%" type="reset">Reset</button>
       </div>
     
@@ -76,7 +76,7 @@
 </div>
 
 <script>
-var listingPrice;
+var formPayRepayment = document.getElementById('form-pay-repayment');
 
 var dataPayment = {};
 //ADD EVENT LISTENER
@@ -87,10 +87,7 @@ for(var i=0,len=btnPayRepayment.length;i<len;i++){
 
 function setDataPayment(){
   dataPayment.id = this.dataset.id;
-  // alert(`
-  //   listing: ${dataPayment.listing} 
-  //   customer: ${dataPayment.customer} 
-  //   agent: ${dataPayment.agent}`);
+  // alert(`paymentID: ${dataPayment.id}`);
 }
 
 function openModal(el) {
@@ -108,6 +105,16 @@ function modalPayRepayment(id,remainingPayment){
   document.getElementById('no-payment-repayment').value = id;
   document.getElementById('price-repayment').value = remainingPayment;
   openModal('modal-pay-repayment');
+}
+
+function payRepayment(id){
+  fetch(`/api/payment/pay-repayment/${id}`,{
+    method:'PUT',
+    body:new FormData(formPayRepayment)
+  }).then((res)=>{
+    // mda.innerHTML = res.text();
+    location.reload();
+  })
 }
 
 </script>

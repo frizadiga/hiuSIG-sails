@@ -46,7 +46,7 @@
           
           <p>
             <label class="w3-text-grey">Tgl Bayar</label>
-            <input class="w3-input w3-border" type="date" name="paidOn" value="<%=%>" autocomplete="off">   
+            <input class="w3-input w3-border" type="date" name="dpPaidOn" value="<%=%>" autocomplete="off">   
           </p>
 
           <p>
@@ -71,7 +71,7 @@
 
         <p>
         <span class="w3-padding w3-teal">Bukti Pembayaran &nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
-        <input type="file" name="proof" <%=%>>
+        <input type="file" name="dpProof" <%=%>>
         </p>
 
       
@@ -132,13 +132,13 @@ function modalPayDp(id,price){
 }
 
 function payDp(id){
-    fetch(`/api/payment/pay-dp/${id}`,{
-      method:'PUT',
-      body:new FormData(formPayDp)
-    }).then((res)=>{
-      // mda.innerHTML = res.text();
-      location.reload();
-    })
-  }
+  fetch(`/api/payment/pay-dp/${id}`,{
+    method:'PUT',
+    body:new FormData(formPayDp)
+  }).then((res)=>{
+    // mda.innerHTML = res.text();
+    location.reload();
+  })
+}
 
 </script>

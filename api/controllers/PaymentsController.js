@@ -116,7 +116,7 @@ module.exports = {
 	},
 
 	payDp:(req,res)=>{
-		const params = req.allParams();
+		let params = req.allParams();
 		params.status = 'pending dp';
 		params.remainingPayment = params.listingPrice - params.dp;
 		// return res.json(params);
@@ -128,8 +128,8 @@ module.exports = {
 	},
 
 	payRepayment:(req,res)=>{
-		const params = req.allParams();
-		params.status = 'pending lunas';
+		let params = req.allParams();
+		params.status = 'pending pelunasan';
 		Payments.update({id:req.param('id')},params).exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
