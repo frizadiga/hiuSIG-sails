@@ -132,6 +132,7 @@ module.exports.routes = {
   
   //API PAYMENTS
   'POST /api/payment':'PaymentsController.paymentCreate',
+  'GET /api/payment/:id':'PaymentsController.paymentDetail',
   'PUT /api/payment/pay-dp/:id':'PaymentsController.payDp',
   'PUT /api/payment/pay-repayment/:id':'PaymentsController.payRepayment',
   'PUT /api/payment/dp-approved/:id':'PaymentsController.dpApproved',
