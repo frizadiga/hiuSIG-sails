@@ -22,7 +22,7 @@
 
 	<div id="join-us" style="background: url('/img/building-1.jpg');background-size:cover;background-attachment:fixed">
 		<div style="background-color: rgba(0, 0, 0, 0.55);padding:128px 0">
-			<form action="/api/user/insert" method="POST" enctype="multipart/form-data">
+			<form action="/api/agent-signup" method="POST" enctype="multipart/form-data">
 				<div class="w3-content w3-card-4 w3-white" style="opacity:0.97;max-width:570px">
 		 		<div id="modal-login-header" class="w3-center" style="background-size:contain;"><br>
       		<img src="/img/rumah2q-logo.png" style="width:35%">
@@ -32,7 +32,9 @@
   			<p class="w3-center w3-text-blue-grey" style="border-width:2px!important;margin-top: 0"><b>Signup Agent</b></p>
 
 				<div class="w3-row w3-container">
-			  	<label class="w3-text-grey">Nama Lengkap</label>
+			  	<label class="w3-text-grey">No Identitas (KTP/SIM)</label>
+					<input class="w3-input w3-border" type="text" name="idNumber" value="">
+					<label class="w3-text-grey">Nama Lengkap</label>
 					<input class="w3-input w3-border" type="text" name="name" value="">
 					<label class="w3-text-grey">Email</label>
 					<input class="w3-input w3-border" type="email" name="email" value="">
@@ -42,13 +44,7 @@
 					<input class="w3-input w3-border" type="text" name="username" value="" autocomplete="off">
 					<label class="w3-text-grey">Password</label>
 					<input class="w3-input w3-border" type="password" name="password" value="" autocomplete="off">
-				<!-- <input type="hidden" value="member" name="role"> -->
-				<!-- <label class="w3-text-blue">Role</label>
-				<select class="w3-select w3-border" name="role">
-					<option value="member">Member</option>
-					<option value="agen">agen</option>
-					<option value="administrator">Administrator</option>
-				</select> -->
+
 				<p>
 				<span class="w3-padding w3-light-grey">Foto Profil&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
 				<input type="file" name="avatar">

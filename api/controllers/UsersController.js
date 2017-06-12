@@ -57,6 +57,16 @@ module.exports = {
       });
   },
 
+  agentsConfirm:function(req,res){
+    params = {};
+    params.role = 'agent';
+    params.status = 'pending'
+    Users.find(params).exec(function(err,data){
+      if(err)return res.negotiate(err);
+        return res.view('dashboards/agents-confirm',{dataUsers:data,layout:'layout-dashboards'})
+      });
+  },
+
   userForm:(req,res)=>{
 
     res.view('dashboards/user-form',{layout:'layout-dashboards',dataEdit:null});
@@ -80,7 +90,7 @@ module.exports = {
       // Insert FileName and Path to Database
       // Files.create({name:fileName,path:filePath,idOwner:idOwner}).exec(function(err,data){
       // if(err)return res.negotiate(err);
-    query = Object.assign(params,{avatar:fileName},{role:'member'});
+    query = Object.assign({},params,{avatar:fileName},{role:'member'},{status:'on'});
     // Insert User Record to Database
     Users.create(query).exec(function(err,data){
       if(err)return res.negotiate(err);
@@ -132,7 +142,85 @@ module.exports = {
       if (err)return res.negotiate(err);
       return res.view('pages/agent-detail',{dataAgent:data});
     });
-  }
+  },
+
+  userSignup:function(req,res){
+    var params = req.allParams();
+    var query;
+    // Create User ID
+    Users.createId(function(err,id){
+      params.id = id;
+
+    // Upload Avatar
+    req.file('avatar').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
+      if(err)return res.serverError(err);
+      var fileName = require('path').basename(uploadedFiles[0].fd);
+      var filePath = '/uploads/'+fileName;
+      //return res.json({name:'gambar',path:filePath,idOwner:'p1'});
+
+      // Insert FileName and Path to Database
+      // Files.create({name:fileName,path:filePath,idOwner:idOwner}).exec(function(err,data){
+      // if(err)return res.negotiate(err);
+    query = Object.assign({},params,{avatar:fileName},{role:'member'},{status:'on'});
+    // Insert User Record to Database
+    Users.create(query).exec(function(err,data){
+      if(err)return res.negotiate(err);
+
+        //Redirect to dashboard
+        req.session.user = data;
+        return res.redirect('/dashboards');
+      
+      });//End Users.create()
+      // });//End Files.create()
+      });//End req.file('pictures')
+    });//End createId()
+    },
+
+  agentSignup:function(req,res){
+    var params = req.allParams();
+    var query;
+    // Create User ID
+    Users.createId(function(err,id){
+      params.id = id;
+
+    // Upload Avatar
+    req.file('avatar').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
+      if(err)return res.serverError(err);
+      var fileName = require('path').basename(uploadedFiles[0].fd);
+      var filePath = '/uploads/'+fileName;
+      //return res.json({name:'gambar',path:filePath,idOwner:'p1'});
+
+      // Insert FileName and Path to Database
+      // Files.create({name:fileName,path:filePath,idOwner:idOwner}).exec(function(err,data){
+      // if(err)return res.negotiate(err);
+    query = Object.assign({},params,{avatar:fileName},{role:'agent'},{status:'pending'});
+    // Insert User Record to Database
+    Users.create(query).exec(function(err,data){
+      if(err)return res.negotiate(err);
+
+        //Redirect to dashboard
+        req.session.user = data;
+        return res.redirect('/dashboards');
+      
+      });//End Users.create()
+      // });//End Files.create()
+      });//End req.file('pictures')
+    });//End createId()
+    },
+
+    agentApproved:(req,res)=>{
+      Users.update({id:req.param('id')},{status:'on'}).exec((err,data)=>{
+        if(err)return res.negotiate(err);
+        return res.send(data.id);
+      });
+    },
+
+    agentDenied:(req,res)=>{
+      Users.destroy({id:req.param('id')}).exec((err,data)=>{
+        if(err)return res.negotiate(err);
+        return res.send(data.id);
+      });
+    }
     
 };
 

@@ -61,6 +61,10 @@ module.exports.routes = {
   'GET /signup':{view:'pages/user-signup'},
   'GET /login':{view:'pages/user-login'},
   'GET /logout':'UsersController.logout',
+
+  //SIGNUP
+  'POST /api/user-signup':'UsersController.userSignup',
+  'POST /api/agent-signup':'UsersController.agentSignup',
   
   //DASHBOARD
   '/dashboards':'DashboardsController.dashboards',
@@ -76,6 +80,8 @@ module.exports.routes = {
   '/dashboards/users/manage':'UsersController.usersManage',
   '/dashboards/user/edit/:id':'UsersController.userEdit',
   
+  '/dashboards/agents-confirm':'UsersController.agentsConfirm',
+
   '/dashboards/messages':'MessagesController.messagesList',
   
   '/dashboards/bookings':'BookingsController.bookingsList',
@@ -120,7 +126,12 @@ module.exports.routes = {
   '/api/user/insert':'UsersController.userInsert',
   '/api/user/delete/:id':'UsersController.UserDelete',
   '/api/user/edit/:no':'UsersController.userEditPost',
+  '/api/user/insert':'UsersController.userInsert',
   
+  //API AGENT
+  'DELETE /api/agent-denied/:id':'UsersController.agentDenied',
+  'PUT /api/agent-approved/:id':'UsersController.agentApproved',
+
   //API MESSAGE
   'POST /api/message':'MessagesController.messageCreate',
   'DELETE /api/message/:id':'MessagesController.messageDelete',

@@ -39,7 +39,7 @@
 }%>
 <%
     const userRole = req.session.user.role;
-  
+    const agentPending = req.session.user.status === 'pending';
 %>
 <body>
 
@@ -61,7 +61,7 @@
 <hr class="w3-opacity w3-hr">
 <a href="/dashboards" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><b><i class="fa fa-home"></i> Dashboard</b></a>
 
-<%if(userRole==='agent'||userRole==='administrator'){%>
+<%if((userRole==='agent'||userRole==='administrator')&&!agentPending){%>
 <a href="/dashboards/listings/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-plus"></i> Tambah Listing</a>
 
 <a href="/dashboards/listings/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-list"></i> Kelola Listing</a>
@@ -71,14 +71,14 @@
 <%if(userRole==='administrator'){%>
 <hr class="w3-opacity w3-hr">
 
-<a href="/dashboards/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Agen</a>
+<a href="/dashboards/agents-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Konfirmasi Agen</a>
 
 <a href="/dashboards/user/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-user-plus"></i> Tambah User</a>
 
 <a href="/dashboards/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-users"></i> Kelola User</a>
 <%}%>
 
-<%if(userRole==='agent'||userRole==='administrator'){%>
+<%if((userRole==='agent'||userRole==='administrator')&&!agentPending){%>
 <hr class="w3-opacity w3-hr">
 <a href="/dashboards/bookings-confirm" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-check-circle"></i> Pemesanan Customer</a>
 

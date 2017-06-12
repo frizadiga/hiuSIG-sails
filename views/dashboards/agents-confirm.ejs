@@ -1,0 +1,197 @@
+<!--MANAGE LISTING-->
+<div id="manage-listing" class="w3-container">
+  <!-- <h2>Manage Listing</h2> -->
+  <p class="w3-padding-left w3-opacity"><b>Konfirmasi Agent</b></p>
+  
+  <div class="w3-row w3-section w3-border">
+    
+    <!--   <div class="w3-col m2">
+        <select class="w3-text-blue-grey w3-hover-text-black w3-select w3-border-0">
+          <option>ID</option>
+          <option>Role</option>
+          <option>Username</option>
+        </select>
+      </div> -->
+      <div class="w3-col w3-right" style="width:50px">
+        <button class="w3-blue-grey w3-button w3-block w3-padding"><i class="fa fa-search"></i></button>
+      </div>
+        <div class="w3-rest">
+        <input class="w3-hover-light-grey w3-input w3-border-0" type="text" name="" placeholder="Cari.." id="search-filter">
+      </div>
+    
+    
+  </div>
+
+  <div class="w3-row">
+
+    <table class="w3-card w3-table w3-hoverable" id="users-table">
+      <tr class="w3-blue-grey">
+        <th>ID</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      <%for(i=0;i<dataUsers.length;i++){%>
+      <tr class="w3-text-grey w3-hover-green">
+        <td style="vertical-align:middle; width:80px"><%=dataUsers[i].id%></td>
+        <td style="vertical-align:middle"> <%=dataUsers[i].username%></td>
+        <td style="vertical-align:middle"> <%=dataUsers[i].name%></td>
+        <td style="vertical-align:middle"> <%=dataUsers[i].role%></td>
+        <td style="vertical-align:middle"> <%=dataUsers[i].status%></td>
+       
+        <td class="w3-center">
+          <button class="w3-button w3-hover-red" 
+        onclick="modalDeniedAgent('<%=dataUsers[i].id%>','<%=dataUsers[i].name%>')">
+        <i class="fa fa-ban"></i> Tolak
+        </button>
+        
+        <button class="confirm-button w3-button w3-hover-text-blue-grey w3-hover-white" 
+        data-agent="<%=dataUsers[i].no%>"
+        onclick="modalApproveAgent('<%=dataUsers[i].id%>','<%=dataUsers[i].name%>')"
+        >
+        <i class="fa fa-check"></i> Terima
+        </button>
+        </td>
+      </tr>
+      <%}%>
+    </table>
+
+  </div>
+
+  <div class="w3-cell-row w3-container w3-padding w3-section w3-card">
+    <p class="w3-cell w3-cell-middle w3-text-blue-grey">Total Rows <%=i%></p>
+    <!-- <button class="w3-blue-grey w3-hover-red w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-trash"></i> Delete All</b></button> -->
+  </div>
+
+</div>
+
+<!--Denied Modal-->
+<div id="modal-confirm-denied-agent" class="w3-modal">
+  <div class="w3-modal-content w3-card-4" style="max-width:399px;opacity:0.95">
+   <header id="modal-login-header" class="w3-center"><br>
+      <span onclick="document.getElementById('modal-confirm-denied-agent').style.display='none'" class="w3-button w3-hover-red w3-padding w3-display-topright" title="Close">&times;</span>
+    
+      <p class="w3-xlarge w3-margin w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></p>
+      <hr">
+    </header>
+   
+    <form class="" action="">
+      <div class="w3-container">
+        <p>Anda yakin akan <b>Menolak</b> Agent ini?</p>
+        <p>ID: <span id="modal-id-delete"></span></p>
+        <p>Customer: <span id="modal-data-delete"></span></p>
+      </div>
+      
+      <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
+        <button onclick="document.getElementById('modal-confirm-denied-agent').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
+        <button onclick="deniedAgent(mid.innerHTML)" type="button" class="w3-btn w3-red w3-right">Tolak</button>
+      </footer>
+    </form>
+    
+  </div>
+</div>
+
+<!--Approve Modal-->
+<div id="modal-confirm-approve-agent" class="w3-modal">
+  <div class="w3-modal-content w3-card-4" style="max-width:399px;opacity:0.95">
+   <header id="modal-login-header" class="w3-center"><br>
+      <span onclick="document.getElementById('modal-confirm-approve-agent').style.display='none'" class="w3-button w3-hover-red w3-padding w3-display-topright" title="Close">&times;</span>
+    
+      <p class="w3-xlarge w3-margin w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></p>
+      <hr">
+    </header>
+   
+    <form class="" action="">
+      <div class="w3-container">
+        <p>Anda yakin akan <b>Menerima</b> Agent ini?</p>
+        <p>ID: <span id="modal-id-approve"></span></p>
+        <p>Customer: <span id="modal-data-approve"></span></p>
+      </div>
+      
+      <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
+        <button onclick="document.getElementById('modal-confirm-approve-agent').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
+        <button onclick="approveAgent(mia.innerHTML)" type="button" class="w3-btn w3-green w3-right">Terima</button>
+      </footer>
+    </form>
+    
+  </div>
+</div>
+
+<script>
+  var id = 0;
+var mia = document.getElementById('modal-id-approve');
+var mda = document.getElementById('modal-data-approve');
+var mid = document.getElementById('modal-id-delete');
+var mdd = document.getElementById('modal-data-delete');
+var dataAgent = {};
+
+//ADD EVENT LISTENER
+var btnConfirm = document.getElementsByClassName('confirm-button');
+for(var i=0,len=btnConfirm.length;i<len;i++){
+  btnConfirm[i].addEventListener('click',setDataPayment);
+}
+
+function setDataPayment(){
+  dataAgent.listing = this.dataset.listing;
+  dataAgent.customer = this.dataset.customer;
+  dataAgent.agent = this.dataset.agent;
+}
+
+  function openModal(el) {
+    document.getElementById(el).style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(el) {
+    document.getElementById(el).style.display = "none";
+    document.body.style.overflow = "visible";
+  }
+  function modalDeniedAgent(id,username){
+    id = id;
+    openModal('modal-confirm-denied-agent');
+    mid.innerHTML = id;
+    mdd.innerHTML = username;
+  }
+  function modalApproveAgent(id,username){
+    id = id;
+    openModal('modal-confirm-approve-agent');
+    mia.innerHTML = id;
+    mda.innerHTML = username;
+  }
+  function deniedAgent(id){
+    fetch(`/api/agent-denied/${id}`,{
+      method:'DELETE'
+    }).then((res)=>{
+      mdd.innerHTML = res.text();
+      location.reload();
+    })
+  }
+  function approveAgent(id){
+    fetch(`/api/agent-approved/${id}`,{
+      method:'PUT',
+    }).then((res)=>{
+      mda.innerHTML = res.text();
+      location.reload();
+    })
+  }
+
+  document.getElementById('search-filter').addEventListener('keyup',searchFilter);
+  function searchFilter() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("search-filter");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("users-table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    trd = tr[i];
+    if (trd) {
+      if (trd.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

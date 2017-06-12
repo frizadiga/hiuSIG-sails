@@ -28,7 +28,8 @@ module.exports.policies = {
   UsersController:{
     userForm:'isLogin',
     usersManage:'isLogin',
-    userEdit:'isLogin'
+    userEdit:'isLogin',
+    agentsConfirm:'isLogin'
   },
 
   BookingsController:{
