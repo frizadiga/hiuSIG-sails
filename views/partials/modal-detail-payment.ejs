@@ -151,21 +151,21 @@ function setDataPayment(){
     // console.log('parsed json', json);
     // alert(JSON.stringify(json));
     const data = json.dataPayment;
-    idPaymentDetail.innerHTML = data.id;
-    statusDetail.innerHTML = data.status;
-    customerDetail.innerHTML = data.customer.name;
-    agentDetail.innerHTML = data.agent.name;
-    accountOwnerDetail.innerHTML = data.accountOwner;
-    emailDetail.innerHTML = data.email;
-    phoneDetail.innerHTML = data.phone;
-    dpPaidOnDetail.innerHTML = data.dpPaidOn;
-    repaymentPaidOnDetail.innerHTML = data.repaymentPaidOn;
-    fromBankDetail.innerHTML = data.fromBank;
-    toBankDetail.innerHTML = data.toBank;
-    dpDetail.innerHTML = data.dp;
-    remainingPaymentDetail.innerHTML = data.remainingPayment;
-    amountDetail.innerHTML = data.amount;
-    messageDetail.innerHTML = data.message;
+    idPaymentDetail.innerHTML = data.id||'-';
+    statusDetail.innerHTML = data.status||'-';
+    customerDetail.innerHTML = data.customer.name||'-';
+    agentDetail.innerHTML = data.agent.name||'-';
+    accountOwnerDetail.innerHTML = data.accountOwner||'-';
+    emailDetail.innerHTML = data.email||'-';
+    phoneDetail.innerHTML = data.phone||'-';
+    dpPaidOnDetail.innerHTML = data.dpPaidOn||'-';
+    repaymentPaidOnDetail.innerHTML = data.repaymentPaidOn||'-';
+    fromBankDetail.innerHTML = data.fromBank||'-';
+    toBankDetail.innerHTML = data.toBank||'-';
+    dpDetail.innerHTML = data.dp||'-';
+    remainingPaymentDetail.innerHTML = data.remainingPayment||'-';
+    amountDetail.innerHTML = data.amount||'-';
+    messageDetail.innerHTML = data.message||'-';
     openModal('modal-detail-payment');
   }
 
