@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Jun 2017 pada 11.30
+-- Generation Time: 12 Jun 2017 pada 16.07
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -43,14 +43,8 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`no`, `id`, `listing`, `customer`, `agent`, `message`, `status`, `createdAt`, `updatedAt`) VALUES
-(1, 'bk1', 14, 2, 1, 'im interested', 'pending', '2017-06-09 00:00:00', '2017-06-09 00:00:00'),
-(31, 'bk31', 14, 2, 1, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-05-30 17:09:54', '2017-06-02 14:43:24'),
-(32, 'bk32', 19, 2, 1, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-05-30 21:42:48', '2017-06-02 14:42:52'),
-(35, 'bk35', 28, 1, 2, 'Saya ingin ketemuan dilokasi', 'approved', '2017-06-02 14:56:16', '2017-06-03 12:53:22'),
-(36, 'bk36', 31, 8, 2, 'Ex: Saya Booking dengan DP 50%', 'pending', '2017-06-03 16:25:01', '2017-06-03 16:25:01'),
-(37, 'bk37', 26, 8, 3, 'Ex: Saya Booking dengan DP 50%', 'pending', '2017-06-04 00:43:11', '2017-06-04 00:43:11'),
-(38, 'bk38', 29, 5, 2, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-06-06 14:33:11', '2017-06-06 14:35:29'),
-(39, 'bk39', 29, 1, 2, 'Ex: Saya Booking dengan DP 50%', 'approved', '2017-06-09 12:49:42', '2017-06-09 12:50:15');
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'bk2', 31, 5, 2, 'Saya Ingin Booking dengan DP 30%', 'approved', '2017-06-12 12:42:20', '2017-06-12 12:43:00');
 
 -- --------------------------------------------------------
 
@@ -96,10 +90,8 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id`, `name`, `path`, `owner`, `createdAt`, `updatedAt`) VALUES
-(3, '921ed129-c07e-451e-8933-bd5079a4afdf.jpg', '/uploads/921ed129-c07e-451e-8933-bd5079a4afdf.jpg', 13, '2016-12-21 19:31:42', '2016-12-21 19:31:42'),
 (4, 'd3aa93ab-3d29-4793-af11-66c53c9b68f0.jpg', '/uploads/d3aa93ab-3d29-4793-af11-66c53c9b68f0.jpg', 14, '2016-12-21 19:33:49', '2016-12-24 02:00:49'),
 (5, 'ae9f9272-e6cb-4574-b934-8e1be476445c.jpg', '/uploads/ae9f9272-e6cb-4574-b934-8e1be476445c.jpg', 15, '2016-12-21 19:41:10', '2016-12-21 19:41:10'),
-(6, 'c5ae2c0c-022a-45ff-9434-b54be681857b.jpg', '/uploads/c5ae2c0c-022a-45ff-9434-b54be681857b.jpg', 16, '2016-12-21 19:45:48', '2016-12-21 19:45:48'),
 (7, '57b84fe1-a99c-4752-9af3-2e48703cf234.jpg', '/uploads/57b84fe1-a99c-4752-9af3-2e48703cf234.jpg', 17, '2016-12-21 19:46:56', '2016-12-21 19:46:56'),
 (8, '7cdd93e3-5888-432f-9e9b-543f699d2177.png', '/uploads/7cdd93e3-5888-432f-9e9b-543f699d2177.png', 18, '2016-12-21 19:50:21', '2016-12-21 19:50:21'),
 (9, '62fe12bc-d226-4456-acb6-3e14152d6074.png', '/uploads/62fe12bc-d226-4456-acb6-3e14152d6074.png', 19, '2016-12-21 19:54:09', '2016-12-21 19:54:09'),
@@ -150,7 +142,7 @@ CREATE TABLE `listings` (
 --
 
 INSERT INTO `listings` (`no`, `id`, `title`, `status`, `type`, `price`, `province`, `city`, `address`, `lat`, `lng`, `lotSize`, `buildingSize`, `floors`, `beds`, `baths`, `description`, `agent`, `createdAt`, `updatedAt`, `sold_or_rented`) VALUES
-(14, 'p14', 'Rumah Tepi di Sawah Kesambi Raya', 'dijual', 'rumah', 500000, 'Bali', 'Kuta Utara', 'Perum Kesambi Raya no 77', '-8.653635', '115.1719873', '120', '100', 1, 1, 1, 'View Bagus Landscape Sawah asri', 1, '2016-12-21 19:33:49', '2017-05-26 14:26:13', NULL),
+(14, 'p14', 'Rumah Tepi di Sawah Kesambi Raya', 'dijual', 'rumah', 1500000000, 'Bali', 'Kuta Utara', 'Perum Kesambi Raya no 77', '-8.653635', '115.1719873', '120', '100', 1, 1, 1, 'View Bagus Landscape Sawah asri', 1, '2016-12-21 19:33:49', '2017-06-09 17:26:48', NULL),
 (15, 'p15', 'Rumah 100', 'dijual', 'rumah', 100000000, 'Bali', 'Denpasar', 'Bagus Jaya Residence, Padangsambian Klod, Kota Denpasar, Bali, Indonesia no 7', '-8.6681273', '115.18169149999994', '100', '100', 1, 1, 1, 'family 100', 2, '2016-12-21 19:41:10', '2017-05-26 14:26:29', NULL),
 (17, 'p17', 'Rumah Minimalis Kerobokan', 'dijual', 'rumah', 100500000, 'Bali', 'Denpasar', 'Kerobokan, Kabupaten Badung, Bali, Indonesia', '-8.651221199999998', '115.16223630000002', '100', '80', 1, 1, 1, '- Modern\r\n- Minimalis', 3, '2016-12-21 19:46:56', '2017-05-26 14:26:38', NULL),
 (18, 'p18', 'Ruko 3 Lantai dekat Pasar Badung', 'dijual', 'ruko', 50000000, 'Bali', 'Badung', 'Pasar Badung, Dauh Puri Kangin, Kota Denpasar, Bali, Indonesia', '-8.656546580789643', '115.21237500244672', '100', '80', 2, 1, 1, '-24 jam full Security', 4, '2016-12-21 20:04:38', '2017-05-26 14:26:41', NULL),
@@ -180,21 +172,6 @@ CREATE TABLE `listings_types` (
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `listings_types`
---
-
-INSERT INTO `listings_types` (`no`, `id`, `type`, `createdAt`, `updatedAt`) VALUES
-(1, 'pt1', 'rumah', '2017-05-20 13:47:00', '2017-05-20 13:47:00'),
-(2, 'pt2', 'tanah', '2017-05-20 13:47:13', '2017-05-20 13:47:13'),
-(3, 'pt3', 'ruko', '2017-05-20 13:47:21', '2017-05-20 13:47:21'),
-(4, 'pt4', 'gudang', '2017-05-20 13:47:32', '2017-05-20 13:47:32'),
-(5, 'pt5', 'ruang usaha', '2017-05-20 13:47:42', '2017-05-20 13:47:42'),
-(6, 'pt6', 'villa', '2017-05-20 13:47:51', '2017-05-20 13:47:51'),
-(9, 'pt7', 'apartemen', '2017-05-20 13:50:46', '2017-05-20 13:50:46'),
-(11, 'pt8', 'pabrik', '2017-05-20 13:51:13', '2017-05-20 13:51:13'),
-(12, 'pt9', 'perkantoran', '2017-05-20 13:51:31', '2017-05-20 13:51:31');
 
 -- --------------------------------------------------------
 
@@ -232,8 +209,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`, `updatedAt`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'msg2', 3, 2, 'Hi Tomomi Saya tertarik dengan properti anda', '2017-06-08 04:00:02', '2017-06-08 04:00:02');
+(1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -250,7 +226,8 @@ CREATE TABLE `payments` (
   `accountOwner` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
-  `paidOn` date DEFAULT NULL,
+  `dpPaidOn` date DEFAULT NULL,
+  `repaymentPaidOn` date DEFAULT NULL,
   `fromBank` varchar(255) DEFAULT NULL,
   `toBank` varchar(255) DEFAULT NULL,
   `dp` int(11) DEFAULT NULL,
@@ -258,7 +235,8 @@ CREATE TABLE `payments` (
   `amount` int(11) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `proof` varchar(255) DEFAULT NULL,
+  `dpProof` varchar(255) DEFAULT NULL,
+  `repaymentProof` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -267,18 +245,9 @@ CREATE TABLE `payments` (
 -- Dumping data untuk tabel `payments`
 --
 
-INSERT INTO `payments` (`no`, `id`, `listing`, `customer`, `agent`, `accountOwner`, `email`, `phone`, `paidOn`, `fromBank`, `toBank`, `dp`, `remainingPayment`, `amount`, `message`, `status`, `proof`, `createdAt`, `updatedAt`) VALUES
-(1, 'pyt1', 14, 2, 1, 'Tomomi Ogawa', 'tomomi_ogw@gmail.com', '087722867908', '2017-06-06', 'bca', 'mandiri', NULL, NULL, 1500000000, 'Pembayaran Lunas', 'belum bayar', '', '2017-05-29 00:00:00', '2017-06-06 14:36:36'),
-(9, 'pyt2', 28, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:43:18', '2017-05-30 01:43:18'),
-(10, 'pyt10', 31, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:52:23', '2017-05-30 01:52:23'),
-(11, 'pyt11', 29, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-30 01:54:41', '2017-05-30 01:54:41'),
-(12, 'pyt12', 28, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-05-31 09:53:53', '2017-05-31 09:53:53'),
-(13, 'pyt13', 31, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-02 14:20:52', '2017-06-02 14:20:52'),
-(14, 'pyt14', 19, 2, 1, 'Tomomi Ogawa', 'tomomi_ogw@gmail.com', '087722867908', '2017-06-05', 'mandiri', 'mandiri', NULL, NULL, 1500000000, NULL, 'pending dp', '', '2017-06-02 14:42:52', '2017-06-05 17:50:15'),
-(15, 'pyt15', 14, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-02 14:43:24', '2017-06-02 14:43:24'),
-(16, 'pyt16', 28, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-03 12:53:22', '2017-06-03 12:53:22'),
-(17, 'pyt17', 29, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-06 14:35:30', '2017-06-06 14:35:30'),
-(18, 'pyt18', 29, 1, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, '2017-06-09 12:50:15', '2017-06-09 12:50:15');
+INSERT INTO `payments` (`no`, `id`, `listing`, `customer`, `agent`, `accountOwner`, `email`, `phone`, `dpPaidOn`, `repaymentPaidOn`, `fromBank`, `toBank`, `dp`, `remainingPayment`, `amount`, `message`, `status`, `dpProof`, `repaymentProof`, `createdAt`, `updatedAt`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'pyt2', 31, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, NULL, '2017-06-12 12:43:00', '2017-06-12 12:43:00');
 
 -- --------------------------------------------------------
 
@@ -328,7 +297,9 @@ INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`
 (3, 'u3', 'haruna', 'agent', 'root', 'Rina Suzuki', '087722867909', 'haruna@gmail.com', NULL, '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', 'on', '2016-12-26 04:35:44', '2017-05-19 02:27:37'),
 (4, 'u4', 'mami', 'agent', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', NULL, 'avatar-mami.jpg', 'on', '2017-05-02 20:05:00', '2017-05-19 02:22:36'),
 (5, 'u5', 'rina', 'member', 'root', 'Rina Suzuki', '087722867911', 'urarina@gmail.com', NULL, 'avatar-rina.jpg', 'on', '2017-05-08 01:08:45', '2017-05-08 01:08:45'),
-(8, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, 'avatar-friza.jpg', 'on', '2016-12-23 21:09:57', '2017-05-02 22:56:05');
+(8, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, 'avatar-friza.jpg', 'on', '2016-12-23 21:09:57', '2017-05-02 22:56:05'),
+(9, 'u9', 'user1', 'member', 'root', 'user1', '012345678910', 'user1@gmail.com', NULL, '5b0ac864-85fe-481e-b6cf-c7c539a76f92.png', 'on', '2017-06-12 19:36:43', '2017-06-12 19:36:43'),
+(12, 'u10', 'agent1', 'agent', 'root', 'agent1', '012345678911', 'agent1@gmail.com', '10512108', '141e04b2-abc1-46c7-9898-88ca583aa826.png', 'pending', '2017-06-12 21:05:55', '2017-06-12 21:05:55');
 
 --
 -- Indexes for dumped tables
@@ -409,7 +380,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `files`
 --
@@ -424,17 +395,17 @@ ALTER TABLE `listings`
 -- AUTO_INCREMENT for table `listings_types`
 --
 ALTER TABLE `listings_types`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `reports`
 --
@@ -444,7 +415,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
