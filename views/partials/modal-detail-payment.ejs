@@ -158,13 +158,13 @@ function setDataPayment(){
     accountOwnerDetail.innerHTML = data.accountOwner||'-';
     emailDetail.innerHTML = data.email||'-';
     phoneDetail.innerHTML = data.phone||'-';
-    dpPaidOnDetail.innerHTML = data.dpPaidOn||'-';
-    repaymentPaidOnDetail.innerHTML = data.repaymentPaidOn||'-';
+    dpPaidOnDetail.innerHTML = new Date(data.dpPaidOn).toDateString()||'-';
+    repaymentPaidOnDetail.innerHTML = new Date(data.repaymentPaidOn).toDateString()||'-';
     fromBankDetail.innerHTML = data.fromBank||'-';
     toBankDetail.innerHTML = data.toBank||'-';
-    dpDetail.innerHTML = data.dp||'-';
-    remainingPaymentDetail.innerHTML = data.remainingPayment||'-';
-    amountDetail.innerHTML = data.amount||'-';
+    dpDetail.innerHTML = `Rp. ${data.dp}`||'-';
+    remainingPaymentDetail.innerHTML = `Rp. ${data.remainingPayment}`||'-';
+    amountDetail.innerHTML = `Rp. ${data.amount}`||'-';
     messageDetail.innerHTML = data.message||'-';
     openModal('modal-detail-payment');
   }
