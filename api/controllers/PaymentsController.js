@@ -21,7 +21,7 @@ module.exports = {
 	paymentDetail:(req,res)=>{
 		Payments.findOne({id:req.param('id')}).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 			if(err)return res.negotiate(err);
-			return res.json({dataPayments:data});
+			return res.json({dataPayment:data});
 		});
 	},
 
