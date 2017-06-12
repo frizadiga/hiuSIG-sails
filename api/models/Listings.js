@@ -131,7 +131,7 @@ module.exports = {
     queryLocation = {
       address:{'contains':location}
     };
-    query = Object.assign(params,queryLocation);
+    query = Object.assign({},params,queryLocation);
     Listings.find(query).populate('pictures').populate('agent').exec(function(err,data){
       if(err)return cb(err);
       cb(err,data);
