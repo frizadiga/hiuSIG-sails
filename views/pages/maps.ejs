@@ -1,3 +1,5 @@
+<%partial('../partials/helpers.ejs')%>
+
 <style>
   .selector-control {
         font-size: 14px;
@@ -15,11 +17,7 @@
   /*min-width:370px;*/
   right:0;
   z-index:100
-  "> 
-   <%
-   String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);}    
-    %>
+  ">
   <ul class="w3-ul w3-text-grey">
   <%for(i=0,len=dataListings.length;i<len;i++){%>
   <a class="w3-padding-0" style="text-decoration: none;" href="/listings/detail/<%=dataListings[i].id%>">
@@ -36,7 +34,7 @@
       </span>
       <br>
       <span>
-        Rp. <%=dataListings[i].price%>
+        Rp. <%=dataListings[i].price.formatMoney(0,',','.')%>
       </span>
     </li>
     </a>
