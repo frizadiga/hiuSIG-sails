@@ -42,7 +42,7 @@
         <td style="vertical-align:middle; width:80px"><%=dataListings[i].id%></td>
         <td style="vertical-align:middle"><%=dataListings[i].type.capitalize()%></td>
         <td style="vertical-align:middle"><%=dataListings[i].status.capitalize()%> <%=dataListings[i].title%></td>
-        <td style="vertical-align:middle">Rp. <%=dataListings[i].price%></td>
+        <td style="vertical-align:middle">Rp. <%=new Number(dataListings[i].price).formatMoney(0,'.',',')%></td>
         <td style="vertical-align:middle"><%=dataListings[i].city%></td>
         <td style="vertical-align:middle"><%=dataListings[i].province%></td>
         <td style="width:180px">
