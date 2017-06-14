@@ -32,7 +32,7 @@
       <td style="vertical-align: middle"><%=dataPayments[i].message%></td>
 			<td style="vertical-align: middle"><%=dataPayments[i].status%></td>
 			<td style="vertical-align: middle" class="w3-center">
-				<button class="w3-button w3-hover-text-blue-grey w3-hover-white" onclick="modalDetailPayment('<%=dataPayments[i].id%>')"><i class="fa fa-info"></i> Detail</button>
+				<button class="w3-button w3-hover-text-blue-grey w3-hover-white" onclick="modalDetailPayment('<%=dataPayments[i].id%>')" title="Detil"><i class="fa fa-info"></i></button>
         
         <%if(dataPayments[i].status==='belum bayar'){%>
           <button class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-dp" onclick="modalPayDp(<%-`'${dataPayments[i].id}',${dataPayments[i].listing.price}`%>)" data-id="<%=dataPayments[i].id%>"><i class="fa fa-money"></i> Bayar DP</button>
