@@ -1,3 +1,5 @@
+<%partial('../partials/helpers.ejs')%>
+
 <!-- Modal Detail -->
 <div id="modal-detail-payment" class="w3-modal w3-display-container" style="padding:16px 0">
   <div class="w3-modal-content w3-card-4 w3-animate-opacity w3-display-middle" style="max-width:700px">
@@ -162,11 +164,24 @@ function setDataPayment(){
     repaymentPaidOnDetail.innerHTML = new Date(data.repaymentPaidOn).toDateString()||'-';
     fromBankDetail.innerHTML = data.fromBank||'-';
     toBankDetail.innerHTML = data.toBank||'-';
-    dpDetail.innerHTML = `Rp. ${data.dp}`||'-';
-    remainingPaymentDetail.innerHTML = `Rp. ${data.remainingPayment}`||'-';
-    amountDetail.innerHTML = `Rp. ${data.amount}`||'-';
+    dpDetail.innerHTML = (data.dp)?`Rp. ${data.dp.formatMoney(0,',','.')}`:'-';
+    remainingPaymentDetail.innerHTML = (data.remainingPayment)?`Rp. ${data.remainingPayment.formatMoney(0,',','.')}`:'-';
+    amountDetail.innerHTML = (data.amount)?`Rp. ${data.amount.formatMoney(0,',','.')}`:'-';
     messageDetail.innerHTML = data.message||'-';
     openModal('modal-detail-payment');
   }
 
+  String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
+  Number.prototype.formatMoney = function(c, d, t){
+    var n = this, 
+    c = isNaN(c = Math.abs(c)) ? 2 : c, 
+    d = d == undefined ? "." : d, 
+    t = t == undefined ? "," : t, 
+    s = n < 0 ? "-" : "", 
+    i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))), 
+    j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+  };
 </script>

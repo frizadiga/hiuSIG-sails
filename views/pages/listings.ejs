@@ -1,6 +1,4 @@
-<%  String.prototype.capitalize = function() {
-      return this.charAt(0).toUpperCase() + this.slice(1);
-}%>
+<%partial('../partials/helpers.ejs')%>
 <%var row=1;%>
 
 <%- partial('../partials/navbar-search.ejs')%>
@@ -50,7 +48,7 @@
             </span></p>
           <p><i class="fa fa-money"></i>&nbsp;
             <span>
-              Rp. <%=dataListings[i].price%>
+              Rp. <%=dataListings[i].price.formatMoney(0,'.',',')%>
             </span>
           </p>
           <div class="w3-row-padding  w3-margin-bottom">

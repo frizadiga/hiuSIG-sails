@@ -34,13 +34,10 @@
     <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--STYLES END-->
   </head>
-<%String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}%>
-<%
+  <%
     const userRole = req.session.user.role;
     const agentPending = req.session.user.status === 'pending';
-%>
+  %>
 <body>
 
 <!--Side Bar-->
