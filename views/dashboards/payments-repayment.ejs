@@ -32,10 +32,11 @@
       <td style="vertical-align: middle"><%=dataPayments[i].message%></td>
 			<td style="vertical-align: middle"><%=dataPayments[i].status%></td>
 			<td style="vertical-align: middle" class="w3-center">
-				<button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
+				
+        <button class="w3-button w3-hover-text-blue-grey w3-hover-white" title="Detil"><i class="fa fa-info"></i></button>
         
-        <button onclick="modalPayRepayment(<%-`'${dataPayments[i].id}',${dataPayments[i].remainingPayment}`%>)" data-id="<%=dataPayments[i].id%>" class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-repayment"><i class="fa fa-money"></i> Bayar</button>
-          
+        <button onclick="modalPayRepayment(<%-`'${dataPayments[i].id}',${dataPayments[i].remainingPayment}`%>)" data-id="<%=dataPayments[i].id%>" class="w3-button w3-hover-text-blue-grey w3-hover-white pay-button-repayment"><i class="fa fa-money"></i> Bayar Pelunasan</button>
+
 			</td>
 		</tr>
 		<% } -%>
@@ -52,6 +53,7 @@
   </div>
 </div>
 
+<%-partial('../partials/modal-detail-payment')%>
 <%-partial('../partials/modal-pay-repayment.ejs')%>
 
 <script>

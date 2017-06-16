@@ -32,7 +32,7 @@
       <td style="vertical-align: middle"><%=dataPayments[i].message%></td>
 			<td style="vertical-align: middle"><%=dataPayments[i].status%></td>
 			<td style="vertical-align: middle" class="w3-center">
-        <button class="w3-button w3-hover-red" onclick="modalDetailPayment('<%=dataPayments[i].id%>')"><i class="fa fa-info"></i> Detil</button>
+        <button class="w3-button w3-hover-red" onclick="modalDetailPayment('<%=dataPayments[i].id%>')" title="Detil"><i class="fa fa-info"></i></button>
         <%if(dataPayments[i].status === 'pending dp'){%>
 				<button class="w3-button w3-hover-red" onclick="modalDeniedDp('<%=dataPayments[i].id%>','<%=dataPayments[i].customer.name%>')"><i class="fa fa-ban"></i> Tolak</button>
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white" onclick="modalApproveDp('<%=dataPayments[i].id%>','<%=dataPayments[i].customer.name%>')"><i class="fa fa-check"></i> Terima</button>
