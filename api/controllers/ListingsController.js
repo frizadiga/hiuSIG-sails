@@ -48,7 +48,7 @@ module.exports = {
   listingsList:function(req,res){
     //return res.json(req.allParams());
     let opts = req.allParams();
-    opts.sort = 'createdAt DESC';
+    if(!opts.sort)opts.sort = 'createdAt DESC';
     Listings.searchListings(opts,function(err,data){
       if(err)return res.negotiate(err);
       //TEST PARAMETER
