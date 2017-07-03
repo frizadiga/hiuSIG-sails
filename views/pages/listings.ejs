@@ -42,10 +42,13 @@
             </span>
           </p>
           <%var address=dataListings[i].address;%>
-          <p title="<%=address%>"><i class="fa fa-map-marker"></i>&nbsp;
-            <span>
-              <%=(address.length>35)?address.substring(0,35)+'...':address%>
-            </span></p>
+          <p title="<%=address%>">
+            <span style="width:100%;white-space:nowrap;display:inline-block;overflow:hidden;text-overflow:ellipsis">
+              <i class="fa fa-map-marker"></i>&nbsp;
+              <%//=(address.length>35)?address.substring(0,35)+'...':address%>
+              <%=address%>
+            </span>
+          </p>
           <p><i class="fa fa-money"></i>&nbsp;
             <span>
               Rp. <%=dataListings[i].price.formatMoney(0,',','.')%>
