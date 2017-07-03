@@ -60,7 +60,8 @@ module.exports.policies = {
   DocumentsController:{
     spp:'isLogin',
     sppjb:'isLogin',
-    spajb:'isLogin'
+    spajb:'isLogin',
+    kuitansi:'isLogin'
   }
 
   /***************************************************************************

@@ -1,0 +1,105 @@
+<style type="text/css">
+	body {
+  background: rgba(96, 125, 139, 0.55); 
+	}
+	page {
+	  background: white;
+	  display: block;
+	  margin: 0 auto;
+	  margin-bottom: 0.5cm;
+	  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+	}
+	page[size="A4"] {  
+	  width: 21cm;
+	  height: 29.7cm; 
+	}
+	page[size="A4"][layout="portrait"] {
+	  width: 29.7cm;
+	  height: 21cm;  
+	}
+	page[size="A3"] {
+	  width: 29.7cm;
+	  height: 42cm;
+	}
+	page[size="A3"][layout="portrait"] {
+	  width: 42cm;
+	  height: 29.7cm;  
+	}
+	page[size="A5"] {
+	  width: 14.8cm;
+	  height: 21cm;
+	}
+	page[size="A5"][layout="portrait"] {
+	  width: 21cm;
+	  height: 14.8cm;  
+	}
+	@media print {
+	  body, page {
+	    margin: 0;
+	    box-shadow: 0;
+	  }
+	}
+</style>
+
+<page id="sppjb" size="A5" layout="portrait" class="w3-container w3-section">
+	<header class="w3-container w3-center">
+  <img src="/img/rumah2q-logo.png" style="width:20%;margin:auto!important">		
+	</header>
+
+    <table class="w3-table">
+      <tr>
+        <td style="text-align:left;width:60%">
+          <h3>Kuitansi Pembayaran</h3>
+        </td>
+        <td style="text-align:center">
+          <p>No Kuitansi: -</p>
+        </td>
+      </tr>  
+    </table>
+    
+    <div class="w3-container">
+      <p>Telah Terima dari : </p>
+      <p>Uang Sejumlah : </p>
+      <p>Terbilang : </p>
+      <p>Untuk Pembayaran: </p>
+    </div>
+  	
+
+    <div class="w3-container">
+      <p></p>  
+    </div>
+
+    <table class="w3-table Xw3-table-all" style="/*margin-top:4.5cm!important">
+      <tr>
+       <td rowspan="4" style="width:60%;text-align:left;vertical-align:bottom;" class="Xw3-border"><p class="w3-container w3-padding w3-border">Apabila pembayaran dengan Cek/Giro maka kuitansi ini baru sah bila jumlah tersebut telah diterima oleh bank kami.</p></td>
+        <td style="text-align:center">Mengetahui</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="text-align:center">(_____________)</td>
+      </tr>
+      <tr>
+       
+        <td style="text-align:center">Direktur</td>
+      </tr>
+    </table>
+
+</page>
+
+<div class="w3-container w3-padding-16 w3-section w3-card w3-white" style="width:21cm;margin:auto">
+		<button class="w3-blue-grey w3-hover-green w3-block w3-button w3-right no-print" onclick="printDiv('sppjb')"><b><i class="fa fa-print"></i> Print</b></button>
+</div>
+<script>
+	function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+	}
+</script>

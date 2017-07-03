@@ -14,6 +14,9 @@ module.exports = {
 	},
 	spajb:(req,res)=>{
 		return res.view('dashboards/documents/surat-pengajuan-ajb',{title:'Surat Pengajuan Akad Jual Beli',layout:'layout-dashboards'});
+	},
+	kuitansi:(req,res)=>{
+		return res.view('dashboards/documents/kuitansi',{title:'Kuitansi',layout:'layout-dashboards'});
 	}
 };
 

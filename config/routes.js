@@ -106,6 +106,8 @@ module.exports.routes = {
   '/dashboards/documents/surat-pemesanan-properti':'DocumentsController.spp',
   '/dashboards/documents/surat-perjanjian-perangkat-jual-beli':'DocumentsController.sppjb',
   '/dashboards/documents/surat-pengajuan-ajb':'DocumentsController.spajb',
+
+  '/dashboards/documents/kuitansi':'DocumentsController.kuitansi',
   
   '/dashboards/reports/report-transaction':'ReportsController.reportTransaction',
 
