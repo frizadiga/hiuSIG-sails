@@ -6,7 +6,7 @@
     <img src="/img/rumah2q-logo.png" class="" style="width:30%;height:50%">
   </div>
 
-<form id="listings" action="/listings">
+<form id="form-listings" action="/listings">
 <!--MAIN SEARCH-->
   <div id="main-search" class="w3-row w3-card-4">
     
@@ -171,6 +171,23 @@
 </div>
 
 <script async defer>
+
+//REMOVE EMPTY PARAMETER ON SUBMIT
+var formListings = document.getElementById('form-listings');
+
+formListings.addEventListener('submit', function () {
+    var allInputs = formListings.getElementsByTagName('input');
+
+    for (var i = 0; i < allInputs.length; i++) {
+        var input = allInputs[i];
+
+        if (input.name && !input.value) {
+            input.name = '';
+        }
+    }
+});
+//END
+
 document.querySelector('#min-price').addEventListener('input',dataList)
 document.querySelector('#max-price').addEventListener('input',dataList)
 //Data List

@@ -19,7 +19,7 @@
 
       <!--LISTING SEARCH PANEL-->
       <div id="listing-search-panel" class="tab-search">
-        <form id="navbar-form-search" action="/listings">
+        <form id="form-navbar-search" action="/listings">
           
           <div class="w3-col" style="width:17%">
             <select style="width:100%" id="searchStatusBar" class="w3-bar-item w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-white" name="status">
@@ -96,6 +96,22 @@
 
 
 <script async defer>
+
+//REMOVE EMPTY PARAMETER ON SUBMIT
+var formNavbarSearch = document.getElementById('form-navbar-search');
+
+formNavbarSearch.addEventListener('submit', function () {
+    var allInputs = formNavbarSearch.getElementsByTagName('input');
+
+    for (var i = 0; i < allInputs.length; i++) {
+        var input = allInputs[i];
+
+        if (input.name && !input.value) {
+            input.name = '';
+        }
+    }
+});
+//END
 
   function openTab(e,tab) {
     var i, x, tablinks;
