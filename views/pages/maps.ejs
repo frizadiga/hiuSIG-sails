@@ -29,9 +29,8 @@
         <%=dataListings[i].status.capitalize()%>
       </span>
       <br>
-      <span class="w3-small">
-        <%address=dataListings[i].address%>
-        <%=address.length>25?address.substr(0,25)+'...':address%>
+      <span class="w3-small" style="width:60%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:inline-block;">
+        <%=dataListings[i].address%>
       </span>
       <br>
       <span>
