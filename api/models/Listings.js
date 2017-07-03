@@ -113,9 +113,18 @@ module.exports = {
     if(params.beds === '') delete params.beds;
     if(params.lotSize === '') delete params.lotSize;
     if(params.buildingSize === '') delete params.buildingSize;
-    if(params.minPrice === '') delete params.minPrice;
-    if(params.maxPrice === '') delete params.maxPrice;
+    if(!params.minPrice) delete params.minPrice;
+    if(!params.maxPrice) delete params.maxPrice;
+
+    var priceRange = {};
+    if(params.minPrice || params.maxPrice){
     
+    priceRange = {price:{'>=':params.minPrice, '<=':params.maxPrice}};
+
+    delete params.minPrice;
+    delete params.maxPrice;
+    }
+
     if(params.location === ''){
       location = '';
     }else if(params.location!=='' && params.location){
@@ -131,7 +140,7 @@ module.exports = {
     queryLocation = {
       address:{'contains':location}
     };
-    query = Object.assign({},params,queryLocation);
+    query = Object.assign({}, params, priceRange, queryLocation);
     Listings.find(query).populate('pictures').populate('agent').exec(function(err,data){
       if(err)return cb(err);
       cb(err,data);
