@@ -27,7 +27,7 @@ module.exports = {
       type:'string'
     },
     price:{
-      type:'integer'
+      type:'float'
     },
     province:{
       type:'string'
