@@ -19,23 +19,28 @@
   right:0;
   z-index:100
   ">
-  <ul class="w3-ul w3-text-grey">
+  <ul class="w3-ul w3-text-grey w3-white">
   <%for(i=0,len=dataListings.length;i<len;i++){%>
-  <a class="w3-padding-0" style="text-decoration: none;" href="/listings/detail/<%=dataListings[i].id%>">
-    <li class="w3-padding w3-container w3-hover-blue-grey" style="padding-left: 8px!important">
-      <img class="w3-left w3-margin-right w3-animate-opacity" style="width:100px;height:65px;object-fit:cover;" src="<%=dataListings[i].pictures[0].path%>">
-      <span class="" style="font-weight: bold">
+  <a class="w3-padding-0" style="text-decoration:none;" href="/listings/detail/<%=dataListings[i].id%>">
+    <li class="w3-hover-blue-grey" style="padding:0.5px 2px!important">
+      <div class="w3-col w3-hover-none Xw3-cell Xw3-cell-middle" style="width:150px;height:67px">
+        <img class="w3-left w3-animate-opacity" style="width:100%;height:66px;object-fit:cover;" src="<%=dataListings[i].pictures[0].path%>">
+      </div>
+
+      <div class="w3-rest Xw3-cell Xw3-cell-middle" style="padding-left:8px;height:67px">
+        <span class="" style="font-weight: bold">
         <%=dataListings[i].type.capitalize()%>
         <%=dataListings[i].status.capitalize()%>
-      </span>
-      <br>
-      <span class="w3-small" style="width:60%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:inline-block;">
+        </span>
+        <br>
+        <span class="w3-small" style="width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:inline-block;">
         <%=dataListings[i].address%>
-      </span>
-      <br>
-      <span>
+        </span>
+        <br>
+        <span>
         Rp. <%=dataListings[i].price.formatMoney(0,',','.')%>
-      </span>
+        </span>
+      </div>
     </li>
     </a>
     <%
