@@ -55,124 +55,18 @@
 
 
  
-  <button id="option" onclick="accordion('more-ops')" class="w3-button w3-block w3-blue w3-hover-green w3-accordion" type="button" style="border-radius: 0 0 3px 3px" >
+  <button id="option" onclick="accordion('filter-options-listings')" class="w3-button w3-block w3-blue w3-hover-green w3-accordion" type="button" style="border-radius: 0 0 3px 3px" >
   Opsi Lain &nbsp;<i class="fa fa-caret-down"></i>
   </button>
 </div>
 
+<%-partial('../partials/filter-options-listings.ejs')%>
 
-  <!-- FILTER OPTIONS -->
-  <div id="more-ops" class="w3-light-grey w3-animate-bottom w3-padding-16 w3-section w3-hide w3-card-4 w3-white w3-text-blue-grey" style="padding-bottom:8px;border-radius:3px">
-  
-  <p class="w3-margin-left" style="font-weight: bold;">Spesifikasi</p>
-    <div id="spek-ops" class="w3-row-padding w3-margin-bottom">
-    
-      <div class="w3-col m2">
-        <label>Jumlah Lantai</label>
-        <input class="w3-input w3-border" type="text" name="floors" placeholder="Ex: 1" list="floorss-list">
-        <datalist id="floorss-list">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>+5</option>
-        </datalist> 
-      </div>
-      <div class="w3-col m2">
-        <label>Kamar Tidur</label>
-        <input class="w3-input w3-border" type="text" name="beds" placeholder="Ex: 2" list="beds-list">
-        <datalist id="beds-list">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>+5</option>
-        </datalist>
-      </div>
-      <div class="w3-col m2">
-        <label>Kamar Mandi</label>
-        <input class="w3-input w3-border" type="text" name="baths" placeholder="Ex: 1" list="baths-list">
-        <datalist id="baths-list">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>+5</option>
-        </datalist>
-      </div> 
-       <div class="w3-col m3">
-        <label>Luas Tanah (m<sup>2</sup>)</label>
-        <input class="w3-input w3-border" type="text" name="lotSize" placeholder="Ex: 150" list="lot-sizes-list">
-        <datalist id="lot-sizes-list">
-          <option>50</option>
-          <option>100</option>
-          <option>200</option>
-          <option>500</option>
-          <option>1000</option>
-        </datalist>
-      </div> 
-       <div class="w3-col m3">
-        <label>Luas Bangunan (m<sup>2</sup>)</label>
-        <input class="w3-input w3-border" type="text" name="buildingSize" placeholder="Ex: 100" list="building-sizes-list">
-        <datalist id="building-sizes-list">
-          <option>50</option>
-          <option>100</option>
-          <option>200</option>
-          <option>500</option>
-          <option>1000</option>
-        </datalist>
-      </div> 
-    </div>
-  <!-- <p class="w3-margin-left" style="font-weight: bold;">Daerah</p>
-    <div id="daerah-ops" class="w3-row-padding w3-margin-bottom">
-      <div class="w3-col m6">
-      <input placeholder="Provinsi" class="w3-input w3-border" type="text" name="">
-      </div>
-      <div class="w3-col m6">
-      <input placeholder="Kota" class="w3-input w3-border" type="text" name="">
-      </div>
-    </div> -->
-  <p class="w3-margin-left" style="font-weight: bold;">Harga</p>
-  <div id="harga-ops" class="w3-row-padding w3-margin-bottom">
-    <div class="w3-col m6">
-      <label>Harga Minimum (Rp)</label>
-      <input id="min-price" class="w3-input w3-border" type="text" placeholder="Ex: Rp. 50.000.000" list="min-prices-list">
-      <datalist id="min-prices-list">
-        <option data-value="50000000">Rp. 50.000.000</option>
-        <option data-value="100000000">Rp. 100.000.000</option>
-        <option data-value="200000000">Rp. 200.000.000</option>
-        <option data-value="500000000">Rp. 500.000.000</option>
-        <option data-value="1000000000">Rp. 1.000.000.000</option>
-        <option data-value="2000000000">Rp. 2.000.000.000</option>
-        <option data-value="5000000000">Rp. 5.000.000.000</option>
-        <option data-value="10000000000">Rp. 10.000.000.000</option>
-        <option data-value="20000000000">Rp. 20.000.000.000</option>
-      </datalist>
-      <input id="min-prices-hidden" type="hidden" name="minPrice">
-    </div>
-    <div class="w3-col m6">
-      <label>Harga Maksimum (Rp)</label>
-      <input id="max-price" class="w3-input w3-border" type="text" placeholder="Ex: Rp. 20.000.000.000" list="max-prices-list">
-      <datalist id="max-prices-list">
-        <option data-value="50000000">Rp. 50.000.000</option>
-        <option data-value="100000000">Rp. 100.000.000</option>
-        <option data-value="200000000">Rp. 200.000.000</option>
-        <option data-value="500000000">Rp. 500.000.000</option>
-        <option data-value="1000000000">Rp. 1.000.000.000</option>
-        <option data-value="2000000000">Rp. 2.000.000.000</option>
-        <option data-value="5000000000">Rp. 5.000.000.000</option>
-        <option data-value="10000000000">Rp. 10.000.000.000</option>
-        <option data-value="20000000000">Rp. 20.000.000.000</option>
-      </datalist>
-      <input id="max-prices-hidden" type="hidden" name="maxPrice">
-    </div>
-  </div>
-  </div>
 </form>
 </div>
 
 <script async defer>
-
+document.getElementById('filter-options-listings').className += 'w3-light-grey';
 //REMOVE EMPTY PARAMETER ON SUBMIT
 var formListings = document.getElementById('form-listings');
 

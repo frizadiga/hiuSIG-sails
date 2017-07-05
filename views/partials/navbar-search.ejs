@@ -46,6 +46,8 @@
   
           <a class="w3-bar-item w3-button w3-white w3-hover-red w3-right" onclick="closeSearchPanel('search-panel')" title="Close Menu"><b class="fa fa-times"></b></a>
   
+          <button type="button" class="w3-bar-item w3-button w3-hover-blue-grey w3-white w3-right" title="Memfilter Hasil Pencarian.." onclick="accordion('filter-options-listings')"><b class="fa fa-filter"></b></button>
+          
           <button type="submit" class="w3-bar-item w3-button w3-hover-blue-grey w3-white w3-right" title="Lakukan Pencarian.."><b class="fa fa-search"></b></button>
           
           <div class="w3-rest">
@@ -58,6 +60,9 @@
               <option>Jakarta</option>
             </datalist> 
           </div>
+          
+          <%-partial('../partials/filter-options-listings.ejs')%>
+
         </form>
       </div><!--END LISTING SEARCH PANEL-->
 
@@ -91,6 +96,7 @@
       </div><!--END AGENT SEARCH PANEL-->
     </div>
 
+  
   </div>
 </div>
 <!--END SEARCH PANEL-->
