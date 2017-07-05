@@ -113,9 +113,15 @@ module.exports = {
     if(params.beds === '') delete params.beds;
     if(params.lotSize === '') delete params.lotSize;
     if(params.buildingSize === '') delete params.buildingSize;
+    
+    if(!params.maxPrice && params.minPrice){
+    	params.maxPrice = 1.7976931348623157E+103;
+	  }
+    
     if(params.maxPrice && !params.minPrice){
     	params.minPrice = 0;
 	  }
+    
     if(!params.maxPrice) delete params.maxPrice;
 
     var priceRange = {};
