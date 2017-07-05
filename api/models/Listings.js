@@ -113,7 +113,9 @@ module.exports = {
     if(params.beds === '') delete params.beds;
     if(params.lotSize === '') delete params.lotSize;
     if(params.buildingSize === '') delete params.buildingSize;
-    if(!params.minPrice) params.minPrice=0;
+    if(params.maxPrice && !params.minPrice){
+    	params.minPrice = 0;
+	  }
     if(!params.maxPrice) delete params.maxPrice;
 
     var priceRange = {};
