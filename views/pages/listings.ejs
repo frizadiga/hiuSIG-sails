@@ -20,23 +20,23 @@
         <div class="w3-col m7 w3-cell" style="/*width:50% ;height:300px ;background-image: url(<%=dataListings[i].pictures[0].path%>);background-position:center;background-size:cover;" ><a href="/listings/detail/<%=dataListings[i].id%>" title="<%=dataListings[i].status.capitalize()%> <%=dataListings[i].title%>">
           <img style="width:100%;height:300px;object-fit:cover;" class="w3-animate-opacity" src="<%=dataListings[i].pictures[0].path%>" alt="<%=dataListings[i].title%>" ></a>
         </div>
-        <div class="w3-container w3-col m5 w3-text-grey w3-white w3-cell w3-cell-bottom">
+        <div class="w3-container w3-col m5 w3-text-grey w3-white w3-cell w3-cell-bottom" style="height:300px">
           <%var title=dataListings[i].title;%>
           <p title="<%=title%>" style="width:100%;white-space:nowrap;overflow: hidden;text-overflow:ellipsis">
             <b>
-              <%=(i+1)+' - '%>
+              <%=(i+1)+'. '%>
               <%=title%>
               <%//=(title.length>30)?title.substring(0,30)+'...':title%>
             </b>
           </p>
-          <p class="w3-small">
+          <p class="w3-small" style="margin:-8px 0">
             <i class="fa fa-clock-o"></i>
-            <span class="w3-tiny"> Posted on 
+            <span class="w3-tiny" style="padding-left:10px"> Posted on 
             <%=dataListings[i].createdAt.toDateString()%>
             </span>
           </p>
           <p>
-            <i class="fa fa-home"></i>&nbsp;
+            <i class="fa fa-home" style="padding-right:6px"></i>
             <span> 
               <%=dataListings[i].type.capitalize()%>
               <b><%=dataListings[i].status.capitalize()%></b>
@@ -44,20 +44,15 @@
           </p>
           <%var address=dataListings[i].address;%>
           <p title="<%=address%>">
-            <span style="width:100%;white-space:nowrap;display:inline-block;overflow:hidden;text-overflow:ellipsis">
-              <i class="fa fa-map-marker"></i>&nbsp;
+            <span style="width:100%;white-space:nowrap;display:block;overflow:hidden;text-overflow:ellipsis">
+              <i class="fa fa-map-marker" style="padding-right:11px"></i>
               <%//=(address.length>35)?address.substring(0,35)+'...':address%>
               <%=address%>
             </span>
           </p>
-          <p><i class="fa fa-money"></i>&nbsp;
-            <span>
-              Rp. <%=dataListings[i].price.formatMoney(0,',','.')%>
-            </span>
-          </p>
-          <div class="w3-row-padding  w3-margin-bottom">
-            <span title="Luas Tanah">
-              <i class="fa fa-map-signs"></i>
+          
+          <div class="w3-margin-bottom">
+            <span title="Luas Tanah"><i class="fa fa-map-signs" style="padding-right:4px"></i>
               <%=dataListings[i].lotSize%> m<sup>2</sup>
             </span>
             &nbsp;&nbsp;
@@ -77,6 +72,15 @@
             </span>
             &nbsp;&nbsp;
           </div>
+
+          <p><i class="fa fa-money" style="padding-right:5px"></i>
+            <span style="font-weight:bold">
+              Rp. <%=dataListings[i].price.formatMoney(0,',','.')%>
+            </span>
+          </p>
+
+          <hr>
+
           <div class="w3-bar w3-border w3-margin-bottom">
             <!-- <a href="javascript:void(0)">
             <button class="w3-bar-item w3-button " style="width:33.3%" title="Favorit"><i class="fa fa-star"></i> Favorit</button>
