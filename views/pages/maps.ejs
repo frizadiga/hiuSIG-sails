@@ -32,11 +32,9 @@
         <%=dataListings[i].type.capitalize()%>
         <%=dataListings[i].status.capitalize()%>
         </span>
-        <br>
-        <span class="w3-small" style="width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden">
+        <span class="w3-small" style="width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block">
         <%=dataListings[i].address%>
         </span>
-        <br>
         <span style="font-size:13px;font-weight:bold">
         Rp. <%=dataListings[i].price.formatMoney(0,',','.')%>
         </span>
