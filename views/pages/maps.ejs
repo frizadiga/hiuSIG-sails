@@ -22,22 +22,22 @@
   <ul class="w3-ul w3-text-grey w3-white">
   <%for(i=0,len=dataListings.length;i<len;i++){%>
   <a class="w3-padding-0" style="text-decoration:none;" href="/listings/detail/<%=dataListings[i].id%>">
-    <li class="w3-hover-blue-grey" style="padding:0.5px 2px!important">
+    <li class="w3-hover-blue-grey" style="border-bottom:1px solid rgba(232, 232, 232, 1)!important;padding:0.5px 2px!important">
       <div class="w3-col w3-hover-none Xw3-cell Xw3-cell-middle" style="width:150px;height:67px">
         <img class="w3-left w3-animate-opacity" style="width:100%;height:66px;object-fit:cover;" src="<%=dataListings[i].pictures[0].path%>">
       </div>
 
       <div class="w3-rest Xw3-cell Xw3-cell-middle" style="padding-left:8px;height:67px">
-        <span class="" style="font-weight: bold">
+        <span class="" style="font-size:15px">
         <%=dataListings[i].type.capitalize()%>
         <%=dataListings[i].status.capitalize()%>
         </span>
         <br>
-        <span class="w3-small" style="width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:inline-block;">
+        <span class="w3-small" style="width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden">
         <%=dataListings[i].address%>
         </span>
         <br>
-        <span>
+        <span style="font-size:13px;font-weight:bold">
         Rp. <%=dataListings[i].price.formatMoney(0,',','.')%>
         </span>
       </div>
