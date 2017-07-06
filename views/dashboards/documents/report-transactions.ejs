@@ -64,10 +64,13 @@
       <td style="vertical-align: middle"><%=data[i].penjual%></td>
       <td style="vertical-align: middle"><%=data[i].pembeli%></td>
       <td style="vertical-align: middle"><%=data[i].harga%></td>
-      <td style="vertical-align: middle">
-        <!-- <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
-        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-print"></i> Print</button> -->
-      </td>
+      <td style="vertical-align: middle"><%=data[i].harga%></td>
+    	<td style="vertical-align: middle"><% d=new Date()%><%=d.toDateString()%></td>
+    	
+     <!--  <td style="vertical-align: middle">
+        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
+        <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-print"></i> Print</button>
+      </td> -->
     </tr>
     <% } -%>
   <!--  <tr  class="w3-hover-none">
