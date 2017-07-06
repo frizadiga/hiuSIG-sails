@@ -2,62 +2,62 @@
 <div class="w3-display-middle w3-round-small w3-animate-opacity" style="width:50%;min-width:750px;max-width:799;padding-top:32px">
 
 <!-- MAIN LOGO -->
-  <div id="main-hero-logo" class="w3-row w3-center">
-    <img src="/img/rumah2q-logo.png" class="" style="width:30%;height:50%">
-  </div>
+	<div id="main-hero-logo" class="w3-row w3-center">
+		<img src="/img/rumah2q-logo.png" class="" style="width:30%;height:50%">
+	</div>
 
 <form id="form-listings" action="/listings">
 <!--MAIN SEARCH-->
-  <div id="main-search" class="w3-row w3-card-4">
-    
-    <div class="w3-col" style="width:17%">
-      <select id="searchStatus" style="height: 54px;" class="w3-padding-16 w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-light-grey" name="status">
-        <option value="dijual">Dijual</option>
-        <option value="disewa">Disewa</option>
-        <option value="">--Semua--</option>
-      </select>
-    </div>
+	<div id="main-search" class="w3-row w3-card-4">
+		
+		<div class="w3-col" style="width:17%">
+			<select id="searchStatus" style="height: 54px;" class="w3-padding-16 w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-light-grey" name="status">
+				<option value="dijual">Dijual</option>
+				<option value="disewa">Disewa</option>
+				<option value="">--Semua--</option>
+			</select>
+		</div>
 
-    <div class="w3-col" style="width:27%">
-       <select id="searchType" style="height: 54px;" class="w3-padding-16 w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-light-grey " name="type" onclick="this.style.backgroundColor='white'">
-         <option value="rumah">Rumah</option>
-            <option value="ruko">Ruko</option>
-            <option value="tanah">Tanah</option>
-            <option value="gudang">Gudang</option>
-            <option value="gedung">Gedung</option>
-            <option value="ruang usaha">Ruang Usaha</option>
-            <option value="villa">Villa</option>
-            <option value="apartemen">Apartemen</option>
-            <option value="pabrik">Pabrik</option>
-            <option value="perkantoran">Perkantoran</option>
-            <option value="">--Semua--</option>
+		<div class="w3-col" style="width:27%">
+			 <select id="searchType" style="height: 54px;" class="w3-padding-16 w3-select w3-text-grey w3-white w3-border-0 w3-hover-text-blue-grey w3-hover-light-grey " name="type" onclick="this.style.backgroundColor='white'">
+				 <option value="rumah">Rumah</option>
+						<option value="ruko">Ruko</option>
+						<option value="tanah">Tanah</option>
+						<option value="gudang">Gudang</option>
+						<option value="gedung">Gedung</option>
+						<option value="ruang usaha">Ruang Usaha</option>
+						<option value="villa">Villa</option>
+						<option value="apartemen">Apartemen</option>
+						<option value="pabrik">Pabrik</option>
+						<option value="perkantoran">Perkantoran</option>
+						<option value="">--Semua--</option>
 
-      </select>
-    </div>
+			</select>
+		</div>
 
-     <div class="w3-col w3-right" style="width:50px">
-      <button id="searchBtn" class="w3-padding-16 w3-button w3-block w3-white w3-hover-blue-grey w3-text-blue-grey" title="Lakukan Pencarian...">
-       
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-   <div class="w3-rest">
+		 <div class="w3-col w3-right" style="width:50px">
+			<button id="searchBtn" class="w3-padding-16 w3-button w3-block w3-white w3-hover-blue-grey w3-text-blue-grey" title="Lakukan Pencarian...">
+			 
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
+	 <div class="w3-rest">
 
-      <input id="searchLocation" onclick="searchDropDown()" class="w3-padding-16 w3-input w3-white w3-hover-light-grey w3-border-0 " type="text" placeholder="Lokasi.. Ex: Kuta Utara" name="location" list="locations-list">
-      <datalist id="locations-list">
-        <option>Kuta</option>
-        <option>Denpasar</option>
-        <option>Sanur</option>
-        <option>Kerobokan</option>
-        <option>Jakarta</option>
-      </datalist> 
-    </div>
+			<input id="searchLocation" onclick="searchDropDown()" class="w3-padding-16 w3-input w3-white w3-hover-light-grey w3-border-0 " type="text" placeholder="Lokasi.. Ex: Kuta Utara" name="location" list="locations-list">
+			<datalist id="locations-list">
+				<option>Kuta</option>
+				<option>Denpasar</option>
+				<option>Sanur</option>
+				<option>Kerobokan</option>
+				<option>Jakarta</option>
+			</datalist> 
+		</div>
 
 
  
-  <button id="option" onclick="accordion('filter-options-listings')" class="w3-button w3-block w3-blue w3-hover-green w3-accordion" type="button" style="border-radius: 0 0 3px 3px" >
-  Opsi Lain &nbsp;<i class="fa fa-caret-down"></i>
-  </button>
+	<button id="option" onclick="accordion('filter-options-listings')" class="w3-button w3-block w3-blue w3-hover-green w3-accordion" type="button" style="border-radius: 0 0 3px 3px" >
+	Opsi Lain &nbsp;<i class="fa fa-caret-down"></i>
+	</button>
 </div>
 
 <%-partial('../partials/filter-options-listings.ejs')%>
@@ -71,57 +71,57 @@ document.getElementById('filter-options-listings').className += ' w3-light-grey'
 var formListings = document.getElementById('form-listings');
 
 formListings.addEventListener('submit', function () {
-    var allInputs = formListings.getElementsByTagName('input');
+		var allInputs = formListings.getElementsByTagName('input');
 
-    for (var i = 0; i < allInputs.length; i++) {
-        var input = allInputs[i];
+		for (var i = 0; i < allInputs.length; i++) {
+				var input = allInputs[i];
 
-        if (input.name && !input.value) {
-            input.name = '';
-        }
-    }
+				if (input.name && !input.value) {
+						input.name = '';
+				}
+		}
 });
 //END
 
-document.querySelector('#min-price').addEventListener('input',dataList)
-document.querySelector('#max-price').addEventListener('input',dataList)
-//Data List
-function dataList(e){
-	 var input = e.target,
-        list = input.getAttribute('list'),
-        options = document.querySelectorAll('#' + list + ' option'),
-        hiddenInput = document.getElementById(input.getAttribute('id') + 's-hidden'),
-        label = input.value;
+// document.querySelector('#min-price').addEventListener('input',dataList)
+// document.querySelector('#max-price').addEventListener('input',dataList)
+// //Data List
+// function dataList(e){
+// 	 var input = e.target,
+// 				list = input.getAttribute('list'),
+// 				options = document.querySelectorAll('#' + list + ' option'),
+// 				hiddenInput = document.getElementById(input.getAttribute('id') + 's-hidden'),
+// 				label = input.value;
 
-    hiddenInput.value = label;
+// 		hiddenInput.value = label;
 
-    for(var i = 0; i < options.length; i++) {
-        var option = options[i];
+// 		for(var i = 0; i < options.length; i++) {
+// 				var option = options[i];
 
-        if(option.innerText === label) {
-            hiddenInput.value = option.getAttribute('data-value');
-            break;
-        }
-    }
-}
+// 				if(option.innerText === label) {
+// 						hiddenInput.value = option.getAttribute('data-value');
+// 						break;
+// 				}
+// 		}
+// }
 
-//Search Dropdown
-function searchDropDown() {
-  var elm = document.getElementById('search-dropdown-content');
-  if(elm.className.indexOf("w3-show")==-1)
-    elm.className += " w3-show";
-  else
-    elm.className = elm.className.replace(' w3-show','')
-}
+// //Search Dropdown
+// function searchDropDown() {
+// 	var elm = document.getElementById('search-dropdown-content');
+// 	if(elm.className.indexOf("w3-show")==-1)
+// 		elm.className += " w3-show";
+// 	else
+// 		elm.className = elm.className.replace(' w3-show','')
+// }
 
-//Accordion
-function accordion(id){
-  var elm = document.getElementById(id);
-  if(elm.className.indexOf('w3-show')== -1){
-    elm.className += " w3-show";
-  }else{
-    elm.className = elm.className.replace(' w3-show','');
-  }
- // google.maps.event.trigger(map, 'resize');
-}
+// //Accordion
+// function accordion(id){
+// 	var elm = document.getElementById(id);
+// 	if(elm.className.indexOf('w3-show')== -1){
+// 		elm.className += " w3-show";
+// 	}else{
+// 		elm.className = elm.className.replace(' w3-show','');
+// 	}
+//  // google.maps.event.trigger(map, 'resize');
+// }
 </script>

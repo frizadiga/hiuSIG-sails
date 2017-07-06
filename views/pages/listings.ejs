@@ -4,9 +4,7 @@
 <%- partial('../partials/navbar-search.ejs')%>
 
 <!--Listing Property-->
-<div id="main" class="w3-margin-top" style="padding-top:38px!important">
-
-
+<div id="main-listings" class="Xw3-animate-bottom w3-margin-top" style="padding-top:38px!important">
 
   <%for(var i=0,len=dataListings.length;i<len;i++){%>
   <%if(i%2===0||i===0){%>
@@ -16,11 +14,11 @@
   
      <!--LISTING CARD-->
     <div class="Xw3-col Xm6 w3-margin-bottom">
-      <div class="w3-container w3-card w3-white" style="padding: 0">
-        <div class="w3-col m7 w3-cell" style="/*width:50% ;height:300px ;background-image: url(<%=dataListings[i].pictures[0].path%>);background-position:center;background-size:cover;" ><a href="/listings/detail/<%=dataListings[i].id%>" title="<%=dataListings[i].status.capitalize()%> <%=dataListings[i].title%>">
+      <div class="w3-container Xw3-card" style="padding: 0">
+        <div class="w3-col m7 w3-cell w3-card" style="/*width:50% ;height:300px ;background-image: url(<%=dataListings[i].pictures[0].path%>);background-position:center;background-size:cover;" ><a href="/listings/detail/<%=dataListings[i].id%>" title="<%=dataListings[i].status.capitalize()%> <%=dataListings[i].title%>">
           <img style="width:100%;height:300px;object-fit:cover;" class="w3-animate-opacity" src="<%=dataListings[i].pictures[0].path%>" alt="<%=dataListings[i].title%>" ></a>
         </div>
-        <div class="w3-container w3-col m5 w3-text-grey w3-white w3-cell w3-cell-bottom" style="height:300px">
+        <div class="w3-container w3-col m5 w3-text-grey w3-white w3-cell w3-cell-bottom w3-animate-right w3-card" style="height:300px">
           <%var title=dataListings[i].title;%>
           <p title="<%=title%>" style="width:100%;white-space:nowrap;overflow: hidden;text-overflow:ellipsis">
             <b>
@@ -109,5 +107,5 @@
 <%- partial('../partials/modal-login.ejs')%>
 
 <script>
-  document.getElementById('navbar-form-search').action='/listings';
+  document.getElementById('form-navbar-search').action='/listings';
 </script>

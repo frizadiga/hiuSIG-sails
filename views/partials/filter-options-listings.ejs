@@ -162,8 +162,12 @@ function accordion(id){
   var elm = document.getElementById(id);
   if(elm.className.indexOf('w3-show')== -1){
     elm.className += " w3-show";
+    document.getElementById('main-listings').style.paddingTop= "325px";
+
   }else{
     elm.className = elm.className.replace(' w3-show','');
+    document.getElementById('main-listings').style.paddingTop= "38px";
+
   }
  // google.maps.event.trigger(map, 'resize');
 }
