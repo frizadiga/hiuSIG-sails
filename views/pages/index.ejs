@@ -1,6 +1,6 @@
 <!--Navbar-->
 <div class="w3-top">
-<nav id="main-navbar" class="w3-text-white w3-animate-opacity ">
+<nav id="main-navbar" class="w3-bar w3-text-white w3-animate-opacity" style="overflow:visible">
 <%-partial('../partials/top-navbar-items.ejs')%>
 </nav>
 </div>
@@ -113,9 +113,9 @@ window.onscroll = function() {myFunction()};
 function myFunction() {
     var navbar = document.getElementById("main-navbar");
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        navbar.className = "w3-card w3-animate-top w3-blue-grey w3-text-white";
+        navbar.className = "w3-bar w3-card w3-animate-top w3-blue-grey w3-text-white";
     } else {
-        navbar.className = navbar.className.replace("w3-card w3-animate-top w3-blue-grey", " w3-animate-opacity");
+        navbar.className = navbar.className.replace("w3-card w3-animate-top w3-blue-grey", " w3-bar w3-animate-opacity");
     }
 }
 
