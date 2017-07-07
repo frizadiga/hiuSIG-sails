@@ -30,8 +30,7 @@ var jsFilesToInject = [
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',
   //My Custom Order js files
-  'js/fetch.js',
-  'js/vue.js'
+  'js/fetch.js'
   // Dependencies like jQuery, or Angular are brought in here
   // 'js/dependencies/**/*.js',
 

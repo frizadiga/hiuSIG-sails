@@ -101,23 +101,34 @@
 </div>
 <!--END SEARCH PANEL-->
 
-
+<script src="/js/helpers.js"></script>
 <script async defer>
+document.getElementById('form-navbar-search').addEventListener('submit',checkParams('form-navbar-search'));
 
 //REMOVE EMPTY PARAMETER ON SUBMIT
-var formNavbarSearch = document.getElementById('form-navbar-search');
+// var formNavbarSearch = document.getElementById('form-navbar-search');
 
-formNavbarSearch.addEventListener('submit', function () {
-    var allInputs = formNavbarSearch.getElementsByTagName('input');
+// formNavbarSearch.addEventListener('submit', function () {
+//     var allInputs = formNavbarSearch.getElementsByTagName('input');
+//     var allSelects = formNavbarSearch.getElementsByTagName('select');
 
-    for (var i = 0; i < allInputs.length; i++) {
-        var input = allInputs[i];
+//     for (var i = 0; i < allInputs.length; i++) {
+//         var input = allInputs[i];
 
-        if (input.name && !input.value) {
-            input.name = '';
-        }
-    }
-});
+//         if (input.name && !input.value) {
+//             input.name = '';
+//         }
+//     }
+
+//     for (var i = 0; i < allSelects.length; i++) {
+//         var select = allSelects[i];
+
+//         if (select.name && !select.value) {
+//             select.name = '';
+//         }
+//     }
+
+// });
 //END
 
   function openTab(e,tab) {

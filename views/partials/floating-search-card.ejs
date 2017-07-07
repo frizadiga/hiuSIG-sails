@@ -64,23 +64,13 @@
 
 </form>
 </div>
-
+<script src="/js/helpers.js"></script>
 <script async defer>
 document.getElementById('filter-options-listings').className += ' w3-light-grey';
-//REMOVE EMPTY PARAMETER ON SUBMIT
-var formListings = document.getElementById('form-listings');
-
-formListings.addEventListener('submit', function () {
-		var allInputs = formListings.getElementsByTagName('input');
-
-		for (var i = 0; i < allInputs.length; i++) {
-				var input = allInputs[i];
-
-				if (input.name && !input.value) {
-						input.name = '';
-				}
-		}
-});
+document.getElementById('form-listings').addEventListener('submit',checkParams('form-listings'));
+function hello(){
+	alert('hello');
+}
 //END
 
 // document.querySelector('#min-price').addEventListener('input',dataList)
