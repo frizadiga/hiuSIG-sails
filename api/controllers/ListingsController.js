@@ -82,7 +82,7 @@ module.exports = {
     	// if(err)return res.send(err);
     	if(err)return res.negotiate(err);
     	if(!data)return res.notFound(req.param('id')+'tidak dapat ditemukan');
-    	return res.view('pages/listing-detail',{dataListings:data});
+    	return res.view('pages/listing-detail',{dataListings:data,layout:'layout-plain'});
       // return res.json(data);
     });
   },

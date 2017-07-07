@@ -1,6 +1,6 @@
 <!--Navbar-->
 <div class="w3-top">
-  <nav id="main-navbar" class="w3-bar w3-blue-grey w3-animate-opacity" style="overflow:visibles">
+  <nav id="main-navbar" class="w3-bar w3-blue-grey w3-animate-opacity" style="overflow:visible">
     <%-partial('./top-logo-badge.ejs')%>
     <a title="Search Property" onclick="showSearchPanel('search-panel')" class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey w3-right" href="javascript:void(0)"><i class="fa fa-search"></i></a>
     <%-partial('./top-navbar-items.ejs')%>
@@ -102,7 +102,8 @@
 <!--END SEARCH PANEL-->
 
 <script src="/js/helpers.js"></script>
-<script async defer>
+<script>
+  
 document.getElementById('form-navbar-search').addEventListener('submit',checkParams('form-navbar-search'));
 
 //REMOVE EMPTY PARAMETER ON SUBMIT
@@ -147,19 +148,33 @@ document.getElementById('form-navbar-search').addEventListener('submit',checkPar
   // setTimeout(function(){
   //   listing-search-panel.style.display='block';
   // },500);
+  
   function showSearchPanel(id){
     var searchPanel = document.getElementById(id);
     searchPanel.className = searchPanel.className.replace(' w3-animate-opacity','');
     document.getElementById(id).style.display='block';
+
+    const mainMaps = document.getElementById('main-maps'); 
+    const mainListings = document.getElementById('main-listings'); 
+    const mainListingsDetail = document.getElementById('main-listings-detail'); 
+
+    if(mainListingsDetail)mainListingsDetail.style.paddingTop= "57px";
+    if(mainMaps)mainMaps.style.paddingTop= "0";
     document.getElementById('main-navbar').style.display='none';
-    document.getElementById('main-maps').style.paddingTop= "0";
   }
+  
   function closeSearchPanel(id){
     var searchPanel = document.getElementById(id);
     searchPanel.className = searchPanel.className.replace(' w3-animate-opacity','');
     document.getElementById('main-navbar').style.display='block';
     document.getElementById(id).style.display='none';
-    document.getElementById('main-listings').style.paddingTop= "38px";
-    document.getElementById('main-maps').style.paddingTop= "38px";
+    
+    const mainMaps = document.getElementById('main-maps'); 
+    const mainListings = document.getElementById('main-listings'); 
+    const mainListingsDetail = document.getElementById('main-listings-detail');
+
+    if(mainListings)mainListings.style.paddingTop= "38px";
+    if(mainListingsDetail)mainListingsDetail.style.paddingTop= "38px";
+    if(mainMaps)mainMaps.style.paddingTop= "38px";
   }
 </script>
