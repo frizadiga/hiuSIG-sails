@@ -1,6 +1,7 @@
 //REMOVE EMPTY PARAMETER ON SUBMIT
 function checkParams(formID) {
-	form = document.getElementById(formID);
+  let form;
+  form = document.getElementById(formID);
   form.addEventListener('submit', function () {
     var allInputs = form.getElementsByTagName('input');
     var allSelects = form.getElementsByTagName('select');
