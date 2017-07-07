@@ -1,6 +1,6 @@
 
 <%partial('../partials/helpers.ejs')%>
-<%- partial('../partials/navbar-search.ejs')%>
+<%-partial('../partials/navbar-search.ejs')%>
 
 <!--Main-->
 <div id="main-listings-detail" style="padding-top:38px!important">
@@ -238,6 +238,9 @@
  
  </div> <!-- End modal content -->
 </div> <!-- End modal -->
+
+<%-partial('../partials/modal-login.ejs')%>
+
 <script>
 var form = document.querySelector('#form-message');
 var modalSent = document.querySelector('#modal-sent-message');
