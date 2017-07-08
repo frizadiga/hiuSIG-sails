@@ -45,10 +45,10 @@ module.exports = {
       type:'string'
     },
     lotSize:{
-      type:'string'
+      type:'float'
     },
     buildingSize:{
-      type:'string'
+      type:'float'
     },
     floors:{
       type:'integer'
