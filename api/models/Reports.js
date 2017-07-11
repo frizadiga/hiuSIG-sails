@@ -28,6 +28,10 @@ module.exports = {
   		model:'users',
   		dominant:false
   	},
+    payment:{
+      model:'payments',
+      dominant:false
+    }
   },
 
    createId:function(cb){
