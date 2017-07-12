@@ -1,0 +1,187 @@
+<%partial('../partials/helpers.ejs')%>
+
+<!-- Modal Detail -->
+<div id="modal-detail-payment" class="w3-modal w3-display-container" style="padding:16px 0">
+  <div class="w3-modal-content w3-card-4 w3-animate-opacity w3-display-middle" style="max-width:700px">
+    <header class="w3-container w3-blue-grey">
+      <h3><i class="fa fa-money"></i> Detail Pembayaran</h3>
+      <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-detail-payment')"><i class="fa fa-close"></i></span>
+    </header>
+    <div>
+  <!--     <div class="w3-display-container" style="max-width:700px;margin:auto">
+        <img class="w3-greyscale-min" style="width:100%;height:300px;object-fit:cover" src="<%=%>">
+        <p class="w3-display-topmiddle w3-text-white"><b><%=%></b></p>  
+        <p class="w3-display-bottommiddle w3-text-white"><b>Rp. <%=%></b></p>  
+        
+      </div>
+      <div class="w3-container w3-padding-16 w3-center w3-text-grey" style="width:100%">
+      <img class="w3-circle w3-card" style="width:15%" src="/uploads/<%=%>">
+      <p>Agent: <%=%></p>
+      <hr class="w3-hr">
+      <label class="w3-left">Pesan Tambahan:</label>
+      <textarea id="payments-message" placeholder="Ex: Saya Booking dengan DP 50%" rows="3" class="w3-input w3-border w3-text-grey w3-hover-light-grey" type="text" style="resize:vertical">Ex: Saya Booking dengan DP 50%</textarea>
+      <hr>
+      
+      <div class="w3-bar">
+        <button id="btn-send-payments" class="w3-button w3-blue w3-hover-green"><i class="fa fa-ban"></i> Tolak</button>
+        <button id="btn-send-payments" class="w3-button w3-blue w3-hover-green"><i class="fa fa-check"></i> Terima</button>
+      </div>
+    
+    </div> -->
+
+    <table class="w3-table w3-text-grey">
+      <tr>
+        <td style="width:200px">ID Pembayaran</td>
+        <td>: <span id="id">pyt1</span></td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>: <span id="status"></span></td>
+      </tr>
+      <tr>
+        <td>Customer</td>
+        <td>: <span id="customer"></span></td>
+      </tr>
+      <tr>
+        <td>Agen</td>
+        <td>: <span id="agent"></span></td>
+      </tr>
+      <tr>
+        <td>Pemilik Rekening</td>
+        <td>: <span id="account-owner"></span></td>
+      </tr>
+         <tr>
+        <td>Email</td>
+        <td>: <span id="email"></span></td>
+      </tr>
+      <tr>
+        <td>No Telepon</td>
+        <td>: <span id="phone"></span></td>
+      </tr>
+      <tr>
+        <td>Tgl Bayar DP</td>
+        <td>: <span id="dp-paid-on"></span></td>
+      </tr>
+      <tr>
+        <td>Tgl Pelunasan</td>
+        <td>: <span id="repayment-paid-on"></span></td>
+      </tr>
+      <tr>
+        <td>Bank Pengirim</td>
+        <td>: <span id="from-bank"></span></td>
+      </tr>
+      <tr>
+        <td>Bank Tujuan</td>
+        <td>: <span id="to-bank"></span></td>
+      </tr>
+      <tr>
+        <td>Jumlah DP</td>
+        <td>: <span id="dp"></span></td>
+      </tr>
+      <tr>
+        <td>Sisa Pelunasan</td>
+        <td>: <span id="remaining-payment"></span></td>
+      </tr>
+      <tr>
+        <td>Jumlah Tagihan</td>
+        <td>: <span id="amount"></span></td>
+      </tr>
+      <tr>
+        <td>Pesan</td>
+        <td>: <span id="message"></span></td>
+      </tr>
+    </table>
+
+    </div>
+  </div>
+</div>
+
+<script>
+var idPaymentDetail = document.getElementById('id');
+var statusDetail = document.getElementById('status');
+var customerDetail = document.getElementById('customer');
+var agentDetail = document.getElementById('agent');
+var accountOwnerDetail = document.getElementById('account-owner');
+var emailDetail = document.getElementById('email');
+var phoneDetail = document.getElementById('phone');
+var dpPaidOnDetail = document.getElementById('dp-paid-on');
+var repaymentPaidOnDetail = document.getElementById('repayment-paid-on');
+var fromBankDetail = document.getElementById('from-bank');
+var toBankDetail = document.getElementById('to-bank');
+var dpDetail = document.getElementById('dp');
+var remainingPaymentDetail = document.getElementById('remaining-payment');
+var amountDetail = document.getElementById('amount');
+var messageDetail = document.getElementById('message');
+var dataPaymentDetail = {};
+
+//ADD EVENT LISTENER
+var btnConfirm = document.getElementsByClassName('detail-button');
+for(var i=0,len=btnConfirm.length;i<len;i++){
+  btnConfirm[i].addEventListener('click',setDataPayment);
+}
+
+function setDataPayment(){
+  // dataPayment.listing = this.dataset.listing;
+  // dataPayment.customer = this.dataset.customer;
+  // dataPayment.agent = this.dataset.agent;
+}
+
+  function openModal(el) {
+    document.getElementById(el).style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(el) {
+    document.getElementById(el).style.display = "none";
+    document.body.style.overflow = "visible";
+  }
+  function modalDetailPayment(id){
+    var data = {};
+    detailPayment(id);
+  }
+  
+  function detailPayment(id){
+    fetch(`/api/payment/${id}`)
+    .then((res)=>{
+      return res.json()
+    }).then(displayDetailPayment)
+    .catch((ex)=>{
+      console.log('parsing failed', ex)
+    })
+  }
+
+  var displayDetailPayment = (json)=>{
+    // console.log('parsed json', json);
+    // alert(JSON.stringify(json));
+    const data = json.dataPayment;
+    idPaymentDetail.innerHTML = data.id||'-';
+    statusDetail.innerHTML = data.status||'-';
+    customerDetail.innerHTML = data.customer.name||'-';
+    agentDetail.innerHTML = data.agent.name||'-';
+    accountOwnerDetail.innerHTML = data.accountOwner||'-';
+    emailDetail.innerHTML = data.email||'-';
+    phoneDetail.innerHTML = data.phone||'-';
+    dpPaidOnDetail.innerHTML = new Date(data.dpPaidOn).toDateString()||'-';
+    repaymentPaidOnDetail.innerHTML = new Date(data.repaymentPaidOn).toDateString()||'-';
+    fromBankDetail.innerHTML = data.fromBank||'-';
+    toBankDetail.innerHTML = data.toBank||'-';
+    dpDetail.innerHTML = (data.dp)?`Rp. ${data.dp.formatMoney(0,',','.')}`:'-';
+    remainingPaymentDetail.innerHTML = (data.remainingPayment)?`Rp. ${data.remainingPayment.formatMoney(0,',','.')}`:'-';
+    amountDetail.innerHTML = (data.amount)?`Rp. ${data.amount.formatMoney(0,',','.')}`:'-';
+    messageDetail.innerHTML = data.message||'-';
+    openModal('modal-detail-payment');
+  }
+
+  String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
+  Number.prototype.formatMoney = function(c, d, t){
+    var n = this, 
+    c = isNaN(c = Math.abs(c)) ? 2 : c, 
+    d = d == undefined ? "." : d, 
+    t = t == undefined ? "," : t, 
+    s = n < 0 ? "-" : "", 
+    i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))), 
+    j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+  };
+</script>
