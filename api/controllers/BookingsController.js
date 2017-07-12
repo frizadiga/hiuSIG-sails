@@ -40,14 +40,14 @@ module.exports = {
 			});
 		});
 	},
-	bookingDenied:(req,res)=>{
-		Bookings.destroy({id:req.param('id')}).exec((err,data)=>{
+	bookingDeclined:(req,res)=>{
+		Bookings.update({id:req.param('id')},{status:'ditolak'}).exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 		});
 	},
 	bookingApproved:(req,res)=>{
-		Bookings.update({id:req.param('id')},{status:'approved'}).exec((err,data)=>{
+		Bookings.update({id:req.param('id')},{status:'diterima'}).exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 		});

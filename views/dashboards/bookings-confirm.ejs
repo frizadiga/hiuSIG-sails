@@ -35,7 +35,7 @@
         <button class="w3-button w3-hover-blue" title="Detil"><i class="fa fa-info"></i></button>
 				
         <button class="w3-button w3-hover-red" title="Tolak"
-        onclick="modalDeleteBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')">
+        onclick="modalDeclineBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')">
         <i class="fa fa-ban"></i> 
         </button>
 				
@@ -83,7 +83,7 @@
       
       <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
         <button onclick="document.getElementById('modal-confirm-delete-booking').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
-        <button onclick="deleteBooking(mid.innerHTML)" type="button" class="w3-btn w3-red w3-right">Tolak</button>
+        <button onclick="declineBooking(mid.innerHTML)" type="button" class="w3-btn w3-red w3-right">Tolak</button>
       </footer>
     </form>
     
@@ -148,7 +148,7 @@ function setDataPayment(){
     document.getElementById(el).style.display = "none";
     document.body.style.overflow = "visible";
   }
-  function modalDeleteBooking(id,username){
+  function modalDeclineBooking(id,username){
     id = id;
     openModal('modal-confirm-delete-booking');
     mid.innerHTML = id;
@@ -160,16 +160,16 @@ function setDataPayment(){
     mia.innerHTML = id;
     mda.innerHTML = username;
   }
-  function deleteBooking(id){
-    fetch(`/api/booking/${id}`,{
-      method:'DELETE'
+  function declineBooking(id){
+    fetch(`/api/booking/decline/${id}`,{
+      method:'PUT'
     }).then((res)=>{
       mdd.innerHTML = res.text();
       location.reload();
     })
   }
   function approveBooking(id){
-    fetch(`/api/booking/${id}`,{
+    fetch(`/api/booking/approve/${id}`,{
       method:'PUT',
     }).then((res)=>{
       mda.innerHTML = res.text();

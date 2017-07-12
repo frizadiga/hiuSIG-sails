@@ -33,7 +33,7 @@ module.exports = {
     },
     status:{
       type:'string',
-      enum: ['pending', 'approved', 'denied']
+      enum: ['pending', 'diterima', 'ditolak']
     }
 
   },

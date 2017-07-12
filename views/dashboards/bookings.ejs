@@ -32,7 +32,7 @@
       <td style="vertical-align: middle"><%=dataBookings[i].message%></td>
 			<td style="vertical-align: middle"><%=dataBookings[i].status.capitalize()%></td>
 			<!-- <td style="vertical-align: middle" class="w3-center">
-				<button class="w3-button w3-hover-red" onclick="modalDeleteBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')"><i class="fa fa-ban"></i> Tolak</button>
+				<button class="w3-button w3-hover-red" onclick="modalDeclineBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')"><i class="fa fa-ban"></i> Tolak</button>
 				<button class="w3-button w3-hover-text-blue-grey w3-hover-white" onclick="modalApproveBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')"><i class="fa fa-info"></i> Detail</button>
 			</td> -->
 		</tr>
@@ -51,10 +51,10 @@
 </div>
 
 <!--Delete Modal-->
-<div id="modal-confirm-delete-booking" class="w3-modal">
+<div id="modal-confirm-decline-booking" class="w3-modal">
   <div class="w3-modal-content w3-card-4" style="max-width:399px;opacity:0.95">
    <header id="modal-login-header" class="w3-center"><br>
-      <span onclick="document.getElementById('modal-confirm-delete-booking').style.display='none'" class="w3-button w3-hover-red w3-padding w3-display-topright" title="Close">&times;</span>
+      <span onclick="document.getElementById('modal-confirm-decline-booking').style.display='none'" class="w3-button w3-hover-red w3-padding w3-display-topright" title="Close">&times;</span>
     
       <p class="w3-xlarge w3-margin w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></p>
       <hr">
@@ -63,13 +63,13 @@
     <form class="" action="">
       <div class="w3-container">
         <p>Anda yakin akan <b>Menolak</b> pemesanan ini?</p>
-        <p>ID: <span id="modal-id-delete"></span></p>
-        <p>Customer: <span id="modal-data-delete"></span></p>
+        <p>ID: <span id="modal-id-decline"></span></p>
+        <p>Customer: <span id="modal-data-decline"></span></p>
       </div>
       
       <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
-        <button onclick="document.getElementById('modal-confirm-delete-booking').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
-        <button onclick="deleteBooking(mid.innerHTML)" type="button" class="w3-btn w3-red w3-right">Tolak</button>
+        <button onclick="document.getElementById('modal-confirm-decline-booking').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
+        <button onclick="declineBooking(mid.innerHTML)" type="button" class="w3-btn w3-red w3-right">Tolak</button>
       </footer>
     </form>
     
@@ -106,8 +106,8 @@
 var id = 0;
 var mia = document.getElementById('modal-id-approve');
 var mda = document.getElementById('modal-data-approve');
-var mid = document.getElementById('modal-id-delete');
-var mdd = document.getElementById('modal-data-delete');
+var mid = document.getElementById('modal-id-decline');
+var mdd = document.getElementById('modal-data-decline');
   
   function openModal(el) {
     document.getElementById(el).style.display = "block";
@@ -117,9 +117,9 @@ var mdd = document.getElementById('modal-data-delete');
     document.getElementById(el).style.display = "none";
     document.body.style.overflow = "visible";
   }
-  function modalDeleteBooking(id,username){
+  function modalDeclineBooking(id,username){
     id = id;
-    openModal('modal-confirm-delete-booking');
+    openModal('modal-confirm-decline-booking');
     mid.innerHTML = id;
     mdd.innerHTML = username;
   }
@@ -129,16 +129,16 @@ var mdd = document.getElementById('modal-data-delete');
     mia.innerHTML = id;
     mda.innerHTML = username;
   }
-  function deleteBooking(id){
-    fetch(`/api/booking/${id}`,{
-      method:'DELETE'
+  function declineBooking(id){
+    fetch(`/api/booking/decline/${id}`,{
+      method:'PUT'
     }).then((res)=>{
       mdd.innerHTML = res.text();
       location.reload();
     })
   }
   function approveBooking(id){
-    fetch(`/api/booking/${id}`,{
+    fetch(`/api/booking/approve/${id}`,{
       method:'PUT'
     }).then((res)=>{
       mda.innerHTML = res.text();

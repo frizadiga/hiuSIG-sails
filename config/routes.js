@@ -140,8 +140,8 @@ module.exports.routes = {
   
   //API BOOKINGS
   'POST /api/booking':'BookingsController.bookingCreate',
-  'DELETE /api/booking/:id':'BookingsController.bookingDenied',
-  'PUT /api/booking/:id':'BookingsController.bookingApproved',
+  'PUT /api/booking/decline/:id':'BookingsController.bookingDeclined',
+  'PUT /api/booking/approve/:id':'BookingsController.bookingApproved',
   
   //API PAYMENTS
   'POST /api/payment':'PaymentsController.paymentCreate',

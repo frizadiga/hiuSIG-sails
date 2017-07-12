@@ -38,6 +38,7 @@
     const userRole = req.session.user.role;
     const agentPending = req.session.user.status === 'pending';
   %>
+  <%partial('partials/helpers.ejs')%>
 <body>
 
 <!--Side Bar-->
