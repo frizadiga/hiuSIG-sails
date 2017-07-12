@@ -1,13 +1,13 @@
 <%partial('../partials/helpers.ejs')%>
 
 <!-- Modal Detail -->
-<div id="modal-detail-payment" class="w3-modal w3-display-container" style="padding:16px 0">
+<div id="modal-detail-booking" class="w3-modal w3-display-container" style="padding:16px 0">
   <div class="w3-modal-content w3-card-4 w3-animate-opacity w3-display-middle" style="max-width:700px">
     <header class="w3-container w3-blue-grey">
-      <h3><i class="fa fa-money"></i> Detail Pembayaran</h3>
-      <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-detail-payment')"><i class="fa fa-close"></i></span>
+      <h3><i class="fa fa-money"></i> Detail Pemesanan</h3>
+      <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-detail-booking')"><i class="fa fa-close"></i></span>
     </header>
-    <div>
+    <div class="w3-padding-16">
   <!--     <div class="w3-display-container" style="max-width:700px;margin:auto">
         <img class="w3-greyscale-min" style="width:100%;height:300px;object-fit:cover" src="<%=%>">
         <p class="w3-display-topmiddle w3-text-white"><b><%=%></b></p>  
@@ -31,7 +31,7 @@
 
     <table class="w3-table w3-text-grey">
       <tr>
-        <td style="width:200px">ID Pembayaran</td>
+        <td style="width:200px">ID Pemesanan</td>
         <td>: <span id="id">pyt1</span></td>
       </tr>
       <tr>
@@ -39,55 +39,23 @@
         <td>: <span id="status"></span></td>
       </tr>
       <tr>
-        <td>Customer</td>
-        <td>: <span id="customer"></span></td>
-      </tr>
-      <tr>
         <td>Agen</td>
         <td>: <span id="agent"></span></td>
       </tr>
       <tr>
-        <td>Pemilik Rekening</td>
-        <td>: <span id="account-owner"></span></td>
+        <td>Customer</td>
+        <td>: <span id="customer"></span></td>
       </tr>
-         <tr>
-        <td>Email</td>
+      <tr>
+        <td>Email Customer</td>
         <td>: <span id="email"></span></td>
       </tr>
       <tr>
-        <td>No Telepon</td>
+        <td>No Telepon Customer</td>
         <td>: <span id="phone"></span></td>
       </tr>
       <tr>
-        <td>Tgl Bayar DP</td>
-        <td>: <span id="dp-paid-on"></span></td>
-      </tr>
-      <tr>
-        <td>Tgl Pelunasan</td>
-        <td>: <span id="repayment-paid-on"></span></td>
-      </tr>
-      <tr>
-        <td>Bank Pengirim</td>
-        <td>: <span id="from-bank"></span></td>
-      </tr>
-      <tr>
-        <td>Bank Tujuan</td>
-        <td>: <span id="to-bank"></span></td>
-      </tr>
-      <tr>
-        <td>Jumlah DP</td>
-        <td>: <span id="dp"></span></td>
-      </tr>
-      <tr>
-        <td>Sisa Pelunasan</td>
-        <td>: <span id="remaining-payment"></span></td>
-      </tr>
-      <tr>
-        <td>Jumlah Tagihan</td>
-        <td>: <span id="amount"></span></td>
-      </tr>
-      <tr>
-        <td>Pesan</td>
+      <td>Pesan</td>
         <td>: <span id="message"></span></td>
       </tr>
     </table>
@@ -101,26 +69,18 @@ var idPaymentDetail = document.getElementById('id');
 var statusDetail = document.getElementById('status');
 var customerDetail = document.getElementById('customer');
 var agentDetail = document.getElementById('agent');
-var accountOwnerDetail = document.getElementById('account-owner');
-var emailDetail = document.getElementById('email');
-var phoneDetail = document.getElementById('phone');
-var dpPaidOnDetail = document.getElementById('dp-paid-on');
-var repaymentPaidOnDetail = document.getElementById('repayment-paid-on');
-var fromBankDetail = document.getElementById('from-bank');
-var toBankDetail = document.getElementById('to-bank');
-var dpDetail = document.getElementById('dp');
-var remainingPaymentDetail = document.getElementById('remaining-payment');
-var amountDetail = document.getElementById('amount');
+var customerEmailDetail = document.getElementById('email');
+var customerPhoneDetail = document.getElementById('phone');
 var messageDetail = document.getElementById('message');
-var dataPaymentDetail = {};
+var dataBookingDetail = {};
 
 //ADD EVENT LISTENER
 var btnConfirm = document.getElementsByClassName('detail-button');
 for(var i=0,len=btnConfirm.length;i<len;i++){
-  btnConfirm[i].addEventListener('click',setDataPayment);
+  btnConfirm[i].addEventListener('click',setDataBooking);
 }
 
-function setDataPayment(){
+function setDataBooking(){
   // dataPayment.listing = this.dataset.listing;
   // dataPayment.customer = this.dataset.customer;
   // dataPayment.agent = this.dataset.agent;
@@ -134,22 +94,22 @@ function setDataPayment(){
     document.getElementById(el).style.display = "none";
     document.body.style.overflow = "visible";
   }
-  function modalDetailPayment(id){
+  function modalDetailBooking(id){
     var data = {};
-    detailPayment(id);
+    detailBooking(id);
   }
   
-  function detailPayment(id){
-    fetch(`/api/payment/${id}`)
+  function detailBooking(id){
+    fetch(`/api/booking/${id}`)
     .then((res)=>{
       return res.json()
-    }).then(displayDetailPayment)
+    }).then(displayDetailBooking)
     .catch((ex)=>{
       console.log('parsing failed', ex)
     })
   }
 
-  var displayDetailPayment = (json)=>{
+  var displayDetailBooking = (json)=>{
     // console.log('parsed json', json);
     // alert(JSON.stringify(json));
     const data = json.dataPayment;
@@ -157,18 +117,10 @@ function setDataPayment(){
     statusDetail.innerHTML = data.status||'-';
     customerDetail.innerHTML = data.customer.name||'-';
     agentDetail.innerHTML = data.agent.name||'-';
-    accountOwnerDetail.innerHTML = data.accountOwner||'-';
-    emailDetail.innerHTML = data.email||'-';
-    phoneDetail.innerHTML = data.phone||'-';
-    dpPaidOnDetail.innerHTML = new Date(data.dpPaidOn).toDateString()||'-';
-    repaymentPaidOnDetail.innerHTML = new Date(data.repaymentPaidOn).toDateString()||'-';
-    fromBankDetail.innerHTML = data.fromBank||'-';
-    toBankDetail.innerHTML = data.toBank||'-';
-    dpDetail.innerHTML = (data.dp)?`Rp. ${data.dp.formatMoney(0,',','.')}`:'-';
-    remainingPaymentDetail.innerHTML = (data.remainingPayment)?`Rp. ${data.remainingPayment.formatMoney(0,',','.')}`:'-';
-    amountDetail.innerHTML = (data.amount)?`Rp. ${data.amount.formatMoney(0,',','.')}`:'-';
+    customerEmailDetail.innerHTML = data.customer.email||'-';
+    customerPhoneDetail.innerHTML = data.customer.phone||'-';
     messageDetail.innerHTML = data.message||'-';
-    openModal('modal-detail-payment');
+    openModal('modal-detail-booking');
   }
 
   String.prototype.capitalize = function() {

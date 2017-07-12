@@ -20,6 +20,12 @@ module.exports = {
 			return res.view('dashboards/bookings',{dataBookings:data,layout:'layout-dashboards'});
 		});
 	},
+	bookingDetail:(req,res)=>{
+		Bookings.findOne({id:req.param('id')}).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json({dataPayment:data});
+		});
+	},
 	bookingsConfirm:(req,res)=>{
 		const agent = req.session.user;
 		let opts = {};

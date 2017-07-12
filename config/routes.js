@@ -140,6 +140,7 @@ module.exports.routes = {
   
   //API BOOKINGS
   'POST /api/booking':'BookingsController.bookingCreate',
+  'GET /api/booking/:id':'BookingsController.bookingDetail',
   'PUT /api/booking/decline/:id':'BookingsController.bookingDeclined',
   'PUT /api/booking/approve/:id':'BookingsController.bookingApproved',
   

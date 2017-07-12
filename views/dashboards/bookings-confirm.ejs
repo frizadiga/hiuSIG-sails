@@ -32,7 +32,7 @@
       <td style="vertical-align: middle"><%=dataBookings[i].message%></td>
 			<td style="vertical-align: middle"><%=dataBookings[i].status.capitalize()%></td>
 			<td style="vertical-align: middle" class="w3-center">
-        <button class="w3-button w3-hover-blue" title="Detil"><i class="fa fa-info"></i></button>
+        <button class="w3-button w3-hover-blue" onclick="modalDetailBooking('<%=dataBookings[i].id%>')" title="Detil"><i class="fa fa-info"></i></button>
 				
         <button class="w3-button w3-hover-red" title="Tolak"
         onclick="modalDeclineBooking('<%=dataBookings[i].id%>','<%=dataBookings[i].customer.name%>')">
@@ -76,7 +76,7 @@
    
     <form class="" action="">
       <div class="w3-container">
-        <p>Anda yakin akan <b>Menolak</b> pemesanan ini?</p>
+        <p>Anda yakin akan <b>Menolak</b> Pemesanan ini?</p>
         <p>ID: <span id="modal-id-delete"></span></p>
         <p>Customer: <span id="modal-data-delete"></span></p>
       </div>
@@ -102,7 +102,7 @@
    
     <form class="" action="">
       <div class="w3-container">
-        <p>Anda yakin akan <b>Menerima</b> pemesanan ini?</p>
+        <p>Anda yakin akan <b>Menerima</b> Pemesanan ini?</p>
         <p>ID: <span id="modal-id-approve"></span></p>
         <p>Customer: <span id="modal-data-approve"></span></p>
       </div>
@@ -115,6 +115,8 @@
     
   </div>
 </div>
+
+<%-partial('../partials/modal-detail-booking.ejs')%>
 
 <script>
 var id = 0;
@@ -174,13 +176,6 @@ function setDataPayment(){
     }).then((res)=>{
       mda.innerHTML = res.text();
       location.reload();
-    })
-    fetch(`/api/payment`,{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify(dataPayment)
     })
   }
 

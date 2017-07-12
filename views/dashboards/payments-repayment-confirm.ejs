@@ -32,7 +32,7 @@
       <td style="vertical-align: middle"><%=dataPayments[i].message%></td>
       <td style="vertical-align: middle"><%=dataPayments[i].status%></td>
       <td style="vertical-align: middle" class="w3-center">
-        <button class="w3-button w3-hover-red" onclick="openModal('modal-payments')" title="Detil"><i class="fa fa-info"></i></button>
+        <button class="w3-button w3-hover-red" onclick="modalDetailPayment('<%=dataPayments[i].id%>')" title="Detil"><i class="fa fa-info"></i></button>
         
         <button class="w3-button w3-hover-red" onclick="modalDeniedRepayment('<%=dataPayments[i].id%>','<%=dataPayments[i].customer.name%>')" title="Tolak"><i class="fa fa-ban"></i></button>
         <button class="w3-button w3-hover-text-blue-grey w3-hover-white" onclick="modalApproveRepayment('<%=dataPayments[i].id%>','<%=dataPayments[i].customer.name%>')" title="Terima"><i class="fa fa-check"></i></button>
@@ -82,6 +82,7 @@
   </div>
 </div>
 
+<%-partial('../partials/modal-detail-payment')%>
 <%-partial('../partials/modal-confirm-repayment.ejs')%>
 
 <script>
