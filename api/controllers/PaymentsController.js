@@ -127,20 +127,38 @@ module.exports = {
 		params.status = 'pending dp';
 		params.remainingPayment = params.listingPrice - params.dp;
 		// return res.json(params);
-		Payments.update({id:req.param('id')},params).exec((err,data)=>{
+		req.file('dpProof').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
+      if(err)return res.serverError(err);
+      var fileName = require('path').basename(uploadedFiles[0].fd);
+      var filePath = '/uploads/'+fileName;
+	
+	  query = Object.assign({},params,{dpProof:fileName});
+
+		Payments.update({id:req.param('id')},query).exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 			return res.redirect(req.get('referer'));
 		});
+		});//End req.file('pictures')
+
 	},
 
 	payRepayment:(req,res)=>{
 		let params = req.allParams();
 		params.status = 'pending pelunasan';
-		Payments.update({id:req.param('id')},params).exec((err,data)=>{
+
+		req.file('repaymentProof').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
+      if(err)return res.serverError(err);
+      var fileName = require('path').basename(uploadedFiles[0].fd);
+      var filePath = '/uploads/'+fileName;
+	
+	  query = Object.assign({},params,{repaymentProof:fileName});
+
+		Payments.update({id:req.param('id')},query).exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 		});
+		});//End req.file('pictures')
 	},
 
 	dpApproved:(req,res)=>{

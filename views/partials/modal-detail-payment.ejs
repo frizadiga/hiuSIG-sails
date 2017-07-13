@@ -87,6 +87,10 @@
         <td>: <span id="amount"></span></td>
       </tr>
       <tr>
+        <td>Bukti Pembayaran</td>
+        <td>: <a href="" id="dp-proof" target="_blank">Bukti Pembayaran DP</a> | <a href="" id="repayment-proof" target="_blank">Bukti Pembayaran Pelunasan</a></td>
+      </tr>
+      <tr>
         <td>Pesan</td>
         <td>: <span id="message"></span></td>
       </tr>
@@ -112,6 +116,8 @@ var dpDetail = document.getElementById('dp');
 var remainingPaymentDetail = document.getElementById('remaining-payment');
 var amountDetail = document.getElementById('amount');
 var messageDetail = document.getElementById('message');
+var dpProof = document.getElementById('dp-proof');
+var repaymentProof = document.getElementById('repayment-proof');
 var dataPaymentDetail = {};
 
 //ADD EVENT LISTENER
@@ -168,6 +174,8 @@ function setDataPayment(){
     remainingPaymentDetail.innerHTML = (data.remainingPayment)?`Rp. ${data.remainingPayment.formatMoney(0,',','.')}`:'-';
     amountDetail.innerHTML = (data.amount)?`Rp. ${data.amount.formatMoney(0,',','.')}`:'-';
     messageDetail.innerHTML = data.message||'-';
+    dpProof.href = `/uploads/${data.dpProof}`||'';
+    repaymentProof.href = `/uploads/${data.repaymentProof}`||'';
     openModal('modal-detail-payment');
   }
 
