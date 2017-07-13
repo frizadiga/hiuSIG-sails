@@ -92,7 +92,7 @@
       </tr>
       <tr>
         <td>Kuitansi Pembayaran</td>
-        <td>: <a href="" id="dp-proof" target="_blank">Kuitansi Pembayaran DP</a> | <a href="" id="repayment-proof" target="_blank">Kuitansi Pembayaran Pelunasan</a></td>
+        <td>: <a href="" id="dp-receipt" target="_blank">Kuitansi Pembayaran DP</a> | <a href="" id="repayment-receipt" target="_blank">Kuitansi Pembayaran Pelunasan</a></td>
       </tr>
       <tr>
         <td>Pesan</td>
@@ -122,6 +122,8 @@ var amountDetail = document.getElementById('amount');
 var messageDetail = document.getElementById('message');
 var dpProof = document.getElementById('dp-proof');
 var repaymentProof = document.getElementById('repayment-proof');
+var dpReceipt = document.getElementById('dp-receipt');
+var repaymentReceipt = document.getElementById('repayment-receipt');
 var dataPaymentDetail = {};
 
 //ADD EVENT LISTENER
@@ -180,6 +182,8 @@ function setDataPayment(){
     messageDetail.innerHTML = data.message||'-';
     dpProof.href = `/uploads/${data.dpProof}`||'';
     repaymentProof.href = `/uploads/${data.repaymentProof}`||'';
+    dpReceipt.href = `/dashboards/documents/kuitansi/${data.id}`||'';
+    repaymentReceipt.href = `/dashboards/documents/kuitansi/${data.id}`||'';
     openModal('modal-detail-payment');
   }
 
