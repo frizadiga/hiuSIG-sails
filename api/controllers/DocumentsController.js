@@ -21,8 +21,8 @@ module.exports = {
 			delete params.id;
 			return res.view('dashboards/documents/kuitansi',{dataKuitansi:null,title:'Kuitansi',layout:'layout-dashboards'});
 		}else{
-			Payments.findOne({id:params.id}).populate('customer').populate('agent').exec((err,data)=>{
-				if(data.id){data.id=data.id.replace('pyt','kwt-') || '-'}
+			Payments.findOne({id:params.id}).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+				// if(data.id){data.id=data.id.replace('pyt','kwt-') || '-'}
 				return res.view('dashboards/documents/kuitansi',{dataKuitansi:data,title:'Kuitansi',layout:'layout-dashboards'});
 			});
 		}

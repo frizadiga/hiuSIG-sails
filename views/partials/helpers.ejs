@@ -1,7 +1,10 @@
 <%   
+    // CAPITALIZE FIRST CHAR
     String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
     }
+    
+    // MONEY FORMAT TO INDONESIAN
     Number.prototype.formatMoney = function(c, d, t){
     var n = this, 
     c = isNaN(c = Math.abs(c)) ? 2 : c, 
