@@ -37,13 +37,13 @@
 
 <!--Tab Header-->
 <div class="w3-row w3-center">
-  <a href="javascript:void(0)" onclick="openTabs(event, 'info');">
+  <a href="javascript:void(0)" onclick="openTabs(event, 'info')">
     <div id="default-tab-header" class="w3-third tablink w3-leftbar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-info"></i> Data Properti</div>
   </a>
   <a href="javascript:void(0)" onclick="openTabs(event, 'maps');initMap()">
     <div class="w3-third tablink w3-leftbar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-map"></i> Maps</div>
   </a>
-  <a href="javascript:void(0)" onclick="openTabs(event, 'agen');initMap()">
+  <a href="javascript:void(0)" onclick="openTabs(event, 'agen')">
     <div class="w3-third tablink w3-leftbar w3-hover-light-grey w3-hover-text-blue-grey w3-padding"><i class="fa fa-user-secret"></i> Agen</div>
   </a>
 </div>
@@ -334,7 +334,7 @@ function openTabs(evt,tabName){
     tabs[i].style.display='none';
   }
   tablinks = document.getElementsByClassName('tablink');
-  for (i=0;i<tabs.length;i++) {
+  for (let i=0;i<tabs.length;i++) {
     tablinks[i].className = tablinks[i].className.replace(' w3-border-green','');
   }
   document.getElementById(tabName).style.display='block';
