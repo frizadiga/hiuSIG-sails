@@ -16,7 +16,10 @@ module.exports = {
 		return res.view('dashboards/documents/surat-pengajuan-ajb',{title:'Surat Pengajuan Akad Jual Beli',layout:'layout-dashboards'});
 	},
 	kuitansi:(req,res)=>{
-		return res.view('dashboards/documents/kuitansi',{title:'Kuitansi',layout:'layout-dashboards'});
+		Payments.findOne({id:req.param('id')}).populate('customer').populate('agent').exec((err,data)=>{
+
+		return res.view('dashboards/documents/kuitansi',{dataKuitansi:data,title:'Kuitansi',layout:'layout-dashboards'});
+		});
 	}
 };
 

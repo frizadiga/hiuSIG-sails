@@ -54,16 +54,16 @@
           <h3>Kuitansi Pembayaran</h3>
         </td>
         <td style="text-align:center">
-          <p>No Kuitansi: -</p>
+          <p>No Kuitansi: <%=dataKuitansi.id.replace('pwt','kwt') || '-'%></p>
         </td>
       </tr>  
     </table>
     
     <div class="w3-container">
-      <p>Telah Terima dari : </p>
-      <p>Uang Sejumlah : </p>
-      <p>Terbilang : </p>
-      <p>Untuk Pembayaran: </p>
+      <p>Telah Terima dari : <%=dataKuitansi.customer.name%></p>
+      <p>Uang Sejumlah : Rp. <%=dataKuitansi.dp.formatMoney(0,',','.')%></p>
+      <p>Terbilang : <%=dataKuitansi.amount%></p>
+      <p>Untuk Pembayaran: <%=dataKuitansi.status%></p>
     </div>
   	
 
