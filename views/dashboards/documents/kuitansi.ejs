@@ -62,8 +62,8 @@
     <div class="w3-container">
       <p>Telah Terima dari : <%=(dataKuitansi)?dataKuitansi.customer.name:'-'%></p>
       <p>Uang Sejumlah : Rp. <%=(dataKuitansi)?dataKuitansi.dp.formatMoney(0,',','.'):'-'%></p>
-      <p>Terbilang : <span id="terbilang"><%=(dataKuitansi)?dataKuitansi.dp:'-'%></span> Rupiah</p>
-      <p>Untuk Pembayaran: <%=(dataKuitansi)?`${dataKuitansi.status} pada ${dataKuitansi.listing.type} ${dataKuitansi.listing.title}`:'-'%></p>
+      <p>Terbilang : <span id="terbilang"><%=(dataKuitansi)?dataKuitansi.dp:'-'%></span></p>
+      <p>Untuk Pembayaran: <%=(dataKuitansi)?`${dataKuitansi.status.replace('pending','')} pada ${dataKuitansi.listing.type} ${dataKuitansi.listing.title}`.toUpperCase():'-'%></p>
     </div>
   	
 
@@ -95,11 +95,10 @@
 </div>
 <script>
 document.addEventListiner('DOMContentLoaded',setTerbilang());
-var textTerbilang = document.getElementById('terbilang');
-	textTerbilang.innerHTML = terbilang(parseInt(1000));
+
 function setTerbilang(){
 	textTerbilang = document.getElementById('terbilang');
-	textTerbilang.innerHTML = terbilang(textTerbilang.innerHTML);
+	textTerbilang.innerHTML = terbilang(textTerbilang.innerHTML).toUpperCase() + ' RUPIAH';
 }
 
 	function printDiv(divName) {
