@@ -57,22 +57,22 @@
       <th>Tgl Transaksi</th>
       <!-- <th style="width: 200px"></th> -->
     </tr>
-    <% for (var i = 0; i < dataReports.length; i++) { -%>      
+    <% for (var i = 0; i < dataReports.length; i++) {%>      
     <tr class="w3-text-grey w3-hover-green">
       <td style="vertical-align: middle"><%=i+1%></td>
-      <td style="vertical-align: middle"><%=dataReports[i].listing.title%></td>
-      <td style="vertical-align: middle"><%=dataReports[i].agent.name%></td>
-      <td style="vertical-align: middle"><%=dataReports[i].customer.name%></td>
-      <td style="vertical-align: middle"><%=dataReports[i].listing.price.formatMoney(0,',','.')%></td>
-      <td style="vertical-align: middle"><%=dataReports[i].status%></td>
-    	<td style="vertical-align: middle"><%=dataReports[i].updatedAt.toDateString()%></td>
+      <td style="vertical-align: middle"><%=dataReports[i].listing.title||'-' %></td>
+      <td style="vertical-align: middle"><%=dataReports[i].agent.name||'-' %></td>
+      <td style="vertical-align: middle"><%=dataReports[i].customer.name||'-' %></td>
+      <td style="vertical-align: middle"><%=dataReports[i].listing.price.formatMoney(0,',','.')||'-' %></td>
+      <td style="vertical-align: middle"><%=dataReports[i].status||'-' %></td>
+    	<td style="vertical-align: middle"><%=dataReports[i].updatedAt.toDateString()||'-' %></td>
     	
      <!--  <td style="vertical-align: middle">
         <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
         <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-print"></i> Print</button>
       </td> -->
     </tr>
-    <% } -%>
+    <% } %>
   <!--  <tr  class="w3-hover-none">
       <td colspan="4">
       <button class="w3-blue-grey w3-hover-green w3-button w3-right no-print" onclick="printDiv('report')"><b><i class="fa fa-print"></i> Print</b></button>

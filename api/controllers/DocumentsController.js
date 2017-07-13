@@ -16,10 +16,16 @@ module.exports = {
 		return res.view('dashboards/documents/surat-pengajuan-ajb',{title:'Surat Pengajuan Akad Jual Beli',layout:'layout-dashboards'});
 	},
 	kuitansi:(req,res)=>{
-		Payments.findOne({id:req.param('id')}).populate('customer').populate('agent').exec((err,data)=>{
-
-		return res.view('dashboards/documents/kuitansi',{dataKuitansi:data,title:'Kuitansi',layout:'layout-dashboards'});
-		});
+		params = req.allParams();
+		if(!params.id){
+			delete params.id;
+			return res.view('dashboards/documents/kuitansi',{dataKuitansi:null,title:'Kuitansi',layout:'layout-dashboards'});
+		}else{
+			Payments.findOne({id:params.id}).populate('customer').populate('agent').exec((err,data)=>{
+				if(data.id){data.id=data.id.replace('pyt','kwt-') || '-'}
+				return res.view('dashboards/documents/kuitansi',{dataKuitansi:data,title:'Kuitansi',layout:'layout-dashboards'});
+			});
+		}
 	}
 };
 

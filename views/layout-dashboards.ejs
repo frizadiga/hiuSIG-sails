@@ -124,9 +124,10 @@
 </div> -->
 
 <a href="/dashboards/documents/kuitansi" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-pdf-o"></i> Kuitansi</a>
-  
-<a href="/dashboards/reports/report-transaction" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-pdf-o"></i> Laporan Transaksi</a>
 
+<%if(userRole==='administrator'){%>
+<a href="/dashboards/reports/report-transaction" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-file-pdf-o"></i> Laporan Transaksi</a>
+<%}%>
 <!-- <hr class="w3-opacity w3-hr">
 <a href="/dashboards/settings" class="w3-bar-item w3-button w3-hover-white w3-hover-text-blue-grey w3-section"><i class="fa fa-cog"></i> Setting</b></a> -->
 
