@@ -49,7 +49,15 @@ module.exports = {
 			harga:800000000
 		}
 		];
-		return res.view('dashboards/documents/report-transactions',{data:dataReports, layout:'layout-dashboards'});
+		const customer = req.session.user;
+		let opts = {};
+		opts = {customer:customer.no};
+		opts.sort = 'createdAt DESC';
+		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			// return res.view('dashboards/payments',{dataPayments:data,layout:'layout-dashboards'});
+			return res.view('dashboards/documents/report-transactions',{dataReports:data, layout:'layout-dashboards'});
+		});
 	}
 };
 
