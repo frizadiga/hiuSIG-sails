@@ -177,6 +177,14 @@ function setDataPayment(){
       mda.innerHTML = res.text();
       location.reload();
     })
+    fetch(`/api/payment`,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(dataPayment)
+    })
+
   }
 
   document.getElementById('search-filter').addEventListener('keyup',searchFilter);
