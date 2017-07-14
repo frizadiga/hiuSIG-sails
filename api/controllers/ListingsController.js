@@ -65,7 +65,7 @@ module.exports = {
         for (let i = 0; i < len; i++) {
         dataLocation.push(
         {
-          //title:data[i].title,
+          title:data[i].title,
           lat:Number(data[i].lat),
           lng:Number(data[i].lng)
         }
