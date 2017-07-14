@@ -129,7 +129,6 @@ module.exports.routes = {
   '/api/user/insert':'UsersController.userInsert',
   '/api/user/delete/:id':'UsersController.UserDelete',
   '/api/user/edit/:no':'UsersController.userEditPost',
-  '/api/user/insert':'UsersController.userInsert',
   
   //API AGENT
   'DELETE /api/agent-denied/:id':'UsersController.agentDenied',

@@ -112,11 +112,11 @@ module.exports = {
   
   listingInsert:function(req,res){
     var params = req.allParams();
-
+    // return res.json(params);
     // Create Property ID
     Listings.createId(function(err,id){
       params.id = id;
-      var owner = parseInt(id.replace('p',''));
+      var owner = parseInt(id.replace('lst',''));
      
    
     // Upload Picture

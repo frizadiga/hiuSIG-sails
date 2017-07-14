@@ -75,6 +75,7 @@ module.exports = {
 
   userInsert:function(req,res){
     var params = req.allParams();
+    if(!params.role)params.role = 'member'
     var query;
     // Create User ID
     Users.createId(function(err,id){
@@ -90,7 +91,7 @@ module.exports = {
       // Insert FileName and Path to Database
       // Files.create({name:fileName,path:filePath,idOwner:idOwner}).exec(function(err,data){
       // if(err)return res.negotiate(err);
-    query = Object.assign({},params,{avatar:fileName},{role:'member'},{status:'on'});
+    query = Object.assign({},params,{avatar:fileName});
     // Insert User Record to Database
     Users.create(query).exec(function(err,data){
       if(err)return res.negotiate(err);
@@ -113,8 +114,8 @@ module.exports = {
 
   userEditPost:function(req,res){
     var params = req.allParams();
-    delete params.picture;
-    //return res.json(params);
+    delete params.avatar;
+    // return res.json(params);
     Users.update({no:params.no},params).exec(function(err,data){
       if(err)return res.negotiate(err);
       return res.redirect('dashboards/users/manage');
