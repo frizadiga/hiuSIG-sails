@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2017 at 04:05 AM
+-- Generation Time: Jul 14, 2017 at 10:05 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -19,6 +19,98 @@ SET time_zone = "+00:00";
 --
 -- Database: `hiusig`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `listing` int(11) DEFAULT NULL,
+  `customer` int(11) DEFAULT NULL,
+  `agent` int(11) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`no`, `id`, `listing`, `customer`, `agent`, `message`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'bk2', 31, 5, 2, 'Saya Ingin Booking dengan DP 30%', 'diterima', '2017-06-12 12:42:20', '2017-07-13 05:35:58'),
+(3, 'bk3', 30, 5, 2, 'Ex: Saya Booking dengan DP 50%', 'diterima', '2017-06-14 22:46:51', '2017-07-12 07:05:24'),
+(4, 'bk4', 26, 2, 3, 'Ex: Saya Booking dengan DP 50%', 'diterima', '2017-07-13 08:49:51', '2017-07-13 08:59:21'),
+(5, 'bk5', 32, 17, 16, 'Saya Booking dengan DP 50%', 'diterima', '2017-07-14 09:09:52', '2017-07-14 10:03:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `crud`
+--
+
+CREATE TABLE `crud` (
+  `id` varchar(255) NOT NULL,
+  `value1` varchar(255) DEFAULT NULL,
+  `value2` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `crud`
+--
+
+INSERT INTO `crud` (`id`, `value1`, `value2`, `createdAt`, `updatedAt`) VALUES
+('p1', 'isi value 1', 'isi value 2', '2016-10-14 12:55:09', '2016-10-14 15:13:45'),
+('p100', 'value1 p100 ', 'value2 p100', '2016-11-17 00:25:01', '2016-11-17 00:25:01'),
+('P1000', 'Value 1 P1000', 'Value 2 P1000', '2016-11-24 18:18:46', '2016-11-24 18:18:46'),
+('p2', 'isi value 1', 'isi value 2', '2016-10-14 13:00:37', '2016-10-15 13:37:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE `files` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `path` varchar(255) DEFAULT NULL,
+  `owner` int(11) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `name`, `path`, `owner`, `createdAt`, `updatedAt`) VALUES
+(4, 'd3aa93ab-3d29-4793-af11-66c53c9b68f0.jpg', '/uploads/d3aa93ab-3d29-4793-af11-66c53c9b68f0.jpg', 14, '2016-12-21 19:33:49', '2016-12-24 02:00:49'),
+(5, 'ae9f9272-e6cb-4574-b934-8e1be476445c.jpg', '/uploads/ae9f9272-e6cb-4574-b934-8e1be476445c.jpg', 15, '2016-12-21 19:41:10', '2016-12-21 19:41:10'),
+(7, '57b84fe1-a99c-4752-9af3-2e48703cf234.jpg', '/uploads/57b84fe1-a99c-4752-9af3-2e48703cf234.jpg', 17, '2016-12-21 19:46:56', '2016-12-21 19:46:56'),
+(8, '7cdd93e3-5888-432f-9e9b-543f699d2177.png', '/uploads/7cdd93e3-5888-432f-9e9b-543f699d2177.png', 18, '2016-12-21 19:50:21', '2016-12-21 19:50:21'),
+(9, '62fe12bc-d226-4456-acb6-3e14152d6074.png', '/uploads/62fe12bc-d226-4456-acb6-3e14152d6074.png', 19, '2016-12-21 19:54:09', '2016-12-21 19:54:09'),
+(12, '45ed9705-7396-45ec-9819-f8ce47e6dcbf.jpg', '/uploads/45ed9705-7396-45ec-9819-f8ce47e6dcbf.jpg', 20, '2016-12-21 20:16:16', '2016-12-21 20:16:16'),
+(13, 'fb86a1c1-d136-4a43-9711-0199492ad1df.jpg', '/uploads/fb86a1c1-d136-4a43-9711-0199492ad1df.jpg', 21, '2016-12-23 22:11:55', '2016-12-23 22:11:55'),
+(14, '69ebf7b6-7ce2-4c28-b9dc-f12c0d801786.png', '/uploads/69ebf7b6-7ce2-4c28-b9dc-f12c0d801786.png', 22, '2016-12-23 22:15:01', '2016-12-23 22:15:01'),
+(15, 'a6438305-0aae-4785-ae0b-a335a7948359.jpg', '/uploads/a6438305-0aae-4785-ae0b-a335a7948359.jpg', 23, '2016-12-27 19:31:18', '2016-12-27 19:31:18'),
+(16, '78850efd-4d8b-4b90-a733-14c1c4f3cf65.jpg', '/uploads/78850efd-4d8b-4b90-a733-14c1c4f3cf65.jpg', 24, '2016-12-27 19:34:32', '2016-12-27 19:34:32'),
+(18, '797b4adf-5c31-4d1c-92ec-018ea9eae358.jpg', '/uploads/797b4adf-5c31-4d1c-92ec-018ea9eae358.jpg', 26, '2017-01-01 15:54:04', '2017-01-01 15:54:04'),
+(19, '5233368a-9237-448b-9cd3-1411124b83af.JPG', '/uploads/5233368a-9237-448b-9cd3-1411124b83af.JPG', 27, '2017-01-01 15:56:59', '2017-01-01 15:56:59'),
+(20, '9fe3d221-aa15-4ccf-a635-1d04d30d3b3b.jpg', '/uploads/9fe3d221-aa15-4ccf-a635-1d04d30d3b3b.jpg', 28, '2017-05-18 23:42:13', '2017-05-18 23:42:13'),
+(21, '9295cf78-f0d9-4a38-b369-6c714c2aea33.jpg', '/uploads/9295cf78-f0d9-4a38-b369-6c714c2aea33.jpg', 29, '2017-05-20 13:19:12', '2017-05-20 13:19:12'),
+(22, '291dad68-31fc-45e6-bded-d64c6f0d84af.jpg', '/uploads/291dad68-31fc-45e6-bded-d64c6f0d84af.jpg', 30, '2017-05-20 13:32:04', '2017-05-20 13:32:04'),
+(23, '08cd1e6c-2674-4cd8-82cb-54cec5a4f644.jpg', '/uploads/08cd1e6c-2674-4cd8-82cb-54cec5a4f644.jpg', 31, '2017-05-20 13:38:01', '2017-05-20 13:38:01'),
+(24, '5d3b7f98-c600-49e4-940f-e15ba3b369b4.jpg', '/uploads/5d3b7f98-c600-49e4-940f-e15ba3b369b4.jpg', 32, '2017-07-14 08:59:04', '2017-07-14 08:59:04'),
+(25, '5db989fc-bf55-4cbd-8b80-28184282594b.jpg', '/uploads/5db989fc-bf55-4cbd-8b80-28184282594b.jpg', 33, '2017-07-14 09:06:29', '2017-07-14 09:06:29');
 
 -- --------------------------------------------------------
 
@@ -73,9 +165,191 @@ INSERT INTO `listings` (`no`, `id`, `title`, `status`, `type`, `price`, `provinc
 (31, 'lst31', 'Villa Mewah di bilangan Sanur', 'dijual', 'villa', 3000000000, 'Bali', 'Sanur', 'Jalan Hang Tuah no 8, Sanur, Denpasar, Bali', '-8.674427542151289', '115.26289072491454', 1000, 700, 2, 7, 3, '- Kolam Renang\r\n- Security 24 Jam\r\n- CCTV\r\n- Fresh Water Tank Stock', 2, '2017-05-20 13:38:01', '2017-07-03 11:12:45', NULL),
 (32, 'lst32', 'Rumah Lantai Satu Daerah Pemogan', 'dijual', 'rumah', 700000000, 'Bali', 'Denpasar', 'Jalan Mekar Jaya, Pemogan, Denpasar City, Bali, Indonesia', '-8.705626299999999', '115.20266590000006', 150, 130, 1, 2, 1, '- Garasi\r\n- Air PAM', 16, '2017-07-14 08:59:04', '2017-07-14 08:59:31', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `listings_types`
+--
+
+CREATE TABLE `listings_types` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `listings_types`
+--
+
+INSERT INTO `listings_types` (`no`, `id`, `type`, `createdAt`, `updatedAt`) VALUES
+(1, 'lt1', 'rumah', '2017-07-03 21:08:00', '2017-07-03 21:08:00'),
+(2, 'lt2', 'tanah', '2017-07-03 21:08:24', '2017-07-03 21:08:24'),
+(3, 'lt3', 'ruko', '2017-07-03 21:08:37', '2017-07-03 21:08:37'),
+(4, 'lt4', 'gudang', '2017-07-03 21:09:03', '2017-07-03 21:09:03'),
+(5, 'lt5', 'ruang usaha', '2017-07-03 21:09:59', '2017-07-03 21:09:59'),
+(6, 'lt6', 'villa', '2017-07-03 21:10:27', '2017-07-03 21:10:27'),
+(7, 'lt7', 'apartemen', '2017-07-03 21:10:57', '2017-07-03 21:10:57'),
+(8, 'lt8', 'pabrik', '2017-07-03 21:11:15', '2017-07-03 21:11:15'),
+(9, 'lt9', 'perkantoran', '2017-07-03 21:11:24', '2017-07-03 21:11:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `maps`
+--
+
+CREATE TABLE `maps` (
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `lat` varchar(255) DEFAULT NULL,
+  `lng` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `sender` int(11) DEFAULT NULL,
+  `receiver` int(11) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`no`, `id`, `sender`, `receiver`, `message`, `createdAt`, `updatedAt`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'msg2', 5, 3, 'Ex: Saya tertarik dengan properti anda', '2017-07-13 14:59:10', '2017-07-13 14:59:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `listing` int(11) DEFAULT NULL,
+  `customer` int(11) DEFAULT NULL,
+  `agent` int(11) DEFAULT NULL,
+  `accountOwner` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `dpPaidOn` date DEFAULT NULL,
+  `repaymentPaidOn` date DEFAULT NULL,
+  `fromBank` varchar(255) DEFAULT NULL,
+  `toBank` varchar(255) DEFAULT NULL,
+  `dp` int(11) DEFAULT NULL,
+  `remainingPayment` int(11) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `dpProof` varchar(255) DEFAULT NULL,
+  `repaymentProof` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`no`, `id`, `listing`, `customer`, `agent`, `accountOwner`, `email`, `phone`, `dpPaidOn`, `repaymentPaidOn`, `fromBank`, `toBank`, `dp`, `remainingPayment`, `amount`, `message`, `status`, `dpProof`, `repaymentProof`, `createdAt`, `updatedAt`) VALUES
+(1, '-', 14, 2, 1, '-', '-', '-', '0000-00-00', NULL, '-', '-', 0, 0, 0, '0', '0', '0', '0', '2017-07-13 00:00:00', '2017-07-01 00:00:00'),
+(2, 'pyt2', 31, 5, 2, 'Rina Suzuki', 'urarina@gmail.com', '087722867911', '2017-07-13', '2017-06-13', 'mandiri', 'bca', 900000000, 2100000000, NULL, NULL, 'pending dp', '01ede532-4263-4d2b-a7cf-db48d1c2147e.PNG', '', '2017-06-12 12:43:00', '2017-07-13 10:01:22'),
+(3, 'pyt3', 30, 5, 2, 'Rina Suzuki', 'urarina@gmail.com', '087722867911', '2017-07-13', '2017-07-13', 'bca', 'mandiri', 390000000, 910000000, NULL, NULL, 'pending pelunasan', 'b5593291-42de-431f-9e4d-d6b5e5f318c4.PNG', 'c12128da-ae52-4ecf-b448-824b40e3c4c7.PNG', '2017-06-14 22:47:13', '2017-07-13 10:01:43'),
+(11, 'pyt11', 26, 2, 3, 'Tomomi Ogawa', 'tomomi_ogw@gmail.com', '087722867908', '2017-07-13', '2017-07-13', 'mandiri', 'bca', 390000000, 910000000, NULL, NULL, 'pending pelunasan', '', '', '2017-07-13 08:59:21', '2017-07-13 09:24:26'),
+(12, 'pyt12', 32, 17, 16, 'user1', 'user1@gmail.com', '08373777629846', '2017-07-14', '2017-07-14', 'bca', 'bca', 300000000, 400000000, NULL, NULL, 'pelunasan lunas', 'f1c99578-975f-40d7-8bd6-befef962799c.PNG', 'fe3ac4e7-7340-4647-bcf3-d0958ad0fc32.PNG', '2017-07-14 09:10:13', '2017-07-14 09:33:44'),
+(13, 'pyt13', 32, 17, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'belum bayar', NULL, NULL, '2017-07-14 10:03:17', '2017-07-14 10:03:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports`
+--
+
+CREATE TABLE `reports` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `listing` int(11) DEFAULT NULL,
+  `customer` int(11) DEFAULT NULL,
+  `agent` int(11) DEFAULT NULL,
+  `payment` int(11) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `no` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `idNumber` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`no`, `id`, `username`, `role`, `password`, `name`, `phone`, `email`, `idNumber`, `avatar`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, 'u1', 'frizadiga', 'agent', 'root', 'frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, '5cf153a3-93c2-4059-ad4d-859761cdfe17.jpg', 'on', '2017-05-19 02:11:51', '2017-05-19 02:20:20'),
+(2, 'u2', 'timogawa', 'agent', 'root', 'Tomomi Ogawa', '087722867908', 'tomomi_ogw@gmail.com', NULL, 'avatar-tomomi.jpg', 'on', '2016-12-25 22:30:28', '2017-05-19 02:27:50'),
+(3, 'u3', 'haruna', 'agent', 'root', 'Haruna Ono', '087722867909', 'haruna@gmail.com', NULL, '3e745bc7-bf2f-4d26-b251-7b1da2434d44.jpg', 'on', '2016-12-26 04:35:44', '2017-05-19 02:27:37'),
+(4, 'u4', 'mami', 'agent', 'root', 'Mami Sasazaki', '087722867910', 'mamiguitar@gmail.com', NULL, 'avatar-mami.jpg', 'on', '2017-05-02 20:05:00', '2017-05-19 02:22:36'),
+(5, 'u5', 'rina', 'member', 'root', 'Rina Suzuki', '087722867911', 'urarina@gmail.com', NULL, 'avatar-rina.jpg', 'on', '2017-05-08 01:08:45', '2017-05-08 01:08:45'),
+(8, 'u0', 'frizadygates', 'administrator', 'root', 'Frizadiga', '087722867907', 'frizadiga@gmail.com', NULL, 'avatar-friza.jpg', 'on', '2016-12-23 21:09:57', '2017-05-02 22:56:05'),
+(16, 'u16', 'agent1', 'agent', 'root', 'agent1', '08373777629848', 'agent1@gmail.com', 'agent1', '48cb4b94-43a7-47e2-b320-c780cd72ebaa.png', 'on', '2017-07-14 08:44:27', '2017-07-14 09:06:47'),
+(17, 'u17', 'user1', 'member', 'root', 'user1', '08373777629846', 'user1@gmail.com', 'user1', '0fecaf41-02c8-460a-9162-4c3778605512.png', 'on', '2017-07-14 09:08:54', '2017-07-14 09:11:36');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `crud`
+--
+ALTER TABLE `crud`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `listings`
@@ -85,14 +359,90 @@ ALTER TABLE `listings`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indexes for table `listings_types`
+--
+ALTER TABLE `listings_types`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `maps`
+--
+ALTER TABLE `maps`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`no`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
   MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+--
+-- AUTO_INCREMENT for table `listings_types`
+--
+ALTER TABLE `listings_types`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
