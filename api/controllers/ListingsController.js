@@ -65,9 +65,14 @@ module.exports = {
         for (let i = 0; i < len; i++) {
         dataLocation.push(
         {
-          title:data[i].title,
           lat:Number(data[i].lat),
-          lng:Number(data[i].lng)
+          lng:Number(data[i].lng),
+          id:data[i].id,
+          title:data[i].title,
+          price:data[i].price,
+          address:data[i].address,
+          agent:data[i].agent,
+          picture:data[i].pictures[0].name
         }
         );
       }
