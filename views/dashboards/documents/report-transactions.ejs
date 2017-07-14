@@ -48,11 +48,11 @@
 
 <table class="w3-table w3-table-all w3-hoverable" id="table-reports">
     <tr class="w3-blue-grey">
-      <th>No</th>
+      <th style="padding:8px 5px;width:2em">No</th>
       <th>Properti</th>
       <th>Agent</th>
       <th>Customer</th>
-      <th>Pembayaran</th>
+      <th style="width:11em">Pembayaran</th>
       <th>Status</th>
       <th>Tgl Transaksi</th>
       <!-- <th style="width: 200px"></th> -->
@@ -63,9 +63,9 @@
       <td style="vertical-align: middle"><%=dataReports[i].listing.title||'-' %></td>
       <td style="vertical-align: middle"><%=dataReports[i].agent.name||'-' %></td>
       <td style="vertical-align: middle"><%=dataReports[i].customer.name||'-' %></td>
-      <td style="vertical-align: middle"><%=dataReports[i].listing.price.formatMoney(0,',','.')||'-' %></td>
+      <td style="vertical-align: middle;">Rp. <%=dataReports[i].listing.price.formatMoney(0,',','.')||'-' %></td>
       <td style="vertical-align: middle"><%=dataReports[i].status||'-' %></td>
-    	<td style="vertical-align: middle"><%=dataReports[i].updatedAt.toDateString()||'-' %></td>
+    	<td style="vertical-align: middle"><%=dataReports[i].updatedAt.toLocaleDateString('id')||'-' %></td>
     	
      <!--  <td style="vertical-align: middle">
         <button class="w3-button w3-hover-text-blue-grey w3-hover-white"><i class="fa fa-info"></i> Detail</button>
