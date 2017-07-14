@@ -51,19 +51,19 @@
     <table class="w3-table">
       <tr>
         <td style="text-align:left;width:60%">
-          <h3>Kuitansi Pembayaran</h3>
+          <h3>Kuitansi Pembayaran <%=(dataKuitansi)?dataKuitansi.untukPembayaran:''%></h3>
         </td>
         <td style="text-align:center">
-          <p>No Kuitansi: <%=(dataKuitansi)?dataKuitansi.id.replace('pyt','kwt-') : '-'%></p>
+          <p>No Kuitansi: <%=(dataKuitansi)?dataKuitansi.noKwt:'-'%></p>
         </td>
       </tr>  
     </table>
     
     <div class="w3-container">
       <p>Telah Terima dari : <%=(dataKuitansi)?dataKuitansi.customer.name:'-'%></p>
-      <p>Uang Sejumlah : Rp. <%=(dataKuitansi)?dataKuitansi.dp.formatMoney(0,',','.'):'-'%></p>
-      <p>Terbilang : <span id="terbilang"><%=(dataKuitansi)?dataKuitansi.dp:'-'%></span></p>
-      <p>Untuk Pembayaran: <%=(dataKuitansi)?`${dataKuitansi.status.replace('pending','')} pada ${dataKuitansi.listing.type} ${dataKuitansi.listing.title}`.toUpperCase():'-'%></p>
+      <p>Uang Sejumlah : Rp. <%=(dataKuitansi)?dataKuitansi.uangSejumlah.formatMoney(0,',','.'):'-'%></p>
+      <p>Terbilang : <span id="terbilang"><%=(dataKuitansi)?dataKuitansi.uangSejumlah:'-'%></span></p>
+      <p>Untuk Pembayaran: <%=(dataKuitansi)?`${dataKuitansi.untukPembayaran.replace('pending','')} pada ${dataKuitansi.listing.type} ${dataKuitansi.listing.title}`.toUpperCase():'-'%></p>
     </div>
   	
 
