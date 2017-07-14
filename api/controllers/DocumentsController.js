@@ -23,7 +23,14 @@ module.exports = {
 		}else{
 			Payments.findOne({id:params.id}).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
 				// if(data.id){data.id=data.id.replace('pyt','kwt-') || '-'}
-				return res.view('dashboards/documents/kuitansi',{dataKuitansi:data,title:'Kuitansi',layout:'layout-dashboards'});
+				if(params.paymentType === 'DP'){
+					data.uangSejumlah = data.dp;
+					return res.view('dashboards/documents/kuitansi',{dataKuitansi:data,title:'Kuitansi',layout:'layout-dashboards'});
+				}
+				if(params.paymentType === 'Pelunasan'){
+					data.uangSejumlah = data.remainingPayment;
+					return res.view('dashboards/documents/kuitansi',{dataKuitansi:data,title:'Kuitansi',layout:'layout-dashboards'});
+				}
 			});
 		}
 	}

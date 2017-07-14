@@ -182,8 +182,8 @@ function setDataPayment(){
     messageDetail.innerHTML = data.message||'-';
     dpProof.href = `/uploads/${data.dpProof}`||'';
     repaymentProof.href = `/uploads/${data.repaymentProof}`||'';
-    dpReceipt.href = `/dashboards/documents/kuitansi/${data.id}`||'';
-    repaymentReceipt.href = `/dashboards/documents/kuitansi/${data.id}`||'';
+    dpReceipt.href = `/dashboards/documents/kuitansi/DP/${data.id}`||'';
+    repaymentReceipt.href = `/dashboards/documents/kuitansi/Pelunasan/${data.id}`||'';
     openModal('modal-detail-payment');
   }
 

@@ -108,7 +108,7 @@ module.exports.routes = {
   '/dashboards/documents/surat-pengajuan-ajb':'DocumentsController.spajb',
 
   '/dashboards/documents/kuitansi':'DocumentsController.kuitansi',
-  '/dashboards/documents/kuitansi/:id':'DocumentsController.kuitansi',
+  '/dashboards/documents/kuitansi/:paymentType/:id':'DocumentsController.kuitansi',
   
   '/dashboards/reports/report-transaction':'ReportsController.reportTransaction',
 
