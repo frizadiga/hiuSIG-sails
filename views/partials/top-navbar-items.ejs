@@ -55,7 +55,7 @@
 	</div>
 
 	<div class="w3-dropdown-hover w3-right">
-		<a class="w3-button Xw3-blue-grey w3-hover-white w3-hover-text-blue-grey" <%-req.session.user?`href="/dashboards" title="${req.session.user.username}"`:`href="javascript:void(0)" title="Log in/Sign up"`%> <%-req.session.user?``:`onclick="document.getElementById('modal-login').style.display='block'"`%>> <%-req.session.user?`<img class="w3-circle w3-card" style="width:1.49em" src="/uploads/${req.session.user.avatar}"> `:`<i class="fa fa-sign-in"></i>`%></a>
+		<a class="w3-button Xw3-blue-grey w3-hover-white w3-hover-text-blue-grey" <%-req.session.user?`href="/dashboards" title="${req.session.user.username}"`:`href="javascript:void(0)" title="Log in/Sign up"`%> <%-req.session.user?``:`onclick="document.getElementById('modal-login').style.display='block'"`%> > <%-req.session.user?`<img class="w3-circle w3-card" style="width:1.49em" src="/uploads/${req.session.user.avatar}"> `:`<i class="fa fa-sign-in"></i>`%></a>
 		<%if(req.session.user){%>
 		<div id="dropdown-top-user" class="w3-dropdown-content w3-bar-block w3-card-4" style="right:0;/*width:100%">
 			<a href="/dashboards" class="w3-bar-item w3-button w3-text-grey w3-hover-blue-grey"><i class="fa fa-user-circle-o"></i> Dashboard</a>

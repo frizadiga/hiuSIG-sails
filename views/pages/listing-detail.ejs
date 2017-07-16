@@ -151,7 +151,7 @@
 </div>
 <!-- BUTTON-BOOKING -->
   <div class="w3-section w3-content w3-card w3-padding-16 w3-container w3-white">
-    <button onclick="openModal('modal-booking')" class="w3-button w3-padding-16 w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Pesan</b> <%= dataListings.type.capitalize() %> ini</button>
+    <button onclick="<%-req.session.user?`openModal('modal-booking')`:`document.getElementById('modal-login').style.display='block'`%>" class="w3-button w3-padding-16 w3-block w3-hover-blue w3-green w3-padding"><b><i class="fa fa-address-book"></i> Pesan</b> <%= dataListings.type.capitalize() %> ini</button>
   </div>
 
 </div>
