@@ -78,7 +78,9 @@ var n = this,
 
 document.getElementById('form-navbar-search').action='/findinmaps';
 
-document.getElementById('dropdown-top-user').style.right ='25%';
+const dropdownTopUser = document.getElementById('dropdown-top-user');
+
+if(dropdownTopUser)dropdownTopUser.style.right ='25%';
 
 document.getElementById('main-navbar').style.width='75%';
 document.getElementById('search-panel').style.width ='75%';
