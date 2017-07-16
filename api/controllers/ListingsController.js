@@ -104,7 +104,7 @@ module.exports = {
     let opts = req.allParams();
     if (user.role === 'administrator') {} else {opts.agent = user.no}
     Listings.find(opts).exec(function(err,data){
-      return res.view('dashboards/listing-manage',{dataListings:data,layout:'layout-dashboards'});
+      return res.view('dashboards/listings-manage',{dataListings:data,layout:'layout-dashboards'});
       // return res.json(user);
     });
   },

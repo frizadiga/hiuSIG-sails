@@ -79,9 +79,9 @@
 <%if(userRole==='administrator'){%>
 <hr class="w3-opacity w3-hr">
 
-<a href="/dashboards/user/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-plus"></i> Tambah Akun Bank</a>
+<a href="/dashboards/bank/insert" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-plus"></i> Tambah Akun Bank</a>
 
-<a href="/dashboards/users/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-bank"></i> Kelola Akun Bank</a>
+<a href="/dashboards/banks/manage" class="w3-bar-item w3-padding-16 w3-button w3-hover-white w3-hover-text-blue-grey"><i class="fa fa-bank"></i> Kelola Akun Bank</a>
 <%}%>
 
 <%if((userRole==='agent'||userRole==='administrator')&&!agentPending){%>

@@ -1,8 +1,8 @@
-<!--MODAL CONFIRM DELETE LISTING-->
-<div id="modal-confirm-delete-listing" class="w3-modal">
+<!--MODAL CONFIRM DELETE BANK-->
+<div id="modal-confirm-delete-bank" class="w3-modal">
   <div class="w3-modal-content w3-card-4" style="max-width:399px;opacity:0.95">
    <header id="modal-login-header" class="w3-center"><br>
-      <span onclick="document.getElementById('modal-confirm-delete-listing').style.display='none'" class="w3-button w3-hover-red w3-padding w3-display-topright" title="Close">&times;</span>
+      <span onclick="document.getElementById('modal-confirm-delete-bank').style.display='none'" class="w3-button w3-hover-red w3-padding w3-display-topright" title="Close">&times;</span>
     
       <p class="w3-xlarge w3-margin w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></p>
       <hr">
@@ -12,12 +12,12 @@
       <div class="w3-container">
         <p>Anda yakin akan menghapus data ini?</p>
         <p>ID: <span id="modal-id"></span></p>
-        <p>Judul: <span id="modal-data"></span></p>
+        <p>Username: <span id="modal-data"></span></p>
       </div>
       
       <footer class="w3-row w3-container w3-padding-24 w3-blue-grey">
-        <button onclick="document.getElementById('modal-confirm-delete-listing').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
-        <button onclick="deleteListing(mi.innerHTML)" type="button" class="w3-btn w3-red w3-right">Hapus</button>
+        <button onclick="document.getElementById('modal-confirm-delete-bank').style.display='none'" type="button" class="w3-btn w3-light-grey w3-right">Cancel</button>
+        <button onclick="deleteBank(mi.innerHTML)" type="button" class="w3-btn w3-red w3-right">Hapus</button>
       </footer>
     </form>
     
@@ -26,16 +26,16 @@
 
 <script>
 var id = 0;
-var mcdl = document.getElementById('modal-confirm-delete-listing');
+var mcdu = document.getElementById('modal-confirm-delete-bank');
 var mi = document.getElementById('modal-id');
 var md = document.getElementById('modal-data');
-  function modalData(id,title){
+  function modalData(id,username){
     id = id;
-    mcdl.style.display='block';
+    mcdu.style.display='block';
     mi.innerHTML = id;
-    md.innerHTML = title;
+    md.innerHTML = username;
   }
-  function deleteListing(id){
+  function deleteBank(id){
     //alert(id)
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
@@ -44,7 +44,7 @@ var md = document.getElementById('modal-data');
         location.reload();
       }
     };
-    xhr.open('GET','/api/listings/delete/'+id);
+    xhr.open('GET','/api/bank/delete/'+id);
     xhr.send();
   }
 </script>

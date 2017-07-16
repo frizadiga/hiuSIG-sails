@@ -32,6 +32,12 @@ module.exports.policies = {
     agentsConfirm:'isLogin'
   },
 
+  BanksController:{
+    bankForm:'isLogin',
+    banksManage:'isLogin',
+    bankEdit:'isLogin'
+  },
+
   BookingsController:{
     bookingsList:'isLogin',
     bookingsConfirm:'isLogin'

@@ -80,6 +80,10 @@ module.exports.routes = {
   '/dashboards/users/manage':'UsersController.usersManage',
   '/dashboards/user/edit/:id':'UsersController.userEdit',
   
+  '/dashboards/bank/insert':'BanksController.bankForm',
+  '/dashboards/banks/manage':'BanksController.banksManage',
+  '/dashboards/bank/edit/:id':'BanksController.bankEdit',
+  
   '/dashboards/agents-confirm':'UsersController.agentsConfirm',
 
   '/dashboards/messages':'MessagesController.messagesList',
@@ -127,8 +131,13 @@ module.exports.routes = {
   
   //API USER
   '/api/user/insert':'UsersController.userInsert',
-  '/api/user/delete/:id':'UsersController.UserDelete',
+  '/api/user/delete/:id':'UsersController.userDelete',
   '/api/user/edit/:no':'UsersController.userEditPost',
+
+  //API BANK
+  '/api/bank/insert':'BanksController.bankInsert',
+  '/api/bank/delete/:id':'BanksController.bankDelete',
+  '/api/bank/edit/:no':'BanksController.bankEditPost',
   
   //API AGENT
   'DELETE /api/agent-denied/:id':'UsersController.agentDenied',

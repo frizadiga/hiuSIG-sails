@@ -1,0 +1,29 @@
+<form action="<%=dataEdit?'/api/bank/edit/'+dataEdit.no:'/api/bank/insert'%>" method="POST" enctype="multipart/form-data">
+	<div id="bank-form" class="w3-padding w3-container" style="max-width: 700px;margin:auto;">
+			<p class="w3-container w3-blue-grey w3-padding-16"><b><i class="fa fa-bank"></i> Form Bank</b>
+    	</p>
+			<div class="w3-container w3-border">
+					<p>
+			  		<label class="w3-text-grey">Nama Bank</label>
+						<input class="w3-input w3-border" type="text" name="bankName" value="<%=dataEdit?dataEdit.bankName:''%>">
+					</p>
+					<p>
+			  		<label class="w3-text-grey">Nomor Rekening</label>
+						<input class="w3-input w3-border" type="text" name="accountNumber" value="<%=dataEdit?dataEdit.accountNumber:''%>">
+					</p>
+					<p>
+						<label class="w3-text-grey">Atas Nama</label>
+						<input class="w3-input w3-border" type="text" name="accountName" value="<%=dataEdit?dataEdit.accountName:''%>">
+					</p>
+
+			<div class="w3-bar w3-section w3-padding-16">
+				<button class="w3-button w3-blue-grey w3-hover-green w3-right" style="width:70%">
+    	  	<%-dataEdit?`<i class='fa fa-pencil'></i> Edit`:`<i class='fa fa-plus'></i> Tambah`%>
+				</button>
+				<button class="w3-button w3-light-grey w3-text-grey w3-right" style="width:30%" type="reset">Kosongkan</button>
+			</div>
+
+		</div>
+	
+	</div>
+</form>

@@ -53,7 +53,7 @@ module.exports = {
   usersManage:function(req,res){
     Users.find().exec(function(err,data){
       if(err)return res.negotiate(err);
-        return res.view('dashboards/user-manage',{dataUsers:data,layout:'layout-dashboards'})
+        return res.view('dashboards/users-manage',{dataUsers:data,layout:'layout-dashboards'})
       });
   },
 
@@ -68,9 +68,7 @@ module.exports = {
   },
 
   userForm:(req,res)=>{
-
     res.view('dashboards/user-form',{layout:'layout-dashboards',dataEdit:null});
-  
   },
 
   userInsert:function(req,res){
