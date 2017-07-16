@@ -138,7 +138,8 @@ module.exports.routes = {
   '/api/bank/insert':'BanksController.bankInsert',
   '/api/bank/delete/:id':'BanksController.bankDelete',
   '/api/bank/edit/:no':'BanksController.bankEditPost',
-  
+  'GET /api/fetch-banks-list':'BanksController.fetchBanksList',
+
   //API AGENT
   'DELETE /api/agent-denied/:id':'UsersController.agentDenied',
   'PUT /api/agent-approved/:id':'UsersController.agentApproved',

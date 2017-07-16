@@ -37,22 +37,26 @@
 
           <p>
             <label class="w3-text-grey">Dari Bank</label>
-            <select class="w3-select w3-border" name="fromBank" required>
+            <select id="select-from-bank" class="w3-select w3-border" name="fromBank" required>
               <option value="">-Pilih Bank-</option>
-              <option value="bca">BCA</option>
-              <option value="mandiri">Mandiri</option>
-              <option value="bni">BNI</option>
-            </select>   
+              <option value="bca">Bank BCA</option>
+              <option value="mandiri">Bank Mandiri</option>
+              <option value="syariah mandiri">Bank Syariah Mandiri</option>
+              <option value="bni">Bank BNI</option>
+              <option value="niaga">Bank Niaga</option>
+              <option value="lippo">Lippo Bank</option>
+              <option value="bii">Bank BII</option>
+              <option value="mega">Bank Mega</option>
+              <option value="bri">Bank BRI</option>
+              <option value="others">Lain-lain</option>
+            </select> 
           </p>
 
           <p>
             <label class="w3-text-grey">Ke Bank</label>
-            <select class="w3-select w3-border" name="toBank" required>
+             <select id="select-to-bank" class="w3-select w3-border" name="toBank" required>
               <option value="">-Pilih Bank-</option>
-              <option value="bca">BCA</option>
-              <option value="mandiri">Mandiri</option>
-              <option value="bni">BNI</option>
-            </select>   
+            </select>  
           </p>
 
         <p>
@@ -76,6 +80,29 @@
 </div>
 
 <script>
+
+// FECTH TO BANKS LIST
+var selectToBank = document.getElementById('select-to-bank');
+selectToBank.addEventListener('change',fetchListToBanks);
+
+var addSelectToBank = (listToBanks)=>{
+  for (let i = 0; i < listToBanks.length; i++) {
+    var bank = new Option(`Bank ${listToBanks[i].bankName} No Rek ${listToBanks[i].accountNumber} a/n ${listToBanks[i].accountName}`, listToBanks[i].bankName);
+    selectToBank.options.add(bank);
+     }
+}
+var fetchListToBanks = ()=>{
+fetch(`/api/fetch-banks-list`)
+  .then((res)=>{
+    return res.json();
+  }).then(addSelectToBank)
+  .catch((ex)=>{
+    console.log('parsing failed',ex);
+  })
+}
+fetchListToBanks();
+// END FETCH TO BANKS LIST
+
 var formPayRepayment = document.getElementById('form-pay-repayment');
 
 var dataPayment = {};
