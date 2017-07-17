@@ -23,7 +23,7 @@
 	<div id="join-us" style="background: url('/img/building-1.jpg');background-size:cover;background-attachment:fixed">
 		<div style="background-color: rgba(0, 0, 0, 0.55);padding:128px 0">
 			<form action="/api/agent-signup" method="POST" enctype="multipart/form-data">
-				<div class="w3-content w3-card-4 w3-white" style="opacity:0.97;max-width:570px">
+				<div class="w3-content w3-card-4 w3-white" style="opacity:0.97;max-width:600px">
 		 		<div id="modal-login-header" class="w3-center" style="background-size:contain;"><br>
       		<img src="/img/rumah2q-logo.png" style="width:35%">
       <!-- <p class="w3-xxlarge w3-margin w3-center w3-text-blue-grey" style="font-weight:bold">rumah<span class="w3-text-green">2Q</span></p> -->
@@ -45,11 +45,43 @@
 					<label class="w3-text-grey">Password</label>
 					<input class="w3-input w3-border" type="password" name="password" value="" required autocomplete="off" minlength="4">
 
-				<p>
+			<!-- 	<p>
 				<span class="w3-padding w3-light-grey w3-text-grey">Foto Profil&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
 				<input type="file" name="avatar" required>
 				</p>
 				
+				<p>
+				<span class="w3-padding w3-light-grey w3-text-grey">Foto Kartu Identitas&nbsp;&nbsp;<i class="fa fa-file-image-o"></i></span>
+				<input type="file" name="identityCard" required>
+				</p> -->
+
+				<table class="w3-table w3-section">
+					<tr>
+						<td class="w3-padding w3-light-grey w3-text-grey">
+							<b>Unggah Dokumen</b>
+						</td>
+						<td>
+							
+						</td>
+					</tr>
+					<tr>
+						<td class="w3-padding w3-light-grey w3-text-grey">
+							Foto Profil&nbsp;&nbsp;<i class="fa fa-file-image-o"></i>
+						</td>
+						<td>
+							<input type="file" name="avatar" required>
+						</td>
+					</tr>
+					<tr>
+						<td class="w3-padding w3-light-grey w3-text-grey">
+							Kartu Identitas&nbsp;&nbsp;<i class="fa fa-file-image-o"></i>
+						</td>
+						<td>
+							<input type="file" name="identityCard" required>
+						</td>
+					</tr>
+				</table>
+
 			</div>
 			<div class="w3-row w3-section w3-padding-16 w3-blue-grey">
 				<button class="w3-btn w3-green w3-right w3-margin-right"><i class="fa fa-plus"></i> Buat Akun</button>
