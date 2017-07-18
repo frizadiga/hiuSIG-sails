@@ -49,7 +49,7 @@ module.exports = {
     },
     status:{
       type:'string',
-      enum:['on','off','pending']
+      enum:['on','off','pending','denied']
     },
     listings:{
       collection:'listings',

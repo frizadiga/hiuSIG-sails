@@ -183,7 +183,7 @@ module.exports = {
 	},
 
 	repaymentDenied:(req,res)=>{
-		Payments.update({id:req.param('id')},{status:'dp lunas & menunggu pelunasan'}).exec((err,data)=>{
+		Payments.update({id:req.param('id')},{status:'dp lunas & menunggu pelunasan',remainingPayment:0}).exec((err,data)=>{
 			if(err)return res.negotiate(err);
 			return res.json(data.id);
 		});

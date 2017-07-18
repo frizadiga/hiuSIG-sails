@@ -166,7 +166,7 @@ function setDataPayment(){
   }
   function deniedAgent(id){
     fetch(`/api/agent-denied/${id}`,{
-      method:'DELETE'
+      method:'PUT'
     }).then((res)=>{
       mdd.innerHTML = res.text();
       location.reload();

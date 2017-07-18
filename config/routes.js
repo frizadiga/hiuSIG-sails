@@ -142,7 +142,7 @@ module.exports.routes = {
 
   //API AGENT
   'GET /api/agent/:id':'UsersController.agentDetailConfirm',
-  'DELETE /api/agent-denied/:id':'UsersController.agentDenied',
+  'PUT /api/agent-denied/:id':'UsersController.agentDenied',
   'PUT /api/agent-approved/:id':'UsersController.agentApproved',
 
   //API MESSAGE

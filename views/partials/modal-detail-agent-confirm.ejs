@@ -54,6 +54,10 @@
         <td>Status</td>
         <td>: <span id="status" style="font-weight:bold"></span></td>
       </tr>
+      <tr>
+        <td>Dokumen</td>
+        <td>: <a target="_blank" id="link-id-number">Kartu Identitas</a> | <a target="_blank" id="link-certification">Sertifikasi</a></td>
+      </tr>
     </table>
 
     </div>
@@ -67,6 +71,8 @@ var phoneDetail = document.getElementById('phone');
 var emailDetail = document.getElementById('email');
 var idNumberDetail = document.getElementById('id-number');
 var statusDetail = document.getElementById('status');
+var linkIdNumber = document.getElementById('link-id-number');
+var linkCertification = document.getElementById('link-certification');
 var dataAgentDetail = {};
 
 //ADD EVENT LISTENER
@@ -114,6 +120,8 @@ function setDataAgent(){
     emailDetail.innerHTML = data.email||'-';
     phoneDetail.innerHTML = data.phone||'-';
     statusDetail.innerHTML = data.status.capitalize()||'-';
+    linkIdNumber.href = `/uploads/${data.identityCardProof}`||'#';
+    linkCertification.href = `/uploads/${data.certificationProof}`||'#';
     openModal('modal-detail-agent-confirm');
   }
 

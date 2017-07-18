@@ -239,7 +239,7 @@ module.exports = {
     },
 
     agentDenied:(req,res)=>{
-      Users.destroy({id:req.param('id')}).exec((err,data)=>{
+      Users.update({id:req.param('id')},{status:'denied'}).exec((err,data)=>{
         if(err)return res.negotiate(err);
         return res.send(data.id);
       });

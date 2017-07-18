@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td>Status</td>
-        <td>: <span id="status"></span></td>
+        <td>: <span id="status" style="font-weight:bold"></span></td>
       </tr>
       <tr>
         <td>Customer</td>
@@ -166,7 +166,7 @@ function setDataPayment(){
     // alert(JSON.stringify(json));
     const data = json.dataPayment;
     idPaymentDetail.innerHTML = data.id||'-';
-    statusDetail.innerHTML = data.status||'-';
+    statusDetail.innerHTML = data.status.capitalize()||'-';
     customerDetail.innerHTML = data.customer.name||'-';
     agentDetail.innerHTML = data.agent.name||'-';
     accountOwnerDetail.innerHTML = data.accountOwner||'-';
