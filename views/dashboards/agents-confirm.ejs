@@ -1,7 +1,7 @@
 <!--MANAGE LISTING-->
 <div id="manage-listing" class="w3-container">
   <!-- <h2>Manage Listing</h2> -->
-  <p class="w3-padding-left w3-opacity"><b>Konfirmasi Agent</b></p>
+  <p class="w3-padding-left w3-opacity"><b>Konfirmasi Agen</b></p>
   
   <div class="w3-row w3-section w3-border">
     
@@ -33,23 +33,26 @@
         <th>Status</th>
         <th></th>
       </tr>
-      <%for(i=0;i<dataUsers.length;i++){%>
+      <%for(i=0;i<dataAgents.length;i++){%>
       <tr class="w3-text-grey w3-hover-green">
-        <td style="vertical-align:middle; width:80px"><%=dataUsers[i].id%></td>
-        <td style="vertical-align:middle"> <%=dataUsers[i].username%></td>
-        <td style="vertical-align:middle"> <%=dataUsers[i].name%></td>
-        <td style="vertical-align:middle"> <%=dataUsers[i].role%></td>
-        <td style="vertical-align:middle"> <%=dataUsers[i].status%></td>
+        <td style="vertical-align:middle; width:80px"><%=dataAgents[i].id%></td>
+        <td style="vertical-align:middle"> <%=dataAgents[i].username%></td>
+        <td style="vertical-align:middle"> <%=dataAgents[i].name%></td>
+        <td style="vertical-align:middle"> <%=dataAgents[i].role%></td>
+        <td style="vertical-align:middle"> <%=dataAgents[i].status%></td>
        
-        <td class="w3-center">
+        <td class="w3-right">
+          
+          <button class="w3-button w3-hover-blue" onclick="modalDetailAgent('<%=dataAgents[i].id%>')" title="Detil"><i class="fa fa-info"></i> Detail</button>
+
           <button class="w3-button w3-hover-red" 
-        onclick="modalDeniedAgent('<%=dataUsers[i].id%>','<%=dataUsers[i].name%>')">
+        onclick="modalDeniedAgent('<%=dataAgents[i].id%>','<%=dataAgents[i].name%>')">
         <i class="fa fa-ban"></i> Tolak
         </button>
         
         <button class="confirm-button w3-button w3-hover-text-blue-grey w3-hover-white" 
-        data-agent="<%=dataUsers[i].no%>"
-        onclick="modalApproveAgent('<%=dataUsers[i].id%>','<%=dataUsers[i].name%>')"
+        data-agent="<%=dataAgents[i].no%>"
+        onclick="modalApproveAgent('<%=dataAgents[i].id%>','<%=dataAgents[i].name%>')"
         >
         <i class="fa fa-check"></i> Terima
         </button>
@@ -118,6 +121,8 @@
     
   </div>
 </div>
+
+<%-partial('../partials/modal-detail-agent-confirm.ejs')%>
 
 <script>
   var id = 0;

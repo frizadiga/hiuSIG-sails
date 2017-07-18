@@ -58,12 +58,12 @@ module.exports = {
   },
 
   agentsConfirm:function(req,res){
-    params = {};
+    params = req.allParams();
     params.role = 'agent';
-    params.status = 'pending'
+    if(!params.status)params.status = 'pending';
     Users.find(params).exec(function(err,data){
       if(err)return res.negotiate(err);
-        return res.view('dashboards/agents-confirm',{dataUsers:data,layout:'layout-dashboards'})
+        return res.view('dashboards/agents-confirm',{dataAgents:data,layout:'layout-dashboards'})
       });
   },
 
@@ -142,6 +142,13 @@ module.exports = {
       return res.view('pages/agent-detail',{dataAgent:data});
     });
   },
+
+  agentDetailConfirm:(req,res)=>{
+		Users.findOne({id:req.param('id')}).populate('listings').exec((err,data)=>{
+			if(err)return res.negotiate(err);
+			return res.json({dataAgentDetail:data});
+		});
+	},
 
   userSignup:function(req,res){
     var params = req.allParams();

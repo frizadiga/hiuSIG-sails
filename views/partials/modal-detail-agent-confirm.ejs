@@ -1,11 +1,11 @@
 <%partial('../partials/helpers.ejs')%>
 
 <!-- Modal Detail -->
-<div id="modal-detail-booking" class="w3-modal w3-display-container" style="padding:16px 0">
-  <div class="w3-modal-content w3-card-4 w3-animate-opacity w3-display-middle" style="max-width:700px">
+<div id="modal-detail-agent-confirm" class="w3-modal w3-display-container" style="padding:16px 0">
+  <div class="w3-modal-content w3-card-4 w3-animate-opacity w3-display-middle" style="max-width:600px">
     <header class="w3-container w3-blue-grey">
-      <h3><i class="fa fa-money"></i> Detail Pemesanan</h3>
-      <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-detail-booking')"><i class="fa fa-close"></i></span>
+      <h3><i class="fa fa-money"></i> Detail Calon Agen</h3>
+      <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-detail-agent-confirm')"><i class="fa fa-close"></i></span>
     </header>
     <div class="w3-padding-16">
   <!--     <div class="w3-display-container" style="max-width:700px;margin:auto">
@@ -19,7 +19,7 @@
       <p>Agent: <%=%></p>
       <hr class="w3-hr">
       <label class="w3-left">Pesan Tambahan:</label>
-      <textarea id="payments-message" placeholder="Ex: Saya Booking dengan DP 50%" rows="3" class="w3-input w3-border w3-text-grey w3-hover-light-grey" type="text" style="resize:vertical">Ex: Saya Booking dengan DP 50%</textarea>
+      <textarea id="payments-message" placeholder="Ex: Saya Agent dengan DP 50%" rows="3" class="w3-input w3-border w3-text-grey w3-hover-light-grey" type="text" style="resize:vertical">Ex: Saya Agent dengan DP 50%</textarea>
       <hr>
       
       <div class="w3-bar">
@@ -31,32 +31,28 @@
 
     <table class="w3-table w3-text-grey">
       <tr>
-        <td style="width:200px">ID Pemesanan</td>
-        <td>: <span id="id">pyt1</span></td>
+        <td style="width:200px">ID Agent</td>
+        <td>: <span id="id"></span></td>
       </tr>
       <tr>
-        <td>Status</td>
-        <td>: <span id="status"></span></td>
+        <td>Nama</td>
+        <td>: <span id="name"></span></td>
       </tr>
       <tr>
-        <td>Agen</td>
-        <td>: <span id="agent"></span></td>
-      </tr>
-      <tr>
-        <td>Customer</td>
-        <td>: <span id="customer"></span></td>
-      </tr>
-      <tr>
-        <td>Email Customer</td>
-        <td>: <span id="email"></span></td>
-      </tr>
-      <tr>
-        <td>No Telepon Customer</td>
+        <td>No Tlp</td>
         <td>: <span id="phone"></span></td>
       </tr>
       <tr>
-      <td>Pesan</td>
-        <td>: <span id="message"></span></td>
+        <td>Email</td>
+        <td>: <span id="email"></span></td>
+      </tr>
+      <tr>
+        <td>No Kartu Identitas</td>
+        <td>: <span id="id-number"></span></td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>: <span id="status" style="font-weight:bold"></span></td>
       </tr>
     </table>
 
@@ -65,22 +61,21 @@
 </div>
 
 <script>
-var idBookingDetail = document.getElementById('id');
+var idAgentDetail = document.getElementById('id');
+var nameDetail = document.getElementById('name');
+var phoneDetail = document.getElementById('phone');
+var emailDetail = document.getElementById('email');
+var idNumberDetail = document.getElementById('id-number');
 var statusDetail = document.getElementById('status');
-var customerDetail = document.getElementById('customer');
-var agentDetail = document.getElementById('agent');
-var customerEmailDetail = document.getElementById('email');
-var customerPhoneDetail = document.getElementById('phone');
-var messageDetail = document.getElementById('message');
-var dataBookingDetail = {};
+var dataAgentDetail = {};
 
 //ADD EVENT LISTENER
 var btnConfirm = document.getElementsByClassName('detail-button');
 for(var i=0,len=btnConfirm.length;i<len;i++){
-  btnConfirm[i].addEventListener('click',setDataBooking);
+  btnConfirm[i].addEventListener('click',setDataAgent);
 }
 
-function setDataBooking(){
+function setDataAgent(){
   // dataPayment.listing = this.dataset.listing;
   // dataPayment.customer = this.dataset.customer;
   // dataPayment.agent = this.dataset.agent;
@@ -94,33 +89,32 @@ function setDataBooking(){
     document.getElementById(el).style.display = "none";
     document.body.style.overflow = "visible";
   }
-  function modalDetailBooking(id){
+  function modalDetailAgent(id){
     var data = {};
-    detailBooking(id);
+    detailAgent(id);
   }
   
-  function detailBooking(id){
-    fetch(`/api/booking/${id}`)
+  function detailAgent(id){
+    fetch(`/api/agent/${id}`)
     .then((res)=>{
       return res.json()
-    }).then(displayDetailBooking)
+    }).then(displayDetailAgent)
     .catch((ex)=>{
       console.log('parsing failed', ex)
     })
   }
 
-  var displayDetailBooking = (json)=>{
+  var displayDetailAgent = (json)=>{
     // console.log('parsed json', json);
     // alert(JSON.stringify(json));
-    const data = json.dataPayment;
-    idBookingDetail.innerHTML = data.id||'-';
-    statusDetail.innerHTML = data.status||'-';
-    customerDetail.innerHTML = data.customer.name||'-';
-    agentDetail.innerHTML = data.agent.name||'-';
-    customerEmailDetail.innerHTML = data.customer.email||'-';
-    customerPhoneDetail.innerHTML = data.customer.phone||'-';
-    messageDetail.innerHTML = data.message||'-';
-    openModal('modal-detail-booking');
+    const data = json.dataAgentDetail;
+    idAgentDetail.innerHTML = data.id||'-';
+    nameDetail.innerHTML = data.name||'-';
+    idNumberDetail.innerHTML = data.idNumber||'-';
+    emailDetail.innerHTML = data.email||'-';
+    phoneDetail.innerHTML = data.phone||'-';
+    statusDetail.innerHTML = data.status.capitalize()||'-';
+    openModal('modal-detail-agent-confirm');
   }
 
   String.prototype.capitalize = function() {

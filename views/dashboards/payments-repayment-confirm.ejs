@@ -31,7 +31,7 @@
       <td style="vertical-align: middle"><%=dataPayments[i].agent.name%></td>
       <td style="vertical-align: middle"><%=dataPayments[i].message%></td>
       <td style="vertical-align: middle"><%=dataPayments[i].status%></td>
-      <td style="vertical-align: middle" class="w3-center">
+      <td style="vertical-align: middle" class="w3-right">
         <button class="w3-button w3-hover-red" onclick="modalDetailPayment('<%=dataPayments[i].id%>')" title="Detil"><i class="fa fa-info"></i></button>
         
         <button class="w3-button w3-hover-red" onclick="modalDeniedRepayment('<%=dataPayments[i].id%>','<%=dataPayments[i].customer.name%>')" title="Tolak"><i class="fa fa-ban"></i></button>

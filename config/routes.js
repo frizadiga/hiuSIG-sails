@@ -141,6 +141,7 @@ module.exports.routes = {
   'GET /api/fetch-banks-list':'BanksController.fetchBanksList',
 
   //API AGENT
+  'GET /api/agent/:id':'UsersController.agentDetailConfirm',
   'DELETE /api/agent-denied/:id':'UsersController.agentDenied',
   'PUT /api/agent-approved/:id':'UsersController.agentApproved',
 
