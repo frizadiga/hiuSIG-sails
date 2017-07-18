@@ -35,7 +35,7 @@ module.exports = {
 
 		opts.sort = 'updatedAt DESC';
 		Payments.find(opts).populate('listing').populate('customer').populate('agent').exec((err,data)=>{
-			if(err)return res.negotiate(err);
+			if(err)return res.serverError(err);
 			// return res.view('dashboards/payments',{dataPayments:data,layout:'layout-dashboards'});
 			return res.view('dashboards/documents/report-transactions',{dataReports:data, layout:'layout-dashboards'});
 		});
