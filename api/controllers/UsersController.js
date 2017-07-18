@@ -180,19 +180,36 @@ module.exports = {
     var query;
     // Create User ID
     Users.createId(function(err,id){
-      params.id = id;
+    	params.id = id;
 
-    // Upload Avatar
-    req.file('avatar').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
+    async.map(['avatar','identityCard','certification'],function(file,cb){
+      req.file(file).upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
+        if(err)return res.serverError(err);
+        return cb(err,uploadedFiles);
+      });//End req.file('image')
+    },function doneUploading(err,uploadedFiles){
       if(err)return res.serverError(err);
-      var fileName = require('path').basename(uploadedFiles[0].fd);
-      var filePath = '/uploads/'+fileName;
-      //return res.json({name:'gambar',path:filePath,idOwner:'p1'});
+      for(let i in uploadedFiles){
+      	// require('path').basename(uploadedFiles[i].fd)
+      	uploadedFiles[i][0].baseName = require('path').basename(uploadedFiles[i][0].fd);
+      }
+      // return res.json(uploadedFiles);
+      if(params.avatar)delete params.avatar;
+      if(params.identityCard)delete params.identityCard;
+      if(params.certification)delete params.certification;
 
-      // Insert FileName and Path to Database
-      // Files.create({name:fileName,path:filePath,idOwner:idOwner}).exec(function(err,data){
-      // if(err)return res.negotiate(err);
-    query = Object.assign({},params,{avatar:fileName},{role:'agent'},{status:'pending'});
+      const pictures = {};
+      pictures.avatar = uploadedFiles[0][0].baseName;
+      pictures.identityCardProof = uploadedFiles[1][0].baseName;
+      pictures.certificationProof = uploadedFiles[2][0].baseName;
+      // return res.json(pictures);
+
+    	query = Object.assign({},params,pictures,
+    		{role:'agent'},
+    		{status:'pending'}
+    		);
+    	// return res.json(query);	
+
     // Insert User Record to Database
     Users.create(query).exec(function(err,data){
       if(err)return res.negotiate(err);
@@ -202,8 +219,8 @@ module.exports = {
         return res.redirect('/dashboards');
       
       });//End Users.create()
-      // });//End Files.create()
-      });//End req.file('pictures')
+     
+    });
     });//End createId()
     },
 

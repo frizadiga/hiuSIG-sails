@@ -41,6 +41,12 @@ module.exports = {
     avatar:{
       type:'string'
     },
+    identityCardProof:{
+      type:'string'
+    },
+    certificationProof:{
+      type:'string'
+    },
     status:{
       type:'string',
       enum:['on','off','pending']
