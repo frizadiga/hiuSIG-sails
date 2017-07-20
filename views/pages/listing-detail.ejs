@@ -188,14 +188,17 @@
 <div id="modal-booking" class="w3-modal w3-display-container" style="padding:16px 0">
   <div class="w3-modal-content w3-card-4 w3-animate-opacity w3-display-middle" style="max-width:700px">
     <header class="w3-container w3-blue-grey">
-      <h3><i class="fa fa-address-book"></i> Booking</h3>
+      <h3><i class="fa fa-address-book"></i> Booking | <span class="w3-large"><%=dataListings.title%></span></h3>
       <span class="w3-button w3-hover-red w3-display-topright" style="cursor:pointer" onclick="closeModal('modal-booking')"><i class="fa fa-close"></i></span>
     </header>
       <!-- IMAGE PROPERTI -->
-      <div class="w3-display-container" style="max-width:700px;margin:auto">
-        <img class="w3-greyscale-min" style="width:100%;height:250px;object-fit:cover" src="<%=dataListings.pictures[0].path%>">
-        <p class="w3-display-topmiddle w3-text-white"><b><%=dataListings.title%></b></p>  
-        <p class="w3-display-bottommiddle w3-text-white"><b>Rp. <%=dataListings.price.formatMoney(0,',','.')%></b></p>  
+      <div class="w3-display-container w3-black" style="max-width:700px;margin:auto">
+        <img class="w3-greyscale-min" style="width:100%;height:200px;object-fit:cover;opacity:0.5" src="<%=dataListings.pictures[0].path%>">
+        <!-- <p class="w3-display-topmiddle w3-text-white"><b><%=dataListings.title%></b></p>   -->
+        <div class="w3-display-bottommiddle w3-text-white w3-center w3-section">
+        <p><%=dataListings.address%></p>
+        <b>Rp. <%=dataListings.price.formatMoney(0,',','.')%></b>
+        </div>  
       </div>
       
       <div class="w3-container w3-padding-16 w3-center w3-text-grey" style="width:100%">
@@ -215,25 +218,26 @@
 <!-- Modal Image -->
 <div id="modal-image" class="w3-modal w3-black" style="padding:8px 0 !important">
  <span class="w3-text-white w3-xxlarge w3-hover-text-grey w3-container w3-display-topright" onclick="closeModal('modal-image')" style="cursor:pointer">×</span>
- <div class="w3-modal-content w3-animate-opacity" style="width:1200px;max-width:1200px;min-width:1000px;margin:auto">
-  <div class="" >
-    <% for (let i=0;i<totalImages;i++) { -%>
-      <img class="mySlides" src="<%=dataListings.pictures[i].path%>" style="width:100%">
-    <% } -%>
-   <div class="w3-row w3-black w3-center">
-    <div class="w3-display-container">
-     <p id="caption"></p>
-     <span class="w3-display-left w3-btn" onclick="plusDivs(-1)">❮</span>
-     <span class="w3-display-right w3-btn" onclick="plusDivs(1)">❯</span>
-    </div>
+ <div class="w3-modal-content w3-animate-opacity" style="width:980px;max-width:1200px;min-width:980px;margin:auto">
+  <div class="w3-center w3-black">
+   
+   <div class="w3-row w3-center">
 
     <% for(let i=0; i<totalImages;i++){ -%>
     <div class="w3-col s4">
-      <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[i].path%>" style="width:100%;cursor:pointer;height:170px;object-fit:cover" onclick="currentDiv(<%=i+1%>)" alt="<%=`${i+1} / ${totalImages}`%>">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[i].path%>" style="width:100%;cursor:pointer;height:150px;object-fit:cover" onclick="currentDiv(<%=i+1%>)" alt="<%=`${i+1} / ${totalImages}`%>">
     </div>
     <% } -%>
    
    </div> <!-- End row -->
+   	<div class="w3-display-container">
+    	<p id="caption"></p>
+    	<span class="w3-display-left w3-btn" onclick="plusDivs(-1)">❮</span>
+    	<span class="w3-display-right w3-btn" onclick="plusDivs(1)">❯</span>
+    </div>
+    <% for (let i=0;i<totalImages;i++) { -%>
+      <img class="mySlides" src="<%=dataListings.pictures[i].path%>" style="width:100%">
+    <% } -%>
   </div> <!-- End w3-content -->
   
   <div class="w3-padding-16 w3-center w3-light-grey w3-hover-red w3-button w3-block" title="Close" onclick="closeModal('modal-image')">
