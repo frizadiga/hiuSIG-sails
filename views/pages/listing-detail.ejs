@@ -1,7 +1,7 @@
 
 <%partial('../partials/helpers.ejs')%>
 <%-partial('../partials/navbar-search.ejs')%>
-
+<%var totalImages=dataListings.pictures.length%>
 <!--Main-->
 <div id="main-listings-detail" style="padding-top:38px!important">
 
@@ -19,11 +19,11 @@
       <!-- Use Object Fit -->
       <img onclick="openModal('modal-image');currentdiv(1)" id="main-pic" class="w3-card-4" src="<%=dataListings.pictures[0].path%>" alt="<%=dataListings.pictures[0].path%>" style="height:500px;width:100%;cursor:pointer;object-fit:cover">
 
-      <div class="w3-row w3-white" style="height:130px;overflow:hidden;">
+      <div class="w3-row w3-blue-grey" style="height:130px;overflow:hidden;">
       
-      <%for(i=0,len=3;i<len;i++){%>  
+      <%for(i=0;i<totalImages;i++){%>  
         <div class="w3-col s4">
-          <img onclick="openModal('modal-image');currentdiv(<%=i+1%>)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height:130px;cursor:pointer;object-fit:cover;vertical-align:middle;" src="<%=dataListings.pictures[0].path%>" alt="">
+          <img onclick="openModal('modal-image');currentdiv(<%=i+1%>)" class="w3-opacity w3-hover-opacity-off" style="width:100%;height:130px;cursor:pointer;object-fit:cover;vertical-align:middle;" src="<%-dataListings.pictures[i].path%>" alt="">
         </div>
       <%}%>
 
@@ -216,10 +216,9 @@
 <div id="modal-image" class="w3-modal w3-black" style="padding:8px 0 !important">
  <span class="w3-text-white w3-xxlarge w3-hover-text-grey w3-container w3-display-topright" onclick="closeModal('modal-image')" style="cursor:pointer">×</span>
  <div class="w3-modal-content w3-animate-opacity" style="width:1200px;max-width:1200px;min-width:1000px;margin:auto">
- <%var totalImages=3%>
   <div class="" >
     <% for (let i=0;i<totalImages;i++) { -%>
-      <img class="mySlides" src="<%=dataListings.pictures[0].path%>" style="width:100%">
+      <img class="mySlides" src="<%=dataListings.pictures[i].path%>" style="width:100%">
     <% } -%>
    <div class="w3-row w3-black w3-center">
     <div class="w3-display-container">
@@ -230,7 +229,7 @@
 
     <% for(let i=0; i<totalImages;i++){ -%>
     <div class="w3-col s4">
-      <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[0].path%>" style="width:100%;cursor:pointer;height:170px;object-fit:cover" onclick="currentDiv(<%=i+1%>)" alt="<%=`${i+1} / ${totalImages}`%>">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="<%=dataListings.pictures[i].path%>" style="width:100%;cursor:pointer;height:170px;object-fit:cover" onclick="currentDiv(<%=i+1%>)" alt="<%=`${i+1} / ${totalImages}`%>">
     </div>
     <% } -%>
    

@@ -117,22 +117,39 @@ module.exports = {
   
   listingInsert:function(req,res){
     var params = req.allParams();
-    // return res.json(params);
+     //return res.json(params);
     // Create Property ID
     Listings.createId(function(err,id){
       params.id = id;
       var owner = parseInt(id.replace('lst',''));
-     
    
-    // Upload Picture
-    req.file('pictures').upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
-      if(err)return res.serverError(err);
-      var fileName = require('path').basename(uploadedFiles[0].fd);
-      var filePath = '/uploads/'+fileName;
-      //return res.json({name:'gambar',path:filePath,owner:'p1'});
+  	async.map(['pictures'],function(uploadedFile,cb){
 
+  		// Upload Picture
+    req.file(uploadedFile).upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
+      if(err)return res.serverError(err);
+      return cb(err,uploadedFiles);
+      //return res.json({name:'gambar',path:filePath,owner:'p1'});
+    });//End req.file('pictures')
+
+  	},function doneUploading(err,uploadedFiles){
+  		 //Add Basename to every file 
+  		 const listingPictures = [];
+  		 let   listingPicture = {};
+  		 for(let i in uploadedFiles[0]){
+      	// require('path').basename(uploadedFiles[i].fd)
+      	// uploadedFiles[0][i].baseName = require('path').basename(uploadedFiles[0][i].fd);
+      	listingPicture.name = require('path').basename(uploadedFiles[0][i].fd);
+      	listingPicture.path = `/uploads/${require('path').basename(uploadedFiles[0][i].fd)}`;
+      	listingPicture.owner = owner;
+
+      	listingPictures.push(listingPicture);
+      }
+      // return res.json(listingPictures);
+
+    
     // Insert FileName and Path to Database
-     Files.create({name:fileName,path:filePath,owner:owner}).exec(function(err,data){
+     Files.create(listingPictures).exec(function(err,data){
      if(err)return res.negotiate(err);
     
      // Insert Property Record to Database 
@@ -144,11 +161,11 @@ module.exports = {
      });//End Listings.create()
    
     });//End Files.create()
-  
 
 
-    });//End req.file('pictures')
+  });//End async.map()
   });//End createId()
+
   },
   
   listingEdit:function(req,res){

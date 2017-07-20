@@ -227,7 +227,7 @@ module.exports = {
       
       });//End Users.create()
      
-    });
+    });//End async.map()
     });//End createId()
     },
 
