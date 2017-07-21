@@ -110,9 +110,7 @@ module.exports = {
   },
 
   listingForm:(req,res)=>{
-
     res.view('dashboards/listing-form',{layout:'layout-dashboards',dataEdit:null});
-  
   },
   
   listingInsert:function(req,res){
@@ -123,29 +121,31 @@ module.exports = {
       params.id = id;
       var owner = parseInt(id.replace('lst',''));
    
-  	async.map(['pictures'],function(uploadedFile,cb){
+    async.map(['pictures'],function(uploadedFile,cb){
 
-  		// Upload Picture
+      // Upload Picture
     req.file(uploadedFile).upload({dirname:require('path').resolve(sails.config.appPath,'assets/uploads')},function(err,uploadedFiles){
       if(err)return res.serverError(err);
       return cb(err,uploadedFiles);
       //return res.json({name:'gambar',path:filePath,owner:'p1'});
     });//End req.file('pictures')
 
-  	},function doneUploading(err,uploadedFiles){
-  		 //Add Basename to every file 
-  		 const listingPictures = [];
-  		 let   listingPicture = {};
-  		 for(let i in uploadedFiles[0]){
-      	// require('path').basename(uploadedFiles[i].fd)
-      	// uploadedFiles[0][i].baseName = require('path').basename(uploadedFiles[0][i].fd);
-      	listingPicture.name = require('path').basename(uploadedFiles[0][i].fd);
-      	listingPicture.path = `/uploads/${require('path').basename(uploadedFiles[0][i].fd)}`;
-      	listingPicture.owner = owner;
-
-      	listingPictures.push(listingPicture);
+    },function doneUploading(err,uploadedFiles){
+       // return res.json(uploadedFiles);
+       //Add Basename to every file 
+       let listingPictures = [];
+       var listingPicture = {};
+       for(let i in uploadedFiles[0]){
+        // require('path').basename(uploadedFiles[i].fd)
+        // uploadedFiles[0][i].baseName = require('path').basename(uploadedFiles[0][i].fd);
+        listingPictures.push({
+        name : require('path').basename(uploadedFiles[0][i].fd),
+        path : `/uploads/${require('path').basename(uploadedFiles[0][i].fd)}`,
+        owner : owner
+        })
+        // listingPictures.push(listingPicture);
       }
-      // return res.json(listingPictures);
+       // return res.json(listingPictures);
 
     
     // Insert FileName and Path to Database
