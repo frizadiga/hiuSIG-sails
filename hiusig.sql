@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2017 at 07:04 PM
+-- Generation Time: Jul 21, 2017 at 07:09 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -130,7 +130,10 @@ INSERT INTO `files` (`id`, `name`, `path`, `owner`, `createdAt`, `updatedAt`) VA
 (64, 'a6438305-0aae-4785-ae0b-a335a7948359.jpg', '/uploads/a6438305-0aae-4785-ae0b-a335a7948359.jpg', 9, '2017-07-21 22:55:45', '2017-07-21 22:55:45'),
 (65, '291dad68-31fc-45e6-bded-d64c6f0d84af.jpg', '/uploads/291dad68-31fc-45e6-bded-d64c6f0d84af.jpg', 14, '2017-07-21 22:56:09', '2017-07-21 22:56:09'),
 (66, '797b4adf-5c31-4d1c-92ec-018ea9eae358.jpg', '/uploads/797b4adf-5c31-4d1c-92ec-018ea9eae358.jpg', 12, '2017-07-21 22:56:09', '2017-07-21 22:56:09'),
-(84, '08cd1e6c-2674-4cd8-82cb-54cec5a4f644.jpg', '/uploads/08cd1e6c-2674-4cd8-82cb-54cec5a4f644.jpg', 16, '2016-12-21 19:46:56', '2016-12-21 19:46:56');
+(84, '08cd1e6c-2674-4cd8-82cb-54cec5a4f644.jpg', '/uploads/08cd1e6c-2674-4cd8-82cb-54cec5a4f644.jpg', 16, '2016-12-21 19:46:56', '2016-12-21 19:46:56'),
+(85, '93160eef-127f-49cb-9640-d5da875f0e0d.jpg', '/uploads/93160eef-127f-49cb-9640-d5da875f0e0d.jpg', 17, '2017-07-22 00:08:00', '2017-07-22 00:08:00'),
+(86, '68ba9411-fe77-4518-a5aa-06cca61358f4.jpg', '/uploads/68ba9411-fe77-4518-a5aa-06cca61358f4.jpg', 17, '2017-07-22 00:08:00', '2017-07-22 00:08:00'),
+(87, '3297a2d8-b3c2-4b6d-b5c2-d5f281fe9f11.jpg', '/uploads/3297a2d8-b3c2-4b6d-b5c2-d5f281fe9f11.jpg', 17, '2017-07-22 00:08:00', '2017-07-22 00:08:00');
 
 -- --------------------------------------------------------
 
@@ -440,12 +443,12 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `no` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `listings_types`
 --
