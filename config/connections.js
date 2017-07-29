@@ -54,6 +54,25 @@ module.exports.connections = {
     user:'root',
     database:'hiusig'
   },
+
+  db4FreeMySQL:{
+    adapter:'sails-mysql',
+    host:'localhost',
+    user:'rumah2qroot',
+    password:'!@#$%^&*()',
+    database:'rumah2q'
+  },
+
+  freesqldatabase:{
+    adapter:'sails-mysql',
+    host:'sql12.freesqldatabase.com',
+    user:'sql12187644',
+    password:'VW6TRt89gN',
+    database:'sql12187644'
+  },
+
+
+
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *
