@@ -1,6 +1,6 @@
 {
   "name": "hiuSIG-sails",
-  "private": false,
+  "private": true,
   "version": "0.0.1",
   "description": "Sistem Informasi Geografis Properti",
   "keywords": [],
