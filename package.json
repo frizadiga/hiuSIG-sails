@@ -36,5 +36,9 @@
   "repository": "https://github.com/frizadiga/hiuSIG-sails.git",
   "author": "frizadiga",
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines":{
+    "node":"8.x.x",
+    "npm":"5.x.x"
+  }
 }
