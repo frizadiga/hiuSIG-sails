@@ -22,7 +22,7 @@ module.exports = {
   // },
 
   models: {
-    connection: 'freesqldatabase'
+    connection: 'heliohost'
   },
 
   /***************************************************************************
