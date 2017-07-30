@@ -71,6 +71,13 @@ module.exports.connections = {
     database:'sql12187644'
   },
 
+  heliohost:{
+    adapter:'sails-mysql',
+    host:'johnny.heliohost.org',
+    user:'friza_root',
+    password:'!@#$%^&*()',
+    database:'friza_rumah2q'
+  },
 
 
   /***************************************************************************
